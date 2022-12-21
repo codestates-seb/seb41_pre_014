@@ -25,6 +25,9 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'	// 특정 값을 암호화해주는 라이브러리
+	implementation 'org.bouncycastle:bcprov-jdk15on:1.70'	// 자바 암호화 라이브러리
 }
 
 tasks.named('test') {
