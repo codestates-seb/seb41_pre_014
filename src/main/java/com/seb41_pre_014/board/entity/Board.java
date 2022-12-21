@@ -1,5 +1,6 @@
 package com.seb41_pre_014.board.entity;
 
+import com.seb41_pre_014.audit.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Board {
+public class Board extends BaseTimeEntity {
 
     private Long boardId;
     private Long writerMemberId;
