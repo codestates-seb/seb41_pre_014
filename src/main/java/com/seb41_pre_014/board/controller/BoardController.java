@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.*;
 public class BoardController {
 
     @PostMapping
-    public ResponseEntity postBoard() {
+    public ResponseEntity postQuestion() {
+        return ResponseEntity.created(null).build();
+    }
+
+    @PostMapping("/{question-id}")
+    public ResponseEntity postAnswer() {
         return ResponseEntity.created(null).build();
     }
 
