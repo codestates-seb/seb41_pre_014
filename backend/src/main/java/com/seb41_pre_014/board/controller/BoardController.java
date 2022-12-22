@@ -36,7 +36,7 @@ public class BoardController {
     }
 
     @GetMapping("/{board-id}")
-    public ResponseEntity findBoard() {
+    public ResponseEntity findBoard(@PathVariable("board-id") @Positive Long boardId) {
         BoardDto.Response question = createQuestion();
         return ResponseEntity.ok(question);
     }
@@ -78,7 +78,7 @@ public class BoardController {
 
     // 검색어 기준 게시물 조회
     @GetMapping("/search")
-    public ResponseEntity findAllBySearch(@RequestParam("keword") String keyword,
+    public ResponseEntity findAllBySearch(@RequestParam("keyword") String keyword,
                                           @RequestParam(value = "page", defaultValue = "1") @Positive int page,
                                           @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         BoardDto.Response question = createQuestion();
@@ -88,7 +88,7 @@ public class BoardController {
 
     // 최신 답변순으로 정렬
     @GetMapping("answers/{question-id}/newest")
-    public ResponseEntity findAllAnswers(@PathVariable("question-id") @Positive Long questionId) {
+    public ResponseEntity findAllbyDesc(@PathVariable("question-id") @Positive Long questionId) {
         BoardDto.Response answer = createAnswer();
         BoardDto.Response answer2 = createAnswer2();
         return ResponseEntity.ok(List.of(answer, answer2));
@@ -96,7 +96,7 @@ public class BoardController {
 
     // 오래된 답변순으로 정렬
     @GetMapping("/answers/{question-id}/oldest")
-    public ResponseEntity findAnsersByold(@PathVariable("question-id") @Positive Long questionId) {
+    public ResponseEntity findAnsersByAsc(@PathVariable("question-id") @Positive Long questionId) {
         BoardDto.Response answer = createAnswer();
         BoardDto.Response answer2 = createAnswer2();
         return ResponseEntity.ok(List.of(answer, answer2));
@@ -132,7 +132,7 @@ public class BoardController {
         builder.answerCount(5);
         builder.bookmarkCount(20);
         builder.questionId(null);
-        builder.answers(List.of(createAnswer(), createAnswer2()));
+        builder.answers(List.of(2L, 3L));
         BoardDto.Response response;
         response = builder.build();
 
