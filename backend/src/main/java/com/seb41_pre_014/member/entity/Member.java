@@ -4,7 +4,7 @@ import com.seb41_pre_014.audit.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.Entity;
-
+import javax.persistence.Id;
 
 
 @Entity
@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTimeEntity {
 
+    @Id
     private long memberId;
     private String email;
     private String password;

@@ -1,0 +1,8 @@
+.+/boards/answers/{question-id}/score+
+|===
+|Parameter|Description
+
+|`+question-id+`
+|조회하려는 Answer의 Question 인덱스
+
+|===

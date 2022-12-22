@@ -1,0 +1,10 @@
+[source,bash]
+----
+$ echo '{
+  "title" : "What is Lorem Ipsum?",
+  "body" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "tags" : [ "javascript" ]
+}' | http POST 'http://localhost:8080/boards/answers/2?memberId=1' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Accept:application/json'
+----
