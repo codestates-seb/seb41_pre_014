@@ -24,4 +24,8 @@ public class SuggestedEditController {
 
     @GetMapping
     public  ResponseEntity findAllEdit() { return new ResponseEntity(HttpStatus.OK);}
+
+    @GetMapping // 지우세요
+    public  ResponseEntity findEditByName() { return new ResponseEntity(HttpStatus.OK);}
+
 }
