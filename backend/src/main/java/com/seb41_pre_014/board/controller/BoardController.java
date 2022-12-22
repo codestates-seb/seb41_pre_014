@@ -5,26 +5,32 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.util.List;
 
 @RestController
 @RequestMapping("/boards")
 public class BoardController {
 
-    @PostMapping
-    public ResponseEntity postQuestion() {
+    @PostMapping("/questions")
+    public ResponseEntity postQuestion(@RequestParam("memberId") @Positive Long memberId,
+                                       @RequestBody @Valid BoardDto.Post postQuestion) {
         BoardDto.Response question = createQuestion();
         return new ResponseEntity<>(question, HttpStatus.CREATED);
     }
 
-    @PostMapping("/{question-id}")
-    public ResponseEntity postAnswer() {
+    @PostMapping("/answers/{question-id}")
+    public ResponseEntity postAnswer(@PathVariable("question-id") @Positive Long questionId,
+                                     @RequestParam("memberId") @Positive Long memberId,
+                                     @RequestBody @Valid BoardDto.Post postAnswer) {
         BoardDto.Response answer = createAnswer();
         return new ResponseEntity<>(answer, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{board-id}")
-    public ResponseEntity updateBoard() {
+    public ResponseEntity updateBoard(@PathVariable("board-id") @Positive Long boardId,
+                                      @RequestBody @Valid BoardDto.Patch patchAnswer) {
         BoardDto.Response question = createQuestion();
         return new ResponseEntity<>(question, HttpStatus.OK);
     }
@@ -36,21 +42,24 @@ public class BoardController {
     }
 
     @GetMapping("/questions")
-    public ResponseEntity findAllByQuestion() {
+    public ResponseEntity findAllQuestions(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
+                                            @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         BoardDto.Response question = createQuestion();
         return ResponseEntity.ok(List.of(question));
     }
 
     // 답변이 없는 순으로 정렬
     @GetMapping("/unanswered")
-    public ResponseEntity findAllByAnswerCount() {
+    public ResponseEntity findAllByAnswerCount(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
+                                               @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         BoardDto.Response question = createQuestion();
         return ResponseEntity.ok(List.of(question));
     }
 
     // 조회수 순으로 정렬
     @GetMapping("/frequent")
-    public ResponseEntity findAllByViewCount() {
+    public ResponseEntity findAllByViewCount(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
+                                             @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         BoardDto.Response question = createQuestion();
         BoardDto.Response answer = createAnswer();
         BoardDto.Response answer2 = createAnswer2();
@@ -59,7 +68,8 @@ public class BoardController {
 
     // 높은 점수순으로 정렬
     @GetMapping("/score")
-    public ResponseEntity findAllByScore() {
+    public ResponseEntity findAllByScore(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
+                                         @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         BoardDto.Response question = createQuestion();
         BoardDto.Response answer = createAnswer();
         BoardDto.Response answer2 = createAnswer2();
@@ -68,31 +78,33 @@ public class BoardController {
 
     // 검색어 기준 게시물 조회
     @GetMapping("/search")
-    public ResponseEntity findAllBySearch() {
+    public ResponseEntity findAllBySearch(@RequestParam("keword") String keyword,
+                                          @RequestParam(value = "page", defaultValue = "1") @Positive int page,
+                                          @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         BoardDto.Response question = createQuestion();
         BoardDto.Response answer = createAnswer();
         return ResponseEntity.ok(List.of(question, answer));
     }
 
     // 최신 답변순으로 정렬
-    @GetMapping("/{board-id}/answers/newest")
-    public ResponseEntity findAnswers() {
+    @GetMapping("answers/{question-id}/newest")
+    public ResponseEntity findAllAnswers(@PathVariable("question-id") @Positive Long questionId) {
         BoardDto.Response answer = createAnswer();
         BoardDto.Response answer2 = createAnswer2();
         return ResponseEntity.ok(List.of(answer, answer2));
     }
 
     // 오래된 답변순으로 정렬
-    @GetMapping("/{board-id}/answers/oldest")
-    public ResponseEntity findAnsersByold() {
+    @GetMapping("/answers/{question-id}/oldest")
+    public ResponseEntity findAnsersByold(@PathVariable("question-id") @Positive Long questionId) {
         BoardDto.Response answer = createAnswer();
         BoardDto.Response answer2 = createAnswer2();
         return ResponseEntity.ok(List.of(answer, answer2));
     }
 
     // 높은 점수순으로 답변 정렬
-    @GetMapping("/{board-id}/answers/score")
-    public ResponseEntity findAnswersByScore() {
+    @GetMapping("/answers/{question-id}/score")
+    public ResponseEntity findAnswersByScore(@PathVariable("question-id") @Positive Long questionId) {
         BoardDto.Response answer = createAnswer();
         BoardDto.Response answer2 = createAnswer2();
         return ResponseEntity.ok(List.of(answer2, answer));

@@ -9,8 +9,8 @@ public class VoteDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Response {
         private Long voteId;
-        private Long memberId;
         private Long boardId;
+        private String voter;
         private String voteType;
     }
 }
