@@ -634,7 +634,7 @@ class BoardControllerRestDocsTest {
         // tehn
         actions
                 .andExpect(status().isNoContent())
-                .andDo(document("find-all-answers-by-score",
+                .andDo(document("delete-board",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         pathParameters(

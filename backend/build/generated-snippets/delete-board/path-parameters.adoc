@@ -1,0 +1,8 @@
+.+/boards/{board-id}+
+|===
+|Parameter|Description
+
+|`+board-id+`
+|삭제하려는 Board의 인덱스
+
+|===
