@@ -20,7 +20,6 @@ public class Board extends BaseTimeEntity {
     private BoardStatus boardStatus;
     private String title;
     private String body;
-    private List<String> tags;
     private int score = 0;
     private int viewCount = 0;
     private int bookmarkCount = 0;

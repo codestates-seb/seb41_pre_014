@@ -18,8 +18,8 @@ public class Vote extends BaseTimeEntity {
     private VoteType voteType;
 
     public enum VoteType {
-        UP("up"),
-        DOWN("down");
+        UP("Up"),
+        DOWN("Down");
 
         private String type;
 
