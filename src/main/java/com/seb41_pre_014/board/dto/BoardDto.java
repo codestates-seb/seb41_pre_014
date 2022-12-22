@@ -30,10 +30,10 @@ public class BoardDto {
         private Long boardId;
         private Long writerMemberId;
         private Long writerReputation;
-        private Long writerProfileUrl;
+        private String writerProfileUrl;
         private String writerDisplayName;
-        private Board.BoardType boardType;
-        private Board.BoardStatus boardStatus;
+        private String boardType;
+        private String boardStatus;
         private String title;
         private String body;
         private List<String> tags;
@@ -42,5 +42,6 @@ public class BoardDto {
         private int bookmarkCount;
         private int answerCount;
         private Long questionId;
+        private List<BoardDto.Response> answers;
     }
 }
