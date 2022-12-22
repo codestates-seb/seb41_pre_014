@@ -1,4 +1,4 @@
-package com.seb41_pre_014.board.entity;
+package com.seb41_pre_014.bookmark.entity;
 
 import com.seb41_pre_014.audit.BaseTimeEntity;
 import lombok.*;
