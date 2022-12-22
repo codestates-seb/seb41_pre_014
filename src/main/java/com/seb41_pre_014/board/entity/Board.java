@@ -29,7 +29,7 @@ public class Board extends BaseTimeEntity {
 
     public enum BoardType {
         QUESTION("Question"),
-        ANSWER("Anser");
+        ANSWER("Answer");
 
         private String type;
 
