@@ -102,7 +102,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/java,macos,windows,react
-*/backend/.idea
-*/.idea
-.idea
-
+backend/.idea
+/.idea
