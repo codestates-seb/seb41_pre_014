@@ -1,4 +1,4 @@
-= Todo 애플리케이션
+= Stackoverflow 클론 코딩
 :sectnums:
 :toc: left
 :toclevels: 4
@@ -230,3 +230,79 @@ include::{snippets}/delete-board/path-parameters.adoc[]
 
 .http-response
 include::{snippets}/delete-board/http-response.adoc[]
+
+***
+== VoteController
+=== Vote 등록
+.curl-request
+include::{snippets}/post-vote/curl-request.adoc[]
+
+.http-request
+include::{snippets}/post-vote/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/post-vote/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/post-vote/http-response.adoc[]
+
+.response-fields
+include::{snippets}/post-vote/response-fields.adoc[]
+
+=== Vote 수정
+.curl-request
+include::{snippets}/patch-vote/curl-request.adoc[]
+
+.http-request
+include::{snippets}/patch-vote/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/patch-vote/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/patch-vote/http-response.adoc[]
+
+.response-fields
+include::{snippets}/patch-vote/response-fields.adoc[]
+
+=== Vote 조회
+.curl-request
+include::{snippets}/get-vote/curl-request.adoc[]
+
+.http-request
+include::{snippets}/get-vote/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/get-vote/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-vote/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-vote/response-fields.adoc[]
+
+=== 모든 Vote 조회
+.curl-request
+include::{snippets}/get-votes/curl-request.adoc[]
+
+.http-request
+include::{snippets}/get-votes/http-request.adoc[]
+
+.http-response
+include::{snippets}/get-votes/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-votes/response-fields.adoc[]
+
+=== Vote 삭제
+.curl-request
+include::{snippets}/delete-vote/curl-request.adoc[]
+
+.http-request
+include::{snippets}/delete-vote/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-vote/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/delete-vote/http-response.adoc[]
