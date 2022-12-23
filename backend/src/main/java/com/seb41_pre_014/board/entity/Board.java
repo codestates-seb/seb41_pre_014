@@ -4,7 +4,6 @@ import com.seb41_pre_014.audit.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.Entity;
-import java.util.List;
 
 @Entity
 @Getter

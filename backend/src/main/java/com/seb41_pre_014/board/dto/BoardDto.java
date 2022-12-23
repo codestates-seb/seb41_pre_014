@@ -1,24 +1,38 @@
 package com.seb41_pre_014.board.dto;
 
-import com.seb41_pre_014.board.entity.Board;
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 public class BoardDto {
-
     @Getter
     public static class Post {
-        private String writerDisplayName;
+
+        @Size(min = 15, message = "Title must be at least 15 characters.")
+        @NotBlank(message = "Title is missing.")
         private String title;
+
+        @Size(min = 30, message = "Body must be at least 30 characters")
+        @NotBlank(message = "Body is missing.")
         private String body;
+
+        @NotBlank(message = "Please enter at least one tag; see a list of popular tags.")
         private List<String> tag;
     }
 
     @Getter
     public static class Patch {
+        @Size(min = 15, message = "Title must be at least 15 characters.")
+        @NotBlank(message = "Title is missing.")
         private String title;
+
+        @Size(min = 30, message = "Body must be at least 30 characters")
+        @NotBlank(message = "Body is missing.")
         private String body;
+
+        @NotBlank(message = "Please enter at least one tag; see a list of popular tags.")
         private List<String> tags;
     }
 
