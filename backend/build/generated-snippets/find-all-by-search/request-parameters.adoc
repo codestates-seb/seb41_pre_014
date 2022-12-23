@@ -1,0 +1,13 @@
+|===
+|Parameter|Description
+
+|`+keyword+`
+|검색 키워드
+
+|`+page+`
+|Page 번호
+
+|`+size+`
+|Page에 노출될 데이터 개수
+
+|===

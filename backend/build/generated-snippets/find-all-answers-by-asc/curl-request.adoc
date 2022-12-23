@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/boards/answers/1/oldest' -i -X GET \
+    -H 'Accept: application/json'
+----

@@ -1,0 +1,59 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 1436
+
+[ {
+  "boardId" : 1,
+  "writerMemberId" : 1,
+  "writerReputation" : 10,
+  "writerProfileUrl" : "url",
+  "writerDisplayName" : "홍길동1",
+  "boardType" : "Question",
+  "boardStatus" : "공개",
+  "title" : "What is Lorem Ipsum?",
+  "body" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "tags" : [ "java", "react" ],
+  "score" : 10,
+  "viewCount" : 1000,
+  "bookmarkCount" : 20,
+  "answerCount" : 5,
+  "questionId" : null,
+  "answers" : [ 2, 3 ]
+}, {
+  "boardId" : 2,
+  "writerMemberId" : 2,
+  "writerReputation" : 20,
+  "writerProfileUrl" : "url",
+  "writerDisplayName" : "홍길동2",
+  "boardType" : "Answer",
+  "boardStatus" : "임시저장",
+  "title" : "What is Lorem Ipsum?",
+  "body" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "tags" : [ "javascript" ],
+  "score" : 20,
+  "viewCount" : 500,
+  "bookmarkCount" : 30,
+  "answerCount" : 5,
+  "questionId" : 1,
+  "answers" : null
+}, {
+  "boardId" : 3,
+  "writerMemberId" : 3,
+  "writerReputation" : 20,
+  "writerProfileUrl" : "url",
+  "writerDisplayName" : "홍길동2",
+  "boardType" : "Answer",
+  "boardStatus" : "임시저장",
+  "title" : "What is Lorem Ipsum?",
+  "body" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "tags" : [ "javascript" ],
+  "score" : 40,
+  "viewCount" : 200,
+  "bookmarkCount" : 5,
+  "answerCount" : 3,
+  "questionId" : 1,
+  "answers" : null
+} ]
+----

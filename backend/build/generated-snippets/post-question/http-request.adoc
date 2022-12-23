@@ -1,0 +1,14 @@
+[source,http,options="nowrap"]
+----
+POST /boards/questions?memberId=1 HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Accept: application/json
+Content-Length: 156
+Host: localhost:8080
+
+{
+  "title" : "What is Lorem Ipsum?",
+  "body" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "tags" : [ "javascript" ]
+}
+----

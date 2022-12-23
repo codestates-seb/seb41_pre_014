@@ -1,0 +1,68 @@
+|===
+|Path|Type|Description
+
+|`+boardId+`
+|`+Number+`
+|Board 인덱스
+
+|`+writerMemberId+`
+|`+Number+`
+|Board 작성자 인덱스
+
+|`+writerReputation+`
+|`+Number+`
+|작성자 평판
+
+|`+writerProfileUrl+`
+|`+String+`
+|프로필 이미지 url
+
+|`+writerDisplayName+`
+|`+String+`
+|작성자 닉네임
+
+|`+boardStatus+`
+|`+String+`
+|게시물 상태: 공개 / 임시저장 / 삭제
+
+|`+boardType+`
+|`+String+`
+|게시물 타입: Question / Answer
+
+|`+title+`
+|`+String+`
+|제목
+
+|`+body+`
+|`+String+`
+|내용
+
+|`+tags+`
+|`+Array+`
+|태그
+
+|`+score+`
+|`+Number+`
+|게시물 점수
+
+|`+viewCount+`
+|`+Number+`
+|조회수
+
+|`+answerCount+`
+|`+Number+`
+|답변 개수
+
+|`+bookmarkCount+`
+|`+Number+`
+|북마크 된 개수
+
+|`+questionId+`
+|`+Number+`
+|Answer가 소속된 Question 인덱스
+
+|`+answers+`
+|`+Array+`
+|Question에 소속된 Answer들의 인덱스
+
+|===

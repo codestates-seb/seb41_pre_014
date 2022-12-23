@@ -1,0 +1,8 @@
+.+/boards/{board-id}+
+|===
+|Parameter|Description
+
+|`+board-id+`
+|조회하려는 Board 인덱스
+
+|===

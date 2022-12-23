@@ -5,40 +5,43 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Positive;
 import java.util.List;
 
 @RestController
 @RequestMapping("/votes")
 public class VoteController {
     @PostMapping
-    public ResponseEntity postVote() {
+    public ResponseEntity postVote(@RequestParam("memberId") @Positive Long memberId,
+                                   @RequestParam("boardId") @Positive Long boardId,
+                                   @RequestParam("voteType") String voteType) {
         VoteDto.Response.ResponseBuilder builder = VoteDto.Response.builder();
         builder.voteId(1L);
         builder.voteType("Up");
         builder.boardId(1L);
-        builder.memberId(1L);
+        builder.voter("홍길동");
         VoteDto.Response response = builder.build();
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{vote-id}")
-    public ResponseEntity patchVote() {
+    public ResponseEntity patchVote(@PathVariable("vote-id") @Positive Long voteId) {
         VoteDto.Response.ResponseBuilder builder = VoteDto.Response.builder();
         builder.voteId(1L);
         builder.voteType("Down");
         builder.boardId(1L);
-        builder.memberId(1L);
+        builder.voter("홍길동");
         VoteDto.Response response = builder.build();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{vote-id}")
-    public ResponseEntity getVote() {
+    public ResponseEntity getVote(@PathVariable("vote-id") @Positive Long voteId) {
         VoteDto.Response.ResponseBuilder builder = VoteDto.Response.builder();
         builder.voteId(1L);
         builder.voteType("Up");
         builder.boardId(1L);
-        builder.memberId(1L);
+        builder.voter("홍길동");
         VoteDto.Response response = builder.build();
         return ResponseEntity.ok(response);
     }
@@ -49,7 +52,7 @@ public class VoteController {
         builder.voteId(1L);
         builder.voteType("Up");
         builder.boardId(1L);
-        builder.memberId(1L);
+        builder.voter("홍길동");
         VoteDto.Response response1 = builder.build();
         VoteDto.Response response2 = builder.build();
         return ResponseEntity.ok(List.of(response1, response2));

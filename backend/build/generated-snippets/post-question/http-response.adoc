@@ -1,0 +1,25 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 201 Created
+Content-Type: application/json
+Content-Length: 481
+
+{
+  "boardId" : 1,
+  "writerMemberId" : 1,
+  "writerReputation" : 10,
+  "writerProfileUrl" : "url",
+  "writerDisplayName" : "홍길동1",
+  "boardType" : "Question",
+  "boardStatus" : "공개",
+  "title" : "What is Lorem Ipsum?",
+  "body" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "tags" : [ "java", "react" ],
+  "score" : 10,
+  "viewCount" : 1000,
+  "bookmarkCount" : 20,
+  "answerCount" : 5,
+  "questionId" : null,
+  "answers" : [ 2, 3 ]
+}
+----

@@ -3,11 +3,15 @@ package com.seb41_pre_014.board.dto;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
 public class BoardDto {
     @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Post {
 
         @Size(min = 15, message = "Title must be at least 15 characters.")
@@ -18,11 +22,14 @@ public class BoardDto {
         @NotBlank(message = "Body is missing.")
         private String body;
 
-        @NotBlank(message = "Please enter at least one tag; see a list of popular tags.")
-        private List<String> tag;
+        @NotNull(message = "Please enter at least one tag; see a list of popular tags.")
+        private List<String> tags;
     }
 
     @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Patch {
         @Size(min = 15, message = "Title must be at least 15 characters.")
         @NotBlank(message = "Title is missing.")
@@ -32,7 +39,7 @@ public class BoardDto {
         @NotBlank(message = "Body is missing.")
         private String body;
 
-        @NotBlank(message = "Please enter at least one tag; see a list of popular tags.")
+        @NotNull(message = "Please enter at least one tag; see a list of popular tags.")
         private List<String> tags;
     }
 
@@ -56,6 +63,6 @@ public class BoardDto {
         private int bookmarkCount;
         private int answerCount;
         private Long questionId;
-        private List<BoardDto.Response> answers;
+        private List<Long> answers;
     }
 }
