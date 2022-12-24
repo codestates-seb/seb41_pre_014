@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 @Getter
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Builder
 public class MemberTag {
+    @Id
     private Long memberTagId; // PK
     private Long tagId; // Fk
     private Long memberId; // FK
