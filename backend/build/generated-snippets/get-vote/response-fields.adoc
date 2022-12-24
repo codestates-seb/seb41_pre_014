@@ -1,0 +1,20 @@
+|===
+|Path|Type|Description
+
+|`+voteId+`
+|`+Number+`
+|Vote 인덱스
+
+|`+voteType+`
+|`+String+`
+|Vote 타입: Up / Down
+
+|`+boardId+`
+|`+Number+`
+|평가를 받은 Board 인덱스
+
+|`+voter+`
+|`+String+`
+|평가한 Member의 Display Name
+
+|===
