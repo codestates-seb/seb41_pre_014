@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 public class SuggestedEditDto {
 
 
@@ -37,6 +39,6 @@ public class SuggestedEditDto {
             private Long boardId;
             private Long editorId;
             private String body;
-            private String tag;
+            private List<String> tag;
         }
 }
