@@ -1,0 +1,8 @@
+.+/votes/{vote-id}+
+|===
+|Parameter|Description
+
+|`+vote-id+`
+|삭제하려는 Vote의 인덱스
+
+|===

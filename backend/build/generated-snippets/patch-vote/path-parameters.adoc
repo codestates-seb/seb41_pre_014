@@ -1,0 +1,8 @@
+.+/votes/{vote-id}+
+|===
+|Parameter|Description
+
+|`+vote-id+`
+|조회하려는 Vote 인덱스
+
+|===
