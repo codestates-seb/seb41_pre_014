@@ -5,21 +5,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 public class TagDto {
     @Getter
-    public static class post {
+    public static class Post {
+        @NotBlank(message = "Tag name is not valid")
         private String name;
 
     }
-
-
-    @Getter
-    public static class patch {
-        private Long tagId;
-        private String name;
-        private Long boardId;
-    }
-
 
     @Getter
     @Builder
