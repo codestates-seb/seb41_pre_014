@@ -4,6 +4,8 @@ import com.seb41_pre_014.audit.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -14,6 +16,7 @@ import javax.persistence.Id;
 public class Board extends BaseTimeEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardId;
     private Long writerMemberId;
     private String writerDisplayName;
@@ -31,6 +34,7 @@ public class Board extends BaseTimeEntity {
         QUESTION("Question"),
         ANSWER("Answer");
 
+        @Getter
         private String type;
 
         BoardType(String type) {
@@ -43,6 +47,7 @@ public class Board extends BaseTimeEntity {
         BOARD_PRIVATE("임시저장"),
         BOARD_DELETE("삭제");
 
+        @Getter
         private String status;
 
         BoardStatus(String status) {
