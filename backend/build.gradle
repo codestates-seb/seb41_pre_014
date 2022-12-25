@@ -44,6 +44,9 @@ dependencies {
 	// MySQL
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
+	// Test용 H2
+	runtimeOnly 'com.h2database:h2'
+
 	// jasypt: 특정 값을 암호화해주는 라이브러리
 	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
 
