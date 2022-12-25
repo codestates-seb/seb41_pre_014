@@ -1,6 +1,5 @@
 package com.seb41_pre_014.board.service;
 
-import com.seb41_pre_014.board.controller.BoardController;
 import com.seb41_pre_014.board.entity.Board;
 import com.seb41_pre_014.board.repository.BoardRepository;
 import com.seb41_pre_014.util.CustomBeanUtils;
@@ -10,8 +9,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.awt.print.Pageable;
 
 @Service
 @Transactional(readOnly = true)
@@ -78,6 +75,7 @@ public class BoardService {
     }
 
     public void deleteBoard(Long boardId) {
+        findVerifiedBoard(boardId);
         boardRepository.deleteById(boardId);
     }
 
