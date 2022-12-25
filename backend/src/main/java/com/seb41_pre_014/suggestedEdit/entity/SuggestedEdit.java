@@ -23,5 +23,15 @@ public class SuggestedEdit extends BaseTimeEntity {
     private Long editorId; // FK editor member id
     private String body;
     private String tag;
+    public enum editStatus {
+        EDIT_PENDING("Pending"),
+        EDIT_ACCEPTED("Accepted"),
+        EDIT_REJECTED("Rejected");
+
+        private String status;
+
+        editStatus(String status) {
+            this.status = status; }
+    }
 
 }

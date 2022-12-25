@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.util.List;
 //>>>>>>> origin/iss8
 
@@ -22,17 +24,19 @@ import java.util.List;
 public class TagController {
 
     @PostMapping("/{tag-id}")
-    public ResponseEntity postTag() {
+    public ResponseEntity postTag(@PathVariable("tag-id") @Positive Long tagId,
+                                  @RequestParam("editId") @Positive Long editId,
+                                  @RequestBody @Valid TagDto.Post postTag) {
         TagDto.Response tag1 = stubTag(1);
 
 
         return new ResponseEntity(tag1, HttpStatus.CREATED);
     }
 
-    // 태그는 통상 수정이 없고 무조건 새로운 태그가 생성되므로 patchTag는 없음
+    // 태그는 통상 수정이 없고 항상 새로운 태그가 생성되므로 patchTag는 없음
 
     @GetMapping("/{tag-id}")
-    public ResponseEntity findTag() {
+    public ResponseEntity findTag(@PathVariable("tag-id") @Positive Long tagId) {
         TagDto.Response tag1 = stubTag(1);
 
 
@@ -40,7 +44,8 @@ public class TagController {
     }
 
     @GetMapping
-    public ResponseEntity findAllTag() {
+    public ResponseEntity findAllTag(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
+                                     @RequestParam(value = "size", defaultValue = "20") @Positive int size) {
 
         TagDto.Response tag1 = stubTag(1);
         TagDto.Response tag2 = stubTag(2);
