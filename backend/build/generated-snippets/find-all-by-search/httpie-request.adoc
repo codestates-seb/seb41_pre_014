@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/boards/search?keyword=keyword&page=1&size=30' \
+    'Accept:application/json'
+----

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-12-23T03:09:22" hostname="gimchanbin-ui-MacBookPro.local" time="0.065">
+  <properties/>
+  <testcase name="patchVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.019"/>
+  <testcase name="getVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.011"/>
+  <testcase name="deleteVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.008"/>
+  <testcase name="getVotes()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.009"/>
+  <testcase name="postVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.014"/>
+  <system-out><![CDATA[2022-12-23 12:09:21.728  INFO 73088 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest], using SpringBootContextLoader
+2022-12-23 12:09:21.729  INFO 73088 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-12-23 12:09:21.729  INFO 73088 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest]: VoteControllerRestDocsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-12-23 12:09:21.737  INFO 73088 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest
+2022-12-23 12:09:21.738  INFO 73088 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-12-23 12:09:21.738  INFO 73088 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@20bc3e7f, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7959fbe3, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@75c0e6be, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3dfe520, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@42516ce2, org.springframework.test.context.support.DirtiesContextTestExecutionListener@74e111a8, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6e6ec9c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7aecff85, org.springframework.test.context.event.EventPublishingTestExecutionListener@3393aa46, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4f0381cd, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7eb006bd, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@633dce39, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4dd28982, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1e8c741c, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@60f70c9e]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.6)
+
+2022-12-23 12:09:21.756  INFO 73088 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 73088 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2022-12-23 12:09:21.756  INFO 73088 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
+2022-12-23 12:09:22.104  INFO 73088 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-12-23 12:09:22.104  INFO 73088 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-12-23 12:09:22.104  INFO 73088 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2022-12-23 12:09:22.113  INFO 73088 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Started VoteControllerRestDocsTest in 0.372 seconds (JVM running for 6.56)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,13 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 81
+
+{
+  "voteId" : 1,
+  "boardId" : 1,
+  "voter" : "홍길동",
+  "voteType" : "Up"
+}
+----

@@ -4,6 +4,7 @@ import com.seb41_pre_014.audit.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 @Getter
@@ -12,6 +13,7 @@ import javax.persistence.Entity;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Vote extends BaseTimeEntity {
 
+    @Id
     private Long voteId;
     private Long boardId;
     private Long memberId;
