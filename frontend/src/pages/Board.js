@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ButtonType2 } from '../components/atoms/Button';
+import { Button } from '../components/atoms/Button';
 import { Header } from '../components/blocks/Header';
 import { Footer } from '../components/blocks/Footer';
 import { LeftNavBar } from '../components/blocks/NavBar';
@@ -57,7 +57,7 @@ export const QuestionBoard = () => {
           <MainLeft>
             <MainTop>
               <h1>All Questions</h1>
-              <ButtonType2 />
+              <Button buttonType='type2' />
             </MainTop>
             <FilterContainer>
               <FilterButtonWrapper />
@@ -91,7 +91,7 @@ export const HomeLoginBoard = () => {
           <MainLeft>
             <MainTop>
               <h1>Top Questions</h1>
-              <ButtonType2 />
+              <Button buttonType='type2' />
             </MainTop>
             <FilterContainer>
               <FilterButtonWrapper />

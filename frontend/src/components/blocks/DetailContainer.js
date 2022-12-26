@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { TagBlock } from '../atoms/TagBlock';
-import { UserMetaInfoType2 } from './UserInfoContainer';
+// import { UserMetaInfoType2 } from './UserInfoContainer';
 
 const QuestionLeftButton = styled.div`
   display: flex;
@@ -97,7 +97,7 @@ export const QuestionDetail = (questionContent) => {
               <a href=''>Follow</a>
             </RightFooterButton>
           </RightFooterButtonWrapper>
-          <UserMetaInfoType2 />
+          {/* <UserMetaInfoType2 /> */}
         </RightFooter>
       </RightDetailWrapper>
     </DetailWrapper>
@@ -122,7 +122,7 @@ export const AnswerDetail = (answerContent) => {
               <a href=''>Follow</a>
             </RightFooterButton>
           </RightFooterButtonWrapper>
-          <UserMetaInfoType2 />
+          {/* <UserMetaInfoType2 /> */}
         </RightFooter>
       </RightDetailWrapper>
     </DetailWrapper>

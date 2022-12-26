@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Input } from '../components/atoms/Input';
-import { ButtonType4 } from '../components/atoms/Button';
+import { Button } from '../components/atoms/Button';
 import { Header } from '../components/blocks/Header';
 import { Footer } from '../components/blocks/Footer';
-import { InputLabel, EditorInputWrapper } from '../components/blocks/EditorInputWrapper';
+// import { InputLabel, EditorInputWrapper } from '../components/blocks/EditorInputWrapper';
 import { MainRightSideInfoWidget } from '../components/blocks/MainRight';
 
 const Main = styled.div`
@@ -97,13 +97,13 @@ export const Write = () => {
                 You’re ready to 
                 <a href="https://stackoverflow.com/help/how-to-ask">ask</a> 
                 a <a href="https://stackoverflow.com/help/on-topic">programming-related question</a>
-                 and this form will help guide you through the process.
+                and this form will help guide you through the process.
             </p>
             <p>
                 You’re ready to 
                 <a href="https://stackoverflow.com/help/how-to-ask">ask</a> 
                 a <a href="https://stackoverflow.com/help/on-topic">programming-related question</a>
-                 and this form will help guide you through the process.
+                and this form will help guide you through the process.
             </p>
             <h5>Steps</h5>
             <ul>
@@ -116,43 +116,43 @@ export const Write = () => {
           </GuideLine>
           <div>
             <InputWrapper>
-              <InputLabel 
+              {/* <InputLabel 
                 title='Title'
                 label='Be specific and imagine you’re asking a question to another person.'
-              />
+              /> */}
               <Input
                 placeholder='e.g. Is there an R function for finding the index of an element in a vector?'
               />
             </InputWrapper>
-            <ButtonType4 />
+            <Button buttonType='type1' />
           </div>
           <div>
-            <EditorInputWrapper
+            {/* <EditorInputWrapper
               title='What are the details of your problem?'
               label='Introduce the problem and expand on what you put in the title. Minimum 20 characters.'
-            />
-            <ButtonType4 />
+            /> */}
+            <Button buttonType='type1' />
           </div>
           <div>
-            <EditorInputWrapper
+            {/* <EditorInputWrapper
               title='What did you try and what were you expecting?'
               label='Describe what you tried, what you expected to happen, and what actually resulted. Minimum 20 characters.'
-            />
-            <ButtonType4 />
+            /> */}
+            <Button buttonType='type1' />
           </div>
           <div>
             <InputWrapper>
-              <InputLabel 
+              {/* <InputLabel 
                 title='Tags'
                 label='Add up to 5 tags to describe what your question is about. Start typing to see suggestions.'
-              />
+              /> */}
               <Input 
                 placeholder='e.g. (c# laravel typescript)'
               />
             </InputWrapper>
-            <ButtonType4 />
+            <Button buttonType='type1' />
           </div>
-          <ButtonType4 />
+          <Button buttonType='type1' />
           <DiscardButton>Discard draft</DiscardButton>
         </MainLeft>
         <MainRight>
