@@ -88,7 +88,7 @@ public class BoardController {
 
     // 최신 답변순으로 정렬
     @GetMapping("answers/{question-id}/newest")
-    public ResponseEntity findAllbyDesc(@PathVariable("question-id") @Positive Long questionId) {
+    public ResponseEntity findAnswersByDesc(@PathVariable("question-id") @Positive Long questionId) {
         BoardDto.Response answer = createAnswer();
         BoardDto.Response answer2 = createAnswer2();
         return ResponseEntity.ok(List.of(answer, answer2));

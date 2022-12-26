@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ http --form POST 'http://localhost:8080/votes' \
+    'memberId=1' \
+    'boardId=1' \
+    'voteType=Up'
+----
