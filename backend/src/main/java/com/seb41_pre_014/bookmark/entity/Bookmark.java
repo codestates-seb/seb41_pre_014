@@ -18,8 +18,8 @@ public class Bookmark extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long bookmarkId;
-    private long memberId;
-    private long boardId;
+    private Long bookmarkId;
+    private Long memberId;
+    private Long boardId;
 
 }
