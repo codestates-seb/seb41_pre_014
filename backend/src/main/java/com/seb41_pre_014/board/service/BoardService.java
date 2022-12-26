@@ -2,6 +2,8 @@ package com.seb41_pre_014.board.service;
 
 import com.seb41_pre_014.board.entity.Board;
 import com.seb41_pre_014.board.repository.BoardRepository;
+import com.seb41_pre_014.exception.BusinessLogicException;
+import com.seb41_pre_014.exception.ExceptionCode;
 import com.seb41_pre_014.util.CustomBeanUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -81,6 +83,6 @@ public class BoardService {
 
     public Board findVerifiedBoard(Long boardId) {
         return boardRepository.findById(boardId)
-                .orElseThrow(() -> new RuntimeException("존재하지 않는 게시물입니다."));
+                .orElseThrow(() -> new BusinessLogicException(ExceptionCode.BOARD_NOT_FOUND));
     }
 }
