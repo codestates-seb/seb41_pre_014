@@ -25,8 +25,13 @@ import java.util.List;
 public class TagController {
 
     @PostMapping("/{tag-id}")
-    public ResponseEntity postTag() {
-        return ResponseEntity.created(null).build();
+    public ResponseEntity postTag(@PathVariable("tag-id") @Positive Long tagId,
+                                  @RequestParam("editId") @Positive Long editId,
+                                  @RequestBody @Valid TagDto.Post postTag) {
+        TagDto.Response tag1 = stubTag(1);
+
+
+        return new ResponseEntity(tag1, HttpStatus.CREATED);
     }
 
     // 태그는 통상 수정이 없고 항상 새로운 태그가 생성되므로 patchTag는 없음
