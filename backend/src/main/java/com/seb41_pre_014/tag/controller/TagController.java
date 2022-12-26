@@ -24,44 +24,18 @@ import java.util.List;
 public class TagController {
 
     @PostMapping("/{tag-id}")
-    public ResponseEntity postTag(@PathVariable("tag-id") @Positive Long tagId,
-                                  @RequestParam("editId") @Positive Long editId,
-                                  @RequestBody @Valid TagDto.Post postTag) {
-        TagDto.Response tag1 = stubTag(1);
-
-
-        return new ResponseEntity(tag1, HttpStatus.CREATED);
+    public ResponseEntity postTag() {
+        return ResponseEntity.created(null).build();
     }
 
-    // 태그는 통상 수정이 없고 항상 새로운 태그가 생성되므로 patchTag는 없음
-
     @GetMapping("/{tag-id}")
-    public ResponseEntity findTag(@PathVariable("tag-id") @Positive Long tagId) {
-        TagDto.Response tag1 = stubTag(1);
-
-
-        return new ResponseEntity(tag1, HttpStatus.OK);
+    public ResponseEntity findTag() {
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public ResponseEntity findAllTag(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
-                                     @RequestParam(value = "size", defaultValue = "20") @Positive int size) {
-
-        TagDto.Response tag1 = stubTag(1);
-        TagDto.Response tag2 = stubTag(2);
-        TagDto.Response tag3 = stubTag(3);
-        return new ResponseEntity(List.of(tag1, tag2, tag3), HttpStatus.OK);
-    }
-
-    public TagDto.Response stubTag(long n) {
-        TagDto.Response.ResponseBuilder builder = TagDto.Response.builder();
-        TagDto.Response response = builder
-                .tagId(n)
-                .name("tag"+n)
-                .boardId(n)
-                .build();
-
-        return response;
+    public ResponseEntity findAllTag() {
+        return ResponseEntity.ok().build();
     }
 
 
