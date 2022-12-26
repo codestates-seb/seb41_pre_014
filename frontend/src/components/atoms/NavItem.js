@@ -1,23 +1,43 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const NavItemStyled = styled.li`
-  margin: ${props => props.margin || '0'};
-  padding: ${props => props.padding || '0'};
 
-  & .type1 {
-    background-color: #F2740D;
-    color: #FFF;
-  };
-
-  & .type2 {
-    background-color: #E3E6E8;
+& > a {
+    margin: ${props => props.margin || '0'};
+    padding: ${props => props.padding || '0.6rem 1.2rem'};
+    width: ${props => props.width || 'auto'};
+    height: ${props => props.height || 'auto'};
+    font-size: ${props => props.fontSize || '1.3rem'};
+    font-weight: ${props => props.fontWeight || 'normal'};
+    /* 기본 */
+    text-decoration: none;
+    background-color: none;
     color: #525960;
-  };
+    cursor: pointer;
+    border-radius: 100rem;
+    display:flex;
+    align-items: center;
+    &:hover {
+      background-color: #E3E6E8;
+      color: #232629;
+    }
 
-  & .type3 {
-    background-color: #FFF;
-    color: #525960;
-  };
+    &.type1 {
+      background-color: #F2740D;
+      color: #FFF;
+    };
+
+    &.type2 {
+      background-color: #E3E6E8;
+      color: #525960;
+    };
+
+    &.type3 {
+      background-color: #FFF;
+      color: #525960;
+    };
+  }
 `;
 
 // < NavItem Type >
@@ -27,6 +47,14 @@ const NavItemStyled = styled.li`
 export const NavItem = (props) => 
 {
   return (
-    <NavItemStyled className={props.NavItemType}></NavItemStyled>
+    <NavItemStyled 
+      className={props.NavItemType}
+      width={props.width}
+      height={props.height}
+      padding={props.padding}
+      margin={props.margin}
+      fontSize={props.fontSize}
+      fontWeight={props.fontWeight}
+    ><Link to={props.NavTo}>{props.NavItemName}</Link></NavItemStyled>
   )
 };

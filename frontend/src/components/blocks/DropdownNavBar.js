@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
-const StyledLeftNavBar = styled.nav`
+const StyledDropdownNavBar = styled.nav`
   width: 16.4rem;
   padding: 2.4rem 0 0.8rem;
   background-color: #FFF;
+  z-index: 999;
+  border: 1px solid #E3E6E8;
+  border-top: 0;
+  box-shadow: 0 0.1rem 0.2rem hsla(0,0%,0%,0.05), 0 0.1rem 0.4rem hsla(0, 0%, 0%, 0.05), 0 0.2rem 0.8rem hsla(0, 0%, 0%, 0.05);
+
+  position: ${props => props.position || 'sticky'};
+  top: ${props => props.top || null};
+  left: ${props => props.left || null};
 
   & * {
     font-size:1.3rem;
@@ -13,7 +20,7 @@ const StyledLeftNavBar = styled.nav`
   }
 `;
 
-const StyledLeftNavContainer = styled.ul`
+const StyledDropdownNavContainer = styled.ul`
   list-style: none;
 `;
 
@@ -59,7 +66,7 @@ const StyledNavPublic = styled.li`
   }
 `;
 
-export const LeftNavBar = (props) => {
+export const DropdownNavBar = (props) => {
   const activeBar = ({ isActive }) =>
     isActive 
     ? {
@@ -70,28 +77,25 @@ export const LeftNavBar = (props) => {
     } 
     : {};
 
-    const LoginStatus = useSelector(state => state.loginStatus.status);
-
   return (
-    <>
-      {LoginStatus && (
-        <StyledLeftNavBar
-        >
-          <StyledLeftNavContainer>
-            <StyledLeftNavContainer>
-              <StyledNavHome>
-                <NavLink to='/' style={activeBar}>Home</NavLink>
-              </StyledNavHome>
-              <StyledNavPublic>
-                <p>PUBLIC</p>
-                <div><NavLink to='/board' style={activeBar}>Questions</NavLink></div>
-                <div><NavLink to='/users' style={activeBar}>Users</NavLink></div>
-              </StyledNavPublic>
-            </StyledLeftNavContainer>
-          </StyledLeftNavContainer>
-        </StyledLeftNavBar>
-      )}
-    </>
+    <StyledDropdownNavBar
+      position={props.position}
+      top={props.top}
+      left={props.left}
+    >
+      <StyledDropdownNavContainer>
+        <StyledDropdownNavContainer>
+          <StyledNavHome>
+            <NavLink to='/' style={activeBar}>Home</NavLink>
+          </StyledNavHome>
+          <StyledNavPublic>
+            <p>PUBLIC</p>
+            <div><NavLink to='/board' style={activeBar}>Questions</NavLink></div>
+            <div><NavLink to='/users' style={activeBar}>Users</NavLink></div>
+          </StyledNavPublic>
+        </StyledDropdownNavContainer>
+      </StyledDropdownNavContainer>
+    </StyledDropdownNavBar>
   )
 };
 
