@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Editor } from '@toast-ui/react-editor';
-import '@toast-ui/editor/dist/toastui-editor.css';
+// import { Editor } from '@toast-ui/react-editor';
+// import '@toast-ui/editor/dist/toastui-editor.css';
 
 const InputLabelWrapper = styled.div`
   display: flex;
@@ -29,29 +29,29 @@ export const InputLabel = (title, label) => {
 };
 
 
-export const EditorInput = () => {
-  return (
-    <>
-      <Editor 
-        previewStyle='vertical'
-        height='30rem'
-        toolbarItems={[
-          ['heading', 'bold', 'italic', 'strike'],
-          ['hr', 'quote'],
-          ['ul', 'ol', 'task', 'indent', 'outdent'],
-          ['table', 'image', 'link'],
-          ['code', 'codeblock']
-        ]}
-      />
-    </>
-  )
-};
+// export const EditorInput = () => {
+//   return (
+//     <>
+//       <Editor 
+//         previewStyle='vertical'
+//         height='30rem'
+//         toolbarItems={[
+//           ['heading', 'bold', 'italic', 'strike'],
+//           ['hr', 'quote'],
+//           ['ul', 'ol', 'task', 'indent', 'outdent'],
+//           ['table', 'image', 'link'],
+//           ['code', 'codeblock']
+//         ]}
+//       />
+//     </>
+//   )
+// };
 
-export const EditorInputWrapper = () => {
-  return (
-    <>
-      <InputLabel />
-      <EditorInput />
-    </>
-  )
-};
+// export const EditorInputWrapper = () => {
+//   return (
+//     <>
+//       <InputLabel />
+//       <EditorInput />
+//     </>
+//   )
+// };

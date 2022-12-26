@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { ButtonType2 } from '../components/atoms/Button';
+import { Button } from '../components/atoms/Button';
 import { Header } from '../components/blocks/Header';
 import { Footer } from '../components/blocks/Footer';import { LeftNavBar } from '../components/blocks/NavBar';
 import { QuestionDetail, AnswerDetail } from "../components/blocks/DetailContainer";
-import { EditorInputWrapper } from '../components/blocks/EditorInputWrapper';
+// import { EditorInputWrapper } from '../components/blocks/EditorInputWrapper';
 import { MainRightSideInfoWidget, MainRightRelatedQuestions } from '../components/blocks/MainRight';
 
 const Body = styled.div`
@@ -89,7 +89,7 @@ export const Detail = (questionTitle) => {
           <MainTop>
             <div>
               <div>{questionTitle}</div>
-              <ButtonType2 />
+              <Button buttonType='type2' />
             </div>
             <QuestionMetaInfo />
           </MainTop>
@@ -99,8 +99,8 @@ export const Detail = (questionTitle) => {
             <ul>
               {/* <AnswerDetail /> */}
             </ul>
-            <EditorInputWrapper />
-            <ButtonType2 />
+            {/* <EditorInputWrapper /> */}
+            <Button buttonType='type2' />
           </MainLeft>
           <MainRight>
             <MainRightSideInfoWidget />

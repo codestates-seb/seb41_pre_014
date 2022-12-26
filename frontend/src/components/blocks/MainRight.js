@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Input } from '../atoms/Input';
 import { TagBlock } from '../atoms/TagBlock';
-import { ButtonType2, ButtonType3 } from '../atoms/Button';
+import { Button } from '../atoms/Button';
 
 const TagContainer = styled.div`
   display: flex;
@@ -107,7 +107,7 @@ export const MainRightTagBasic = () => {
     <TagContainer>
       <TagHeader>Ignored Tags</TagHeader>
       <TagContent>
-        <ButtonType3>Add an ignored tag</ButtonType3>
+        <Button buttonType='type3' buttonName='Add an ignored tag' />
       </TagContent>
     </TagContainer>
   )
@@ -119,7 +119,7 @@ export const MainRightTagInput = () => {
       <TagHeader>Ignored Tags</TagHeader>
       <TagContent>
         <Input />
-        <ButtonType2>Add</ButtonType2>
+        <Button buttonType='type2' buttonName='Add' />
       </TagContent>
     </TagContainer>
   )

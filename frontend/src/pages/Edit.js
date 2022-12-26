@@ -3,9 +3,9 @@ import { Header } from '../components/blocks/Header';
 import { Footer } from '../components/blocks/Footer';
 import { LeftNavBar } from '../components/blocks/NavBar';
 import { Input } from '../components/atoms/Input';
-import { ButtonType4, ButtonType11 } from '../components/atoms/Button';
+import { Button } from '../components/atoms/Button';
 import { MainRightSideInfoWidget } from "../components/blocks/MainRight";
-import { EditorInput } from "../components/blocks/EditorInputWrapper";
+// import { EditorInput } from "../components/blocks/EditorInputWrapper";
 
 const Body = styled.div`
   display: flex;
@@ -40,7 +40,7 @@ export const QuestionEdit = (questionContent) => {
             </div>
             <div>
               <div>Body</div>
-              <EditorInput />
+              {/* <EditorInput /> */}
               <div>{questionContent}</div>
             </div>
             <div>
@@ -52,8 +52,8 @@ export const QuestionEdit = (questionContent) => {
               <Input />
             </div>
             <div>
-              <ButtonType4 />
-              <ButtonType11 />
+              <Button buttonType='type1' />
+              <Button buttonType='type4' />
             </div>
           </MainLeft>
           <MainRight>
@@ -80,7 +80,7 @@ export const AnswerEdit = (title, questionContent) => {
             </div>
             <div>
               <div>Answer</div>
-              <EditorInput />
+              {/* <EditorInput /> */}
               <div>answerPreview</div>
             </div>
             <div>
@@ -88,8 +88,8 @@ export const AnswerEdit = (title, questionContent) => {
               <Input />
             </div>
             <div>
-              <ButtonType4 />
-              <ButtonType11 />
+              <Button buttonType='type1' />
+              <Button buttonType='type4' />
             </div>
           </MainLeft>
           <MainRight>
