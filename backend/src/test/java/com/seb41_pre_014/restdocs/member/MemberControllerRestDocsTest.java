@@ -161,7 +161,7 @@ public class MemberControllerRestDocsTest {
         // then
         actions
                 .andExpect(status().isOk())
-                .andDo(document("update-member",
+                .andDo(document("find-member",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         pathParameters(
@@ -208,7 +208,7 @@ public class MemberControllerRestDocsTest {
         // then
         actions
                 .andExpect(status().isOk())
-                .andDo(document("update-member",
+                .andDo(document("find-All-members",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         requestParameters(
@@ -482,7 +482,7 @@ public class MemberControllerRestDocsTest {
         // tehn
         actions
                 .andExpect(status().isNoContent())
-                .andDo(document("delete-board",
+                .andDo(document("delete-member",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         pathParameters(

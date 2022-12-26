@@ -1,0 +1,8 @@
+.+/members/{member-id}/questions+
+|===
+|Parameter|Description
+
+|`+member-id+`
+|조회하려는 Questions의 작성자 인덱스
+
+|===
