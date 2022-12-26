@@ -1,0 +1,14 @@
+[source,options="nowrap"]
+----
+[ {
+  "voteId" : 1,
+  "boardId" : 1,
+  "voter" : "홍길동",
+  "voteType" : "Up"
+}, {
+  "voteId" : 1,
+  "boardId" : 1,
+  "voter" : "홍길동",
+  "voteType" : "Up"
+} ]
+----
