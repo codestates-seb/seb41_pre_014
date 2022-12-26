@@ -1,0 +1,15 @@
+[source,options="nowrap"]
+----
+{
+  "password" : "password1234!",
+  "displayName" : "나도개발자",
+  "fullName" : "홍길동",
+  "location" : "의정부",
+  "title" : "What is Lorem Ipsum?",
+  "aboutMe" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "websiteLink" : "link1",
+  "twitterLink" : "link3",
+  "githubLink" : "link2",
+  "profileImageUrl" : "image url"
+}
+----
