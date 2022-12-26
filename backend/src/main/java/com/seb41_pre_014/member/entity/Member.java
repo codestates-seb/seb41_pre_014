@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -19,19 +21,36 @@ public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long memberId;
+
+    @NotNull
     private String email;
+
+    @NotNull
     private String password;
+
+    @NotNull
     private String displayName;
+
+    // Embedded 애너테이션으로 리팩토링 예정
     private String fullName;
     private String location;
     private String title;
+    private String aboutMe;
     private String websiteLink;
     private String twitterLink;
     private String githubLink;
     private String profileImageUrl;
-    private MemberStatus memberstatus;
+
+    @NotNull
+    private MemberStatus memberStatus;
+
+    @NotNull
     private int reputation = 0;
+
+    @NotNull
     private int questions = 0;
+
+    @NotNull
     private int answers = 0;
 
     public enum MemberStatus {
