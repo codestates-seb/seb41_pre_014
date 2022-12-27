@@ -12,6 +12,7 @@ export const FilterContainer = styled.div`
 
 export const UserActivityAnswers = () => {
   return (
+    
   <div>
     <FilterContainer>
       <div>
