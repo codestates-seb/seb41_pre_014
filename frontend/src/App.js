@@ -10,7 +10,8 @@ import { LeftNavBar } from "./components/blocks/NavBar";
 
 const StyledMain = styled.main`
   width: 100%;
-  max-width: 126.4rem;
+  min-height: 100%; 
+  min-width: 126.4rem;
   margin: 0 auto;
   display:flex;
   justify-content: center;
@@ -21,8 +22,11 @@ const StyledLeftSideBar = styled.div`
 
 const StyledMainContent = styled.div`
   width:100%;
+  min-height:inherit;
   padding:2.4rem;
-  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
   /* border-left: 1px solid #F1F2F3; */
 `;
 

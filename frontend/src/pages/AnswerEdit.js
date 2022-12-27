@@ -5,7 +5,7 @@ import { LeftNavBar } from '../components/blocks/NavBar';
 import { Input } from '../components/atoms/Input';
 import { Button } from '../components/atoms/Button';
 import { MainRightSideInfoWidget } from "../components/blocks/MainRight";
-// import { EditorInput } from "../components/blocks/EditorInputWrapper";
+import { EditorInput } from "../components/blocks/EditorInputWrapper";
 
 const Body = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const MainRight = styled.div`
   padding-left: 2.4rem;
 `;
 
-export const QuestionEdit = (questionContent) => {
+export const AnswerEdit = (props) => {
   return (
     <>
       <Header />
@@ -35,52 +35,12 @@ export const QuestionEdit = (questionContent) => {
         <Main>
           <MainLeft>
             <div>
-              <div>Title</div>
-              <Input />
-            </div>
-            <div>
-              <div>Body</div>
-              {/* <EditorInput /> */}
-              <div>{questionContent}</div>
-            </div>
-            <div>
-              <div>Tags</div>
-              <Input />
-            </div>
-            <div>
-              <div>Edit Summary</div>
-              <Input />
-            </div>
-            <div>
-              <Button buttonType='type1' />
-              <Button buttonType='type4' />
-            </div>
-          </MainLeft>
-          <MainRight>
-            <MainRightSideInfoWidget />
-          </MainRight>
-        </Main>
-      </Body>
-      <Footer />
-    </>
-  )
-};
-
-export const AnswerEdit = (title, questionContent) => {
-  return (
-    <>
-      <Header />
-      <Body>
-        <LeftNavBar />
-        <Main>
-          <MainLeft>
-            <div>
-              <div>{title}</div>
-              <div>{questionContent}</div>
+              <div>{props.title}</div>
+              <div>{props.questionContent}</div>
             </div>
             <div>
               <div>Answer</div>
-              {/* <EditorInput /> */}
+              <EditorInput />
               <div>answerPreview</div>
             </div>
             <div>
