@@ -1,12 +1,11 @@
 package com.seb41_pre_014.vote.entity;
 
 import com.seb41_pre_014.audit.BaseTimeEntity;
+import com.seb41_pre_014.board.entity.Board;
+import com.seb41_pre_014.member.entity.Member;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -18,9 +17,18 @@ public class Vote extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long voteId;
-    private Long boardId;
-    private Long memberId;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
     private VoteType voteType;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BOARD_ID")
+    private Board board;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
     public enum VoteType {
         UP("Up"),
