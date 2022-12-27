@@ -1,0 +1,38 @@
+[source,options="nowrap"]
+----
+[ {
+  "memberId" : 2,
+  "email" : "Hongildong@email.com",
+  "password" : "password",
+  "displayName" : "display_name",
+  "fullName" : "홍길동2",
+  "location" : "home",
+  "title" : "자기소개",
+  "aboutMe" : "자기소개 내용",
+  "websiteLink" : "link1",
+  "twitterLink" : "link2",
+  "githubLink" : "link3",
+  "profileImageUrl" : "image url",
+  "memberStatus" : "활동중",
+  "reputation" : 20,
+  "questions" : 5,
+  "answers" : 5
+}, {
+  "memberId" : 1,
+  "email" : "stub email@email.com",
+  "password" : "password",
+  "displayName" : "display_name",
+  "fullName" : "홍길동",
+  "location" : "home",
+  "title" : "자기소개",
+  "aboutMe" : "자기소개 내용",
+  "websiteLink" : "link1",
+  "twitterLink" : "link2",
+  "githubLink" : "link3",
+  "profileImageUrl" : "image url",
+  "memberStatus" : "활동중",
+  "reputation" : 10,
+  "questions" : 3,
+  "answers" : 3
+} ]
+----

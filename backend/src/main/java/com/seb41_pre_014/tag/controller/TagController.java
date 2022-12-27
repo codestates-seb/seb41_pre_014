@@ -1,6 +1,7 @@
 package com.seb41_pre_014.tag.controller;
 
 //<<<<<<< HEAD
+
 import com.seb41_pre_014.board.dto.BoardDto;
 import com.seb41_pre_014.suggestedEdit.dto.SuggestedEditDto;
 import com.seb41_pre_014.tag.dto.TagDto;
@@ -57,12 +58,11 @@ public class TagController {
         TagDto.Response.ResponseBuilder builder = TagDto.Response.builder();
         TagDto.Response response = builder
                 .tagId(n)
-                .name("tag"+n)
+                .name("tag" + n)
                 .boardId(n)
                 .build();
 
         return response;
     }
-
 
 }
