@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { NavItem } from '../atoms/NavItem';
 
 const StyledLeftNavBar = styled.nav`
   width: 16.4rem;
@@ -60,7 +61,7 @@ const StyledNavPublic = styled.li`
   }
 `;
 
-export const LeftNavBar = (props) => {
+export const LeftNavBar = () => {
   const activeBar = ({ isActive }) =>
     isActive 
     ? {
@@ -109,13 +110,13 @@ const StyledLiType1 = styled.li`
   border-radius: 10rem;
   &:hover {
     background-color: #d6d9dc;
-  }
+  };
   &.selected {
     background-color: #f48225;
     color: #ffffff;
       &:hover {
         background-color: #da680b;
-      }
+      };
   }
 `
 // User 페이지의 콘텐츠 상단 네비게이션
@@ -147,85 +148,39 @@ export const MainNavBar = () => {
   );
 };
 
-const StyledUlType2 = styled(StyledUlType1)`
+// User 페이지의 콘텐츠 좌측 내비게이션
+// ******* 설명 ******* //
+// 본 컴포넌트를 가져가서 사용하실 때, props로 전달해줄 수 있는 것들은 아래와 같습니다.
+// width - 각 NavItem과 NavBar의 width를 설정
+// padding - 각 NavItem의 padding을 설정
+// activeBg - 해당 NavItem을 클릭했을 때의 배경색
+// activeColor - 해당 NavItem을 클릭했을 때의 글자색
+const StyledMainLeftNavBar = styled.ul`
+  display: flex;
+  list-style: none;
   flex-direction: column;
-  width: 12.3rem;
-  gap: 0;
+  width: ${props => props.width || '12.61rem'};
 `
 
-const StyledLiType2 = styled(StyledLiType1)`
-  &:hover {
-    background-color: #e3e6e8;
-  }
-  &.selected {
-    color: #525960;
-    background-color: #f1f2f3;
-    &:hover {
-      background-color: #ffffff;
-    }
-  }
-`
-
-// User 페이지의 Profile/Activity 콘텐츠 좌측 내비게이션
-export const MainLeftNavBar = () => {
-  
-  const mainLeftNavItems = [
-    {name: 'Answers'},
-    {name: 'Questions'},
-    {name: 'Tags'},
-    {name: 'Following'},
-    {name: 'Reputation'},
-    {name: 'Votes'},
-  ]
-
-  const [ isSelected, setSelected ] = useState(0);
-  
-  const handleSelect = (index) => {
-    setSelected(index)
-  }
-
+export const MainLeftNavBar = (props) => {
   return (
     <nav>
-      <StyledUlType2>
-        {mainLeftNavItems.map((el,index)=>{
-          return <StyledLiType2 key={index}
-          onClick={()=>handleSelect(index)} 
-          className={`${index === isSelected ? 'selected' : ''}`} 
-          >{el.name}</StyledLiType2>
+      <StyledMainLeftNavBar>
+        {props.NavItems.map((el,index)=>{
+          return (
+            <NavItem
+              key={index}
+              NavItemName={el.name}
+              NavTo={el.to}
+              width={props.width || '12.61rem'}
+              padding={props.padding || '0.6rem 4.8rem 0.6rem 1.2rem'}
+              activeBg={props.activeBg || '#F1F2F3'}
+              activeColor={props.activeColor || '#232629'}
+            />
+          )
         })}
-      </StyledUlType2>
+      </StyledMainLeftNavBar>
     </nav>
   )
 }
-
-export const StyledUlType3 = styled(StyledUlType2)`
-  width: 33.1rem;
-`
-
-// User 페이지의 Settings 좌측 내비게이션
-export const MainLeftNavBar2 = () => {
-  
-  const mainLeftNavItems = [
-    {name: 'Edit Profile'},
-    {name: 'Delete Profile'},
-  ]
-
-  const [ isSelected, setSelected ] = useState(0);
-  
-  const handleSelect = (index) => {
-    setSelected(index)
-  }
-
-  return (
-    <nav>
-      <StyledUlType3>
-        {mainLeftNavItems.map((el,index)=>{
-          return <StyledLiType1 key={index}
-          onClick={()=>handleSelect(index)} 
-          className={`${index === isSelected ? 'selected' : ''}`} 
-          >{el.name}</StyledLiType1>
-        })}
-      </StyledUlType3>
-    </nav>
-  )
-}
+// User 페이지의 콘텐츠 좌측 내비게이션
