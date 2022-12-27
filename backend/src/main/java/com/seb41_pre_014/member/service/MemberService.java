@@ -45,7 +45,7 @@ public class MemberService {
 
     public Page<Board> findQuestionsOrAnswersByMember(Long writerMemberId, Board.BoardType boardType, int page, int size) {
         findVerifiedMember(writerMemberId);
-        return boardRepository.findAllByWriterMemberIdAndBoardType(writerMemberId, boardType,
+        return boardRepository.findAllByMemberMemberIdAndBoardType(writerMemberId, boardType,
                 PageRequest.of(page - 1, size, Sort.by("boardId").descending()));
     }
 

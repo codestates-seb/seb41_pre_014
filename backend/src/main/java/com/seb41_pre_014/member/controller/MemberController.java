@@ -87,7 +87,6 @@ public class MemberController {
         TagDto.Response.ResponseBuilder builder = TagDto.Response.builder();
         builder.tagId(1L);
         builder.name("java");
-        builder.boardId(1L);
         return builder.build();
     }
 
@@ -95,7 +94,6 @@ public class MemberController {
         TagDto.Response.ResponseBuilder builder = TagDto.Response.builder();
         builder.tagId(1L);
         builder.name("react");
-        builder.boardId(1L);
         return builder.build();
     }
 

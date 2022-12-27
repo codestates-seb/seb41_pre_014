@@ -1,10 +1,12 @@
 package com.seb41_pre_014.board.dto;
 
+import com.seb41_pre_014.board.entity.Board;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class BoardDto {
@@ -64,5 +66,24 @@ public class BoardDto {
         private int answerCount;
         private Long questionId;
         private List<Long> answers;
+//        @Builder
+//        public Response(Board board) {
+//            this.boardId = board.getBoardId();
+//            this.writerMemberId = board.getWriterMemberId();
+//            this.writerReputation = getWriterReputation();
+//            this.writerProfileUrl = writerProfileUrl;
+//            this.writerDisplayName = board.getWriterDisplayName();
+//            this.boardType = board.getBoardType().getType();
+//            this.boardStatus = board.getBoardStatus().getStatus();
+//            this.title = board.getTitle();
+//            this.body = board.getBody();
+//            this.tags = board.getBoardTags().stream().map(boardTag -> boardTag.)
+//            this.score = board.getScore();
+//            this.viewCount = board.getViewCount();
+//            this.bookmarkCount = board.getBookmarkCount();
+//            this.answerCount = board.getAnswerCount();
+//            this.questionId = board.getQuestionId();
+//            this.answers = board.;
+//        }
     }
 }

@@ -77,8 +77,6 @@ class MemberServiceTest {
 
     public Board createQuestion() {
         Board.BoardBuilder builder = Board.builder();
-        builder.writerMemberId(1L);
-        builder.writerDisplayName("홍길동1");
         builder.boardStatus(Board.BoardStatus.BOARD_PUBLIC);
         builder.boardType(QUESTION);
         builder.title("What is Lorem Ipsum?");
