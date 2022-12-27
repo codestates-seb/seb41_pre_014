@@ -12,7 +12,7 @@ export const UserActivityVotes = () => {
         필터버튼
         {/* <FilterButtonWrapper></FilterButtonWrapper> 스타일 확장*/}
       </div>
-    </FilterContainer>
+    </FilterContainer> 
     {/* <QuestionInfoContainer/> -> flex-direction oppposite / import / img 추가 / map */}
     {/* <Pagination></Pagination> */}
   </div>

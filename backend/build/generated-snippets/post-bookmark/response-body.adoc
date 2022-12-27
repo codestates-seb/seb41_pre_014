@@ -1,0 +1,8 @@
+[source,options="nowrap"]
+----
+{
+  "bookmarkId" : 1,
+  "memberId" : 1,
+  "boardId" : 1
+}
+----

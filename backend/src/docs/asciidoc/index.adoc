@@ -7,7 +7,7 @@
 
 Chan Bin Kim <gksmfcksqls@gmail.com>
 
-v1.0.0, 2022.11.29
+v1.0.2, 2022.12.27
 
 ***
 == BoardController
@@ -306,3 +306,211 @@ include::{snippets}/delete-vote/path-parameters.adoc[]
 
 .http-response
 include::{snippets}/delete-vote/http-response.adoc[]
+
+***
+== MemberController
+=== Member 생성
+.curl-request
+include::{snippets}/craete-member/curl-request.adoc[]
+
+.http-request
+include::{snippets}/craete-member/http-request.adoc[]
+
+.request-fields
+include::{snippets}/craete-member/request-fields.adoc[]
+
+.http-response
+include::{snippets}/craete-member/http-response.adoc[]
+
+.response-fields
+include::{snippets}/craete-member/response-fields.adoc[]
+
+=== Member 수정
+.curl-request
+include::{snippets}/update-member/curl-request.adoc[]
+
+.path-parameters
+include::{snippets}/update-member/path-parameters.adoc[]
+
+.http-request
+include::{snippets}/update-member/http-request.adoc[]
+
+.request-fields
+include::{snippets}/update-member/request-fields.adoc[]
+
+.http-response
+include::{snippets}/update-member/http-response.adoc[]
+
+.response-fields
+include::{snippets}/update-member/response-fields.adoc[]
+
+=== Member 조회
+.curl-request
+include::{snippets}/find-member/curl-request.adoc
+
+.path-parameters
+include::{snippets}/find-member/path-parameters.adoc[]
+
+.http-request
+include::{snippets}/find-member/http-request.adoc[]
+
+.http-response
+include::{snippets}/find-member/http-response.adoc[]
+
+.response-fields
+include::{snippets}/find-member/response-fields.adoc[]
+
+=== 모든 Member 조회
+.curl-request
+include::{snippets}/find-All-members/curl-request.adoc[]
+
+.request-parameters
+include::{snippets}/find-All-members/request-parameters.adoc[]
+
+.http-request
+include::{snippets}/find-All-members/http-request.adoc[]
+
+.http-response
+include::{snippets}/find-All-members/http-response.adoc[]
+
+.response-fields
+include::{snippets}/find-All-members/response-fields.adoc[]
+
+=== Member가 작성한 모든 Question 조회
+.curl-request
+include::{snippets}/find-questions-by-member/curl-request.adoc[]
+
+.path-parameters
+include::{snippets}/find-questions-by-member/path-parameters.adoc[]
+
+.request-parameters
+include::{snippets}/find-questions-by-member/request-parameters.adoc[]
+
+.http-request
+include::{snippets}/find-questions-by-member/http-request.adoc[]
+
+.http-response
+include::{snippets}/find-questions-by-member/http-response.adoc[]
+
+.response-fields
+include::{snippets}/find-questions-by-member/response-fields.adoc[]
+
+=== Member가 작성한 모든 Answer 조회
+.curl-request
+include::{snippets}/find-answers-by-member/curl-request.adoc[]
+
+.path-parameters
+include::{snippets}/find-answers-by-member/path-parameters.adoc[]
+
+.request-parameters
+include::{snippets}/find-answers-by-member/request-parameters.adoc[]
+
+.http-request
+include::{snippets}/find-answers-by-member/http-request.adoc[]
+
+.http-response
+include::{snippets}/find-answers-by-member/http-response.adoc[]
+
+.response-fields
+include::{snippets}/find-answers-by-member/response-fields.adoc[]
+
+=== Member가 Bookmark한 모든 Board 조회
+.curl-request
+include::{snippets}/find-boards-by-bookmark/curl-request.adoc[]
+
+.path-parameters
+include::{snippets}/find-boards-by-bookmark/path-parameters.adoc[]
+
+.request-parameters
+include::{snippets}/find-boards-by-bookmark/request-parameters.adoc[]
+
+.http-request
+include::{snippets}/find-boards-by-bookmark/http-request.adoc[]
+
+.http-response
+include::{snippets}/find-boards-by-bookmark/http-response.adoc[]
+
+.response-fields
+include::{snippets}/find-boards-by-bookmark/response-fields.adoc[]
+
+=== Member가 Vote한 모든 Board 조회
+.curl-request
+include::{snippets}/find-boards-by-vote/curl-request.adoc[]
+
+.path-parameters
+include::{snippets}/find-boards-by-vote/path-parameters.adoc[]
+
+.request-parameters
+include::{snippets}/find-boards-by-vote/request-parameters.adoc[]
+
+.http-request
+include::{snippets}/find-boards-by-vote/http-request.adoc[]
+
+.http-response
+include::{snippets}/find-boards-by-vote/http-response.adoc[]
+
+.response-fields
+include::{snippets}/find-boards-by-vote/response-fields.adoc[]
+
+=== Member의 사용한 모든 Tag 조회
+.curl-request
+include::{snippets}/find-tags-by-member/curl-request.adoc[]
+
+.path-parameters
+include::{snippets}/find-tags-by-member/path-parameters.adoc[]
+
+.request-parameters
+include::{snippets}/find-tags-by-member/request-parameters.adoc[]
+
+.http-request
+include::{snippets}/find-tags-by-member/http-request.adoc[]
+
+.http-response
+include::{snippets}/find-tags-by-member/http-response.adoc[]
+
+.response-fields
+include::{snippets}/find-tags-by-member/response-fields.adoc[]
+
+=== Member 삭제
+.curl-request
+include::{snippets}/delete-member/curl-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-member/path-parameters.adoc[]
+
+.http-request
+include::{snippets}/delete-member/http-request.adoc[]
+
+.http-response
+include::{snippets}/delete-member/http-response.adoc[]
+
+***
+== BookmarkController
+=== Bookmark 생성
+.curl-request
+include::{snippets}/post-bookmark/curl-request.adoc[]
+
+.request-parameters
+include::{snippets}/post-bookmark/request-parameters.adoc[]
+
+.http-request
+include::{snippets}/post-bookmark/http-request.adoc[]
+
+.http-response
+include::{snippets}/post-bookmark/http-response.adoc[]
+
+.response-fields
+include::{snippets}/post-bookmark/response-fields.adoc[]
+
+=== Bookmark 삭제
+.curl-request
+include::{snippets}/delete-bookmark/curl-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-bookmark/path-parameters.adoc[]
+
+.http-request
+include::{snippets}/delete-bookmark/http-request.adoc[]
+
+.http-response
+include::{snippets}/delete-bookmark/http-response.adoc[]

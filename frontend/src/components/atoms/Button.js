@@ -15,25 +15,44 @@ const StyledButton = styled.button`
     background-color: #F2740D;
     color: #FFF;
     border: 0.1rem solid #F2740D;
+
+    &:hover {
+      background-color: #DA680B;
+    }
   };
 
   &.type2 {
     background-color: #0A95FF;
     color: #FFF;
     border: 0.1rem solid #0A95FF;
-    box-shadow: inset 0 0.1rem 0 0 hsla(0,0%,100%,0.4);
+    box-shadow: ${props => props.boxShadow ||
+      'inset 0 0.1rem 0 0 hsla(0,0%,100%,0.4)'};
+
+    &:hover {
+      background-color: #0074CC;
+    }
   };
 
   &.type3 {
     background-color: #E1ECF4;
     color: #39739D;
     border: 0.1rem solid #39739D;
+
+    &:hover {
+      background-color: #B3D3EA;
+      color: #2C5877;
+    }
   };
 
   &.type4 {
     background-color: #FFF;
     color: #0074CC;
     border: 0.1rem solid #FFF;
+
+    &:hover {
+      background-color: #F0F8FF;
+      color: #0063BF;
+    }
   };
 `;
 

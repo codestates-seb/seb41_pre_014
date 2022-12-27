@@ -1,0 +1,8 @@
+.+/members/{member-id}/tags+
+|===
+|Parameter|Description
+
+|`+member-id+`
+|조회하려는 Answers의 작성자 인덱스
+
+|===

@@ -1,0 +1,8 @@
+.+/bookmarks/{bookmark-id}+
+|===
+|Parameter|Description
+
+|`+bookmark-id+`
+|삭제하려는 Bookamrk의 인덱스
+
+|===

@@ -15,7 +15,7 @@ export const StyledGuideline = styled.div`
   font-size: 1.5rem;
 `
 
-export const MainRight = () => {
+export const UserSettingsDeleteProfile = () => {
   return (
     <div>
       <StyledTitle><h1>Delete Profile</h1></StyledTitle>

@@ -1,0 +1,16 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 113
+
+[ {
+  "tagId" : 1,
+  "name" : "java",
+  "boardId" : 1
+}, {
+  "tagId" : 1,
+  "name" : "react",
+  "boardId" : 1
+} ]
+----
