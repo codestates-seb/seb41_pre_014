@@ -1,14 +1,15 @@
 package com.seb41_pre_014.member.entity;
 
 import com.seb41_pre_014.audit.BaseTimeEntity;
+import com.seb41_pre_014.bookmark.entity.Bookmark;
+import com.seb41_pre_014.vote.entity.Vote;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -20,15 +21,14 @@ public class Member extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long memberId;
+    private Long memberId;
 
-    @NotNull
+    @Column(length = 20, updatable = false, nullable = false)
     private String email;
 
-    @NotNull
+    @Column(length = 100, nullable = false)
     private String password;
 
-    @NotNull
     private String displayName;
 
     // Embedded 애너테이션으로 리팩토링 예정
@@ -40,18 +40,16 @@ public class Member extends BaseTimeEntity {
     private String twitterLink;
     private String githubLink;
     private String profileImageUrl;
-
-    @NotNull
     private MemberStatus memberStatus;
-
-    @NotNull
     private int reputation = 0;
-
-    @NotNull
     private int questions = 0;
-
-    @NotNull
     private int answers = 0;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Bookmark> bookmarks = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Vote> votes = new ArrayList<>();
 
     public enum MemberStatus {
         MEMBER_ACTIVE("활동중"),
