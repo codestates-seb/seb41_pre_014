@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { Button } from '../components/atoms/Button';
 import { QuestionDetail, AnswerDetail } from "../components/blocks/DetailContainer";
 // import { EditorInputWrapper } from '../components/blocks/EditorInputWrapper';

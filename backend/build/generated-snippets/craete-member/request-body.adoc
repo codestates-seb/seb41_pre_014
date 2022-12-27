@@ -1,0 +1,8 @@
+[source,options="nowrap"]
+----
+{
+  "email" : "email@gmail.com",
+  "password" : "password1234!",
+  "displayName" : "나는개발자"
+}
+----

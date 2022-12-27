@@ -1,0 +1,68 @@
+|===
+|Path|Type|Description
+
+|`+[].memberId+`
+|`+Number+`
+|회원 인덱스
+
+|`+[].email+`
+|`+String+`
+|회원 이메일
+
+|`+[].password+`
+|`+String+`
+|회원 비밀번호
+
+|`+[].displayName+`
+|`+String+`
+|회원 닉네임
+
+|`+[].fullName+`
+|`+String+`
+|회원 이름
+
+|`+[].location+`
+|`+String+`
+|회원 거주 지역
+
+|`+[].title+`
+|`+String+`
+|자기 소개 제목
+
+|`+[].aboutMe+`
+|`+String+`
+|자기 소개 내용
+
+|`+[].websiteLink+`
+|`+String+`
+|웹사이트 링크
+
+|`+[].twitterLink+`
+|`+String+`
+|트위터 링크
+
+|`+[].githubLink+`
+|`+String+`
+|깃허브 링크
+
+|`+[].profileImageUrl+`
+|`+String+`
+|프로필 이미지 URL
+
+|`+[].memberStatus+`
+|`+String+`
+|회원 상태: 활동중 / 휴면계정 / 삭제대기
+
+|`+[].reputation+`
+|`+Number+`
+|회원 평판
+
+|`+[].questions+`
+|`+Number+`
+|회원이 작성한 Question 개수
+
+|`+[].answers+`
+|`+Number+`
+|회원이 작성한 Answer 개수
+
+|===
