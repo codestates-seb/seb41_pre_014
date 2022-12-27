@@ -85,7 +85,7 @@ const StyledDiv3 = styled.div`
     flex-grow: 1;
     &>.username {
       margin: 0.4rem 0.4rem 1.2rem;
-      font-size: 3rem;
+      font-size: 3.4rem;
       font-weight: bold;
     }
     &>.userTitle {

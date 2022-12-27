@@ -1,0 +1,8 @@
+.+/members/{member-id}+
+|===
+|Parameter|Description
+
+|`+member-id+`
+|삭제하려는 Member의 인덱스
+
+|===

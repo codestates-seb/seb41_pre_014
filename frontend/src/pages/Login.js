@@ -8,6 +8,7 @@ import { Button, SNSLoginButton } from '../components/atoms/Button';
 
 const StyledLogin = styled.div`
   width: inherit;
+  min-height: inherit;
   display: flex;
   justify-content: center;
 `;

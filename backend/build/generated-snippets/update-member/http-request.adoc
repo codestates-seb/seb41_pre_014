@@ -1,0 +1,21 @@
+[source,http,options="nowrap"]
+----
+PATCH /members/1 HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Accept: application/json
+Content-Length: 370
+Host: localhost:8080
+
+{
+  "password" : "password1234!",
+  "displayName" : "나도개발자",
+  "fullName" : "홍길동",
+  "location" : "의정부",
+  "title" : "What is Lorem Ipsum?",
+  "aboutMe" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "websiteLink" : "link1",
+  "twitterLink" : "link3",
+  "githubLink" : "link2",
+  "profileImageUrl" : "image url"
+}
+----

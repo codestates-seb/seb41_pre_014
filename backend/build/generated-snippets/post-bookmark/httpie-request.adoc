@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ http --form POST 'http://localhost:8080/bookmarks' \
+    'memberId=1' \
+    'boardId=1'
+----

@@ -1,0 +1,17 @@
+[source,bash]
+----
+$ echo '{
+  "password" : "password1234!",
+  "displayName" : "나도개발자",
+  "fullName" : "홍길동",
+  "location" : "의정부",
+  "title" : "What is Lorem Ipsum?",
+  "aboutMe" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "websiteLink" : "link1",
+  "twitterLink" : "link3",
+  "githubLink" : "link2",
+  "profileImageUrl" : "image url"
+}' | http PATCH 'http://localhost:8080/members/1' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Accept:application/json'
+----

@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|`+[].tagId+`
+|`+Number+`
+|Tag 인덱스
+
+|`+[].name+`
+|`+String+`
+|Tag 이름
+
+|`+[].boardId+`
+|`+Number+`
+|Board 인덱스
+
+|===
