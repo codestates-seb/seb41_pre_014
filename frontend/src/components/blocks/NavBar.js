@@ -199,7 +199,7 @@ export const MainLeftNavBar = () => {
 }
 
 export const StyledUlType3 = styled(StyledUlType2)`
-  width: 17.5rem;
+  width: 33.1rem;
 `
 
 // User 페이지의 Settings 좌측 내비게이션
