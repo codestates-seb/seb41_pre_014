@@ -50,7 +50,7 @@ const Tag = styled(CustomDiv)`
 
 `;
 
-export const QuestionMetaInfoWrapper = (votes, answers, views) => {
+export const QuestionMetaInfoWrapper = ({votes, answers, views}) => {
   return (
     <QuestionMetaInfo>
       <VoteAnswerView>
