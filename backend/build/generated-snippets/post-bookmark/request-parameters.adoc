@@ -1,0 +1,10 @@
+|===
+|Parameter|Description
+
+|`+memberId+`
+|bookmark를 한 Member의 인덱스
+
+|`+boardId+`
+|bookmark 된 Board의 인덱스
+
+|===

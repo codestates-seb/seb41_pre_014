@@ -1,0 +1,38 @@
+[source,options="nowrap"]
+----
+[ {
+  "boardId" : 2,
+  "writerMemberId" : 2,
+  "writerReputation" : 20,
+  "writerProfileUrl" : "url",
+  "writerDisplayName" : "홍길동2",
+  "boardType" : "Answer",
+  "boardStatus" : "임시저장",
+  "title" : "What is Lorem Ipsum?",
+  "body" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "tags" : [ "javascript" ],
+  "score" : 20,
+  "viewCount" : 500,
+  "bookmarkCount" : 30,
+  "answerCount" : 5,
+  "questionId" : 1,
+  "answers" : null
+}, {
+  "boardId" : 2,
+  "writerMemberId" : 2,
+  "writerReputation" : 20,
+  "writerProfileUrl" : "url",
+  "writerDisplayName" : "홍길동2",
+  "boardType" : "Answer",
+  "boardStatus" : "임시저장",
+  "title" : "What is Lorem Ipsum?",
+  "body" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "tags" : [ "javascript" ],
+  "score" : 20,
+  "viewCount" : 500,
+  "bookmarkCount" : 30,
+  "answerCount" : 5,
+  "questionId" : 1,
+  "answers" : null
+} ]
+----
