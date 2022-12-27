@@ -43,6 +43,15 @@ const EditButton = styled.button`
   cursor: pointer;
 `;
 
+const RelatedWrapper = styled.div`
+  > h4 {
+    color: hsl(210deg 8% 25%);
+    font-size: 1.9rem;
+    font-weight: 400;
+    margin-bottom: 1.9rem;
+  }
+`;
+
 const RelatedCont = styled.div`
   display: flex;
   gap: 1rem;
@@ -58,6 +67,7 @@ const RelatedCont = styled.div`
     color: #ffffff;
     background-color: #5eba7d;
     width: 3.8rem;
+    height: 2.32rem;
     text-align: center;
     border-radius: 0.2rem;
     font-size: 90%;
@@ -86,6 +96,7 @@ const SideInfoWidgetContainer = styled.div`
   box-shadow: 0 0.1rem 0.2rem hsla(0,0%,0%,0.05), 
   0 0.1rem 0.4rem hsla(0, 0%, 0%, 0.05), 
   0 0.2rem 0.8rem hsla(0, 0%, 0%, 0.05);
+  
 `;
 
 const SideInfoWidgetHeader = styled.div`
@@ -99,7 +110,7 @@ const SideInfoWidgetHeader = styled.div`
 `;
 
 const SideInfoWidgetContent = styled.div`
-
+  
 `;
 
 export const MainRightTagBasic = () => {
@@ -141,34 +152,34 @@ export const MainRightTagAdded = () => {
   )
 };
 
-export const RelatedContent = (questionScore, questionTitle, questionLink) => {
+export const RelatedContent = (props) => {
   return (
     <RelatedCont>
-      <a href={questionLink}>
-        <div>{questionScore}</div>
+      <a href={props.link}>
+        <div>{props.score}</div>
       </a>
-      <a className='questionTitle' href={questionLink}>{questionTitle}</a>
+      <a className='questionTitle' href={props.link}>{props.title}</a>
     </RelatedCont>
   )
 };
 
 export const MainRightRelatedQuestions = () => {
   return (
-    <>
+    <RelatedWrapper>
       <h4>Related</h4>
       <RelatedContentWrapper>
         <li>
           <RelatedContent />
         </li>
       </RelatedContentWrapper>
-    </>
+    </RelatedWrapper>
   )
 };
 
-export const MainRightSideInfoWidget = () => {
+export const MainRightSideInfoWidget = (props) => {
   return (
     <SideInfoWidgetContainer>
-      <SideInfoWidgetHeader>The Overflow Blog</SideInfoWidgetHeader>
+      <SideInfoWidgetHeader>{props.title}</SideInfoWidgetHeader>
       <SideInfoWidgetContent>
         <ul>
           <li></li>
