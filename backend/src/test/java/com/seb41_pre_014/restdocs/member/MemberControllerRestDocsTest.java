@@ -465,8 +465,7 @@ public class MemberControllerRestDocsTest {
                         responseFields(
                                 List.of(
                                         fieldWithPath("[].tagId").type(JsonFieldType.NUMBER).description("Tag 인덱스"),
-                                        fieldWithPath("[].name").type(JsonFieldType.STRING).description("Tag 이름"),
-                                        fieldWithPath("[].boardId").type(JsonFieldType.NUMBER).description("Board 인덱스")
+                                        fieldWithPath("[].name").type(JsonFieldType.STRING).description("Tag 이름")
                                 ))));
     }
 

@@ -1,9 +1,16 @@
 package com.seb41_pre_014.restdocs.SuggestedEdit;
 
 import com.google.gson.Gson;
+import com.seb41_pre_014.suggestedEdit.controller.SuggestedEditController;
 import com.seb41_pre_014.suggestedEdit.dto.SuggestedEditDto;
+import com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit;
+import com.seb41_pre_014.vote.controller.VoteController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,7 +34,10 @@ import static org.springframework.restdocs.request.RequestDocumentation.paramete
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class SuggestedEditControllerRestDocsTest {
+@WebMvcTest(SuggestedEditController.class)
+@MockBean(JpaMetamodelMappingContext.class)
+@AutoConfigureRestDocs
+class SuggestedEditControllerRestDocsTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -35,25 +45,20 @@ public class SuggestedEditControllerRestDocsTest {
     private Gson gson;
 
     @Test
-    public void postSuggestedEditTest() throws Exception {
+    void postSuggestedEditTest() throws Exception {
         // given
-        SuggestedEditDto.Post post = new SuggestedEditDto.Post("This is title, must be longer than 15",
-                "This is body, must be longer than 20",
+        SuggestedEditDto.Post post = new SuggestedEditDto.Post("Length of title must be more than 15",
+                "Length of body must be more than 20",
                 List.of("tag1", "tag2"));
         String content = gson.toJson(post);
-
-        SuggestedEditDto.Response response =
-                new SuggestedEditDto.Response(1L,
-                        "This is title, must be longer than 15",
-                        1L,
-                        1L,
-                        "This is body, must be longer than 20",
-                        List.of("tag1", "tag2"),
-                        "PENDING");
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("memberId", String.valueOf(1L));
+        params.add("boardId", String.valueOf(1L));
 
         ResultActions actions =
                 mockMvc.perform(
                         post("/suggested-edits")
+                                .params(params)
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(content)
@@ -62,38 +67,38 @@ public class SuggestedEditControllerRestDocsTest {
         // then
         actions
                 .andExpect(status().isCreated())
-                .andExpect(header().string("Location", is(startsWith("/suggested-edits"))))
                 .andDo(document(
                         "post-suggested-edits",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         requestParameters(
-                                List.of(parameterWithName("editId").description("수정 제안서 ID"))
+                                List.of(
+                                        parameterWithName("memberId").description("수정을 제안하는 Member 인덱스"),
+                                        parameterWithName("boardId").description("수정하려는 Board 인덱스")
+                                )
                         ),
                         requestFields(
                                 List.of(
                                         fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
                                         fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tags").type(JsonFieldType.STRING).description("태그")
+                                        fieldWithPath("tags").type(JsonFieldType.ARRAY).description("태그")
                                 )
                         ),
                         responseFields(
                                 List.of(
-                                        fieldWithPath("editId").type(JsonFieldType.STRING).description("수정 제안서 ID"),
+                                        fieldWithPath("editId").type(JsonFieldType.NUMBER).description("SuggestedEdit 인덱스"),
+                                        fieldWithPath("boardId").type(JsonFieldType.NUMBER).description("수정하려는 Board 인덱스"),
+                                        fieldWithPath("editorId").type(JsonFieldType.NUMBER).description("수정을 제안하는 Member 인덱스"),
                                         fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID"),
-                                        fieldWithPath("editorId").type(JsonFieldType.STRING).description("수정요청자 ID"),
                                         fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tag").type(JsonFieldType.STRING).description("태그"),
-                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태")
-
+                                        fieldWithPath("tags").type(JsonFieldType.ARRAY).description("태그"),
+                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태 : Pending / Accepted / Rejected")
                                 )
-
                         )));
     }
 
     @Test
-    public void updateSuggestedEditTest() throws Exception {
+    void updateSuggestedEditTest() throws Exception {
         // given
         SuggestedEditDto.Patch patch = new SuggestedEditDto.Patch(1L,
                 "This is title, must be longer than 15",
@@ -102,15 +107,6 @@ public class SuggestedEditControllerRestDocsTest {
                 "This is body, must be longer than 20",
                 List.of("tag1", "tag2"));
         String content = gson.toJson(patch);
-
-        SuggestedEditDto.Response response =
-                new SuggestedEditDto.Response(1L,
-                        "This is title, must be longer than 15",
-                        1L,
-                        1L,
-                        "This is body, must be longer than 20",
-                        List.of("tag1", "tag2"),
-                        "PENDING");
 
         ResultActions actions =
                 mockMvc.perform(
@@ -123,75 +119,71 @@ public class SuggestedEditControllerRestDocsTest {
         // then
         actions
                 .andExpect(status().isOk())
-                .andExpect(header().string("Location", is(startsWith("/suggested-edits/{edit-id}"))))
                 .andDo(document(
                         "update-suggested-edits",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
-                        requestParameters(
-                                List.of(parameterWithName("editId").description("원본 수정 제안서 ID"))
+                        pathParameters(
+                                List.of(parameterWithName("edit-id").description("수정하려는 SuggestedEdit 인덱스"))
                         ),
                         requestFields(
                                 List.of(
+                                        fieldWithPath("editId").type(JsonFieldType.NUMBER).description("SuggestedEdit 인덱스"),
+                                        fieldWithPath("boardId").type(JsonFieldType.NUMBER).description("수정하려는 Board 인덱스"),
+                                        fieldWithPath("editorId").type(JsonFieldType.NUMBER).description("수정을 제안하는 Member 인덱스"),
                                         fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
                                         fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tags").type(JsonFieldType.STRING).description("태그")
+                                        fieldWithPath("tags").type(JsonFieldType.ARRAY).description("태그")
                                 )
                         ),
                         responseFields(
                                 List.of(
-                                        fieldWithPath("editId").type(JsonFieldType.STRING).description("수정 제안서 ID"),
+                                        fieldWithPath("editId").type(JsonFieldType.NUMBER).description("SuggestedEdit 인덱스"),
+                                        fieldWithPath("boardId").type(JsonFieldType.NUMBER).description("수정하려는 Board 인덱스"),
+                                        fieldWithPath("editorId").type(JsonFieldType.NUMBER).description("수정을 제안하는 Member 인덱스"),
                                         fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID"),
-                                        fieldWithPath("editorId").type(JsonFieldType.STRING).description("수정요청자 ID"),
                                         fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tag").type(JsonFieldType.STRING).description("태그"),
-                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태")
-
+                                        fieldWithPath("tags").type(JsonFieldType.ARRAY).description("태그"),
+                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태 : Pending / Accepted / Rejected")
                                 )
-
                         )));
     }
 
     @Test
-    public void findSuggestedEditTest() throws Exception {
+    void findSuggestedEditTest() throws Exception {
         // given
         // when
-
         ResultActions actions =
                 mockMvc.perform(
-                        post("/suggested-edits/{edit-id}", 1L)
+                        get("/suggested-edits/{edit-id}", 1L)
                                 .accept(MediaType.APPLICATION_JSON)
                 );
 
         // then
         actions
                 .andExpect(status().isOk())
-                .andExpect(header().string("Location", is(startsWith("/suggested-edits/{edit-id}"))))
                 .andDo(document(
                         "find-suggested-edit",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
-                        requestParameters(
-                                List.of(parameterWithName("editId").description("수정 제안서 ID"))
+                        pathParameters(
+                                List.of(parameterWithName("edit-id").description("수정을 제안하는 Member 인덱스"))
                         ),
                         responseFields(
                                 List.of(
-                                        fieldWithPath("editId").type(JsonFieldType.STRING).description("수정 제안서 ID"),
+                                        fieldWithPath("editId").type(JsonFieldType.NUMBER).description("SuggestedEdit 인덱스"),
+                                        fieldWithPath("boardId").type(JsonFieldType.NUMBER).description("수정하려는 Board 인덱스"),
+                                        fieldWithPath("editorId").type(JsonFieldType.NUMBER).description("수정을 제안하는 Member 인덱스"),
                                         fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID"),
-                                        fieldWithPath("editorId").type(JsonFieldType.STRING).description("수정요청자 ID"),
                                         fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tag").type(JsonFieldType.STRING).description("태그"),
-                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태")
-
+                                        fieldWithPath("tags").type(JsonFieldType.ARRAY).description("태그"),
+                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태 : Pending / Accepted / Rejected")
                                 )
-
                         )));
     }
 
     @Test
-    public void findAllSuggestedEditTest() throws Exception {
+    void findAllSuggestedEditTest() throws Exception {
         // given
         String page = "1";
         String size = "10";
@@ -200,7 +192,6 @@ public class SuggestedEditControllerRestDocsTest {
         queryParams.add("size", size);
 
         // when
-
         ResultActions actions =
                 mockMvc.perform(
                         get("/suggested-edits")
@@ -211,7 +202,6 @@ public class SuggestedEditControllerRestDocsTest {
         // then
         actions
                 .andExpect(status().isOk())
-                .andExpect(header().string("Location", is(startsWith("/suggested-edits"))))
                 .andDo(document(
                         "find-all-suggested-edit",
                         preprocessRequest(prettyPrint()),
@@ -222,25 +212,21 @@ public class SuggestedEditControllerRestDocsTest {
                         ),
                         responseFields(
                                 List.of(
-                                        fieldWithPath("editId").type(JsonFieldType.STRING).description("수정 제안서 ID"),
-                                        fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID"),
-                                        fieldWithPath("editorId").type(JsonFieldType.STRING).description("수정요청자 ID"),
-                                        fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tag").type(JsonFieldType.STRING).description("태그"),
-                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태")
-
+                                        fieldWithPath("[].editId").type(JsonFieldType.NUMBER).description("수정 제안서 ID"),
+                                        fieldWithPath("[].title").type(JsonFieldType.STRING).description("제목"),
+                                        fieldWithPath("[].boardId").type(JsonFieldType.NUMBER).description("원본 게시글 ID"),
+                                        fieldWithPath("[].editorId").type(JsonFieldType.NUMBER).description("수정요청자 ID"),
+                                        fieldWithPath("[].body").type(JsonFieldType.STRING).description("내용"),
+                                        fieldWithPath("[].tags").type(JsonFieldType.ARRAY).description("태그"),
+                                        fieldWithPath("[].editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태")
                                 )
-
                         )));
     }
 
     @Test
-    public void deleteSuggestedEditTest() throws Exception {
+    void deleteSuggestedEditTest() throws Exception {
         // given
-
         // when
-
         ResultActions actions =
                 mockMvc.perform(
                         delete("/suggested-edits/{edit-id}", 1L)
@@ -254,10 +240,8 @@ public class SuggestedEditControllerRestDocsTest {
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         pathParameters(
-                                List.of(parameterWithName("editId").description("삭제 대상 수정 제안서 ID")
+                                List.of(parameterWithName("edit-id").description("삭제하려는 SuggestedEdit 인덱스")
                                 )
-
-
                         )));
     }
 }

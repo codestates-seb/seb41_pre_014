@@ -1,7 +1,9 @@
 package com.seb41_pre_014.member.entity;
 
 import com.seb41_pre_014.audit.BaseTimeEntity;
+import com.seb41_pre_014.board.entity.Board;
 import com.seb41_pre_014.bookmark.entity.Bookmark;
+import com.seb41_pre_014.tag.entity.MemberTag;
 import com.seb41_pre_014.vote.entity.Vote;
 import lombok.*;
 
@@ -44,6 +46,12 @@ public class Member extends BaseTimeEntity {
     private int reputation = 0;
     private int questions = 0;
     private int answers = 0;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Board> boards = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<MemberTag> memberTags = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Bookmark> bookmarks = new ArrayList<>();
