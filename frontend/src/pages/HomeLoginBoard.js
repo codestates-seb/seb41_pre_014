@@ -47,40 +47,6 @@ const MainRight = styled.div`
   padding-left: 2.4rem;
 `;
 
-export const QuestionBoard = () => {
-  return (
-    <>
-      <Header />
-      <Body>
-        <LeftNavBar />
-        <Main>
-          <MainLeft>
-            <MainTop>
-              <h1>All Questions</h1>
-              <Button buttonType='type2' />
-            </MainTop>
-            <FilterContainer>
-              <FilterButtonWrapper />
-            </FilterContainer>
-            <ul>
-              {/* <QuestionInfoContainer /> */}
-            </ul>
-            <Pagination>
-              <Page />
-              <PerPage />
-            </Pagination>
-          </MainLeft>
-          <MainRight>
-            <MainRightSideInfoWidget />
-            <MainRightTagBasic />
-          </MainRight>
-        </Main>
-      </Body>
-      <Footer />
-    </>
-  )
-};
-
 export const HomeLoginBoard = () => {
   return (
     <>
