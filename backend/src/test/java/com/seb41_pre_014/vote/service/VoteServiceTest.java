@@ -32,7 +32,7 @@ class VoteServiceTest {
     @DisplayName("Vote 저장")
     void createVote() {
         // given
-        Vote vote = Vote.builder().voteType(UP).boardId(1L).memberId(1L).build();
+        Vote vote = Vote.builder().voteType(UP).build();
         given(voteRepository.save(Mockito.any(Vote.class))).willReturn(vote);
 
         // when
@@ -40,15 +40,13 @@ class VoteServiceTest {
 
         // then
         assertEquals(vote.getVoteType(), saveVote.getVoteType());
-        assertEquals(vote.getMemberId(), saveVote.getMemberId());
-        assertEquals(vote.getBoardId(), saveVote.getBoardId());
     }
 
     @Test
     @DisplayName("findVerifiedVote 테스트1")
     void updateVote() {
         // given
-        Vote vote = Vote.builder().voteId(1L).voteType(UP).boardId(1L).memberId(1L).build();
+        Vote vote = Vote.builder().voteId(1L).voteType(UP).build();
         given(voteRepository.findById(Mockito.anyLong())).willReturn(Optional.empty());
 
         // when / then
@@ -81,7 +79,7 @@ class VoteServiceTest {
     @DisplayName("모든 Vote 조회")
     void findAll() {
         // given
-        Vote vote = Vote.builder().voteId(1L).voteType(UP).boardId(1L).memberId(1L).build();
+        Vote vote = Vote.builder().voteId(1L).voteType(UP).build();
         List<Vote> votes = List.of(vote);
         given(voteRepository.findAll(Mockito.any(Sort.class))).willReturn(votes);
 

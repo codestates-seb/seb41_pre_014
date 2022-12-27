@@ -1,5 +1,7 @@
 package com.seb41_pre_014.vote.repository;
 
+import com.seb41_pre_014.board.entity.Board;
+import com.seb41_pre_014.member.entity.Member;
 import com.seb41_pre_014.vote.entity.Vote;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,7 +26,7 @@ class VoteRepositoryTest {
     @DisplayName("Vote 저장")
     void createVote() throws Exception {
         // given
-        Vote vote = Vote.builder().voteType(UP).boardId(1L).memberId(1L).build();
+        Vote vote = Vote.builder().voteType(UP).build();
 
         // when
         Vote saveVote = voteRepository.save(vote);
@@ -32,8 +34,6 @@ class VoteRepositoryTest {
         // then
         assertNotNull(saveVote.getVoteId());
         assertEquals(vote.getVoteType(), saveVote.getVoteType());
-        assertEquals(vote.getMemberId(), saveVote.getMemberId());
-        assertEquals(vote.getBoardId(), saveVote.getBoardId());
         assertNotNull(saveVote.getCreatedAt());
         assertNotNull(saveVote.getLastModifiedAt());
     }
@@ -42,9 +42,9 @@ class VoteRepositoryTest {
     @DisplayName("Vote 수정")
     public void updateVote() throws Exception {
         // given
-        Vote vote1 = Vote.builder().voteType(UP).boardId(1L).memberId(1L).build();
+        Vote vote1 = Vote.builder().voteType(UP).build();
         Vote saveVote = voteRepository.save(vote1);
-        Vote vote2 = Vote.builder().voteId(saveVote.getVoteId()).voteType(DOWN).boardId(1L).memberId(1L).build();
+        Vote vote2 = Vote.builder().voteId(saveVote.getVoteId()).voteType(DOWN).build();
 
         // when
         voteRepository.save(vote2);
@@ -58,7 +58,7 @@ class VoteRepositoryTest {
     @DisplayName("Vote 조회")
     void findVote() throws Exception {
         // given
-        Vote vote = Vote.builder().voteType(UP).boardId(1L).memberId(1L).build();
+        Vote vote = Vote.builder().voteType(UP).build();
         Vote saveVote = voteRepository.save(vote);
 
         // when
@@ -66,16 +66,15 @@ class VoteRepositoryTest {
 
         // then
         assertEquals(vote.getVoteType(), findVote.getVoteType());
-        assertEquals(vote.getMemberId(), findVote.getMemberId());
-        assertEquals(vote.getBoardId(), findVote.getBoardId());
     }
 
     @Test
     @DisplayName("모든 Vote 조회")
     void findAll() throws Exception {
         // given
-        Vote vote1 = Vote.builder().voteType(UP).boardId(1L).memberId(1L).build();
-        Vote vote2 = Vote.builder().voteType(DOWN).boardId(1L).memberId(1L).build();
+        Vote vote1 = Vote.builder().voteType(UP).build();
+        Vote vote2 = Vote.builder().voteType(DOWN).build();
+
         Vote saveVote1 = voteRepository.save(vote1);
         Vote saveVote2 = voteRepository.save(vote2);
 
@@ -93,7 +92,7 @@ class VoteRepositoryTest {
     @Test
     void deleteVote() throws Exception {
         // given
-        Vote vote = Vote.builder().voteType(UP).boardId(1L).memberId(1L).build();
+        Vote vote = Vote.builder().voteType(UP).build();
         Vote saveVote = voteRepository.save(vote);
 
         // when

@@ -2,6 +2,11 @@ package com.seb41_pre_014.board.repository;
 
 import com.seb41_pre_014.board.dto.BoardDto;
 import com.seb41_pre_014.board.entity.Board;
+import com.seb41_pre_014.bookmark.entity.Bookmark;
+import com.seb41_pre_014.member.entity.Member;
+import com.seb41_pre_014.member.repository.MemberRepository;
+import com.seb41_pre_014.vote.entity.Vote;
+import com.seb41_pre_014.vote.repository.VoteRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +23,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static com.seb41_pre_014.board.entity.Board.BoardType.ANSWER;
 import static com.seb41_pre_014.board.entity.Board.BoardType.QUESTION;
+import static com.seb41_pre_014.member.entity.Member.MemberStatus.MEMBER_ACTIVE;
+import static com.seb41_pre_014.vote.entity.Vote.VoteType.UP;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
@@ -26,6 +34,12 @@ class BoardRepositoryTest {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private VoteRepository voteRepository;
+
+    @Autowired
+    private MemberRepository memberRepository;
 
     @Test
     @DisplayName("Board 생성")
@@ -65,7 +79,7 @@ class BoardRepositoryTest {
         boardRepository.save(board2);
 
         // when
-        Board updateBoard = boardRepository.findById(board1.getBoardId()).get();
+        Board updateBoard = boardRepository.findById(postBoard.getBoardId()).get();
 
         // then
         assertEquals(board2.getBoardStatus(), updateBoard.getBoardStatus());
@@ -155,6 +169,87 @@ class BoardRepositoryTest {
     }
 
     @Test
+    void findQuestionsByMember() throws Exception {
+        // given
+        Board question = createQuestion();
+        Board answer = createAnswer();
+        boardRepository.save(question);
+        boardRepository.save(answer);
+        int page = 0;
+        int size = 30;
+        Long memberId = 1L;
+        Board.BoardType boardType = QUESTION;
+
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.by("boardId").descending());
+
+        // when
+        List<Board> questions = boardRepository
+                .findAllByWriterMemberIdAndBoardType(memberId, boardType, pageRequest).getContent();
+
+        // then
+        assertEquals(1, questions.size());
+        assertEquals(questions.get(0).getWriterMemberId(), memberId);
+        assertEquals(questions.get(0).getBoardType(), boardType);
+    }
+
+    @Test
+    void findAnswersByMember() throws Exception {
+        // given
+        Board question = createQuestion();
+        Board answer = createAnswer();
+        boardRepository.save(question);
+        boardRepository.save(answer);
+        int page = 0;
+        int size = 30;
+        Long memberId = 2L;
+        Board.BoardType boardType = ANSWER;
+
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.by("boardId").descending());
+
+        // when
+        List<Board> questions = boardRepository
+                .findAllByWriterMemberIdAndBoardType(memberId, boardType, pageRequest).getContent();
+
+        // then
+        assertEquals(1, questions.size());
+        assertEquals(questions.get(0).getWriterMemberId(), memberId);
+        assertEquals(questions.get(0).getBoardType(), boardType);
+    }
+
+    @Test
+    void findBoardsByVote() throws Exception {
+        // given
+        Board question = createQuestion();
+        Board answer = createAnswer();
+        Board saveBoard1 = boardRepository.save(question);
+        Board saveBoard2 = boardRepository.save(answer);
+        Member member1 = createMember1();
+        Member member2 = createMember2();
+
+        Member saveMember1 = memberRepository.save(member1);
+        Member saveMember2 = memberRepository.save(member2);
+        int page = 0;
+        int size = 30;
+        Vote vote1 = new Vote(null, UP, saveBoard1, saveMember1);
+        Vote vote2 = new Vote(null, UP, saveBoard2, saveMember1);
+        Vote vote3 = new Vote(null, UP, saveBoard2, saveMember2);
+
+        voteRepository.save(vote1);
+        voteRepository.save(vote2);
+        voteRepository.save(vote3);
+
+        // when
+        List<Board> boards1 = boardRepository.findAllByVotesMemberMemberId(saveMember1.getMemberId(),
+                PageRequest.of(page, size, Sort.by("boardId").descending())).getContent();
+        List<Board> boards2 = boardRepository.findAllByVotesMemberMemberId(saveMember2.getMemberId(),
+                PageRequest.of(page, size, Sort.by("boardId").descending())).getContent();
+        // then
+        assertEquals(2, boards1.size());
+        assertEquals(1, boards2.size());
+    }
+
+
+    @Test
     @DisplayName("Board 삭제")
     public void deleteBoard() {
         // given
@@ -170,6 +265,7 @@ class BoardRepositoryTest {
 
     public Board createQuestion() {
         Board.BoardBuilder builder = Board.builder();
+        builder.writerMemberId(1L);
         builder.writerDisplayName("홍길동1");
         builder.boardStatus(Board.BoardStatus.BOARD_PUBLIC);
         builder.boardType(QUESTION);
@@ -181,12 +277,29 @@ class BoardRepositoryTest {
 
     public Board createAnswer() {
         Board.BoardBuilder builder = Board.builder();
+        builder.writerMemberId(2L);
         builder.writerDisplayName("홍길동2");
         builder.boardStatus(Board.BoardStatus.BOARD_PUBLIC);
         builder.boardType(Board.BoardType.ANSWER);
         builder.title("Why do we use it?");
         builder.body("There are many variations of passages of Lorem Ipsum available");
 
+        return builder.build();
+    }
+
+    public Member createMember1() {
+        Member.MemberBuilder builder = Member.builder();
+        builder.email("email1@gamil.com");
+        builder.password("password1234!");
+        builder.memberStatus(MEMBER_ACTIVE);
+        return builder.build();
+    }
+
+    public Member createMember2() {
+        Member.MemberBuilder builder = Member.builder();
+        builder.email("email2@gamil.com");
+        builder.password("password1234!");
+        builder.memberStatus(MEMBER_ACTIVE);
         return builder.build();
     }
 }
