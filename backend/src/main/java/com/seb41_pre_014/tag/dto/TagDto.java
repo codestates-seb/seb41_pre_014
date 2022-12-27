@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 
 public class TagDto {
     @Getter
+    @AllArgsConstructor
     public static class Post {
         @NotBlank(message = "Tag name is not valid")
         private String name;
