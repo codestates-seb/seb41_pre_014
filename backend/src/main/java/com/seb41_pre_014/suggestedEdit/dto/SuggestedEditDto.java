@@ -13,6 +13,7 @@ public class SuggestedEditDto {
 
 
         @Getter
+        @Builder
         public static class Post {
             @Size(min = 15, message = "Length of title must be more than 15") //15자
             private String title;
@@ -26,6 +27,7 @@ public class SuggestedEditDto {
 
 
         @Getter
+        @Builder
         public static class Patch {
             @NotBlank(message = "editId required")
             private Long editId;
@@ -42,7 +44,7 @@ public class SuggestedEditDto {
             @Size(min = 20, message = "body length not valid")
             private String body;
 
-            private String tag;
+            private List<String> tag;
         }
 
 
