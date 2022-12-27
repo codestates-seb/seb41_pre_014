@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMessage, faSort, faTags, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faMessage, faSort, faTags, faTrophy, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { Button, SNSLoginButton } from "../components/atoms/Button";
 import ReCAPTCHA from 'react-google-recaptcha';
 
 const StyledSignUp = styled.div`
   width: inherit;
+  min-height: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,7 +122,35 @@ const StyledCaptchaBox = styled.div`
   margin: 0.6rem 0;
 `;
 
-const SignUpFooter = styled.div`
+const Captcha = () => {
+  function onChange(value) {
+    console.log('Captcha value:', value);
+  }
+  return (
+    <div>
+      <ReCAPTCHA
+        sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
+        onChange={onChange}
+        data-size='20rem 8rem'
+      />
+    </div>
+  );
+};
+
+const StyledFormBoxFooter = styled.div`
+  width:100%;
+  margin-top: 3.2rem;
+  font-size: 1.2rem;
+  color: #6A737C;
+
+  & > a {
+    width:100%;
+    font-size: 1.2rem;
+    color: #0074CC;
+  }
+`;
+
+const StyledSignUpFooter = styled.div`
   padding: 1.6rem;
   margin-bottom: 2.4rem;
   font-size: 1.3rem;
@@ -155,21 +185,6 @@ const SignUpFooter = styled.div`
     };
   };
 `;
-
-const Captcha = () => {
-  function onChange(value) {
-    console.log('Captcha value:', value);
-  }
-  return (
-    <div>
-      <ReCAPTCHA
-        sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
-        onChange={onChange}
-        data-size='20rem 8rem'
-      />
-    </div>
-  );
-};
 
 const SignUp = () => {
 
@@ -261,7 +276,32 @@ const SignUp = () => {
           <StyledCaptchaBox>
             <Captcha />
           </StyledCaptchaBox>
+          <StyledFormBoxFooter>
+            By clicking “Sign up”, you agree to our &nbsp;
+            <a 
+              href='https://stackoverflow.com/legal/terms-of-service/public'
+              target='_blank'
+              rel='noreferrer'>terms of service</a>, &nbsp;
+            <a
+              href='https://stackoverflow.com/legal/privacy-policy'
+              target='_blank'
+              rel='noreferrer'>privacy policy</a> and &nbsp;
+            <a
+              href='https://stackoverflow.com/legal/cookie-policy'
+              target='_blank'
+              rel='noreferrer'>cookie policy</a>
+          </StyledFormBoxFooter>
         </StyledSignUpFormBox>
+        <StyledSignUpFooter>
+          Already have an account? 
+            <Link to='/users/login'>Log in</Link>
+            <div>Are you an employer? 
+              <a href='https://talent.stackoverflow.com/users/login'>
+                Sign up on Talent
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+              </a>
+            </div>
+        </StyledSignUpFooter>
       </StyledSignUpContainer>
     </StyledSignUp>
   )

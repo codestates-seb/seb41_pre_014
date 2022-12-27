@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { Button } from '../components/atoms/Button';
-import { Header } from '../components/blocks/Header';
-import { Footer } from '../components/blocks/Footer';import { LeftNavBar } from '../components/blocks/NavBar';
 import { QuestionDetail, AnswerDetail } from "../components/blocks/DetailContainer";
 // import { EditorInputWrapper } from '../components/blocks/EditorInputWrapper';
 import { MainRightSideInfoWidget, MainRightRelatedQuestions } from '../components/blocks/MainRight';
@@ -53,7 +51,7 @@ const MainRight = styled.div`
   padding-left: 2.4rem;
 `;
 
-export const QuestionMetaInfo = (asked, modified, viewed) => {
+export const QuestionMetaInfo = ({asked, modified, viewed}) => {
   return (
     <>
       {/* today, yesterday, n days ago */}
@@ -64,7 +62,7 @@ export const QuestionMetaInfo = (asked, modified, viewed) => {
   )
 };
 
-export const AnswerFilter = (answerCnt) => {
+export const AnswerFilter = ({answerCnt}) => {
   return (
     <AnswerFilterWrapper>
       <div>{answerCnt} Answer</div>
@@ -79,39 +77,35 @@ export const AnswerFilter = (answerCnt) => {
   )
 };
 
-export const Detail = (questionTitle) => {
+const Detail = (props) => {
   return (
-    <>
-      <Header />
-      <Body>
-        <LeftNavBar />
-        <Main>
-          <MainTop>
-            <div>
-              <div>{questionTitle}</div>
-              <Button buttonType='type2' />
-            </div>
-            <QuestionMetaInfo />
-          </MainTop>
-          <MainLeft>
-            <QuestionDetail />
-            <AnswerFilter />
-            <ul>
-              {/* <AnswerDetail /> */}
-            </ul>
-            {/* <EditorInputWrapper /> */}
+    <Body>
+      <Main>
+        <MainTop>
+          <div>
+            <div>{props.questionTitle}</div>
             <Button buttonType='type2' />
-          </MainLeft>
-          <MainRight>
-            <MainRightSideInfoWidget />
-            <MainRightSideInfoWidget />
-            <MainRightSideInfoWidget />
-            <MainRightRelatedQuestions />
-          </MainRight>
-        </Main>
-      </Body>
-      <Footer />
-    </>
+          </div>
+          <QuestionMetaInfo />
+        </MainTop>
+        <MainLeft>
+          <QuestionDetail />
+          <AnswerFilter />
+          <ul>
+            {/* <AnswerDetail /> */}
+          </ul>
+          {/* <EditorInputWrapper /> */}
+          <Button buttonType='type2' />
+        </MainLeft>
+        <MainRight>
+          <MainRightSideInfoWidget />
+          <MainRightSideInfoWidget />
+          <MainRightSideInfoWidget />
+          <MainRightRelatedQuestions />
+        </MainRight>
+      </Main>
+    </Body>
   )
 };
 
+export default Detail;
