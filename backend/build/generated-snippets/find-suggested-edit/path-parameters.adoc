@@ -1,0 +1,8 @@
+.+/suggested-edits/{edit-id}+
+|===
+|Parameter|Description
+
+|`+edit-id+`
+|수정을 제안하는 Member 인덱스
+
+|===

@@ -1,0 +1,8 @@
+.+/tags/{tag-id}+
+|===
+|Parameter|Description
+
+|`+tag-id+`
+|삭제하려는 Tag 인덱스
+
+|===
