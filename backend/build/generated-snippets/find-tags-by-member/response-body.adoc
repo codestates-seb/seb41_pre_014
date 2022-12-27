@@ -2,11 +2,9 @@
 ----
 [ {
   "tagId" : 1,
-  "name" : "java",
-  "boardId" : 1
+  "name" : "java"
 }, {
   "tagId" : 1,
-  "name" : "react",
-  "boardId" : 1
+  "name" : "react"
 } ]
 ----

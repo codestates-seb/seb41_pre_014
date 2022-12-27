@@ -1,0 +1,12 @@
+[source,options="nowrap"]
+----
+{
+  "editId" : 1,
+  "title" : "TempEdit1",
+  "boardId" : 1,
+  "editorId" : 1,
+  "body" : "Body of TempEdit1",
+  "tags" : [ "tag1", "tag211" ],
+  "editStatus" : "처리중"
+}
+----

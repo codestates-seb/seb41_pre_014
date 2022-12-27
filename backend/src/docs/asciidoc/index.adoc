@@ -517,7 +517,7 @@ include::{snippets}/delete-bookmark/http-response.adoc[]
 
 ***
 == SuggestedEditController
-=== 수정 제안 등록
+=== Suggested Edit 등록
 .curl-request
 include::{snippets}/post-suggested-edits/curl-request.adoc[]
 
@@ -533,28 +533,28 @@ include::{snippets}/post-suggested-edits/http-response.adoc[]
 .response-fields
 include::{snippets}/post-suggested-edits/response-fields.adoc[]
 
-=== 수정 제안서 수정
+=== Suggested Edit 수정
 .curl-request
-include::{snippets}/patch-post-suggested-edits/curl-request.adoc[]
+include::{snippets}/update-suggested-edits/curl-request.adoc[]
 
 .http-request
-include::{snippets}/patch-post-suggested-edits/http-request.adoc[]
+include::{snippets}/update-suggested-edits/http-request.adoc[]
 
 .path-parameters
-include::{snippets}/patch-post-suggested-edits/path-parameters.adoc[]
+include::{snippets}/update-suggested-edits/path-parameters.adoc[]
 
 .request-fields
-include::{snippets}/patch-post-suggested-edits/request-fields.adoc[]
+include::{snippets}/update-suggested-edits/request-fields.adoc[]
 
 .http-response
-include::{snippets}/patch-post-suggested-edits/http-response.adoc[]
+include::{snippets}/update-suggested-edits/http-response.adoc[]
 
 .response-fields
-include::{snippets}/patch-post-suggested-edits/response-fields.adoc[]
+include::{snippets}/update-suggested-edits/response-fields.adoc[]
 
-=== 수정 제안 조회
+=== Suggested Edit 조회
 .curl-request
-include::{snippets}/find-suggested-edit/curl-request.adoc
+include::{snippets}/find-suggested-edit/curl-request.adoc[]
 
 .path-parameters
 include::{snippets}/find-suggested-edit/path-parameters.adoc[]
@@ -568,7 +568,7 @@ include::{snippets}/find-suggested-edit/http-response.adoc[]
 .response-fields
 include::{snippets}/find-suggested-edit/response-fields.adoc[]
 
-=== 모든 수정 제안 조회
+=== 모든 Suggested Edit 조회
 .curl-request
 include::{snippets}/find-all-suggested-edit/curl-request.adoc[]
 
@@ -583,8 +583,6 @@ include::{snippets}/find-all-suggested-edit/http-response.adoc[]
 
 .response-fields
 include::{snippets}/find-all-suggested-edit/response-fields.adoc[]
-
-
 
 ***
 == TagController
@@ -604,7 +602,7 @@ include::{snippets}/post-tags/http-response.adoc[]
 .response-fields
 include::{snippets}/post-tags/response-fields.adoc[]
 
-=== tag 조회
+=== Tag 조회
 .curl-request
 include::{snippets}/find-tag/curl-request.adoc
 
@@ -620,7 +618,7 @@ include::{snippets}/find-tag/http-response.adoc[]
 .response-fields
 include::{snippets}/find-tag/response-fields.adoc[]
 
-=== 모든 수정 제안 조회
+=== 모든 Tag 조회
 .curl-request
 include::{snippets}/find-all-tag/curl-request.adoc[]
 
@@ -637,3 +635,15 @@ include::{snippets}/find-tag/http-response.adoc[]
 include::{snippets}/find-tag/response-fields.adoc[]
 
 
+=== Tag 삭제
+.curl-request
+include::{snippets}/delete-tags/curl-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-tags/path-parameters.adoc[]
+
+.http-request
+include::{snippets}/delete-tags/http-request.adoc[]
+
+.http-response
+include::{snippets}/delete-tags/http-response.adoc[]

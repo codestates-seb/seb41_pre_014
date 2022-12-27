@@ -1,0 +1,8 @@
+[source,options="nowrap"]
+----
+{
+  "title" : "Length of title must be more than 15",
+  "body" : "Length of body must be more than 20",
+  "tags" : [ "tag1", "tag2" ]
+}
+----
