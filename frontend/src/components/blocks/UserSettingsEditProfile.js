@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { StyledInput } from "../atoms/SearchBar";
-import { MainLeftNavBar2 } from "./NavBar";
+import { MainLeftNavBar } from "./NavBar";
 import { StyledTitle } from "./UserSettingsDeleteProfile";
 
 const MainBody = styled.div`
@@ -66,7 +66,7 @@ export const UserSettingsEditProfile = () => {
     <div>
       <MainBody>
         <MainLeft>
-          <MainLeftNavBar2/>
+          <MainLeftNavBar/>
         </MainLeft>
         <MainRight>
           <StyledTitle/>

@@ -1,7 +1,7 @@
 import { MainNavBar } from "../components/blocks/NavBar";
 import { UserMetaInfoType3 } from "../components/blocks/UserInfoContainer";
 import { UserEditForm, UserSettingsEditProfile } from "../components/blocks/UserSettingsEditProfile";
-
+import { Outlet } from 'react-router-dom';
 
 const Users = () => {
   return (
@@ -9,6 +9,7 @@ const Users = () => {
       <UserMetaInfoType3/>
       {/*edit profile 버튼*/}
       <MainNavBar/>
+      <Outlet />
     </div>
   )
 };
