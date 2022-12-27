@@ -17,6 +17,9 @@ const StyeldHeader = styled.header`
   , 0 0.1rem 0.4rem hsla(0, 0%, 0%, 0.05)
   , 0 0.2rem 0.8rem hsla(0, 0%, 0%, 0.05);
   border-top: 0.3rem solid #F48225;
+  position: fixed;
+  top: 0;
+  z-index: 99999;
 `;
 
 const StyledHeaderContainer = styled.div`
@@ -65,6 +68,18 @@ const StyledNavItemBox = styled.ul`
   list-style: none;
   width: 7.85rem;
   height: 4.7rem;
+`;
+
+const StyledSearchBarBox = styled.div`
+  padding: 0 0.8rem;
+  flex-shrink: 1000;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+
+  & > form {
+    flex-grow: 1;
+  }
 `;
 
 const StyledButtonWrapper = styled.div`
@@ -134,7 +149,9 @@ export const Header = () => {
             <StyledNavItemBox>
               <NavItem />
             </StyledNavItemBox>
-            <SearchBar />
+            <StyledSearchBarBox>
+              <SearchBar />
+            </StyledSearchBarBox>
             <StyledIconWrapper>
               <StyledIconBox width='7.5rem'><img /></StyledIconBox>
               <StyledIconBox><img /></StyledIconBox>
@@ -169,7 +186,9 @@ export const Header = () => {
               <NavItem NavItemName='Products' />
               <NavItem NavItemName='For Teams' />
             </StyledNavItemWrapper>
-            <SearchBar />
+            <StyledSearchBarBox>
+              <SearchBar />
+            </StyledSearchBarBox>
             <StyledButtonWrapper>
               <Button 
                 buttonType='type3' 
