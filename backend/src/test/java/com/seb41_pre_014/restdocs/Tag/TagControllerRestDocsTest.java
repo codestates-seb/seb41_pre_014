@@ -4,6 +4,7 @@ package com.seb41_pre_014.restdocs.Tag;
 import com.google.gson.Gson;
 import com.seb41_pre_014.suggestedEdit.controller.SuggestedEditController;
 import com.seb41_pre_014.suggestedEdit.dto.SuggestedEditDto;
+import com.seb41_pre_014.tag.dto.TagDto;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,25 +53,17 @@ public class TagControllerRestDocsTest {
     private Gson gson;
 
     @Test
-    public void postSuggestedEditTest() throws Exception {
+    public void postTagTest() throws Exception {
         // given
-        SuggestedEditDto.Post post = new SuggestedEditDto.Post("This is title, must be longer than 15",
-                "This is body, must be longer than 20",
-                List.of("tag1", "tag2"));
+        TagDto.Post post = new TagDto.Post("tagName");
         String content = gson.toJson(post);
 
-        SuggestedEditDto.Response response =
-                new SuggestedEditDto.Response(1L,
-                        "This is title, must be longer than 15",
-                        1L,
-                        1L,
-                        "This is body, must be longer than 20",
-                        List.of("tag1", "tag2"),
-                        "PENDING");
+        TagDto.Response response =
+                new TagDto.Response(1L, "tagName", 1L);
 
         ResultActions actions =
                 mockMvc.perform(
-                        post("/suggested-edits")
+                        post("/tags")
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(content)
@@ -79,129 +72,57 @@ public class TagControllerRestDocsTest {
         // then
         actions
                 .andExpect(status().isCreated())
-                .andExpect(header().string("Location", is(startsWith("/v11/members/"))))
+                .andExpect(header().string("Location", is(startsWith("/tags/"))))
                 .andDo(document(
-                        "post-suggested-edits",
+                        "post-tags",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         requestParameters(
-                                List.of(parameterWithName("editId").description("수정 제안서 ID"))
+                                List.of(parameterWithName("tagId").description("Tag ID"))
                         ),
                         requestFields(
                                 List.of(
-                                        fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                                        fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tags").type(JsonFieldType.STRING).description("태그")
+                                        fieldWithPath("name").type(JsonFieldType.STRING).description("태그명")
                                 )
                         ),
                         responseFields(
                                 List.of(
-                                        fieldWithPath("editId").type(JsonFieldType.STRING).description("수정 제안서 ID"),
-                                        fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID"),
-                                        fieldWithPath("editorId").type(JsonFieldType.STRING).description("수정요청자 ID"),
-                                        fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tag").type(JsonFieldType.STRING).description("태그"),
-                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태")
-
-                        )
-
-                )));
-    }
-
-    @Test
-    public void updateSuggestedEditTest() throws Exception {
-        // given
-        SuggestedEditDto.Patch patch = new SuggestedEditDto.Patch("1L",
-                "This is title, must be longer than 15",
-                1L,
-                1L,
-                "This is body, must be longer than 20",
-                 List.of("tag1", "tag2"));
-        String content = gson.toJson(patch);
-
-        SuggestedEditDto.Response response =
-                new SuggestedEditDto.Response(1L,
-                        "This is title, must be longer than 15",
-                        1L,
-                        1L,
-                        "This is body, must be longer than 20",
-                        List.of("tag1", "tag2"),
-                        "PENDING");
-
-        ResultActions actions =
-                mockMvc.perform(
-                        patch("/suggested-edits/{edit-id}", 1L)
-                                .accept(MediaType.APPLICATION_JSON)
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(content)
-                );
-
-        // then
-        actions
-                .andExpect(status().isOk())
-                .andExpect(header().string("Location", is(startsWith("/suggested-edits/{edit-id}"))))
-                .andDo(document(
-                        "update-suggested-edits",
-                        preprocessRequest(prettyPrint()),
-                        preprocessResponse(prettyPrint()),
-                        requestParameters(
-                                List.of(parameterWithName("editId").description("원본 수정 제안서 ID"))
-                        ),
-                        requestFields(
-                                List.of(
-                                        fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                                        fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tags").type(JsonFieldType.STRING).description("태그")
-                                )
-                        ),
-                        responseFields(
-                                List.of(
-                                        fieldWithPath("editId").type(JsonFieldType.STRING).description("수정 제안서 ID"),
-                                        fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID"),
-                                        fieldWithPath("editorId").type(JsonFieldType.STRING).description("수정요청자 ID"),
-                                        fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tag").type(JsonFieldType.STRING).description("태그"),
-                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태")
-
+                                        fieldWithPath("tagId").type(JsonFieldType.STRING).description("Tag ID"),
+                                        fieldWithPath("name").type(JsonFieldType.STRING).description("태그명"),
+                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID")
                                 )
 
                         )));
     }
 
+
     @Test
-    public void findSuggestedEditTest() throws Exception {
+    public void findTagTest() throws Exception {
         // given
         // when
 
         ResultActions actions =
                 mockMvc.perform(
-                        post("/suggested-edits/{edit-id}", 1L)
+                        post("/tags/{tag-id}", 1L)
                                 .accept(MediaType.APPLICATION_JSON)
                 );
 
         // then
         actions
                 .andExpect(status().isOk())
-                .andExpect(header().string("Location", is(startsWith("/suggested-edits/{edit-id}"))))
+                .andExpect(header().string("Location", is(startsWith("/tags/{tag-id}"))))
                 .andDo(document(
-                        "find-suggested-edits",
+                        "find-tag",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         requestParameters(
-                                List.of(parameterWithName("editId").description("수정 제안서 ID"))
+                                List.of(parameterWithName("tagId").description("Tag ID"))
                         ),
                         responseFields(
                                 List.of(
-                                        fieldWithPath("editId").type(JsonFieldType.STRING).description("수정 제안서 ID"),
-                                        fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID"),
-                                        fieldWithPath("editorId").type(JsonFieldType.STRING).description("수정요청자 ID"),
-                                        fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tag").type(JsonFieldType.STRING).description("태그"),
-                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태")
-
+                                        fieldWithPath("tagId").type(JsonFieldType.STRING).description("Tag ID"),
+                                        fieldWithPath("name").type(JsonFieldType.STRING).description("태그명"),
+                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID")
                                 )
 
                         )));
@@ -220,7 +141,7 @@ public class TagControllerRestDocsTest {
 
         ResultActions actions =
                 mockMvc.perform(
-                        get("/suggested-edits")
+                        get("/tags/")
                                 .params(queryParams)
                                 .accept(MediaType.APPLICATION_JSON)
                 );
@@ -228,9 +149,9 @@ public class TagControllerRestDocsTest {
         // then
         actions
                 .andExpect(status().isOk())
-                .andExpect(header().string("Location", is(startsWith("/suggested-edits"))))
+                .andExpect(header().string("Location", is(startsWith("/tags"))))
                 .andDo(document(
-                        "find-all-suggested-edits",
+                        "find-all-tag",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         requestParameters(
@@ -239,40 +160,35 @@ public class TagControllerRestDocsTest {
                         ),
                         responseFields(
                                 List.of(
-                                        fieldWithPath("editId").type(JsonFieldType.STRING).description("수정 제안서 ID"),
-                                        fieldWithPath("title").type(JsonFieldType.STRING).description("제목"),
-                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID"),
-                                        fieldWithPath("editorId").type(JsonFieldType.STRING).description("수정요청자 ID"),
-                                        fieldWithPath("body").type(JsonFieldType.STRING).description("내용"),
-                                        fieldWithPath("tag").type(JsonFieldType.STRING).description("태그"),
-                                        fieldWithPath("editStatus").type(JsonFieldType.STRING).description("수정 제안서 상태")
-
+                                        fieldWithPath("tagId").type(JsonFieldType.STRING).description("Tag ID"),
+                                        fieldWithPath("name").type(JsonFieldType.STRING).description("태그명"),
+                                        fieldWithPath("boardId").type(JsonFieldType.STRING).description("원본 게시글 ID")
                                 )
 
                         )));
     }
 
     @Test
-    public void deleteSuggestedEditTest() throws Exception {
+    public void deleteTagTest() throws Exception {
         // given
 
         // when
 
         ResultActions actions =
                 mockMvc.perform(
-                        delete("/suggested-edits/{edit-id}", 1L)
+                        delete("/tags/{tag-id}", 1L)
                 );
 
         // then
         actions
                 .andExpect(status().isNoContent())
                 .andDo(document(
-                        "delete-suggested-edits",
+                        "delete-tags",
                         preprocessRequest(prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         pathParameters(
-                                List.of(parameterWithName("editId").description("삭제 대상 수정 제안서 ID")
-                        )
+                                List.of(parameterWithName("tagId").description("삭제 대상 tag ID")
+                                )
 
 
                         )));
