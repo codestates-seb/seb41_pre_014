@@ -1,67 +1,109 @@
 import styled from "styled-components";
-import { Header } from '../components/blocks/Header';
-import { Footer } from '../components/blocks/Footer';
-import { LeftNavBar } from '../components/blocks/NavBar';
 import { Input } from '../components/atoms/Input';
 import { Button } from '../components/atoms/Button';
 import { MainRightSideInfoWidget } from "../components/blocks/MainRight";
-import { EditorInput } from "../components/blocks/EditorInputWrapper";
-
-const Body = styled.div`
-  display: flex;
-`;
+import { InputLabel, EditorInput } from "../components/blocks/EditorInputWrapper";
+import { EditSideInfoWidgetData } from "../data/staticData/SideBarData";
 
 const Main = styled.div`
   display: flex;
-  padding: 2.4rem;
 `;
 
 const MainLeft = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  gap: 1.5rem;
+
+  .buttonWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
 `;
 
 const MainRight = styled.div`
   padding-left: 2.4rem;
 `;
 
-export const QuestionEdit = (props) => {
+const QuestionEdit = (props) => {
   return (
     <>
-      <Header />
-      <Body>
-        <LeftNavBar />
         <Main>
           <MainLeft>
             <div>
-              <div>Title</div>
-              <Input />
+              <InputLabel 
+                title='Title'
+              />
+              <Input
+                placeholder={props.title}
+                padding='0.78rem 0.91rem'
+                width='100%'
+                />
             </div>
             <div>
-              <div>Body</div>
+              <InputLabel 
+                title='Body'
+              />
               <EditorInput />
               <div>{props.questionContent}</div>
             </div>
             <div>
-              <div>Tags</div>
-              <Input />
+              <InputLabel 
+                title='Tags'
+              />
+              <Input
+              // tagblock
+                placeholder={props.tags}
+                padding='0.78rem 0.91rem'
+                width='100%'
+                />
             </div>
             <div>
-              <div>Edit Summary</div>
-              <Input />
+              <InputLabel 
+                title='Edit Summary'
+              />
+              {/* data-min-length="10" data-max-length="300"  */}
+              <Input
+                placeholder='briefly explain your changes (corrected spelling, fixed grammar, improved formatting)'
+                padding='0.78rem 0.91rem'
+                width='100%'
+                />
             </div>
-            <div>
-              <Button buttonType='type1' />
-              <Button buttonType='type4' />
+            <div className="buttonWrapper">
+              <Button 
+                buttonType='type2'
+                buttonName='Save edits'
+                width='8.04rem'
+                height='3.79rem'
+              />
+              <Button 
+                buttonType='type4'
+                buttonName='Cancel'
+                width='6.07rem'
+                height='3.79rem'
+              />
             </div>
           </MainLeft>
           <MainRight>
-            <MainRightSideInfoWidget />
+            {EditSideInfoWidgetData.map((el) => {
+              return (
+                <MainRightSideInfoWidget 
+                  title={el.title}
+                  contents={el.contents} 
+                />
+              )
+            })}            
           </MainRight>
         </Main>
-      </Body>
-      <Footer />
     </>
   )
 };
+
+export default QuestionEdit;

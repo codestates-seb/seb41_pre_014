@@ -3,12 +3,11 @@ import { Button } from '../components/atoms/Button';
 import { QuestionDetail, AnswerDetail } from "../components/blocks/DetailContainer";
 import { EditorInput } from '../components/blocks/EditorInputWrapper';
 import { MainRightSideInfoWidget, MainRightRelatedQuestions } from '../components/blocks/MainRight';
-import { DetailSideInfoWidgetData } from "../data/staticData/SideBarData";
+import { BoardDetailSideInfoWidgetData } from "../data/staticData/SideBarData";
 
 const Main = styled.div`
   display: flex;
   flex-direction: column;
-  /* padding: 2.4rem; */
 `;
 
 const MainTop = styled.div`
@@ -57,7 +56,6 @@ const MainLeftRightWrapper = styled.div`
 const MainLeft = styled.div`
   display: flex;
   flex-direction: column;
-  /* overflow: scroll; */
 `;
 
 const AnswerFilterWrapper = styled.div`
@@ -107,7 +105,6 @@ const EditorWrapper = styled.div`
 const MainRight = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
   padding-left: 2.4rem;
 `;
 
@@ -174,15 +171,15 @@ const Detail = (props) => {
               </EditorWrapper>
             </MainLeft>
             <MainRight>
-              <MainRightSideInfoWidget />
-              <MainRightSideInfoWidget />
-              <MainRightSideInfoWidget />
-              {/* {DetailSideInfoWidgetData.map((el) => {
+              {BoardDetailSideInfoWidgetData.map((el) => {
                 return (
-                  <MainRightSideInfoWidget title={el.title} />
+                  <MainRightSideInfoWidget 
+                    title={el.title}
+                    contents={el.contents} 
+                  />
                 )
-              })} */}
-              <MainRightRelatedQuestions />
+              })}
+              {/* <MainRightRelatedQuestions /> */}
             </MainRight>
           </MainLeftRightWrapper>
         </Main>
