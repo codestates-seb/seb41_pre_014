@@ -6,6 +6,8 @@ import com.seb41_pre_014.exception.BusinessLogicException;
 import com.seb41_pre_014.exception.ExceptionCode;
 import com.seb41_pre_014.member.entity.Member;
 import com.seb41_pre_014.member.repository.MemberRepository;
+import com.seb41_pre_014.tag.entity.Tag;
+import com.seb41_pre_014.tag.repository.TagRepository;
 import com.seb41_pre_014.util.CustomBeanUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,6 +26,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final CustomBeanUtils<Member> beanUtils;
     private final BoardRepository boardRepository;
+    private final TagRepository tagRepository;
 
     @Transactional
     public Member createMember(Member member) {
@@ -49,6 +52,12 @@ public class MemberService {
         findVerifiedMember(writerMemberId);
         return boardRepository.findAllByMemberMemberIdAndBoardType(writerMemberId, boardType,
                 PageRequest.of(page - 1, size, Sort.by("boardId").descending()));
+    }
+
+    public Page<Tag> findTagsByMember(Long memberId, int page, int size) {
+        findVerifiedMember(memberId);
+        return tagRepository.findAllByMemberTagMemberMemberId(memberId,
+                PageRequest.of(page - 1, size, Sort.by("tagId").descending()));
     }
 
     public Page<Board> findBoardsByBookmark(Long memberId, int page, int size) {
