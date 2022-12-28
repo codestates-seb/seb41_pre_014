@@ -26,6 +26,7 @@ public class BookmarkService {
     private final MemberService memberService;
     private final BoardService boardService;
 
+    @Transactional
     public Bookmark createBookmark(Long memberId, Long boardId) {
         Member member = memberService.findMember(memberId);
         Board board = boardService.findBoard(boardId);
@@ -34,6 +35,7 @@ public class BookmarkService {
         return bookmarkRepository.save(bookmark);
     }
 
+    @Transactional
     public void deleteBookmark(Long bookmarkId) {
         bookmarkRepository.findById(bookmarkId)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.BOOKMARK_NOT_FOUND));
