@@ -25,7 +25,6 @@ public class MemberDto {
         private String displayName;
     }
 
-
     @Getter
     @Builder
     @AllArgsConstructor

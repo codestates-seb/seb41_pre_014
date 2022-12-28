@@ -33,6 +33,9 @@ public class Member extends BaseTimeEntity {
 
     private String displayName;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
+
     // Embedded 애너테이션으로 리팩토링 예정
     private String fullName;
     private String location;
@@ -61,6 +64,18 @@ public class Member extends BaseTimeEntity {
 
     public void setMemberId(Long memberId) {
         this.memberId = memberId;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String encryptedPassword) {
+        this.password = encryptedPassword;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     public enum MemberStatus {
