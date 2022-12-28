@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.10">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Asciidoctor 2.0.10" name="generator">
 <title>Stackoverflow 클론 코딩</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700" rel="stylesheet">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment @import statement to use as custom stylesheet */
@@ -442,7 +442,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="revnumber">version 0.0.1-SNAPSHOT</span>
 </div>
-<div id="toc" class="toc2">
+<div class="toc2" id="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_boardcontroller">1. BoardController</a>
@@ -483,6 +483,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_member가_vote한_모든_board_조회">3.8. Member가 Vote한 모든 Board 조회</a></li>
 <li><a href="#_member의_사용한_모든_tag_조회">3.9. Member의 사용한 모든 Tag 조회</a></li>
 <li><a href="#_member_삭제">3.10. Member 삭제</a></li>
+</ul>
+</li>
+<li><a href="#_bookmarkcontroller">4. BookmarkController</a>
+<ul class="sectlevel2">
+<li><a href="#_bookmark_생성">4.1. Bookmark 생성</a></li>
+<li><a href="#_bookmark_삭제">4.2. Bookmark 삭제</a></li>
 </ul>
 </li>
 </ul>
@@ -4893,12 +4899,14 @@ Content-Length: 113
 </div>
 <div class="sect2">
 <h3 id="_member_삭제">3.10. Member 삭제</h3>
-<div class="paragraph">
+<div class="listingblock">
 <div class="title">curl-request</div>
-<p>include::/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/generated-snippets/</p>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/members/1' -i -X DELETE</code></pre>
+</div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 62. /members/{member-id}/tags</caption>
+<caption class="title">Table 62. /members/{member-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -4912,10 +4920,39 @@ Content-Length: 113
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>member-id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">조회하려는 Answers의 작성자 인덱스</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">삭제하려는 Member의 인덱스</p></td>
 </tr>
 </tbody>
 </table>
+<div class="listingblock">
+<div class="title">http-request</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /members/1 HTTP/1.1
+Host: localhost:8080</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-response</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 204 No Content</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bookmarkcontroller">4. BookmarkController</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bookmark_생성">4.1. Bookmark 생성</h3>
+<div class="listingblock">
+<div class="title">curl-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/bookmarks' -i -X POST \
+    -d 'memberId=1&amp;boardId=1'</code></pre>
+</div>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 63. request-parameters</caption>
 <colgroup>
@@ -4930,39 +4967,37 @@ Content-Length: 113
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Page 번호</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>memberId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bookmark를 한 Member의 인덱스</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Page에 노출될 데이터 개수</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boardId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bookmark 된 Board의 인덱스</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">http-request</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">GET /members/1/tags?page=1&amp;size=30 HTTP/1.1
-Accept: application/json
-Host: localhost:8080</code></pre>
+<pre class="prettyprint highlight nowrap"><code data-lang="http">POST /bookmarks HTTP/1.1
+Host: localhost:8080
+Content-Type: application/x-www-form-urlencoded
+
+memberId=1&amp;boardId=1</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">http-response</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 201 Created
 Content-Type: application/json
-Content-Length: 113
+Content-Length: 57
 
-[ {
-  "tagId" : 1,
-  "name" : "java",
+{
+  "bookmarkId" : 1,
+  "memberId" : 1,
   "boardId" : 1
-}, {
-  "tagId" : 1,
-  "name" : "react",
-  "boardId" : 1
-} ]</code></pre>
+}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -4981,22 +5016,63 @@ Content-Length: 113
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].tagId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bookmarkId</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Tag 인덱스</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bookmark 인덱스</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Tag 이름</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>memberId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bookmark를 한 Member의 인덱스</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].boardId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boardId</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Board 인덱스</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bookmark 된 Board의 인덱스</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="_bookmark_삭제">4.2. Bookmark 삭제</h3>
+<div class="listingblock">
+<div class="title">curl-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/bookmarks/1' -i -X DELETE</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 65. /bookmarks/{bookmark-id}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bookmark-id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">삭제하려는 Bookamrk의 인덱스</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">http-request</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /bookmarks/1 HTTP/1.1
+Host: localhost:8080</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-response</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 204 No Content</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -5004,10 +5080,10 @@ Content-Length: 113
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-12-27 03:50:41 +0900
+Last updated 2022-12-27 03:55:50 +0900
 </div>
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
 </body>
 </html>

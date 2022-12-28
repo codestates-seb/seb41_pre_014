@@ -2,15 +2,13 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 113
+Content-Length: 79
 
 [ {
   "tagId" : 1,
-  "name" : "java",
-  "boardId" : 1
+  "name" : "java"
 }, {
   "tagId" : 1,
-  "name" : "react",
-  "boardId" : 1
+  "name" : "react"
 } ]
 ----

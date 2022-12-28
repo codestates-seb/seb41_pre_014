@@ -1,0 +1,10 @@
+|===
+|Parameter|Description
+
+|`+page+`
+|page number
+
+|`+size+`
+|number of edits
+
+|===

@@ -1,0 +1,11 @@
+[source,options="nowrap"]
+----
+{
+  "editId" : 1,
+  "title" : "This is title, must be longer than 15",
+  "boardId" : 1,
+  "editorId" : 1,
+  "body" : "This is body, must be longer than 20",
+  "tags" : [ "tag1", "tag2" ]
+}
+----
