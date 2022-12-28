@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.seb41_pre_014.board.service.BoardServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-12-26T18:56:00" hostname="gimchanbin-ui-MacBookPro.local" time="0.187">
+<testsuite name="com.seb41_pre_014.board.service.BoardServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-12-27T18:24:49" hostname="gimchanbin-ui-MacBookPro.local" time="0.102">
   <properties/>
-  <testcase name="Question 생성" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.173"/>
-  <testcase name="findVerifiedBoard 테스트3" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.003"/>
-  <testcase name="findVerifiedBoard 테스트1" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.003"/>
-  <testcase name="findVerifiedBoard 테스트2" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.003"/>
+  <testcase name="Question 생성" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.09"/>
+  <testcase name="findVerifiedBoard 테스트3" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.004"/>
+  <testcase name="findVerifiedBoard 테스트1" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.002"/>
+  <testcase name="findVerifiedBoard 테스트2" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.001"/>
   <testcase name="Answer 생성" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

@@ -7,12 +7,20 @@ const TagContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-bottom: 1.6rem;
+  margin: 1.6rem 0;
   background-color: #ffffff;
   border-radius: 0.3rem;
   box-shadow: 0 0.1rem 0.2rem hsla(0,0%,0%,0.05), 0 0.1rem 0.4rem hsla(0, 0%, 0%, 0.05), 0 0.2rem 0.8rem hsla(0, 0%, 0%, 0.05);
   width: 29.8rem;
   font-size: 1.3rem;
+
+  .tagAddedHeader {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f9f9;
+    border-top: 0.1rem solid #e3e6e8;
+
+  }
 `;
 
 const TagHeader = styled.div`
@@ -24,26 +32,28 @@ const TagHeader = styled.div`
   font-size: 1.5rem;
   color: #232629;
   padding: 1.2rem 1.5rem;
-  /* height: 4.45rem; */
 `;
 
 const TagContent = styled.div`
   display: flex;
-  flex-direction: column;
   border-top: 0.1rem solid #e3e6e8;
   font-size: inherit;
   padding: 1.6rem;
-  //height props
+  justify-content: center;
 `;
 
 const EditButton = styled.button`
   font-size: 1.5rem;
   color: #6a737c;
-  margin-left: 1.2rem;
+  padding: 0 1.2rem;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
 `;
 
 const RelatedWrapper = styled.div`
+    margin: 1.6rem 0;
+
   > h4 {
     color: hsl(210deg 8% 25%);
     font-size: 1.9rem;
@@ -96,7 +106,7 @@ const SideInfoWidgetContainer = styled.div`
   box-shadow: 0 0.1rem 0.2rem hsla(0,0%,0%,0.05), 
   0 0.1rem 0.4rem hsla(0, 0%, 0%, 0.05), 
   0 0.2rem 0.8rem hsla(0, 0%, 0%, 0.05);
-  
+  width: 29.8rem;
 `;
 
 const SideInfoWidgetHeader = styled.div`
@@ -110,7 +120,22 @@ const SideInfoWidgetHeader = styled.div`
 `;
 
 const SideInfoWidgetContent = styled.div`
-  
+  > ul {
+    list-style-type: disc;
+    list-style-position : inside ;
+
+    > li {
+      margin: 1.2rem;
+      padding: 0 1.6rem;
+
+      > a {
+        font-size: 1.3rem;
+        color: hsl(210deg 8% 25%);
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
 `;
 
 export const MainRightTagBasic = () => {
@@ -129,8 +154,14 @@ export const MainRightTagInput = () => {
     <TagContainer>
       <TagHeader>Ignored Tags</TagHeader>
       <TagContent>
-        <Input />
-        <Button buttonType='type2' buttonName='Add' />
+        <Input 
+          width='22.25rem'
+        />
+        <Button 
+          buttonType='type2' 
+          buttonName='Add'
+          width='4.65rem'
+        />
       </TagContent>
     </TagContainer>
   )
@@ -139,7 +170,7 @@ export const MainRightTagInput = () => {
 export const MainRightTagAdded = () => {
   return (
     <TagContainer>
-      <div>
+      <div className='tagAddedHeader'>
         <TagHeader>Ignored Tags</TagHeader>
         <EditButton>edit</EditButton>
       </div>
@@ -182,7 +213,11 @@ export const MainRightSideInfoWidget = (props) => {
       <SideInfoWidgetHeader>{props.title}</SideInfoWidgetHeader>
       <SideInfoWidgetContent>
         <ul>
-          <li></li>
+          {props.contents.map((el, idx) => {
+            return (
+              <li key={idx}><a href={el.link}>{el.item}</a></li>
+            )
+          })}
         </ul>
       </SideInfoWidgetContent>
     </SideInfoWidgetContainer>

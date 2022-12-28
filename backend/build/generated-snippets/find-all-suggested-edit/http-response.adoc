@@ -1,0 +1,32 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 527
+
+[ {
+  "editId" : 1,
+  "title" : "TempEdit1",
+  "boardId" : 1,
+  "editorId" : 1,
+  "body" : "Body of TempEdit1",
+  "tags" : [ "tag1", "tag211" ],
+  "editStatus" : "처리중"
+}, {
+  "editId" : 2,
+  "title" : "TempEdit2",
+  "boardId" : 2,
+  "editorId" : 2,
+  "body" : "Body of TempEdit2",
+  "tags" : [ "tag2", "tag221" ],
+  "editStatus" : "처리중"
+}, {
+  "editId" : 3,
+  "title" : "TempEdit3",
+  "boardId" : 3,
+  "editorId" : 3,
+  "body" : "Body of TempEdit3",
+  "tags" : [ "tag3", "tag231" ],
+  "editStatus" : "처리중"
+} ]
+----

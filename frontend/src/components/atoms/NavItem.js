@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const NavItemStyled = styled.li`
 
@@ -44,8 +44,16 @@ const NavItemStyled = styled.li`
 // type1 - 주황색 배경
 // type2 - 회색 배경
 // type3 - 하얀색 배경
-export const NavItem = (props) => 
-{
+export const NavItem = (props) => {
+  const activeBar = ({ isActive }) =>
+    isActive 
+    ? {
+      backgroundColor: props.activeBg,
+      color: props.activeColor,
+      fontWeight: props.activeFontWg,
+    } 
+    : {};
+
   return (
     <NavItemStyled 
       className={props.NavItemType}
@@ -55,6 +63,6 @@ export const NavItem = (props) =>
       margin={props.margin}
       fontSize={props.fontSize}
       fontWeight={props.fontWeight}
-    ><Link to={props.NavTo}>{props.NavItemName}</Link></NavItemStyled>
+    ><NavLink to={props.NavTo} style={activeBar} >{props.NavItemName}</NavLink></NavItemStyled>
   )
 };
