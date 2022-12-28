@@ -63,6 +63,6 @@ export const NavItem = (props) => {
       margin={props.margin}
       fontSize={props.fontSize}
       fontWeight={props.fontWeight}
-    ><NavLink to={props.NavTo} style={activeBar} >{props.NavItemName}</NavLink></NavItemStyled>
+    ><NavLink to={props.NavTo} style={activeBar} end={props.NavEnd} >{props.NavItemName}</NavLink></NavItemStyled>
   )
 };

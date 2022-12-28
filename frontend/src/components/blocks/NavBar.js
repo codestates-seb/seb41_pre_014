@@ -98,7 +98,7 @@ export const LeftNavBar = () => {
                 </StyledNavHome>
                 <StyledNavPublic>
                   <p>PUBLIC</p>
-                  <div><NavLink to='/board' style={activeBar}>Questions</NavLink></div>
+                  <div><NavLink to='/questions' style={activeBar}>Questions</NavLink></div>
                   <div><NavLink to='/users' style={activeBar}>Users</NavLink></div>
                 </StyledNavPublic>
               </StyledLeftNavContainer>
@@ -110,53 +110,34 @@ export const LeftNavBar = () => {
   
 };
 
-const StyledUlType1 = styled.ul`
+const StyledMainNavBar = styled.ul`
   display: flex;
   list-style: none;
-  padding-left: 0rem;
+  flex-direction: row;
+  width: 100%;
   gap: 0.4rem;
 `
-const StyledLiType1 = styled.li`
-  font-size: 1.3rem;
-  color: #525960;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10rem;
-  &:hover {
-    background-color: #d6d9dc;
-  };;
-  &.selected {
-    background-color: #f48225;
-    color: #ffffff;
-      &:hover {
-        background-color: #da680b;
-      };;
-  }
-`
 // UserDetail 페이지 Main 상단 네비게이션
-export const MainNavBar = () => {
-
-  const navItems = [
-    {name: 'Profile'},
-    {name: 'Activity'},
-    {name: 'Settings'}
-  ]
-  
-  const [ isSelected, setSelected ] = useState(0);
-  
-  const handleSelect = (index) => {
-    setSelected(index)
-  }
+export const MainNavBar = (props) => {
   
   return (
     <div>
-      <StyledUlType1>
-        {navItems.map((el,index)=>{
-          return <StyledLiType1 
-          onClick={()=>handleSelect(index)} 
-          className={`${index === isSelected ? 'selected' : ''}`} 
-          key={index}>{el.name}</StyledLiType1>
+      <StyledMainNavBar>
+        {props.navItems.map((el,index)=>{
+          return (
+          <NavItem 
+            key={index}
+            NavItemName={el.name}
+            NavTo={el.to}
+            width={props.width || '100%'}
+            padding={props.padding || '0.6rem 1.2rem'}
+            activeBg={props.activeBg || '#F48225'}
+            activeColor={props.activeColor || '#FFF'}
+            fontSize='1.3rem'
+          />
+          )
         })}
-      </StyledUlType1>
+      </StyledMainNavBar>
     </div>
   );
 };
@@ -181,12 +162,13 @@ export const MainLeftNavBar = (props) => {
   return (
     <nav>
       <StyledMainLeftNavBar>
-        {props.NavItems.map((el,index)=>{
+        {props.navItems.map((el,index)=>{
           return (
             <NavItem
               key={index}
               NavItemName={el.name}
               NavTo={el.to}
+              NavEnd={el.end}
               width={props.width || '12.61rem'}
               padding={props.padding || '0.6rem 4.8rem 0.6rem 1.2rem'}
               activeBg={props.activeBg || '#F1F2F3'}

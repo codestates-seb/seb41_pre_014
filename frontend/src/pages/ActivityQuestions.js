@@ -13,13 +13,17 @@ const ActivityQuestions = () => {
       buttonName: "Newest",
       onClick: () => {console.log('작성일이 빠른 순으로 정렬')},
     },
+    {
+      buttonName: "Views",
+      onClick: () => {console.log('조회수가 많은 순으로 정렬')},
+    },
   ];
 
   return (
     <StyledActivityQuestions>
       <StyledAQTitle>
         <StyledAQTitleLeft>
-          <h2>1,158 Answers</h2>
+          <h2>34 Answers</h2>
         </StyledAQTitleLeft>
         <FilterButtonWrapper 
           filterData={filterData}
@@ -30,7 +34,7 @@ const ActivityQuestions = () => {
       <StyledAQContents>
         <StyledAQContent>
           <StyledAQContMeta>
-            <QuestionMetaInfoWrapperH />
+            <QuestionMetaInfoWrapperH activityType='Question' />
           </StyledAQContMeta>
           <QuestionInfoWrapperUserPage title='Javascript에 대해서 알려주세요' />
         </StyledAQContent>
