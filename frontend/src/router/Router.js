@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux';
 
 import { 
   HomeLoginBoard,
+  QuestionHomeLoginBoard,
   QuestionBoard,
   Detail,
   QuestionEdit,
+  AnswerQuestionEdit,
   AnswerEdit,
   EditRequest,
   Home,
@@ -20,7 +22,14 @@ import {
   ActivityTags,
   ActivityFollowing,
   ActivityVotes,
+  UserActivity,
+  ActivityQuestions,
+  ActivityAnswers,
+  ActivityTags,
+  ActivityFollowing,
+  ActivityVotes,
   Write,
+  NotFound,
   NotFound
 } from '../pages';
 
@@ -31,7 +40,8 @@ export const Router = () => {
     <>
       <Suspense fallback={<div>loading...</div>}>
         <Routes>
-          <Route path='/' element={loginStatus ? <HomeLoginBoard /> : <Home />}></Route>
+          <Route path='/' element={loginStatus ? <HomeLoginBoard /> : loginStatus ? <HomeLoginBoard /> : <Home />}></Route>
+
 
           <Route path='/users' element={<Users />}></Route>
           <Route path='/users/login' element={<Login />}></Route>
@@ -62,7 +72,6 @@ export const Router = () => {
           <Route path='/posts/:detailId' element={<AnswerEdit />}></Route>
           <Route path='/posts/:detailId/editrequest' element={<EditRequest />}></Route>
           
-          <Route path='temporary' element={<UserActivity />}></Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </Suspense>

@@ -82,6 +82,7 @@ export const DropdownNavBar = (props) => {
       position={props.position}
       top={props.top}
       left={props.left}
+      onClick={() => props.setLeftMenuOpen(false)}
     >
       <StyledDropdownNavContainer>
         <StyledDropdownNavContainer>
@@ -96,18 +97,5 @@ export const DropdownNavBar = (props) => {
         </StyledDropdownNavContainer>
       </StyledDropdownNavContainer>
     </StyledDropdownNavBar>
-  )
-};
-
-
-const StyledGeneralNavContainer = styled.nav`
-
-`;
-
-export const GeneralNavBar = () => {
-  return (
-    <StyledGeneralNavContainer>
-
-    </StyledGeneralNavContainer>
   )
 };

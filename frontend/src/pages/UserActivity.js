@@ -5,6 +5,7 @@ import styled from "styled-components";
 const StyledUserActivity = styled.div`
   display:flex;
   margin-bottom: 4.8rem;
+  height: 100%;
 
   & > nav {
     margin-right: 3.2rem;

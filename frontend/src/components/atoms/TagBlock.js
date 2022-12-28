@@ -6,6 +6,14 @@ const StyledTagBlock = styled.div`
   align-items: center;
   background-color: #E1ECF4;
   color: #39739D;
+  padding: 0.48rem 0.6rem;
+  border: 1px solid transparent;
+  margin: 0 0.2rem 0.2rem 0;
+  border-radius: 0.3rem;
+  
+  & > div {
+    font-size: 1.2rem;
+  }
 `;
 
 export const TagBlock = (props) => {
