@@ -13,18 +13,18 @@ const StyledUserActivity = styled.div`
 `;
 
 const UserActivity = () => {
-  const NavItems = [
-    {name: 'Answers', to: `answers`},
+  const navItems = [
+    {name: 'Answers', to: ``, end: true},
     {name: 'Questions', to: `questions`},
-    {name: 'Tags', to: `tags`},
+    // {name: 'Tags', to: `tags`},
     {name: 'Following', to: `following`},
     // {name: 'Reputation', to: `reputation`},
-    {name: 'Votes', to: `votes`}
+    // {name: 'Votes', to: `votes`}
   ]
   
   return (
     <StyledUserActivity>
-      <MainLeftNavBar NavItems={NavItems} />
+      <MainLeftNavBar navItems={navItems} />
       <Outlet />
     </StyledUserActivity>
   )
