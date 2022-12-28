@@ -119,7 +119,7 @@ const StyledLiType1 = styled.li`
       };
   }
 `
-// User 페이지의 콘텐츠 상단 네비게이션
+// UserDetail 페이지 Main 상단 네비게이션
 export const MainNavBar = () => {
 
   const navItems = [
