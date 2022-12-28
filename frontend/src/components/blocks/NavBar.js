@@ -3,11 +3,20 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { NavItem } from '../atoms/NavItem';
+import { useLocation } from 'react-router-dom';
+
+const StyledLeftNav = styled.div`
+  min-height:inherit;
+  border-right: 1px solid #e5e5e5;
+  margin-right: -1px;
+`;
 
 const StyledLeftNavBar = styled.nav`
   width: 16.4rem;
   padding: 2.4rem 0 0.8rem;
   background-color: #FFF;
+  position:sticky;
+  top: 5rem;
 
   & * {
     font-size:1.3rem;
@@ -62,6 +71,10 @@ const StyledNavPublic = styled.li`
 `;
 
 export const LeftNavBar = () => {
+  const location = useLocation();
+  const currentUrl = location.pathname;
+  const noFooterUrlPathList = ['/users/signup', '/users/login', '/users/logout'];
+
   const activeBar = ({ isActive }) =>
     isActive 
     ? {
@@ -74,27 +87,27 @@ export const LeftNavBar = () => {
 
     const LoginStatus = useSelector(state => state.loginStatus.status);
 
-  return (
-    <>
-      {LoginStatus && (
-        <StyledLeftNavBar
-        >
-          <StyledLeftNavContainer>
+  return (noFooterUrlPathList.includes(currentUrl) || 
+    (!LoginStatus && currentUrl === '/')) || (
+        <StyledLeftNav>
+          <StyledLeftNavBar>
             <StyledLeftNavContainer>
-              <StyledNavHome>
-                <NavLink to='/' style={activeBar}>Home</NavLink>
-              </StyledNavHome>
-              <StyledNavPublic>
-                <p>PUBLIC</p>
-                <div><NavLink to='/board' style={activeBar}>Questions</NavLink></div>
-                <div><NavLink to='/users' style={activeBar}>Users</NavLink></div>
-              </StyledNavPublic>
+              <StyledLeftNavContainer>
+                <StyledNavHome>
+                  <NavLink to='/' style={activeBar}>Home</NavLink>
+                </StyledNavHome>
+                <StyledNavPublic>
+                  <p>PUBLIC</p>
+                  <div><NavLink to='/board' style={activeBar}>Questions</NavLink></div>
+                  <div><NavLink to='/users' style={activeBar}>Users</NavLink></div>
+                </StyledNavPublic>
+              </StyledLeftNavContainer>
             </StyledLeftNavContainer>
-          </StyledLeftNavContainer>
-        </StyledLeftNavBar>
-      )}
-    </>
-  )
+          </StyledLeftNavBar>
+        </StyledLeftNav>
+      )
+    
+  
 };
 
 const StyledUlType1 = styled.ul`
@@ -160,6 +173,8 @@ const StyledMainLeftNavBar = styled.ul`
   list-style: none;
   flex-direction: column;
   width: ${props => props.width || '12.61rem'};
+  position: sticky;
+  top: 5rem;
 `
 
 export const MainLeftNavBar = (props) => {

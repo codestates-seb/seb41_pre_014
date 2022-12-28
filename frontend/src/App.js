@@ -9,15 +9,12 @@ import { store } from "./ducks/store";
 import { LeftNavBar } from "./components/blocks/NavBar";
 
 const StyledMain = styled.main`
-  width: 100%;
   min-height: 100%; 
   min-width: 126.4rem;
+  max-width: 126.4rem;
   margin: 0 auto;
   display:flex;
   justify-content: center;
-`;
-
-const StyledLeftSideBar = styled.div`
 `;
 
 const StyledMainContent = styled.div`
@@ -26,8 +23,7 @@ const StyledMainContent = styled.div`
   padding:2.4rem;
   display:flex;
   flex-direction: column;
-  justify-content: center;
-  /* border-left: 1px solid #F1F2F3; */
+  justify-content: start;
 `;
 
 function App() {  
@@ -36,9 +32,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <StyledMain>
-          <StyledLeftSideBar>
-            <LeftNavBar />
-          </StyledLeftSideBar>
+          <LeftNavBar />
           <StyledMainContent>
             <Router />
           </StyledMainContent>

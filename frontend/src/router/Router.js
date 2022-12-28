@@ -62,7 +62,6 @@ export const Router = () => {
           <Route path='/posts/:detailId' element={<AnswerEdit />}></Route>
           <Route path='/posts/:detailId/editrequest' element={<EditRequest />}></Route>
           
-          <Route path='temporary' element={<UserActivity />}></Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </Suspense>
