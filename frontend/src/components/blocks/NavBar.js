@@ -118,7 +118,7 @@ const StyledLiType1 = styled.li`
       }
   }
 `
-// User 페이지의 콘텐츠 상단 네비게이션
+// UserDetail 페이지 Main 상단 네비게이션
 export const MainNavBar = () => {
 
   const navItems = [
@@ -166,7 +166,7 @@ const StyledLiType2 = styled(StyledLiType1)`
   }
 `
 
-// User 페이지의 Profile/Activity 콘텐츠 좌측 내비게이션
+// UserDetail Activity 페이지 Main 좌측 네비게이션
 export const MainLeftNavBar = () => {
   
   const mainLeftNavItems = [
@@ -202,7 +202,7 @@ export const StyledUlType3 = styled(StyledUlType2)`
   width: 33.1rem;
 `
 
-// User 페이지의 Settings 좌측 내비게이션
+// UserDetail Settings 페이지 Main 좌측 네비게이션
 export const MainLeftNavBar2 = () => {
   
   const mainLeftNavItems = [
