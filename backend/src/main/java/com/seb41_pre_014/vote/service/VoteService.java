@@ -40,6 +40,7 @@ public class VoteService {
         return voteRepository.findAll(Sort.by("voteId").descending());
     }
 
+    @Transactional
     public void deleteVote(Long voteId) {
         findVerifiedVote(voteId);
         voteRepository.deleteById(voteId);

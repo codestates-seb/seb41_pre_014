@@ -66,6 +66,4 @@ public class SuggestedEditController {
                 .editStatus("처리중")
                 .build();
     }
-
-
 }
