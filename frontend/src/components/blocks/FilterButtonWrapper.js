@@ -37,7 +37,9 @@ export const FilterButtonWrapper = (props) => {
           <StyledButton 
             key={idx}
             className={ btnActive === idx && 'active' }
-            onClick={() => ButtonEventHandler(idx, el.onClick)} 
+            onClick={() => ButtonEventHandler(idx, el.onClick)}
+            padding={props.padding}
+            fontSize={props.fontSize}
           >{el.buttonName}</StyledButton>
         )
       })}
@@ -46,7 +48,6 @@ export const FilterButtonWrapper = (props) => {
 };
 
 const StyledButtonWrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
 
@@ -65,12 +66,12 @@ const StyledButtonWrapper = styled.div`
 `;
 
 const StyledButton = styled.div`
-  font-size: 1.3rem;
   color: #6A737C;
   border: 1px solid hsl(210,8%,65%);
-  padding: 1.04rem;
   margin-right: -0.1rem;
   cursor: pointer;
+  font-size: ${props => props.fontSize || '1.3rem'};
+  padding: ${props => props.padding || '1.04rem'};
 
   &:hover {
     background-color: hsl(210deg 8% 98%);
@@ -79,5 +80,6 @@ const StyledButton = styled.div`
   &.active {
     background-color: hsl(210deg 8% 90%);
     border-color: hsl(210deg 8% 55%);
+    color: #3B4045;
   };
 `;
