@@ -42,7 +42,7 @@ public class Member extends BaseTimeEntity {
     private String twitterLink;
     private String githubLink;
     private String profileImageUrl;
-    private MemberStatus memberStatus;
+    private MemberStatus memberStatus = MemberStatus.MEMBER_ACTIVE;
     private int reputation = 0;
     private int questions = 0;
     private int answers = 0;
@@ -58,6 +58,10 @@ public class Member extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Vote> votes = new ArrayList<>();
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
 
     public enum MemberStatus {
         MEMBER_ACTIVE("활동중"),
