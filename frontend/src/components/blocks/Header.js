@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from 'react-redux';
@@ -115,6 +115,9 @@ const StyledIconBox = styled.div`
 `;
 
 export const Header = () => {
+  const location = useLocation();
+  const currentUrl = location.pathname;
+
   const [ isleftMenuOpen, setLeftMenuOpen ] = useState(false);
   const leftMenuEventHandler = () => {
     setLeftMenuOpen(!isleftMenuOpen);
@@ -164,18 +167,19 @@ export const Header = () => {
       </StyeldHeader>
       : <StyeldHeader>
           <StyledHeaderContainer>
-            <StyledIconBox width='4.8rem' onClick={leftMenuEventHandler}>
+            {currentUrl === '/' && <StyledIconBox width='4.8rem' onClick={leftMenuEventHandler}>
               {isleftMenuOpen 
                 ? <FontAwesomeIcon icon={faXmark} /> 
                 : <FontAwesomeIcon icon={faBars} />
               }
-            </StyledIconBox>
+            </StyledIconBox>}
             {isleftMenuOpen && 
               <DropdownNavBar 
                 position='absolute' 
                 top='4.7rem' 
                 left='0rem' 
                 zIndex='999'
+                setLeftMenuOpen={setLeftMenuOpen}
               />
             }
             <StyledLogoIcon>
