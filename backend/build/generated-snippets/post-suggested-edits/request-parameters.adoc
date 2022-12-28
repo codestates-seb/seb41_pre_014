@@ -1,0 +1,10 @@
+|===
+|Parameter|Description
+
+|`+memberId+`
+|수정을 제안하는 Member 인덱스
+
+|`+boardId+`
+|수정하려는 Board 인덱스
+
+|===

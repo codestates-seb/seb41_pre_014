@@ -26,7 +26,7 @@ const MainRight = styled.div`
   padding-left: 2.4rem;
 `;
 
-export const AnswerEdit = (props) => {
+const AnswerEdit = (props) => {
   return (
     <>
       <Header />
@@ -62,3 +62,5 @@ export const AnswerEdit = (props) => {
     </>
   )
 };
+
+export default AnswerEdit;

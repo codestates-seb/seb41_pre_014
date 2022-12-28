@@ -1,0 +1,8 @@
+.+/tags/{tag-id}+
+|===
+|Parameter|Description
+
+|`+tag-id+`
+|Tag 인덱스
+
+|===

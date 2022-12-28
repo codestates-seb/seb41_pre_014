@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/suggested-edits?page=1&size=10' \
+    'Accept:application/json'
+----

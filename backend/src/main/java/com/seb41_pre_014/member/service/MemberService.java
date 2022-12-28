@@ -25,11 +25,13 @@ public class MemberService {
     private final CustomBeanUtils<Member> beanUtils;
     private final BoardRepository boardRepository;
 
+    @Transactional
     public Member createMember(Member member) {
         verfiyExistMember(member.getEmail());
         return memberRepository.save(member);
     }
 
+    @Transactional
     public Member updateMember(Member member) {
         Member findMember = findVerifiedMember(member.getMemberId());
         return beanUtils.copyNonNullProperties(member, findMember);    }
@@ -45,7 +47,7 @@ public class MemberService {
 
     public Page<Board> findQuestionsOrAnswersByMember(Long writerMemberId, Board.BoardType boardType, int page, int size) {
         findVerifiedMember(writerMemberId);
-        return boardRepository.findAllByWriterMemberIdAndBoardType(writerMemberId, boardType,
+        return boardRepository.findAllByMemberMemberIdAndBoardType(writerMemberId, boardType,
                 PageRequest.of(page - 1, size, Sort.by("boardId").descending()));
     }
 
@@ -59,6 +61,12 @@ public class MemberService {
         findVerifiedMember(memberId);
         return boardRepository.findAllByVotesMemberMemberId(memberId,
                 PageRequest.of(page - 1, size, Sort.by("boardId").descending()));
+    }
+
+    @Transactional
+    public void deleteMember(Long memberId) {
+        findVerifiedMember(memberId);
+        memberRepository.deleteById(memberId);
     }
 
     public void verfiyExistMember(String email) {

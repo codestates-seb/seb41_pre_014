@@ -123,16 +123,16 @@ const StyledLiType1 = styled.li`
   border-radius: 10rem;
   &:hover {
     background-color: #d6d9dc;
-  };
+  };;
   &.selected {
     background-color: #f48225;
     color: #ffffff;
       &:hover {
         background-color: #da680b;
-      };
+      };;
   }
 `
-// User 페이지의 콘텐츠 상단 네비게이션
+// UserDetail 페이지 Main 상단 네비게이션
 export const MainNavBar = () => {
 
   const navItems = [

@@ -1,0 +1,32 @@
+|===
+|Path|Type|Description
+
+|`+editId+`
+|`+Number+`
+|SuggestedEdit 인덱스
+
+|`+boardId+`
+|`+Number+`
+|수정하려는 Board 인덱스
+
+|`+editorId+`
+|`+Number+`
+|수정을 제안하는 Member 인덱스
+
+|`+title+`
+|`+String+`
+|제목
+
+|`+body+`
+|`+String+`
+|내용
+
+|`+tags+`
+|`+Array+`
+|태그
+
+|`+editStatus+`
+|`+String+`
+|수정 제안서 상태 : Pending / Accepted / Rejected
+
+|===

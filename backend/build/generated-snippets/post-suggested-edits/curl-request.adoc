@@ -1,0 +1,11 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/suggested-edits?memberId=1&boardId=1' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Accept: application/json' \
+    -d '{
+  "title" : "Length of title must be more than 15",
+  "body" : "Length of body must be more than 20",
+  "tags" : [ "tag1", "tag2" ]
+}'
+----

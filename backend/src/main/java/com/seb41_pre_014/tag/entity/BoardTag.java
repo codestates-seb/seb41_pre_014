@@ -1,12 +1,12 @@
 package com.seb41_pre_014.tag.entity;
 
+import com.seb41_pre_014.board.entity.Board;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -15,7 +15,14 @@ import javax.persistence.Id;
 @Builder
 public class BoardTag {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardTagId; // PK
-    private Long tagId; // Fk
-    private Long boardId; // FK
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TAG_ID")
+    private Tag tag; // Fk
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BOARD_ID")
+    private Board board; // FK
 }

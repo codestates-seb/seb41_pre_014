@@ -1,44 +1,52 @@
 import styled from 'styled-components';
 import { Button } from '../components/atoms/Button';
-import { Header } from '../components/blocks/Header';
-import { Footer } from '../components/blocks/Footer';
-import { LeftNavBar } from '../components/blocks/NavBar';
-import { FilterButtonWrapper } from '../components/blocks/FilterButtonWrapper';
+// import { FilterButtonWrapper } from '../components/blocks/FilterButtonWrapper';
 import { QuestionInfoContainer } from '../components/blocks/QuestionInfoContainer';
-import { MainRightSideInfoWidget, MainRightTagBasic } from '../components/blocks/MainRight';
-import { Page, PerPage } from '../components/blocks/Pagination'
-
-const Body = styled.div`
-  display: flex;
-`;
+import { MainRightSideInfoWidget, MainRightTagAdded, MainRightTagBasic, MainRightTagInput } from '../components/blocks/MainRight';
+// import { Page, PerPage } from '../components/blocks/Pagination'
+import { BoardDetailSideInfoWidgetData } from '../data/staticData/SideBarData';
 
 const Main = styled.div`
   display: flex;
-  padding: 2.4rem;
 `;
 
 const MainLeft = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
 `;
 
 const MainTop = styled.div`
   display: flex;
-  margin-bottom: 1.2rem;
   justify-content: space-between;
+  padding-left: 2.4rem;
+
+  > h1 {
+    margin-bottom: 2.7rem;
+    font-size: 2.7rem;
+  }
 `;
 
 const FilterContainer = styled.div`
   display: flex;
   margin-bottom: 1.2rem;
-  align-items: flex-end;
+  justify-content: space-between;
+  padding-left: 2.4rem;
+
+  > div {
+    display: flex;
+    gap: 1.2rem;
+
+    > span {
+      font-size: 1.7rem;
+      color: #232629;
+    }
+  }  
 `;
 
-const Pagination = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+// const Pagination = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+// `;
 
 const MainRight = styled.div`
   display: flex;
@@ -47,36 +55,62 @@ const MainRight = styled.div`
   padding-left: 2.4rem;
 `;
 
-export const QuestionBoard = () => {
+const QuestionBoard = ({questions}) => {
   return (
     <>
-      <Header />
-      <Body>
-        <LeftNavBar />
         <Main>
           <MainLeft>
             <MainTop>
               <h1>All Questions</h1>
-              <Button buttonType='type2' />
+              <Button
+                buttonType='type2'
+                buttonName='Ask Question'
+                width='9.87rem'
+              />
             </MainTop>
             <FilterContainer>
-              <FilterButtonWrapper />
+              <div>
+                {/* <span>{questions.length}</span> */}
+                <span>questions</span>
+              </div>
+              {/* <FilterButtonWrapper /> */}
             </FilterContainer>
-            <ul>
-              {/* <QuestionInfoContainer /> */}
-            </ul>
-            <Pagination>
+            
+            {/* {questions.map((el, idx) => {
+              <QuestionInfoContainer
+                title={el.title}
+                content={el.content}
+                votes={el.votes}
+                answers={el.answers}
+                views={el.views}
+              />
+            })} */}
+
+            <QuestionInfoContainer />
+            <QuestionInfoContainer />
+            <QuestionInfoContainer />
+
+            {/* <Pagination>
               <Page />
               <PerPage />
-            </Pagination>
+            </Pagination> */}
           </MainLeft>
           <MainRight>
-            <MainRightSideInfoWidget />
+            {BoardDetailSideInfoWidgetData.map((el) => {
+                return (
+                  <MainRightSideInfoWidget 
+                    title={el.title}
+                    contents={el.contents} 
+                  />
+                )
+              })}
             <MainRightTagBasic />
+            <MainRightTagAdded />
+            <MainRightTagInput />
           </MainRight>
         </Main>
-      </Body>
-      <Footer />
     </>
   )
 };
+
+export default QuestionBoard;

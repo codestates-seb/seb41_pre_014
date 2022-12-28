@@ -1,12 +1,12 @@
 package com.seb41_pre_014.tag.entity;
 
+import com.seb41_pre_014.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -16,6 +16,12 @@ import javax.persistence.Id;
 public class MemberTag {
     @Id
     private Long memberTagId; // PK
-    private Long tagId; // Fk
-    private Long memberId; // FK
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TAG_ID")
+    private Tag tag; // Fk
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member; // FK
 }

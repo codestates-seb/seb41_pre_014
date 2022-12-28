@@ -1,3 +1,4 @@
+// todo:tag, usermeta
 import styled from 'styled-components';
 import { UserMetaInfoType1 } from './UserInfoContainer';
 import { Link } from 'react-router-dom';
@@ -7,6 +8,8 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const QuestionWrapper = styled.div`
   display: flex;
+  border-top: 0.1rem solid hsl(210deg 8% 90%);
+  padding: 1.6rem;
 `;
 
 const QuestionMetaInfo = styled.div`
@@ -20,33 +23,86 @@ const QuestionMetaInfo = styled.div`
   margin: 0 1.6rem 0 0;
 `;
 
+const QuestionHorizontalMetaInfo = styled.div`
+  display: flex;
+  align-items: flex-end;
+  width: 10.8rem;
+  gap: 0.6rem;
+  color: #525960;
+  margin: 0 1.6rem 0 0;
+`;
+
+const QuestionInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 59.5rem;
+
+  > h3 {
+    padding-right: 2.4rem;
+    margin-bottom: 0.5rem;
+
+    > a {
+      word-break: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      color: hsl(206deg 100% 40%);
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 1.7rem;
+    }
+  }
+`;
+
 const CustomDiv = styled.div`
   display: flex;
   gap: 0.3rem;
 `;
 
 const VoteAnswerView = styled(CustomDiv)`
-
+  > span {
+    font-size: 1.3rem;
+  }
 `;
 
-export const QuestionMetaInfoWrapper = ({votes, answers, views}) => {
+export const QuestionMetaInfoWrapper = (props) => {
   return (
     <QuestionMetaInfo>
       <VoteAnswerView>
-        <span>{votes}</span>
+        <span>{props.votes}</span>
         <span>votes</span>
       </VoteAnswerView>
       <VoteAnswerView>
-        <span>{answers}</span>
+        <span>{props.answers}</span>
         <span>answers</span>
       </VoteAnswerView>
       <VoteAnswerView>
-        <span>{views}</span>
+        <span>{props.views}</span>
         <span>views</span>
       </VoteAnswerView>
     </QuestionMetaInfo>
   )
 };
+
+export const QuestionHorizontalMetaInfoWrapper = (props) => {
+  return (
+    <QuestionHorizontalMetaInfo>
+      <VoteAnswerView>
+        <span>{props.votes}</span>
+        <span>votes</span>
+      </VoteAnswerView>
+      <VoteAnswerView>
+        <span>{props.answers}</span>
+        <span>answers</span>
+      </VoteAnswerView>
+      <VoteAnswerView>
+        <span>{props.views}</span>
+        <span>views</span>
+      </VoteAnswerView>
+    </QuestionHorizontalMetaInfo>
+  )
+};
+
 
 const QuestionMetaInfoH = styled.div`
   width: auto;
@@ -151,7 +207,7 @@ export const QuestionMetaInfoWrapperH = (props) => {
   )
 };
 
-const QuestionInfo = styled.div`
+const QuestionInfoUser = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -181,6 +237,12 @@ const QuestionContent = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
+  color: hsl(210deg 8% 25%);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  font-size: 1.3rem;
 `;
 
 const TagAndUserMeta = styled.div`
@@ -221,17 +283,25 @@ export const QuestionInfoWrapper = (props) => {
             <li><TagBlock tagName='React' /></li>
           </ul>
         </Tag>
+        {/* todo: props */}
         <UserMetaInfoType1 />
       </TagAndUserMeta>
     </QuestionInfo>
   )
 };
 
-export const QuestionInfoContainer = () => {
+export const QuestionInfoContainer = (props) => {
   return (
     <QuestionWrapper>
-      <QuestionMetaInfoWrapper />
-      <QuestionInfoWrapper />
+      <QuestionMetaInfoWrapper
+        votes={props.votes}
+        answers={props.answers}
+        views={props.views}
+      />
+      <QuestionInfoWrapper
+        title={props.title}
+        content={props.content}
+      />
     </QuestionWrapper>
   )
 }
@@ -243,7 +313,7 @@ const CreateDate = styled.div`
 
 export const QuestionInfoWrapperUserPage = (props) => {
   return (
-    <QuestionInfo>
+    <QuestionInfoUser>
       <h3>
         <Link to={`/questions/:${props.detailId}`} >
           {props.title}
@@ -263,6 +333,6 @@ export const QuestionInfoWrapperUserPage = (props) => {
           {props.QnA === 'A' ? 'answerd' : 'asked'} {props.date}
         </CreateDate>
       </TagAndUserMeta>
-    </QuestionInfo>
+    </QuestionInfoUser>
   )
 };
