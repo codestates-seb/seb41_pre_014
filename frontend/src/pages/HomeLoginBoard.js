@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../components/atoms/Button';
-// import { FilterButtonWrapper } from '../components/blocks/FilterButtonWrapper';
+import { FilterButtonWrapper } from '../components/blocks/FilterButtonWrapper';
 import { QuestionInfoContainer } from '../components/blocks/QuestionInfoContainer';
 import { MainRightSideInfoWidget, MainRightTagBasic } from '../components/blocks/MainRight';
 import { BoardDetailSideInfoWidgetData } from '../data/staticData/SideBarData';
@@ -28,7 +28,7 @@ const MainTop = styled.div`
 const FilterContainer = styled.div`
   display: flex;
   margin-bottom: 1.2rem;
-  align-items: flex-end;
+  justify-content: flex-end;
 `;
 
 const MainRight = styled.div`
@@ -36,6 +36,25 @@ const MainRight = styled.div`
   flex-direction: column;
   padding-left: 2.4rem;
 `;
+
+const filterData = [
+  {
+    buttonName : "Newest",
+    onClick : () => {console.log('button1')},
+  },
+  {
+    buttonName : "Unanswered",
+    onClick : () => {console.log('button2')},
+  },
+  {
+    buttonName : "Frequent",
+    onClick : () => {console.log('button3')},
+  },
+  {
+    buttonName : "Score",
+    onClick : () => {console.log('button3')},
+  }
+];
 
 const HomeLoginBoard = ({questions}) => {
   return (
@@ -51,7 +70,7 @@ const HomeLoginBoard = ({questions}) => {
               />
             </MainTop>
             <FilterContainer>
-              {/* <FilterButtonWrapper /> */}
+              <FilterButtonWrapper filterData={filterData} />
             </FilterContainer>
 
             {/* {questions.map((el, idx) => {

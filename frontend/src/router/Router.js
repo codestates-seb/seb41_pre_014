@@ -22,15 +22,8 @@ import {
   ActivityTags,
   ActivityFollowing,
   ActivityVotes,
-  UserActivity,
-  ActivityQuestions,
-  ActivityAnswers,
-  ActivityTags,
-  ActivityFollowing,
-  ActivityVotes,
   Write,
   NotFound,
-  NotFound
 } from '../pages';
 
 export const Router = () => {
@@ -71,7 +64,7 @@ export const Router = () => {
           {/* answer에도 고유한 Id값이 있어야 겠는데? */}
           <Route path='/posts/:detailId' element={<AnswerEdit />}></Route>
           <Route path='/posts/:detailId/editrequest' element={<EditRequest />}></Route>
-          
+
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </Suspense>

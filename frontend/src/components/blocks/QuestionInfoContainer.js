@@ -16,7 +16,6 @@ const QuestionMetaInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 10.8rem;
   gap: 0.6rem;
   color: #525960;
   margin: 0 1.6rem 0 0;
@@ -25,7 +24,6 @@ const QuestionMetaInfo = styled.div`
 const QuestionHorizontalMetaInfo = styled.div`
   display: flex;
   align-items: flex-end;
-  width: 10.8rem;
   gap: 0.6rem;
   color: #525960;
   margin: 0 1.6rem 0 0;
@@ -34,7 +32,7 @@ const QuestionHorizontalMetaInfo = styled.div`
 const QuestionInfo = styled.div`
   display: flex;
   flex-direction: column;
-  width: 59.5rem;
+  /* width: 59.5rem; */
 
   > h3 {
     padding-right: 2.4rem;
@@ -282,7 +280,6 @@ export const QuestionInfoWrapper = (props) => {
             <li><TagBlock tagName='React' /></li>
           </ul>
         </Tag>
-        {/* todo: props */}
         <UserMetaInfoType1 />
       </TagAndUserMeta>
     </QuestionInfo>
