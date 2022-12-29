@@ -216,8 +216,7 @@ const Write = () => {
             </ButtonWrapper>
           </MainLeft>
           <MainRight>
-            {/* input focus */}
-            <MainRightSideInfoWidget />
+            {/* <MainRightSideInfoWidget /> */}
           </MainRight>
         </MainLeftRightWrapper>
       </Main>
