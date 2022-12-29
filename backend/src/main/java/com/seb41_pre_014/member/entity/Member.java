@@ -33,6 +33,9 @@ public class Member extends BaseTimeEntity {
 
     private String displayName;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
+
     // Embedded 애너테이션으로 리팩토링 예정
     private String fullName;
     private String location;
@@ -42,7 +45,7 @@ public class Member extends BaseTimeEntity {
     private String twitterLink;
     private String githubLink;
     private String profileImageUrl;
-    private MemberStatus memberStatus;
+    private MemberStatus memberStatus = MemberStatus.MEMBER_ACTIVE;
     private int reputation = 0;
     private int questions = 0;
     private int answers = 0;
@@ -58,6 +61,22 @@ public class Member extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Vote> votes = new ArrayList<>();
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String encryptedPassword) {
+        this.password = encryptedPassword;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 
     public enum MemberStatus {
         MEMBER_ACTIVE("활동중"),

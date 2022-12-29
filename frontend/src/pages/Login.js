@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-import { useform } from 'react-hook-form';
-
+import { useForm } from 'react-hook-form';
 import { Button, SNSLoginButton } from '../components/atoms/Button'; 
+import { useDispatch } from 'react-redux';
+import { loginStatusSlice, asyncUserInfo } from "../ducks/slice";
+
 
 const StyledLogin = styled.div`
   width: inherit;
@@ -127,6 +129,14 @@ const Login = () => {
     navigate('/');
   }
 
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
+  const loginbuttonClick = (data) => {
+    dispatch(asyncUserInfo(data));
+    dispatch(loginStatusSlice.login());
+    navigate('/');
+  };
+
   return (
     <StyledLogin>
       <StyledLoginContainer>
@@ -147,16 +157,17 @@ const Login = () => {
             buttonName='Log in with Facebook' 
           />
         </SNSLoginButtonWrapper>
-        <LoginFormWrapper>
+        <LoginFormWrapper onSubmit={handleSubmit(data => loginbuttonClick(data))}>
           <div>
             <label htmlFor='email'>Email</label>
-            <input id='email'></input>
+            <input id='email' {...register('email')} />
           </div>
           <div>
             <label htmlFor='password'>Password</label>
-            <input id='password'></input>
+            <input id='password' {...register('password')} />
           </div>
-          <Button 
+          <Button
+            buttonFunctionType='submit'
             buttonType='type2' 
             buttonName='Log in' 
             width='100%'

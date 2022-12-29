@@ -91,7 +91,7 @@ export const DropdownNavBar = (props) => {
           </StyledNavHome>
           <StyledNavPublic>
             <p>PUBLIC</p>
-            <div><NavLink to='/board' style={activeBar}>Questions</NavLink></div>
+            <div><NavLink to='/questions' style={activeBar}>Questions</NavLink></div>
             <div><NavLink to='/users' style={activeBar}>Users</NavLink></div>
           </StyledNavPublic>
         </StyledDropdownNavContainer>

@@ -6,14 +6,19 @@ import com.seb41_pre_014.exception.BusinessLogicException;
 import com.seb41_pre_014.exception.ExceptionCode;
 import com.seb41_pre_014.member.entity.Member;
 import com.seb41_pre_014.member.repository.MemberRepository;
+import com.seb41_pre_014.tag.entity.Tag;
+import com.seb41_pre_014.tag.repository.TagRepository;
+import com.seb41_pre_014.util.CustomAuthorityUtils;
 import com.seb41_pre_014.util.CustomBeanUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,10 +29,22 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final CustomBeanUtils<Member> beanUtils;
     private final BoardRepository boardRepository;
+    private final TagRepository tagRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final CustomAuthorityUtils authorityUtils;
 
     @Transactional
     public Member createMember(Member member) {
         verfiyExistMember(member.getEmail());
+
+        // Password 암호화
+        String encryptedPassword = passwordEncoder.encode(member.getPassword());
+        member.setPassword(encryptedPassword);
+
+        // DB에 User Role 저장
+        List<String> roles = authorityUtils.createRoles(member.getEmail());
+        member.setRoles(roles);
+
         return memberRepository.save(member);
     }
 
@@ -49,6 +66,12 @@ public class MemberService {
         findVerifiedMember(writerMemberId);
         return boardRepository.findAllByMemberMemberIdAndBoardType(writerMemberId, boardType,
                 PageRequest.of(page - 1, size, Sort.by("boardId").descending()));
+    }
+
+    public Page<Tag> findTagsByMember(Long memberId, int page, int size) {
+        findVerifiedMember(memberId);
+        return tagRepository.findAllByMemberTagMemberMemberId(memberId,
+                PageRequest.of(page - 1, size, Sort.by("tagId").descending()));
     }
 
     public Page<Board> findBoardsByBookmark(Long memberId, int page, int size) {

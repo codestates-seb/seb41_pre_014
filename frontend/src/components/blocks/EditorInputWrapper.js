@@ -32,13 +32,13 @@ export const InputLabel = (props) => {
 };
 
 
-export const EditorInput = () => {
+export const EditorInput = (props) => {
   return (
     <>
       <Editor 
         previewStyle='vertical'
         height='30rem'
-        toolbarItems={[
+        toolbarItems={props.toolbarItems || [
           ['heading', 'bold', 'italic', 'strike'],
           ['hr', 'quote'],
           ['ul', 'ol', 'task', 'indent', 'outdent'],
