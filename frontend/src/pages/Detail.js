@@ -161,7 +161,15 @@ const Detail = (props) => {
               </ul>
               <EditorWrapper>
                 <h2>Your Answer</h2>
-                <EditorInput />
+                <EditorInput 
+                  toolbarItems = {[
+                    ['bold', 'italic'],
+                    ['hr', 'quote'],
+                    ['ul', 'ol', 'indent', 'outdent'],
+                    ['table', 'image', 'link'],
+                    ['code', 'codeblock']
+                  ]}
+                />
                 <Button 
                   buttonType='type2'
                   buttonName='Post Your Answer'

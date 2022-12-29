@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../components/atoms/Button';
-// import { FilterButtonWrapper } from '../components/blocks/FilterButtonWrapper';
+import { FilterButtonWrapper } from '../components/blocks/FilterButtonWrapper';
 import { QuestionInfoContainer } from '../components/blocks/QuestionInfoContainer';
 import { MainRightSideInfoWidget, MainRightTagAdded, MainRightTagBasic, MainRightTagInput } from '../components/blocks/MainRight';
 // import { Page, PerPage } from '../components/blocks/Pagination'
@@ -34,7 +34,7 @@ const FilterContainer = styled.div`
 
   > div {
     display: flex;
-    gap: 1.2rem;
+    align-items: center;
 
     > span {
       font-size: 1.7rem;
@@ -55,6 +55,25 @@ const MainRight = styled.div`
   padding-left: 2.4rem;
 `;
 
+const filterData = [
+  {
+    buttonName : "Newest",
+    onClick : () => {console.log('button1')},
+  },
+  {
+    buttonName : "Unanswered",
+    onClick : () => {console.log('button2')},
+  },
+  {
+    buttonName : "Frequent",
+    onClick : () => {console.log('button3')},
+  },
+  {
+    buttonName : "Score",
+    onClick : () => {console.log('button3')},
+  }
+];
+
 const QuestionBoard = ({questions}) => {
   return (
     <>
@@ -73,7 +92,9 @@ const QuestionBoard = ({questions}) => {
                 {/* <span>{questions.length}</span> */}
                 <span>questions</span>
               </div>
-              {/* <FilterButtonWrapper /> */}
+              <div>
+                <FilterButtonWrapper filterData={filterData} />
+              </div>
             </FilterContainer>
             
             {/* {questions.map((el, idx) => {

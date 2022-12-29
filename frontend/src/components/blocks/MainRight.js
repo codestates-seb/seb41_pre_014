@@ -106,7 +106,7 @@ const SideInfoWidgetContainer = styled.div`
   box-shadow: 0 0.1rem 0.2rem hsla(0,0%,0%,0.05), 
   0 0.1rem 0.4rem hsla(0, 0%, 0%, 0.05), 
   0 0.2rem 0.8rem hsla(0, 0%, 0%, 0.05);
-  width: 29.8rem;
+  width: ${props => props.width || '29.8rem'};
 `;
 
 const SideInfoWidgetHeader = styled.div`
@@ -209,7 +209,7 @@ export const MainRightRelatedQuestions = () => {
 
 export const MainRightSideInfoWidget = (props) => {
   return (
-    <SideInfoWidgetContainer>
+    <SideInfoWidgetContainer width={props.width}>
       <SideInfoWidgetHeader>{props.title}</SideInfoWidgetHeader>
       <SideInfoWidgetContent>
         <ul>

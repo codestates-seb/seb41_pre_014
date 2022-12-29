@@ -113,7 +113,22 @@ const TagContent = styled.div`
   border-top: 0.1rem solid #e3e6e8;
   font-size: inherit;
   padding: 1.6rem;
-  align-items: center;
+  align-items: flex-start;
+
+   label {
+    margin: 0.2rem;
+
+     span {
+      padding: 0.8rem;
+      vertical-align: middle;
+      font-size: 1.5rem;
+      color: #232629;
+    }
+
+    [type="radio"] {
+      vertical-align: middle;
+    }
+  }
 `;
 
 const TagFooter = styled.div`
@@ -176,8 +191,14 @@ const EditRequest = (props) => {
           <TagContainer>
             <TagHeader>Actions</TagHeader>
             <TagContent>
-            <Button buttonType='type3' buttonName='Approve' />
-            <Button buttonType='type3' buttonName='Reject' />
+              <label>
+                <input type='radio' name='actions' value='Approve' />
+                <span>Approve</span>
+              </label>
+              <label>
+                <input type='radio' name='actions' value='Reject' />
+                <span>Reject</span>
+              </label>
             </TagContent>
             <TagFooter>
               <Button   
