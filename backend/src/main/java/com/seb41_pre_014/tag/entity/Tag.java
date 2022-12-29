@@ -1,10 +1,7 @@
 package com.seb41_pre_014.tag.entity;
 
 import com.seb41_pre_014.board.entity.Board;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Setter
 @Entity
 public class Tag {
     @Id
