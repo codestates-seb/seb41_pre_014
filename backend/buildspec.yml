@@ -12,10 +12,10 @@ phases:
       - ./gradlew build
   post_build:
     commands:
-      - echo $(basename ./backend/build/libs/*.jar)
+      - echo $(basename ./seb41_pre_014/backend/build/libs/*.jar)
 artifacts:
   files:
-    - backend/build/libs/*.jar
-    - ackend/scripts/**
-    - backend/appspec.yml
+    - seb41_pre_014/backend/build/libs/*.jar
+    - seb41_pre_014/backend/scripts/**
+    - seb41_pre_014/backend/appspec.yml
   discard-paths: yes
