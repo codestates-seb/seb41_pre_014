@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" tests="5" skipped="0" failures="5" errors="0" timestamp="2022-12-28T18:16:02" hostname="gimchanbin-ui-MacBookPro.local" time="0.02">
+<testsuite name="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" tests="5" skipped="0" failures="5" errors="0" timestamp="2022-12-29T14:01:16" hostname="gimchanbin-ui-MacBookPro.local" time="0.058">
   <properties/>
-  <testcase name="patchVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.004">
+  <testcase name="patchVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.019">
     <failure message="java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;403&gt;" type="java.lang.AssertionError">java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;403&gt;
 	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
 	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
@@ -95,7 +95,7 @@
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 </failure>
   </testcase>
-  <testcase name="getVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.003">
+  <testcase name="getVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.016">
     <failure message="java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;401&gt;" type="java.lang.AssertionError">java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;401&gt;
 	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
 	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
@@ -189,7 +189,7 @@
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 </failure>
   </testcase>
-  <testcase name="deleteVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.003">
+  <testcase name="deleteVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.006">
     <failure message="java.lang.AssertionError: Status expected:&lt;204&gt; but was:&lt;403&gt;" type="java.lang.AssertionError">java.lang.AssertionError: Status expected:&lt;204&gt; but was:&lt;403&gt;
 	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
 	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
@@ -283,7 +283,7 @@
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 </failure>
   </testcase>
-  <testcase name="getVotes()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.003">
+  <testcase name="getVotes()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.007">
     <failure message="java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;401&gt;" type="java.lang.AssertionError">java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;401&gt;
 	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
 	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
@@ -377,7 +377,7 @@
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 </failure>
   </testcase>
-  <testcase name="postVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.003">
+  <testcase name="postVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.005">
     <failure message="java.lang.AssertionError: Status expected:&lt;201&gt; but was:&lt;403&gt;" type="java.lang.AssertionError">java.lang.AssertionError: Status expected:&lt;201&gt; but was:&lt;403&gt;
 	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
 	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
@@ -471,12 +471,12 @@
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 </failure>
   </testcase>
-  <system-out><![CDATA[2022-12-29 03:16:02.247  INFO 61055 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest], using SpringBootContextLoader
-2022-12-29 03:16:02.248  INFO 61055 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2022-12-29 03:16:02.248  INFO 61055 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest]: VoteControllerRestDocsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2022-12-29 03:16:02.254  INFO 61055 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest
-2022-12-29 03:16:02.255  INFO 61055 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2022-12-29 03:16:02.255  INFO 61055 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6bd721e1, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4ba25170, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6da2a7be, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4b2c95ff, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@19266d52, org.springframework.test.context.support.DirtiesContextTestExecutionListener@40d686d7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@38b14624, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@171dbfa0, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@3dfb1cec, org.springframework.test.context.event.EventPublishingTestExecutionListener@49efc5ba, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@7b5d3ac5, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1c77ab1, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@643e0a19, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@534bd131, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@41d2528f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@7b7aaaf6, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6f800942]
+  <system-out><![CDATA[2022-12-29 23:01:15.664  INFO 15296 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest], using SpringBootContextLoader
+2022-12-29 23:01:15.666  INFO 15296 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-12-29 23:01:15.666  INFO 15296 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest]: VoteControllerRestDocsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-12-29 23:01:15.674  INFO 15296 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest
+2022-12-29 23:01:15.675  INFO 15296 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-12-29 23:01:15.676  INFO 15296 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@386bd8f3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@fff7d5f, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@575e8860, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7145eafe, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@178f0865, org.springframework.test.context.support.DirtiesContextTestExecutionListener@636e9a4e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@40d013cb, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1e9c1335, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@713ffca3, org.springframework.test.context.event.EventPublishingTestExecutionListener@6614a420, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@269abd62, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5861073f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@56352274, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1543b936, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@66c16751, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@3649dc49, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@49907e76]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -486,19 +486,19 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2022-12-29 03:16:02.269  INFO 61055 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 61055 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2022-12-29 03:16:02.270  INFO 61055 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
-2022-12-29 03:16:02.584  WARN 61055 --- [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+2022-12-29 23:01:15.705  INFO 15296 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 15296 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2022-12-29 23:01:15.705  INFO 15296 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
+2022-12-29 23:01:16.372  WARN 15296 --- [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 29f9519c-a928-4ec9-9a79-c156d1fe4bc7
+Using generated security password: e81b1bbf-b16a-4087-9020-7dce532b0853
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2022-12-29 03:16:02.652  INFO 61055 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4116167e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@74e2de39, org.springframework.security.web.context.SecurityContextPersistenceFilter@6cf4ac81, org.springframework.security.web.header.HeaderWriterFilter@1bb86f8d, org.springframework.security.web.csrf.CsrfFilter@5771d28a, org.springframework.security.web.authentication.logout.LogoutFilter@537caf04, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1e9bbb27, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1c89afe, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@37630101, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@56d8f131, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2a063e1a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@721af8d0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@26a32fa5, org.springframework.security.web.session.SessionManagementFilter@35c8dd30, org.springframework.security.web.access.ExceptionTranslationFilter@2c6d5b2e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@404ea1e4]
-2022-12-29 03:16:02.685  INFO 61055 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2022-12-29 03:16:02.685  INFO 61055 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2022-12-29 03:16:02.686  INFO 61055 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2022-12-29 03:16:02.693  INFO 61055 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Started VoteControllerRestDocsTest in 0.436 seconds (JVM running for 10.366)
+2022-12-29 23:01:16.520  INFO 15296 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6be2c838, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4061263d, org.springframework.security.web.context.SecurityContextPersistenceFilter@62146774, org.springframework.security.web.header.HeaderWriterFilter@7315587f, org.springframework.security.web.csrf.CsrfFilter@10287dbd, org.springframework.security.web.authentication.logout.LogoutFilter@60355cc5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2366604, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1e7d3d93, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@71567e73, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@47098232, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@675b0850, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e547264, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7a456a79, org.springframework.security.web.session.SessionManagementFilter@3182316c, org.springframework.security.web.access.ExceptionTranslationFilter@7c0514f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1f55bb2]
+2022-12-29 23:01:16.594  INFO 15296 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-12-29 23:01:16.594  INFO 15296 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-12-29 23:01:16.595  INFO 15296 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-12-29 23:01:16.614  INFO 15296 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Started VoteControllerRestDocsTest in 0.934 seconds (JVM running for 23.86)
 
 MockHttpServletRequest:
       HTTP Method = PATCH
@@ -506,7 +506,7 @@ MockHttpServletRequest:
        Parameters = {}
           Headers = [Accept:"application/json"]
              Body = null
-    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@6198bac2}
+    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@2dfa0bff}
 
 Handler:
              Type = null
@@ -578,7 +578,7 @@ MockHttpServletRequest:
        Parameters = {}
           Headers = []
              Body = null
-    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@7102b480}
+    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@39b88618}
 
 Handler:
              Type = null
@@ -650,7 +650,7 @@ MockHttpServletRequest:
        Parameters = {memberId=[1], boardId=[1], voteType=[Up]}
           Headers = []
              Body = null
-    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@296a6a10}
+    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@5caab064}
 
 Handler:
              Type = null

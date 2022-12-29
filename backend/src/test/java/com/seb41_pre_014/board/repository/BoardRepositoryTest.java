@@ -62,7 +62,6 @@ class BoardRepositoryTest {
         assertEquals(board.getBookmarkCount(), postBoard.getBookmarkCount());
         assertEquals(board.getScore(), postBoard.getScore());
         assertEquals(board.getViewCount(), postBoard.getViewCount());
-        assertEquals(board.getQuestionId(), postBoard.getQuestionId());
     }
 
     @Test
@@ -109,7 +108,6 @@ class BoardRepositoryTest {
         assertEquals(board.getBookmarkCount(), findBoard.getBookmarkCount());
         assertEquals(board.getScore(), findBoard.getScore());
         assertEquals(board.getViewCount(), findBoard.getViewCount());
-        assertEquals(board.getQuestionId(), findBoard.getQuestionId());
     }
 
     @Test
