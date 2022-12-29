@@ -6,7 +6,6 @@ const StyledInput = styled.input`
   width: ${props => props.width || '15rem'};
   border-radius: ${props => props.borderRadius || '0.3rem'};
   font-size: ${props => props.fontSize || '1.3rem'};
-
   &:focus {
     outline: 0.1rem solid #379fef;
     box-shadow: 0 0 0.5rem #b3d3ea;
