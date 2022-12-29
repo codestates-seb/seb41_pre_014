@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { LoadingIndicator } from '../components/blocks/LoadingIndicator';
 
 import { 
   HomeLoginBoard,
@@ -34,7 +35,7 @@ export const Router = () => {
 
   return (
     <>
-      <Suspense fallback={<div>loading...</div>}>
+      <Suspense fallback={<LoadingIndicator />}>
         <Routes>
           <Route path='/' element={loginStatus ? <HomeLoginBoard /> : loginStatus ? <HomeLoginBoard /> : <Home />}></Route>
 
@@ -42,7 +43,6 @@ export const Router = () => {
           <Route path='/users/login' element={<Login />}></Route>
           <Route path='/users/logout' element={<LogOut />}></Route>
           <Route path='/users/signup' element={<SignUp />}></Route>
-          {/* UserDetail로 수정되어야 함 */}
           <Route path='/users/:userId' element={<UserDetail />}>
             <Route index element={<UserProfile />} />
             <Route path="profile" element={<UserProfile />} />
@@ -50,7 +50,7 @@ export const Router = () => {
               <Route index element={<ActivityAnswers />} />
               <Route path="questions" element={<ActivityQuestions />} />
               <Route path="answers" element={<ActivityAnswers />} />
-              <Route path="tags" element={<ActivityTags />} />
+              {/* <Route path="tags" element={<ActivityTags />} /> */}
               <Route path="following" element={<ActivityFollowing />} />
               {/* <Route path="reputation" element={<UserActivity />} /> */}
               <Route path="votes" element={<ActivityVotes />} />
