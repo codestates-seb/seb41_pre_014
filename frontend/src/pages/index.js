@@ -14,6 +14,8 @@ export const LogOut = lazy(() => import('./LogOut'))
 export const SignUp = lazy(() => import('./SignUp'));
 
 export const Users = lazy(() => import('./Users'));
+export const UserDetail = lazy(() => import('./UserDetail'));
+export const UserProfile = lazy(() => import('./UserProfile'));
 export const UserActivity = lazy(() => import('./UserActivity'));
 export const ActivityQuestions = lazy(() => import('./ActivityQuestions'));
 export const ActivityAnswers = lazy(() => import('./ActivityAnswers'));

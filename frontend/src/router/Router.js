@@ -16,6 +16,8 @@ import {
   LogOut,
   SignUp,
   Users,
+  UserDetail,
+  UserProfile,
   UserActivity,
   ActivityQuestions,
   ActivityAnswers,
@@ -26,6 +28,7 @@ import {
   NotFound,
 } from '../pages';
 
+
 export const Router = () => {
   const loginStatus = useSelector(state => state.loginStatus.status)
 
@@ -35,17 +38,16 @@ export const Router = () => {
         <Routes>
           <Route path='/' element={loginStatus ? <HomeLoginBoard /> : loginStatus ? <HomeLoginBoard /> : <Home />}></Route>
 
-
           <Route path='/users' element={<Users />}></Route>
           <Route path='/users/login' element={<Login />}></Route>
           <Route path='/users/logout' element={<LogOut />}></Route>
           <Route path='/users/signup' element={<SignUp />}></Route>
           {/* UserDetail로 수정되어야 함 */}
-          <Route path='/users/:userId' element={<Users />}>
-            <Route index element={<UserActivity />} />
-            <Route path="profile" element={<UserActivity />} />
+          <Route path='/users/:userId' element={<UserDetail />}>
+            <Route index element={<UserProfile />} />
+            <Route path="profile" element={<UserProfile />} />
             <Route path="activity" element={<UserActivity />}>
-              <Route index element={<ActivityQuestions />} />
+              <Route index element={<ActivityAnswers />} />
               <Route path="questions" element={<ActivityQuestions />} />
               <Route path="answers" element={<ActivityAnswers />} />
               <Route path="tags" element={<ActivityTags />} />
