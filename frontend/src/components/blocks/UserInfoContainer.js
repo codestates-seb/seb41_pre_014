@@ -23,8 +23,8 @@ const StyledDiv1 = styled.div`
 `
 
 const StyledImg = styled.img`
-  width: 2rem;
-  height: 2rem;
+  width: ${props => props.width || '0rem'};
+  height: ${props => props.height || '0rem'};
   border-radius: 0.3rem;
 `
 
@@ -43,15 +43,15 @@ export const UserMetaInfoType1 = (props) => {
     <StyledDiv1>
       <div>
         <a href=''>
-          <StyledImg alt='mini user avatar' src='https://www.gravatar.com/avatar/0555bd0deb416a320a0069abef08078a?s=128&d=identicon&r=PG&f=1'></StyledImg>
+          <StyledImg width='2rem' height='2rem' alt='mini user avatar' src={props.profileImageUrl}></StyledImg>
         </a>
       </div>
       <div className='username-score'>
         <div>
-          <StyledA href='' className='username'>username</StyledA>
+          <StyledA href='' className='username'>{props.displayName}</StyledA>
         </div>
         <div>
-          <span className='score'>11</span>
+          <span className='score'>{props.score}</span>
         </div>
       </div>
       <span>asked 1 min ago</span>
@@ -59,10 +59,8 @@ export const UserMetaInfoType1 = (props) => {
   )
 } 
 
-
-export const UserMetaInfoType2 = () => {
-
-}
+export const UserMetaInfoType2 = (props) => {
+};
 
 const StyledDiv3 = styled.div`
   width: 80.4rem;
@@ -75,8 +73,8 @@ const StyledDiv3 = styled.div`
     justify-content: center;
     margin: 0.8rem;
     >.avatarWrap>.avatarPic {
-    width: 13rem;
-    height: 13rem;
+    width: 15rem;
+    height: 15rem;
     border-radius: 0.5rem;
     box-shadow: 0rem 0.2rem 0.2rem 0.2rem #e3e6e8;
   }
@@ -135,7 +133,7 @@ const UserDetailedInfo = styled.div`
 
 // a 안에 href='' => useParams? useLocation?
 // 폰트 적용 필요 font-family: -apple-system,BlinkMacSystemFont,"Segoe UI Adjusted","Segoe UI","Liberation Sans",sans-serif;
-export const UserMetaInfoType3 = () => {
+export const UserMetaInfoType3 = (props) => {
   return (
     <StyledDiv3>
       <a href=''> 
@@ -144,8 +142,8 @@ export const UserMetaInfoType3 = () => {
         </div>
       </a>
       <div className='infoWrap'>
-        <div className='username'>mklement0</div>
-        <div className='userTitle'>Full Stack Developer</div>
+        <div className='username'>{props.displayName}</div>
+        <div className='userTitle'>{props.title}</div>
         <ul>
           <li>
             <div>
@@ -173,7 +171,7 @@ export const UserMetaInfoType3 = () => {
             <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="2.4rem" height="2.4rem" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="#9199a1" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5z"/></svg>
             </div>
-            <UserDetailedInfo>Seoul</UserDetailedInfo>
+            <UserDetailedInfo>{props.location}</UserDetailedInfo>
           </li>
         </ul>
       </div>
@@ -207,6 +205,10 @@ const StyledDiv4 = styled.div`
   }
 `
 
+const StyledTagLink = styled(StyledA)`
+  font-size: 1.;
+`
+
 export const UserMetaInfoType4 = () => {
   return (
     <div>
@@ -220,7 +222,7 @@ export const UserMetaInfoType4 = () => {
         <div>
           <StyledUsername className="user-name">VonC</StyledUsername>
           <StyledUserLocation className="user-location">France</StyledUserLocation>
-          <StyledA>javascript</StyledA>
+          <StyledTagLink>javascript</StyledTagLink>
         </div>
       </StyledDiv4>
     </div>

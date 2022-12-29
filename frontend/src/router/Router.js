@@ -22,14 +22,7 @@ import {
   ActivityTags,
   ActivityFollowing,
   ActivityVotes,
-  UserActivity,
-  ActivityQuestions,
-  ActivityAnswers,
-  ActivityTags,
-  ActivityFollowing,
-  ActivityVotes,
   Write,
-  NotFound,
   NotFound
 } from '../pages';
 

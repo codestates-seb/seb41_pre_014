@@ -1,6 +1,6 @@
 import styled from "styled-components";
-// import { Editor } from '@toast-ui/react-editor';
-// import '@toast-ui/editor/dist/toastui-editor.css';
+import { Editor } from '@toast-ui/react-editor';
+import '@toast-ui/editor/dist/toastui-editor.css';
 
 const InputLabelWrapper = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ export const InputLabel = (props) => {
 export const EditorInput = () => {
   return (
     <>
-      {/* <Editor 
+      <Editor 
         previewStyle='vertical'
         height='30rem'
         toolbarItems={[
@@ -45,7 +45,7 @@ export const EditorInput = () => {
           ['table', 'image', 'link'],
           ['code', 'codeblock']
         ]}
-      /> */}
+      />
     </>
   )
 };
