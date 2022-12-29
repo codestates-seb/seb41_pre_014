@@ -17,3 +17,10 @@ spring:
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
+mail:
+  address:
+    admin: 141000Lee@gmail.com # 관리자 권한 절차 더 필요
+jwt:
+  key: ${JWT_SECRET_KEY} # 시스템 환경 설정
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-minutes: 600

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-28T02:47:22+0900",
+    date = "2022-12-29T03:15:33+0900",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.jar, environment: Java 11.0.16 (Azul Systems, Inc.)"
 )
 @Component
@@ -55,20 +55,7 @@ public class BoardMapperImpl implements BoardMapper {
 
         ResponseBuilder response = Response.builder();
 
-        response.boardId( board.getBoardId() );
-        if ( board.getBoardType() != null ) {
-            response.boardType( board.getBoardType().name() );
-        }
-        if ( board.getBoardStatus() != null ) {
-            response.boardStatus( board.getBoardStatus().name() );
-        }
-        response.title( board.getTitle() );
-        response.body( board.getBody() );
-        response.score( board.getScore() );
-        response.viewCount( board.getViewCount() );
-        response.bookmarkCount( board.getBookmarkCount() );
-        response.answerCount( board.getAnswerCount() );
-        response.questionId( board.getQuestionId() );
+        response.board( board );
 
         return response.build();
     }
