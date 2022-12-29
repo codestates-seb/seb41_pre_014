@@ -3,10 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { Button, SNSLoginButton } from '../components/atoms/Button'; 
 import { useDispatch } from 'react-redux';
-import { loginStatusSlice } from "../ducks/slice";
+import { loginStatusSlice, asyncUserInfo } from "../ducks/slice";
+
 
 const StyledLogin = styled.div`
   width: inherit;
@@ -130,24 +130,11 @@ const Login = () => {
   }
 
   const dispatch = useDispatch();
-
   const { register, handleSubmit } = useForm();
-  const loginbuttonClick = async (data) => {
-    await axios({
-      method: 'get',
-      url: 'url',
-      params: {
-        username: data.email,
-        password: data.password,
-      },
-    })
-      .then((res) => {
-        dispatch.loginStatusSlice.login();
-
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const loginbuttonClick = (data) => {
+    dispatch(asyncUserInfo(data));
+    dispatch(loginStatusSlice.login());
+    navigate('/');
   };
 
   return (

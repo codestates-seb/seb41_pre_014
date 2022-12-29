@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 export const loginStatusSlice = createSlice({
   name: 'loginStatusSlice',
@@ -9,10 +10,26 @@ export const loginStatusSlice = createSlice({
   }
 });
 
-// export const loginUserInfoSlice = createSlice({
-//   name: 'loginUserInfoSlice',
-//   initialState: {},
-//   reducers: {
-//     userInfoRead: (state, action) => {state = action.payload},
-//   }
-// })
+export const loginUserInfoSlice = createSlice({
+  name: 'loginUserInfoSlice',
+  initialState: {loginUserInfo: {}},
+  extraReducers: (builder) => {
+    builder.addCase(asyncUserInfo.fulfilled, (state, action) => {
+      state.loginUserInfo = action.payload;
+    })
+  }
+});
+
+export const asyncUserInfo = createAsyncThunk(
+  'loginUserInfoSlice/asyncUserInfo',
+  async (data) => {
+    return await axios({
+      method: 'get',
+      url: process.env.REACT_APP_SERVER_URL,
+      params: {
+        username: data.email,
+        password: data.password,
+      },
+    });
+  }
+);
