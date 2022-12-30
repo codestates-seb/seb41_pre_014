@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link, json, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
@@ -19,28 +19,29 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const loginButtonClick = async (data) => {
     const { email, password } = data;
-    console.log(email,password);
+    console.log(`받아온 데이터 - email: ${email}, password: ${password}}`);
+
     if (!email || !password) {
       alert('아이디와 비밀번호를 입력해주세요!');
       return;
     }
     return await axios({
-      method: 'GET',
+      method: 'POST',
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json',
       },
-      url: `${process.env.REACT_APP_SERVER_URL}/auth/login`,
+      url: `${process.env.REACT_APP_SERVER_URL}/user/login`,
       data: {
-        username: email,
-        password: password,
+        ...data
       },
       responseType: 'json',
     })
     .then(res => {
-      dispatch(loginUserInfoSlice.getLoginUser(res.data));
-      dispatch(loginStatusSlice.login());
+      dispatch(loginUserInfoSlice.actions.getLoginUser(res.data));
       navigate('/');
+      dispatch(loginStatusSlice.actions.login());
+      
     })
     .catch(err => {
       console.error(err);
