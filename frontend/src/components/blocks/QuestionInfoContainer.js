@@ -1,10 +1,10 @@
-// todo:tag, usermeta
+// todo:tag
 import styled from 'styled-components';
 import { UserMetaInfoType1 } from './UserInfoContainer';
 import { Link } from 'react-router-dom';
 import { TagBlock } from '../atoms/TagBlock';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const QuestionWrapper = styled.div`
   display: flex;
@@ -16,7 +16,6 @@ const QuestionMetaInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 10.8rem;
   gap: 0.6rem;
   color: #525960;
   margin: 0 1.6rem 0 0;
@@ -25,7 +24,6 @@ const QuestionMetaInfo = styled.div`
 const QuestionHorizontalMetaInfo = styled.div`
   display: flex;
   align-items: flex-end;
-  width: 10.8rem;
   gap: 0.6rem;
   color: #525960;
   margin: 0 1.6rem 0 0;
@@ -34,7 +32,7 @@ const QuestionHorizontalMetaInfo = styled.div`
 const QuestionInfo = styled.div`
   display: flex;
   flex-direction: column;
-  width: 59.5rem;
+  width: 100%;
 
   > h3 {
     padding-right: 2.4rem;
@@ -107,10 +105,27 @@ const QuestionMetaInfoH = styled.div`
   width: auto;
   flex-direction: row;
   align-items: center;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const MetaInfoHLeft = styled.div`
+  width: auto;
+  flex-direction: row;
+  align-items: center;
   gap: 0.6rem;
   display: flex;
   font-size: 1.3rem;
   color: #6A737C;
+`;
+
+const MetaInfoHRight = styled.div`
+  padding: 0.2rem;
+  cursor: pointer;
+  & > svg {
+    font-size: 1.6rem;
+    color: #7d7d7d;
+  }
 `;
 
 const VoteH = styled.div`
@@ -152,9 +167,19 @@ const AnswerH = styled.div`
       font-size: 1.3rem;
     }
   };
+
+  &.following {
+    border: 0.1rem solid #2F6F44;
+    border-radius: 0.3rem;
+    background-color: #FFF;;
+    color: #2F6F44
+  }
 `;
 
-const AnswerCountH = styled(VoteCountH);
+const AnswerCountH = styled.span`
+  font-weight: 500;
+  font-size: inherit;
+`;
 
 const ViewH = styled.div`
   display: inline-flex;
@@ -166,42 +191,64 @@ const ViewH = styled.div`
   color: hsl(47,84%,28%);
   font-size: 1.3rem;
 
+  &.Following {
+    color: #6A737C;
+  }
+
   & > span {
     font-size: 1.3rem;
   }
 `;
-const ViewCountH = styled(VoteCountH);
+const ViewCountH = styled.span`
+  font-weight: 500;
+  font-size: inherit;
+`;
 
 export const QuestionMetaInfoWrapperH = (props) => {
+
   return (
     <QuestionMetaInfoH>
-      <VoteH>
-        <VoteCountH>{props.votes}</VoteCountH>
-        <span>votes</span>
-      </VoteH>
-      <AnswerH>
-        {props.QorA === 'A'
-          ? (
+      <MetaInfoHLeft>
+        <VoteH>
+          <VoteCountH>{props.votes}</VoteCountH>
+          <span>votes</span>
+        </VoteH>
+        <AnswerH className={props.activityType}>
+          {props.activityType === 'Answer' && (
             <>
               <span><FontAwesomeIcon icon={faCheck} /></span>
               <AnswerCountH>{props.answer}</AnswerCountH>
               <span>answers</span>
             </>
-          )
-          : (
+          )}
+          {props.activityType === 'Question' && (
             <>
               <span><FontAwesomeIcon icon={faCheck} /></span>
               <span>Accepted</span>
             </>
-          )
-        }
-      </AnswerH>
-      {props.QorA === 'Q' && (
-        <ViewH>
-          <ViewCountH>{props.view}</ViewCountH>
-          <span>views</span>
-        </ViewH>
-      )}
+          )}
+          {props.activityType === 'Following' && (
+            <>
+              <span><FontAwesomeIcon icon={faCheck} /></span>
+              <AnswerCountH>{props.answer}</AnswerCountH>
+              <span>answers</span>
+            </>
+          )}
+        </AnswerH>
+        { ['Question', 'Following'].includes(props.activityType) && (
+          <ViewH className={props.activityType}>
+            <ViewCountH>{props.view}</ViewCountH>
+            <span>views</span>
+          </ViewH>
+        )}
+      </MetaInfoHLeft>
+      <MetaInfoHRight onClick={props.xmarkOnClick}>
+        {props.activityType === 'Following' && (
+          <>
+            <FontAwesomeIcon icon={faXmark} />
+          </>
+        )}
+      </MetaInfoHRight>
     </QuestionMetaInfoH>
   )
 };
@@ -248,11 +295,13 @@ const TagAndUserMeta = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 `;
 
 const Tag = styled.div`
   display: flex;
   gap: 0.3rem;
+
   & > ul {
     margin-bottom: 1.3rem;
     list-style: none;
@@ -282,8 +331,13 @@ export const QuestionInfoWrapper = (props) => {
             <li><TagBlock tagName='React' /></li>
           </ul>
         </Tag>
-        {/* todo: props */}
-        <UserMetaInfoType1 />
+        {/* props 시간 */}
+        <UserMetaInfoType1
+          profileImageUrl={props.profileImageUrl}
+          displayName={props.displayName}
+          score={props.votes}
+          createdAt={props.CreateAt}
+        />
       </TagAndUserMeta>
     </QuestionInfo>
   )
@@ -300,6 +354,7 @@ export const QuestionInfoContainer = (props) => {
       <QuestionInfoWrapper
         title={props.title}
         content={props.content}
+        createdAt={props.CreateAt}
       />
     </QuestionWrapper>
   )

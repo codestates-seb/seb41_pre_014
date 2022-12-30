@@ -6,11 +6,13 @@ const MainTopWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 1.6rem;
 `
 
 const MainTopProfileWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: -0.8rem;
 `
 
 const MainTopProfile = () => {
@@ -42,11 +44,17 @@ const EditProfileBtn = styled.button`
 `
 
 export const UserDetailMainTop = () => {
+  const navItems = [
+    {name: 'Profile', to: `profile`},
+    {name: 'Activity', to: `activity`},
+    {name: 'Settings', to: `settings`},
+  ];
+
   return (
     <div>
       <MainTopWrapper>
-        <MainTopProfile/>
-        <MainNavBar/>
+        <MainTopProfile />
+        <MainNavBar navItems={navItems} />
       </MainTopWrapper>
     </div>
   );

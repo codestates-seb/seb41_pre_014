@@ -51,7 +51,15 @@ const QuestionEdit = (props) => {
               <InputLabel 
                 title='Body'
               />
-              <EditorInput />
+              <EditorInput 
+                  toolbarItems = {[
+                    ['bold', 'italic'],
+                    ['hr', 'quote'],
+                    ['ul', 'ol', 'indent', 'outdent'],
+                    ['table', 'image', 'link'],
+                    ['code', 'codeblock']
+                  ]}
+                />
               <div>{props.questionContent}</div>
             </div>
             <div>
@@ -97,6 +105,7 @@ const QuestionEdit = (props) => {
                 <MainRightSideInfoWidget 
                   title={el.title}
                   contents={el.contents} 
+                  width='33rem'
                 />
               )
             })}            

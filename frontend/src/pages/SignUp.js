@@ -265,6 +265,9 @@ const SignUp = () => {
             <div>Passwords must contain at least eight characters, 
               including at least 1 letter and 1 number.</div>
           </StyledSignUpFormWrapper>
+          <StyledCaptchaBox>
+            <Captcha />
+          </StyledCaptchaBox>
           <Button 
             buttonType='type2' 
             buttonName='Sign up' 
@@ -273,9 +276,6 @@ const SignUp = () => {
             padding='1.04rem'
             margin='0.8rem 0'
           ></Button>
-          <StyledCaptchaBox>
-            <Captcha />
-          </StyledCaptchaBox>
           <StyledFormBoxFooter>
             By clicking “Sign up”, you agree to our &nbsp;
             <a 

@@ -8,7 +8,6 @@ const QuestionLeftButton = styled.div`
   align-items: center;
   margin: -0.2rem;
   padding-right: 1.6rem;
-  /* color: hsl(210deg 8% 75%); */
 `;
 
 const VoteButton = styled.button`
@@ -108,16 +107,7 @@ export const QuestionDetail = (props) => {
     <DetailWrapper>
       <LeftButtonWrapper />
       <RightDetailWrapper>
-        <div className='content'>{props.questionContent}My question is following :
-Can I remove boilerplate code by using threadpool, rayon or some other Rust crate ?
-
-I know that I could do my own implementation, but would like to know is there some crate with same functionality ?
-
-From my research threadpool/rayon are useful when you "send" code and it is executed, but I have not found way to make N threads that will have some code/logic that they need to remember ?
-
-Basic idea is in let mut rng = rand::thread_rng(); this is instance that each thread need to have on it own.
-
-Also is there are some other problems with code, please point it out.</div>
+        <div className='content'>{props.questionContent}</div>
         {/* <div className='tags'>
           <ul><TagBlock /></ul>
         </div> */}
@@ -145,21 +135,7 @@ export const AnswerDetail = (props) => {
     <DetailWrapper>
       <LeftButtonWrapper />
       <RightDetailWrapper>
-        <div className='content'>{props.answerContent}Yes, you can use Rayon to eliminate a lot of that code and make the remaining code much more readable, as illustrated in this gist:
-
-https://gist.github.com/BillBarnhill/db07af903cb3c3edb6e715d9cedae028
-
-The worker pool model is not great in Rust, due to the ownership rules. As a result parallel iterators are often a better choice.
-
-I forgot to address your main concern, per thread context, originally. You can see how to store per thread context using a ThreadLocal! in this answer:
-
-https://stackoverflow.com/a/42656422/204343
-
-I will try to come back and edit the code to reflect ThreadLocal! use as soon as I have more time.
-
-The gist requires nightly because of thread_id_value, but that is all but stable and can be removed if needed.
-
-The real catch is that the gist has timing, and compares main_new with main_original, with surprising results. Perhaps not so surprising, Rayon has good debug support.</div>
+        <div className='content'>{props.answerContent}</div>
         <RightFooter>
           <RightFooterButtonWrapper>
             <RightFooterButton>
