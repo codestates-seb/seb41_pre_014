@@ -243,6 +243,7 @@ const StyledText = styled.div`
 const StyledTextFooter = styled.div`
   font-size: 1.3rem;
   color: #6A737C;
+
   & > a {
     display: block;
     font-size: inherit;
@@ -264,6 +265,7 @@ const StyledSNSSignUpButtonWrapper = styled.div`
   width:100%;
   display:flex;
   flex-direction: column;
+
   & > button {
     flex: 1 auto;
     padding: 1.04rem;
@@ -287,6 +289,7 @@ const StyledSignUpFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0.6rem 0;
+
   & > label {
     font-size: 1.5rem;
     font-weight: 600;
@@ -294,6 +297,7 @@ const StyledSignUpFormWrapper = styled.div`
     margin: 0.2rem 0;
     padding: 0 0.2rem;
   };
+
   & > input {
     margin: 0.2rem 0;
     padding: 0.78rem 0.91rem;
@@ -301,6 +305,7 @@ const StyledSignUpFormWrapper = styled.div`
     border-radius: 0.3rem;
     font-size: 1.3rem;
   };
+
   & > div {
     font-size: 1.2rem;
     color: #6A737C;
@@ -317,6 +322,7 @@ const StyledFormBoxFooter = styled.div`
   margin-top: 3.2rem;
   font-size: 1.2rem;
   color: #6A737C;
+
   & > a {
     width:100%;
     font-size: 1.2rem;
@@ -330,21 +336,26 @@ const StyledSignUpFooter = styled.div`
   font-size: 1.3rem;
   color: #232629;
   text-align:center;
+
   & * {
     font-size: 1.3rem;
     color: #232629;
   }
+
   & > a {
     text-decoration: none;
     color: #0074CC;
     margin-left: 0.5rem;
   }
+
   & > div {
     margin-top: 1.2rem;
+
     & > a {
       text-decoration: none;
       color: #0074CC;
       margin-left: 0.5rem;
+
       & > svg {
         margin-left: 0.5rem;
         & > path {

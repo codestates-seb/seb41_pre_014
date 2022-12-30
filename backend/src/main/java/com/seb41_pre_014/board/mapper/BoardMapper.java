@@ -12,7 +12,13 @@ public interface BoardMapper {
 
     Board boardPatchDtoToBoard(BoardDto.Patch boardPatchDto);
 
-    BoardDto.Response boardToResponseDto(Board board);
+    default BoardDto.Response boardToBoardResponseDto(Board board) {
+        BoardDto.Response.ResponseBuilder response = BoardDto.Response.builder();
 
-    List<BoardDto.Response> boardsToResponseDtos(List<Board> boards);
+        response.board(board);
+
+        return response.build();
+    }
+
+    List<BoardDto.Response> boardsToBoardResponseDtos(List<Board> boards);
 }
