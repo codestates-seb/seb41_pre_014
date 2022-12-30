@@ -7,6 +7,7 @@ import { Header } from "./components/blocks/Header";
 import { Router } from "./router/Router";
 import { store } from "./ducks/store";
 import { LeftNavBar } from "./components/blocks/NavBar";
+import { ScrollToTop } from '../src/modules/ScrollToTop';
 
 const StyledMain = styled.main`
   min-height: 100%; 
@@ -30,6 +31,7 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <ScrollToTop />
         <Header />
         <StyledMain>
           <LeftNavBar />

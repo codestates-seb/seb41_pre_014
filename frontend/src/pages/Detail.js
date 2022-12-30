@@ -4,6 +4,92 @@ import { QuestionDetail, AnswerDetail } from "../components/blocks/DetailContain
 import { EditorInput } from '../components/blocks/EditorInputWrapper';
 import { MainRightSideInfoWidget, MainRightRelatedQuestions } from '../components/blocks/MainRight';
 import { BoardDetailSideInfoWidgetData } from "../data/staticData/SideBarData";
+import { DetailWriteButton } from "../components/blocks/DetailWriteButton";
+
+export const QuestionMetaInfo = (props) => {
+  return (
+    <QuestionMetaInfoWrapper>
+      {/* today, yesterday, n days ago */}
+      <div>Asked {props.asked}</div>
+      <div>Modified {props.modified}</div>
+      <div>Viewed {props.viewed}</div>
+    </QuestionMetaInfoWrapper>
+  )
+};
+
+export const AnswerFilter = (props) => {
+  return (
+    <AnswerFilterWrapper>
+      <h2>{props.answerCount}Answer</h2>
+      <AnswerFilterSelectBoxWrapper>
+        <div>Sorted by:</div>
+        <select defaultValue={'highest'}>
+          <option value='highest'> Highest score (default) </option>
+          <option value='oldest'> Date created (oldest first) </option>
+        </select>
+      </AnswerFilterSelectBoxWrapper>
+    </AnswerFilterWrapper>
+  )
+};
+
+const Detail = (props) => {
+  return (
+    <>
+        <Main>
+          <MainTop>
+            <div className="titleAndButton">
+              <h1>{props.questionTitle}questionTitle</h1>
+              <DetailWriteButton />
+            </div>
+            <QuestionMetaInfo />
+          </MainTop>
+          <MainLeftRightWrapper>
+            <MainLeft>
+              <QuestionDetail />
+              <AnswerWapper>
+              <AnswerFilter />
+                <ul>
+                  <AnswerDetail />
+                </ul>
+              </AnswerWapper>
+              <EditorWrapper>
+                <h2>Your Answer</h2>
+                <EditorInput 
+                  toolbarItems = {[
+                    ['bold', 'italic'],
+                    ['hr', 'quote'],
+                    ['ul', 'ol', 'indent', 'outdent'],
+                    ['table', 'image', 'link'],
+                    ['code', 'codeblock']
+                  ]}
+                />
+                <Button 
+                  buttonType='type2'
+                  buttonName='Post Your Answer'
+                  width='12.18rem'
+                  height='3.79rem'
+                />
+              </EditorWrapper>
+            </MainLeft>
+            <MainRight>
+              {BoardDetailSideInfoWidgetData.map((el, idx) => {
+                return (
+                  <MainRightSideInfoWidget 
+                    title={el.title}
+                    contents={el.contents}
+                    key={idx}
+                  />
+                )
+              })}
+              {/* <MainRightRelatedQuestions /> */}
+            </MainRight>
+          </MainLeftRightWrapper>
+        </Main>
+    </>
+  )
+};
+
+export default Detail;
 
 const Main = styled.div`
   display: flex;
@@ -13,18 +99,17 @@ const Main = styled.div`
 const MainTop = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
 
   & .titleAndButton {
     display: flex;
     margin-bottom: 1.2rem;
     justify-content: space-between;
+    align-items: center;
 
     & > h1 {
       color: #3b4045;
       font-size: 2.7rem;
       overflow-wrap: break-word;
-      margin-bottom: 0.8rem;
       display: block;
       text-align: left;
     }
@@ -58,10 +143,15 @@ const MainLeft = styled.div`
   flex-direction: column;
 `;
 
+const AnswerWapper = styled.div`
+  padding-top: 1rem;
+`;
+
 const AnswerFilterWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.8rem;
+  margin-top: 1rem;
 
   > h2 {
     font-weight: 400;
@@ -107,93 +197,3 @@ const MainRight = styled.div`
   flex-direction: column;
   padding-left: 2.4rem;
 `;
-
-export const QuestionMetaInfo = (props) => {
-  return (
-    <QuestionMetaInfoWrapper>
-      {/* today, yesterday, n days ago */}
-      <div>Asked {props.asked}</div>
-      <div>Modified {props.modified}</div>
-      <div>Viewed {props.viewed}</div>
-    </QuestionMetaInfoWrapper>
-  )
-};
-
-export const AnswerFilter = (props) => {
-  return (
-    <AnswerFilterWrapper>
-      <h2>{props.answerCount}Answer</h2>
-      <AnswerFilterSelectBoxWrapper>
-        <div>Sorted by:</div>
-        <select defaultValue={'highest'}>
-          <option value='highest'> Highest score (default) </option>
-          <option value='oldest'> Date created (oldest first) </option>
-        </select>
-      </AnswerFilterSelectBoxWrapper>
-    </AnswerFilterWrapper>
-  )
-};
-
-const Detail = (props) => {
-  return (
-    <>
-        <Main>
-          <MainTop>
-            <div className="titleAndButton">
-              <h1>{props.questionTitle}questionTitle</h1>
-              <a href="./pages/Write">
-                <Button 
-                buttonType='type2' 
-                buttonName='Ask Question'
-                width='9.87rem'
-                height='3.78rem'
-                />
-              </a>
-            </div>
-            <QuestionMetaInfo />
-          </MainTop>
-          <MainLeftRightWrapper>
-            <MainLeft>
-              <QuestionDetail />
-              <AnswerFilter />
-              <ul>
-                <AnswerDetail />
-              </ul>
-              <EditorWrapper>
-                <h2>Your Answer</h2>
-                <EditorInput 
-                  toolbarItems = {[
-                    ['bold', 'italic'],
-                    ['hr', 'quote'],
-                    ['ul', 'ol', 'indent', 'outdent'],
-                    ['table', 'image', 'link'],
-                    ['code', 'codeblock']
-                  ]}
-                />
-                <Button 
-                  buttonType='type2'
-                  buttonName='Post Your Answer'
-                  width='12.18rem'
-                  height='3.79rem'
-                />
-              </EditorWrapper>
-            </MainLeft>
-            <MainRight>
-              {BoardDetailSideInfoWidgetData.map((el) => {
-                return (
-                  <MainRightSideInfoWidget 
-                    title={el.title}
-                    contents={el.contents} 
-                  />
-                )
-              })}
-              {/* <MainRightRelatedQuestions /> */}
-            </MainRight>
-          </MainLeftRightWrapper>
-        </Main>
-    </>
-  )
-};
-
-export default Detail;
-
