@@ -1,4 +1,4 @@
-// todo:tag, usermeta
+// todo:tag
 import styled from 'styled-components';
 import { UserMetaInfoType1 } from './UserInfoContainer';
 import { Link } from 'react-router-dom';
@@ -32,7 +32,7 @@ const QuestionHorizontalMetaInfo = styled.div`
 const QuestionInfo = styled.div`
   display: flex;
   flex-direction: column;
-  /* width: 59.5rem; */
+  width: 100%;
 
   > h3 {
     padding-right: 2.4rem;
@@ -295,11 +295,13 @@ const TagAndUserMeta = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 `;
 
 const Tag = styled.div`
   display: flex;
   gap: 0.3rem;
+
   & > ul {
     margin-bottom: 1.3rem;
     list-style: none;
@@ -329,7 +331,14 @@ export const QuestionInfoWrapper = (props) => {
             <li><TagBlock tagName='React' /></li>
           </ul>
         </Tag>
-        <UserMetaInfoType1 />
+        
+        {/* props 시간 */}
+        <UserMetaInfoType1
+          profileImageUrl={props.profileImageUrl}
+          displayName={props.displayName}
+          score={props.votes}
+          createdAt={props.CreateAt}
+        />
       </TagAndUserMeta>
     </QuestionInfo>
   )
@@ -346,6 +355,7 @@ export const QuestionInfoContainer = (props) => {
       <QuestionInfoWrapper
         title={props.title}
         content={props.content}
+        createdAt={props.CreateAt}
       />
     </QuestionWrapper>
   )

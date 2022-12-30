@@ -38,6 +38,7 @@ const MainLeftRight = styled.div`
 const MainLeft = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   > h2 {
     font-size: 2.1rem;
