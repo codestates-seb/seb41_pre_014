@@ -72,7 +72,7 @@ public class MemberController {
                                                @RequestParam("size") @Positive int size) {
         List<Board> boards = memberService.findQuestionsOrAnswersByMember(memberId, QUESTION, page, size).getContent();
 
-        return new ResponseEntity<>(boardMapper.boardsToResponseDtos(boards), HttpStatus.OK);
+        return new ResponseEntity<>(boardMapper.boardsToBoardResponseDtos(boards), HttpStatus.OK);
     }
 
     @GetMapping("/{member-id}/answers")
@@ -81,7 +81,7 @@ public class MemberController {
                                              @RequestParam("size") @Positive int size) {
         List<Board> boards = memberService.findQuestionsOrAnswersByMember(memberId, ANSWER, page, size).getContent();
 
-        return new ResponseEntity<>(boardMapper.boardsToResponseDtos(boards), HttpStatus.OK);
+        return new ResponseEntity<>(boardMapper.boardsToBoardResponseDtos(boards), HttpStatus.OK);
     }
 
     @GetMapping("/{member-id}/tags")
@@ -99,7 +99,7 @@ public class MemberController {
                                                @RequestParam("size") @Positive int size) {
         List<Board> boards = memberService.findBoardsByBookmark(memberId, page, size).getContent();
 
-        return new ResponseEntity<>(boardMapper.boardsToResponseDtos(boards), HttpStatus.OK);
+        return new ResponseEntity<>(boardMapper.boardsToBoardResponseDtos(boards), HttpStatus.OK);
     }
 
     @GetMapping("/{member-id}/votes")
@@ -108,7 +108,7 @@ public class MemberController {
                                           @RequestParam("size") @Positive int size) {
         List<Board> boards = memberService.findBoardsByVote(memberId, page, size).getContent();
 
-        return new ResponseEntity<>(boardMapper.boardsToResponseDtos(boards), HttpStatus.OK);
+        return new ResponseEntity<>(boardMapper.boardsToBoardResponseDtos(boards), HttpStatus.OK);
     }
 
     @DeleteMapping("/{member-id}")
