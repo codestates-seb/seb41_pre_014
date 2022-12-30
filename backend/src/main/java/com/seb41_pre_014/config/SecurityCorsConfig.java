@@ -17,7 +17,7 @@ public class SecurityCorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.addAllowedOriginPattern("http://localhost:8081"); //특정패턴의 origin만 허용
-                config.addAllowedOriginPattern("http://localhost:3000");
+        config.addAllowedOriginPattern("http://localhost:3000");
         config.addAllowedOriginPattern("http://localhost:8080");
         config.addAllowedHeader(""); //특정 header만 허용
         config.addAllowedMethod(""); //특정 메소드만 허용 //

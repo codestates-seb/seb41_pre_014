@@ -3,7 +3,6 @@ package com.seb41_pre_014.board.mapper;
 import com.seb41_pre_014.board.dto.BoardDto.Patch;
 import com.seb41_pre_014.board.dto.BoardDto.Post;
 import com.seb41_pre_014.board.dto.BoardDto.Response;
-import com.seb41_pre_014.board.dto.BoardDto.Response.ResponseBuilder;
 import com.seb41_pre_014.board.entity.Board;
 import com.seb41_pre_014.board.entity.Board.BoardBuilder;
 import java.util.ArrayList;
@@ -13,8 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-29T03:21:34+0900",
-    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.jar, environment: Java 11.0.16 (Azul Systems, Inc.)"
+    date = "2022-12-29T23:19:22+0900",
+    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.jar, environment: Java 11.0.17 (Azul Systems, Inc.)"
 )
 @Component
 public class BoardMapperImpl implements BoardMapper {
@@ -48,27 +47,14 @@ public class BoardMapperImpl implements BoardMapper {
     }
 
     @Override
-    public Response boardToResponseDto(Board board) {
-        if ( board == null ) {
-            return null;
-        }
-
-        ResponseBuilder response = Response.builder();
-
-        response.board( board );
-
-        return response.build();
-    }
-
-    @Override
-    public List<Response> boardsToResponseDtos(List<Board> boards) {
+    public List<Response> boardsToBoardResponseDtos(List<Board> boards) {
         if ( boards == null ) {
             return null;
         }
 
         List<Response> list = new ArrayList<Response>( boards.size() );
         for ( Board board : boards ) {
-            list.add( boardToResponseDto( board ) );
+            list.add( boardToBoardResponseDto( board ) );
         }
 
         return list;

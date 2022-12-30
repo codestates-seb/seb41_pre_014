@@ -1,18 +1,31 @@
+# appendices(.yml) 찾기
+# https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#appendix
+
 spring:
+  # h2.console.enabled: true => h2 console 사용 설정 (=웹 브라우저에서 h2 콘솔 사용 가능)
+  # h2.console.enabled.path: /h2 => h2 console 사용 경로 url 설정(고정)
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  # datasource.url: jdbc:h2:mem:test => jdbc url 을 설정(고정)
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ENC(Y/DEn2MCiPqx3GfV8q8W/+TcKr//4NF3/I18lgc/1/MS8qY9C/xvWSBQWaHbe7ipTp0Pw8jjnyrcKCuwJP+eEtiNQDx+ymk1UEgi+4LMSp5+e/U5RN6d8BNnmtVnPAj4el8MJTyuAlQ8MyrxsiPUeQ==)
-    username: ENC(DNP0VEYXCpB11tK6PHa8Cw==)
-    password: ENC(SrMVQot6aaUROVZHC7tX/3v1shQmyA54)
-  jpa:
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate:
-      ddl-auto: create
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true  # SQL pretty print
+    url: jdbc:h2:mem:test
+  # spring.sql.init.data-locations: classpath*:db/h2/schema.sql
+  #  => 데이터베이스 사용 시, 해당 경로(src/main/resources/db/h2/)에 있는 .sql 파일(schema.sql)을 자동으로 실행시킴
+  #  => .sql 파일(schema.sql)의 스크립트를 읽어서 DB(h2)의 테이블을 자동으로 생성시킴.
+  ##  => JPA 를 사용할 땐, 굳이 필요할까?
+  sql:
+    init:
+      schema-locations: classpath*:db/h2/schema.sql
+  # servlet.multipart.maxFiletSize => 파일의 최대 사이즈 (기본값 1MB)
+  # servlet.multipart.maxRequestSize => 요청한 최대 사이즈 (기본값 10MB)
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 20MB
+
+  # 실행된 쿼리를 확인하고 싶을 때 사용.
 
 jasypt:
   encryptor:
@@ -21,6 +34,6 @@ mail:
   address:
     admin: 141000Lee@gmail.com # 관리자 권한 절차 더 필요
 jwt:
-  key: ${JWT_SECRET_KEY} # 시스템 환경 설정
+  key: jungwoo1112334411112341232312414124124 # 시스템 환경 설정
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 600
