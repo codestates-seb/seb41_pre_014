@@ -5,6 +5,7 @@ import { QuestionInfoContainer } from '../components/blocks/QuestionInfoContaine
 import { MainRightSideInfoWidget, MainRightTagAdded, MainRightTagBasic, MainRightTagInput } from '../components/blocks/MainRight';
 // import { Page, PerPage } from '../components/blocks/Pagination'
 import { BoardDetailSideInfoWidgetData } from '../data/staticData/SideBarData';
+import { DetailWriteButton } from '../components/blocks/DetailWriteButton';
 
 const Main = styled.div`
   display: flex;
@@ -13,6 +14,7 @@ const Main = styled.div`
 const MainLeft = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const MainTop = styled.div`
@@ -81,11 +83,7 @@ const QuestionBoard = ({questions}) => {
           <MainLeft>
             <MainTop>
               <h1>All Questions</h1>
-              <Button
-                buttonType='type2'
-                buttonName='Ask Question'
-                width='9.87rem'
-              />
+              <DetailWriteButton />
             </MainTop>
             <FilterContainer>
               <div>

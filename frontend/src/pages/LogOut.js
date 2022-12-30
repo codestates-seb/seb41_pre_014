@@ -105,17 +105,14 @@ const StyledOtherSiteList = styled.ul`
   padding-bottom: 1.2rem;
   border-bottom: 0.1rem solid #D6D9DC;
   margin-bottom: 1.6rem;
-
   display:flex;
   flex-direction: column;
   align-items: center;
-
   & > li {
     width: 100%;
     display: flex;
     align-items: center;
     margin: 0.4rem 0;
-
     & > a {
       text-decoration: none;
       font-size: 1.5rem;
@@ -128,7 +125,6 @@ const StyledLogOutCheckBox = styled.div`
   margin-bottom: 1.6rem;
   display: flex;
   align-items: center;
-
   & > label {
     font-size: 1.2rem;
     color: #0C0D0E;

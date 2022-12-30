@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import { NavItem } from '../atoms/NavItem';
 import { useLocation } from 'react-router-dom';
 
@@ -73,7 +72,9 @@ const StyledNavPublic = styled.li`
 export const LeftNavBar = () => {
   const location = useLocation();
   const currentUrl = location.pathname;
-  const noFooterUrlPathList = ['/users/signup', '/users/login', '/users/logout'];
+  const noFooterUrlPathList = [
+    '/users/signup', '/users/login', '/users/logout', '/questions/ask'
+  ];
 
   const activeBar = ({ isActive }) =>
     isActive 

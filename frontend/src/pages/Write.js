@@ -3,6 +3,7 @@ import { Input } from '../components/atoms/Input';
 import { Button } from '../components/atoms/Button';
 import { InputLabel, EditorInputWrapper } from '../components/blocks/EditorInputWrapper';
 import { MainRightSideInfoWidget } from '../components/blocks/MainRight';
+import { useEffect } from 'react';
 
 const Main = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const MainTop = styled.div`
 
   > h1 {
     font-size: 2.2rem;
-    font-weight: 600;
+    font-weight: bold;
     margin: 2.4rem 0 2.2rem;
     color: #232629;
   }
@@ -112,6 +113,10 @@ const MainRight = styled.div`
 `;
 
 const Write = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Main>

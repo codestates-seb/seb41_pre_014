@@ -9,7 +9,6 @@ export const loginStatusSlice = createSlice({
     logout: (state, action) => {state.status = false},
   }
 });
-
 export const loginUserInfoSlice = createSlice({
   name: 'loginUserInfoSlice',
   initialState: {loginUserInfo: {}},
