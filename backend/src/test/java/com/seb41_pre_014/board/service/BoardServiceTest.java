@@ -32,9 +32,10 @@ class BoardServiceTest {
         // given
         Board board = createBoard();
         given(boardRepository.save(Mockito.any(Board.class))).willReturn(board);
+        Long memberId = 1L;
 
         // when
-        Board postBoard = boardService.postQuestion(board);
+        Board postBoard = boardService.postQuestion(memberId, board);
 
         // then
         assertEquals(board.getTitle(), postBoard.getTitle());
@@ -46,9 +47,11 @@ class BoardServiceTest {
         // given
         Board board = createBoard();
         given(boardRepository.save(Mockito.any(Board.class))).willReturn(board);
+        Long questionId = 1L;
+        Long memberId = 1L;
 
         // when
-        Board postBoard = boardService.postAnswer(board);
+        Board postBoard = boardService.postAnswer(questionId, memberId, board);
 
         // then
         assertEquals(board.getTitle(), postBoard.getTitle());

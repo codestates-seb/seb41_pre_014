@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const StyledTitle = styled.div`
   border-bottom: 0.1rem solid #e3e6e8;
+  margin-bottom: 2.4rem;
 `
 const StyledH1 = styled.h1`
   font-size: 2.7rem;
@@ -35,6 +36,7 @@ const StyledCheckBoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-right: 1rem;
 `
 
 const StyledDeleteBtn = styled.button`

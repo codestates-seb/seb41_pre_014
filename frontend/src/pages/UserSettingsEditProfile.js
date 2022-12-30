@@ -1,8 +1,9 @@
 import styled from "styled-components";
-// import { EditorInputWrapper } from "../components/blocks/EditorInputWrapper";
+import { InputLabel, EditorInput } from "../components/blocks/EditorInputWrapper";
 import { StyledInput } from "../components/atoms/SearchBar";
-import { Input } from '../components/atoms/Input'
 import { Button } from "../components/atoms/Button";
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Editor } from '@toast-ui/react-editor';
 
 const StyledTitle = styled.div`
   border-bottom: 0.1rem solid #e3e6e8;
@@ -36,6 +37,7 @@ const UserEditInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0.7rem;
+  flex-grow: 1;
 `
 
 const UserEditInputLabel = styled.label`
@@ -65,7 +67,7 @@ const TwitterLinkInput = styled(StyledInput)`
 const WebsiteLinkInput = styled(StyledInput)`
   background: transparent url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="18" height="18" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"%3E%3Cpath fill="%236a737c" d="m13.06 8.11l1.415 1.415a7 7 0 0 1 0 9.9l-.354.353a7 7 0 0 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415l1.415-1.414zm6.718 6.011l-1.414-1.414a5 5 0 1 0-7.071-7.071l-.354.354a5 5 0 0 0 0 7.07l1.415 1.415l-1.415 1.414l-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 0 1 9.9 9.9z"%2F%3E%3C%2Fsvg%3E')
     no-repeat 1rem center;
-width: ${props => props.width || '42.2rem'}; 
+  width: ${props => props.width || '42.2rem'}; 
 `
 
 const StyledImg = styled.img`
@@ -76,6 +78,7 @@ const StyledImg = styled.img`
 const ProfileImageWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 0.7rem;
 `
 
 const StyledDiv = styled.div`
@@ -132,7 +135,13 @@ const WebsiteInput = (props) => {
   )
 }
 
-const UserSettingsEditProfile = () => {
+const AboutmeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.7rem;
+`
+
+const UserSettingsEditProfile = (props) => {
   return (
     <>
       <StyledTitle>
@@ -144,40 +153,53 @@ const UserSettingsEditProfile = () => {
           <ProfileImageWrapper>
             <UserEditInputLabel>Profile image</UserEditInputLabel>
             <StyledImg
-              src="https://www.gravatar.com/avatar/0555bd0deb416a320a0069abef08078a?s=128&d=identicon&r=PG&f=1"
+              src={props.profileImageUrl}
               alt="user avatar"
             ></StyledImg>
           </ProfileImageWrapper>
           <LabeledInput label="Display name" />
-          <LabeledInput label="location" />
+          <LabeledInput label="Location" />
           <LabeledInput label="Title" placeholder="No title has been set" />
-          {/* <EditorInputWrapper/> */}
+          <AboutmeWrapper>
+            <InputLabel title="About me" />
+            <EditorInput />
+          </AboutmeWrapper>
         </UserEditFormWrapper>
       </UserEditFormContainer>
       <UserEditFormContainer>
         <UserEditFormTitle>Links</UserEditFormTitle>
         <UserEditFormWrapper>
           <div>
-            <WebsiteInput label="Website link" />
-            <TwitterInput label="Twitter link or username" />
-            <GithubInput label="Github link or username"/>
+            <WebsiteInput width="32rem" label="Website link" />
+            <TwitterInput width="32rem" label="Twitter link or username" />
+            <GithubInput width="32rem" label="Github link or username" />
           </div>
         </UserEditFormWrapper>
       </UserEditFormContainer>
       <UserEditFormContainer>
         <UserEditFormTitle>
           Private information
-          <StyledDiv>
-            Not shown publicly
-          </StyledDiv>
+          <StyledDiv>Not shown publicly</StyledDiv>
         </UserEditFormTitle>
         <UserEditFormWrapper>
-          <LabeledInput label='Full name'/>
+          <LabeledInput label="Full name" />
         </UserEditFormWrapper>
       </UserEditFormContainer>
       <div>
-        <Button buttonType='type2' buttonName='Save profile' width='9rem' height='3.8rem' margin='0.4rem'/>
-        <Button buttonType='type4' buttonName='Cancel'  width='6rem' height='3.8rem' margin='0.4rem'/>
+        <Button
+          buttonType="type2"
+          buttonName="Save profile"
+          width="9rem"
+          height="3.8rem"
+          margin="0.4rem"
+        />
+        <Button
+          buttonType="type4"
+          buttonName="Cancel"
+          width="6rem"
+          height="3.8rem"
+          margin="0.4rem"
+        />
       </div>
     </>
   );

@@ -1,3 +1,4 @@
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 import styled from "styled-components";
 
 const PostedQnAContainer = styled.div`
@@ -20,7 +21,22 @@ const PostedQnAInfo2 = styled(PostedQnAInfo)`
 
 const PostedQnAInfo3 = styled(PostedQnAInfo)`
   flex-grow: 1;
+  &>div {
+    font-size: 1.5rem;
+  }
 `
+
+const PostedQnAInfo4 = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 0.8rem;
+  &>div {
+    font-size: 1.2rem;
+  }
+  font-size: 1.2rem;
+`;
 
 const NumberWrap = styled.div`
   border: 0.1rem solid #d6d9dc;
@@ -32,22 +48,21 @@ const StyledImg = styled.img`
     border-radius: 0.3rem;
 `
 
-export const UserPostedQnA = () => {
+export const UserPostedQnA = (props) => {
   return (
     <PostedQnAContainer>
       <PostedQnAInfo>
-        <StyledImg></StyledImg> {/*어떤 이미지?*/}
+        <StyledImg src={props.profileImageUrl}></StyledImg>
       </PostedQnAInfo>
         <PostedQnAInfo2>
-          <NumberWrap>0</NumberWrap>
+          <NumberWrap>{props.score}</NumberWrap>
         </PostedQnAInfo2>
-      {/*어떤 숫자?*/}
       <PostedQnAInfo3>
-        <div>Question Title</div>
+        <div>{props.title}</div>
       </PostedQnAInfo3>
-      <PostedQnAInfo>
+      <PostedQnAInfo4>
         <div>upload time</div>
-      </PostedQnAInfo>
+      </PostedQnAInfo4>
     </PostedQnAContainer>
   );
 }
