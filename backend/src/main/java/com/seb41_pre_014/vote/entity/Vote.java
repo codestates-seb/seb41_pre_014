@@ -30,6 +30,18 @@ public class Vote extends BaseTimeEntity {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    public void setVoteType(String voteType) {
+        if (voteType.equals("Up")) {
+            this.voteType = VoteType.UP;
+        } else this.voteType = VoteType.DOWN;
+    }
+
+    public void changeVote() {
+        if (this.voteType.type.equals("Up")) {
+            this.voteType = VoteType.DOWN;
+        } else this.voteType = VoteType.UP;
+    }
+
     public enum VoteType {
         UP("Up"),
         DOWN("Down");

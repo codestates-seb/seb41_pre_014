@@ -24,16 +24,18 @@ public class MemberDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Member findMember = memberRepository.findByEmail(username)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+
         return new MemberDeatils(findMember);
     }
 
     // 데이터베이스에서 조회한 회원 정보를 변화하는 과정과 생성하는 과정을 캡슐화 한다.
     private class MemberDeatils extends Member implements UserDetails {
+
         MemberDeatils(Member member) {
-            setMemberId(member.getMemberId());
-            setEmail(member.getEmail());
-            setPassword(member.getPassword());
-            setRoles(member.getRoles());
+            this.setMemberId(member.getMemberId());
+            this.setEmail(member.getEmail());
+            this.setPassword(member.getPassword());
+            this.setRoles(member.getRoles());
         }
 
         @Override

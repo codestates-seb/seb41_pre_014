@@ -10,6 +10,4 @@ import java.util.List;
 public interface BookmarkMapper {
 
     BookmarkDto.Response bookmarkToResponseDto(Bookmark bookmark);
-    List<BookmarkDto.Response> bookmarksToResponseDtos(List<Bookmark> bookmarks);
-
 }

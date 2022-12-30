@@ -1,11 +1,15 @@
 package com.seb41_pre_014.suggestedEdit.dto;
 
+import com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit;
+import com.seb41_pre_014.tag.entity.SuggestedEditTag;
+import com.seb41_pre_014.tag.entity.Tag;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SuggestedEditDto {
 
@@ -59,8 +63,21 @@ public class SuggestedEditDto {
             private String title;
             private Long boardId;
             private Long editorId;
+            private String editor;
             private String body;
             private List<String> tags;
             private String editStatus;
+
+            public Response(SuggestedEdit edit) {
+                this.editId = edit.getEditId();
+                this.title = edit.getTitle();
+                this.boardId = edit.getBoard().getBoardId();
+                this.editorId = edit.getMember().getMemberId();
+                this.editor = edit.getMember().getDisplayName();
+                this.body = edit.getBody();
+                this.tags = edit.getSuggestedEditTags() == null ? null : edit.getSuggestedEditTags().stream()
+                        .map(suggestedEditTag -> suggestedEditTag.getTag().getName()).collect(Collectors.toList());
+                this.editStatus = edit.getEditStatus().name();
+            }
         }
 }

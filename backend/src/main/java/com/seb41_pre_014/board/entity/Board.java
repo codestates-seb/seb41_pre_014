@@ -3,6 +3,7 @@ package com.seb41_pre_014.board.entity;
 import com.seb41_pre_014.audit.BaseTimeEntity;
 import com.seb41_pre_014.bookmark.entity.Bookmark;
 import com.seb41_pre_014.member.entity.Member;
+import com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit;
 import com.seb41_pre_014.tag.entity.BoardTag;
 import com.seb41_pre_014.vote.entity.Vote;
 import lombok.*;
@@ -36,9 +37,6 @@ public class Board extends BaseTimeEntity {
     private String body;
     private int score = 0;
     private int viewCount = 0;
-    private int bookmarkCount = 0;
-    private int answerCount = 0;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "QUESTION_ID")
@@ -60,29 +58,15 @@ public class Board extends BaseTimeEntity {
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<Vote> votes = new ArrayList<>();
 
-    public void addBookmarkCount() {
-        this.bookmarkCount += 1;
-    }
-
-    public void addAnswerCount() {
-        this.answerCount += 1;
-    }
-
-    public void subtractAnswerCount() {
-        this.answerCount -= 1;
-    }
-
-
-    public void addAnswers(Board answer) {
-        this.answers.add(answer);
-    }
-
-    public void subtractAnswers(Long answerId) {
-        this.answers.remove(answerId);
-    }
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    private List<SuggestedEdit> suggestedEdits = new ArrayList<>();
 
     public void addViewCount() {
         this.viewCount += 1;
+    }
+
+    public void addScore() {
+        this.score += 1;
     }
 
     public void setBoardId(Long boardId) {

@@ -58,8 +58,8 @@ class BoardRepositoryTest {
         assertEquals(board.getBoardType(), postBoard.getBoardType());
         assertEquals(board.getTitle(), postBoard.getTitle());
         assertEquals(board.getBody(), postBoard.getBody());
-        assertEquals(board.getAnswerCount(), postBoard.getAnswerCount());
-        assertEquals(board.getBookmarkCount(), postBoard.getBookmarkCount());
+        assertEquals(board.getAnswers().size(), postBoard.getAnswers().size());
+        assertEquals(board.getBookmarks().size(), postBoard.getBookmarks().size());
         assertEquals(board.getScore(), postBoard.getScore());
         assertEquals(board.getViewCount(), postBoard.getViewCount());
     }

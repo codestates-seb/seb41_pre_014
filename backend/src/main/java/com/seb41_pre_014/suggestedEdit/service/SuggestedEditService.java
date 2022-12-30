@@ -1,7 +1,11 @@
 package com.seb41_pre_014.suggestedEdit.service;
 
+import com.seb41_pre_014.board.entity.Board;
+import com.seb41_pre_014.board.service.BoardService;
 import com.seb41_pre_014.exception.BusinessLogicException;
 import com.seb41_pre_014.exception.ExceptionCode;
+import com.seb41_pre_014.member.entity.Member;
+import com.seb41_pre_014.member.service.MemberService;
 import com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit;
 import com.seb41_pre_014.suggestedEdit.repository.SuggestedEditRepository;
 import com.seb41_pre_014.util.CustomBeanUtils;
@@ -12,6 +16,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import static com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit.EditStatus.EDIT_PENDING;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -19,9 +25,16 @@ public class SuggestedEditService {
 
     private final SuggestedEditRepository suggestedEditRepository;
     private final CustomBeanUtils<SuggestedEdit> beanUtils;
+    private final MemberService memberService;
+    private final BoardService boardService;
 
     @Transactional
-    public SuggestedEdit postEdit(SuggestedEdit suggestedEdit) {
+    public SuggestedEdit postEdit(Long memberId, Long boardId, SuggestedEdit suggestedEdit) {
+        Member member = memberService.findMember(memberId);
+        Board board = boardService.findBoard(boardId);
+        suggestedEdit.setMemberAndBoard(member, board);
+        suggestedEdit.changeStatus(EDIT_PENDING);
+
         return suggestedEditRepository.save(suggestedEdit);
     }
 

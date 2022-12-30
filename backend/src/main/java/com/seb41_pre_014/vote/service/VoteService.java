@@ -1,7 +1,11 @@
 package com.seb41_pre_014.vote.service;
 
+import com.seb41_pre_014.board.entity.Board;
+import com.seb41_pre_014.board.service.BoardService;
 import com.seb41_pre_014.exception.BusinessLogicException;
 import com.seb41_pre_014.exception.ExceptionCode;
+import com.seb41_pre_014.member.entity.Member;
+import com.seb41_pre_014.member.service.MemberService;
 import com.seb41_pre_014.util.CustomBeanUtils;
 import com.seb41_pre_014.vote.entity.Vote;
 import com.seb41_pre_014.vote.repository.VoteRepository;
@@ -18,18 +22,26 @@ import java.util.List;
 public class VoteService {
 
     private final VoteRepository voteRepository;
-    private final CustomBeanUtils<Vote> beanUtils;
+    private final MemberService memberService;
+    private final BoardService boardService;
 
     @Transactional
-    public Vote createVote(Vote vote) {
+    public Vote createVote(Long memberId, Long boardId, String voteType) {
+        Member member = memberService.findMember(memberId);
+        Board board = boardService.findBoard(boardId);
+
+        Vote vote = Vote.builder().member(member).board(board).build();
+        vote.setVoteType(voteType);
+
         return voteRepository.save(vote);
     }
 
     @Transactional
-    public Vote updateVote(Vote vote) {
-        Vote findVote = findVerifiedVote(vote.getVoteId());
+    public Vote updateVote(Long voteId) {
+        Vote findVote = findVerifiedVote(voteId);
+        findVote.changeVote();
 
-        return beanUtils.copyNonNullProperties(vote, findVote);
+        return findVote;
     }
 
     public Vote findVote(Long voteId) {

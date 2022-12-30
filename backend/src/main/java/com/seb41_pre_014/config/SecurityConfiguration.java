@@ -28,6 +28,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor
@@ -55,7 +56,9 @@ public class SecurityConfiguration {
                 .and()
                 .apply(new CustomFilterConfigurer())    // Custom한 Configurer 추가
                 .and()
-                .authorizeHttpRequests(authorize -> authorize
+                .authorizeHttpRequests()
+                .antMatchers("/**").permitAll();
+//                .authorizeHttpRequests(authorize -> authorize
 //                        .antMatchers(HttpMethod.GET, "/*/members").permitAll()
 //                        .antMatchers(HttpMethod.PATCH, "/*/members/**").hasAnyRole("USER", "ADMIN")
 //                        .antMatchers(HttpMethod.GET, "/*/members").hasRole("ADMIN")
@@ -72,7 +75,7 @@ public class SecurityConfiguration {
 //                        .antMatchers(HttpMethod.POST, "/*/bookmarks/**").hasAnyRole("USER", "ADMIN")
 //                        .antMatchers(HttpMethod.GET, "/*/bookmarks/**").hasAnyRole("USER", "ADMIN")
 //                        .antMatchers(HttpMethod.POST, "/*/tags/**").hasAnyRole("USER", "ADMIN")
-                        .anyRequest().permitAll());
+//                        .anyRequest().permitAll());
 
         return http.build();
     }
@@ -86,8 +89,11 @@ public class SecurityConfiguration {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8081", "http://localhost:3000", "https://0d2c-1-239-144-101.jp.ngrok.io", "http://localhost:8080"));
         configuration.addAllowedOriginPattern("*");    // 모든 출처에 대해 HTTP 통신을 허용
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE"));   // 파라미터로 지정한 HTTP Method에 대한 HTTP 통신 허용
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE", "OPTIONS"));   // 파라미터로 지정한 HTTP Method에 대한 HTTP 통신 허용
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
@@ -111,12 +117,12 @@ public class SecurityConfiguration {
             jwtAuthenticationFilter.setAuthenticationFailureHandler(new MemberAuthenticationFailureHandler());
 
             JwtVerificationFilter jwtVerificationFilter = new JwtVerificationFilter(jwtTokenizer, authorityUtils);
+
             // JwtAuthenticationFilter를 Spring Security Filter Chain에 추가
             builder
                     .addFilter(corsFilter)
                     .addFilter(jwtAuthenticationFilter)
                     .addFilterAfter(jwtVerificationFilter, JwtAuthenticationFilter.class);
-
         }
     }
 
