@@ -215,5 +215,4 @@ const LoginFooter = styled.div`
       };
     };
   };
-<<<<<<< HEAD
 `;
