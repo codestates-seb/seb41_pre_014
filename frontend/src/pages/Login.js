@@ -126,7 +126,6 @@ const StyledLogoIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   & > a {
     width: 3.2rem;
     height: 3.7rem;
@@ -140,7 +139,6 @@ const SNSLoginButtonWrapper = styled.div`
   width:100%;
   display:flex;
   flex-direction: column;
-
   & > button {
     flex: 1 auto;
     padding: 1.04rem;
@@ -158,12 +156,10 @@ const LoginFormWrapper = styled.form`
   , 0 2rem 4.8rem hsla(0, 0%, 0%, 0.05)
   , 0 0.1rem 0.4rem hsla(0, 0%, 0%, 0.1);
   border-radius: 0.7rem;
-
   & > div {
     display: flex;
     flex-direction: column;
     margin: 0.6rem 0;
-
     & > label {
       font-size: 1.5rem;
       font-weight: 600;
@@ -171,7 +167,6 @@ const LoginFormWrapper = styled.form`
       margin: 0.2rem 0;
       padding: 0 0.2rem;
     };
-
     & > input {
       margin: 0.2rem 0;
       padding: 0.78rem 0.91rem;
@@ -188,26 +183,21 @@ const LoginFooter = styled.div`
   font-size: 1.3rem;
   color: #232629;
   text-align:center;
-
   & * {
     font-size: 1.3rem;
     color: #232629;
   }
-
   & > a {
     text-decoration: none;
     color: #0074CC;
     margin-left: 0.5rem;
   }
-
   & > div {
     margin-top: 1.2rem;
-
     & > a {
       text-decoration: none;
       color: #0074CC;
       margin-left: 0.5rem;
-
       & > svg {
         margin-left: 0.5rem;
         & > path {
