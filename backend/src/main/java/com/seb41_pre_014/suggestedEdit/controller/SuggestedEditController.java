@@ -4,6 +4,9 @@ package com.seb41_pre_014.suggestedEdit.controller;
 import com.seb41_pre_014.board.dto.BoardDto;
 import com.seb41_pre_014.suggestedEdit.dto.SuggestedEditDto;
 import com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit;
+import com.seb41_pre_014.suggestedEdit.mapper.SuggestedEditMapper;
+import com.seb41_pre_014.suggestedEdit.service.SuggestedEditService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,56 +17,51 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/suggested-edits")
+@RequiredArgsConstructor
 public class SuggestedEditController {
+
+    private final SuggestedEditService suggestedEditService;
+    private final SuggestedEditMapper mapper;
 
     @PostMapping
     public ResponseEntity postEdit(@RequestParam("memberId") @Positive Long memberId,
                                    @RequestParam("boardId") @Positive Long boardId,
                                    @RequestBody @Valid SuggestedEditDto.Post postEdit) {
-        SuggestedEditDto.Response edit = stubEdit(1);
-        return new ResponseEntity(edit, HttpStatus.CREATED);
+        SuggestedEdit suggestedEdit = mapper.editPostDtoToEdit(postEdit);
+        SuggestedEdit savesuggestedEdit = suggestedEditService.postEdit(memberId, boardId, suggestedEdit);
+
+        return new ResponseEntity(mapper.editToEditResponseDto(savesuggestedEdit), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{edit-id}")
     public ResponseEntity patchEdit(@PathVariable("edit-id") @Positive Long editId,
                                     @RequestBody @Valid SuggestedEditDto.Patch patchEdit) {
-        SuggestedEditDto.Response edit = stubEdit(1);
-        return new ResponseEntity(edit, HttpStatus.OK);
+        SuggestedEdit suggestedEdit = mapper.editPatchDtoToEdit(patchEdit);
+        suggestedEdit.setId(editId);
+        SuggestedEdit updateSUggestedEdit = suggestedEditService.patchEdit(suggestedEdit);
+
+        return new ResponseEntity(mapper.editToEditResponseDto(updateSUggestedEdit), HttpStatus.OK);
     }
 
     @GetMapping("/{edit-id}")
     public ResponseEntity findEdit(@PathVariable("edit-id") @Positive Long editId) {
-        SuggestedEditDto.Response edit1 = stubEdit(1);
-        SuggestedEditDto.Response edit2 = stubEdit(2);
-        SuggestedEditDto.Response edit3 = stubEdit(3);
-        return new ResponseEntity(edit1, HttpStatus.OK);
+        SuggestedEdit findEdit = suggestedEditService.findEdit(editId);
+
+        return new ResponseEntity(mapper.editToEditResponseDto(findEdit), HttpStatus.OK);
     }
 
     @GetMapping
     public ResponseEntity findAllEdit(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
                                       @RequestParam(value = "size", defaultValue = "20") @Positive int size) {
-        SuggestedEditDto.Response edit1 = stubEdit(1);
-        SuggestedEditDto.Response edit2 = stubEdit(2);
-        SuggestedEditDto.Response edit3 = stubEdit(3);
-        return new ResponseEntity(List.of(edit1, edit2, edit3), HttpStatus.OK);
+        List<SuggestedEdit> suggestedEdits = suggestedEditService.findAllEdit(page, size).getContent();
+
+        return new ResponseEntity(mapper.editsToEditResponseDtos(suggestedEdits), HttpStatus.OK);
     }
 
     @DeleteMapping("/{edit-id}")
     public ResponseEntity deleteEdit(@PathVariable("edit-id") @Positive Long editId) {
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+        suggestedEditService.deleteEdit(editId);
 
-    public SuggestedEditDto.Response stubEdit(long n) {
-        SuggestedEditDto.Response.ResponseBuilder builder = SuggestedEditDto.Response.builder();
-        return builder
-                .editId(n)
-                .title("TempEdit" + n)
-                .editorId(n)
-                .boardId(n)
-                .editId(n)
-                .body("Body of TempEdit" + n)
-                .tags(List.of("tag" + n, "tag2" + n + 1))
-                .editStatus("처리중")
-                .build();
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

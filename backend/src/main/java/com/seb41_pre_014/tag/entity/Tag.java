@@ -23,4 +23,7 @@ public class Tag {
 
     @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL)
     private List<MemberTag> memberTag = new ArrayList<>();
+
+    @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL)
+    private List<SuggestedEditTag> suggestedEditTags = new ArrayList<>();
 }

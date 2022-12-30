@@ -65,6 +65,8 @@ public class BoardDto {
         private int answerCount;
         private Long questionId;
         private List<Long> answers;
+        private String createdAt;
+        private String lastModifiedAt;
 
         @Builder
         public Response(Board board) {
@@ -81,11 +83,13 @@ public class BoardDto {
                     .map(boardTag -> boardTag.getTag().getName()).collect(Collectors.toList());
             this.score = board.getScore();
             this.viewCount = board.getViewCount();
-            this.bookmarkCount = board.getBookmarkCount();
-            this.answerCount = board.getAnswerCount();
+            this.bookmarkCount = board.getBookmarks() == null ? 0 : board.getBookmarks().size();
+            this.answerCount = board.getAnswers() == null ? 0 : board.getAnswers().size();
             this.questionId = board.getQuestion() == null ? null : board.getQuestion().getBoardId();
             this.answers = board.getAnswers() == null ? null : board.getAnswers().stream()
                     .map(Board::getBoardId).collect(Collectors.toList());
+            this.createdAt = board.getCreatedAt().toString();
+            this.lastModifiedAt = board.getLastModifiedAt().toString();
         }
     }
 }

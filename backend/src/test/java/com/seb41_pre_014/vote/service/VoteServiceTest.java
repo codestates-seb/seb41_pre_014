@@ -36,7 +36,7 @@ class VoteServiceTest {
         given(voteRepository.save(Mockito.any(Vote.class))).willReturn(vote);
 
         // when
-        Vote saveVote = voteService.createVote(vote);
+        Vote saveVote = voteService.createVote(1L, 1L, "Up");
 
         // then
         assertEquals(vote.getVoteType(), saveVote.getVoteType());
@@ -50,7 +50,7 @@ class VoteServiceTest {
         given(voteRepository.findById(Mockito.anyLong())).willReturn(Optional.empty());
 
         // when / then
-        assertThrows(BusinessLogicException.class, () -> voteService.updateVote(vote));
+        assertThrows(BusinessLogicException.class, () -> voteService.updateVote(vote.getVoteId()));
     }
 
     @Test
