@@ -1,79 +1,99 @@
 package com.seb41_pre_014.board.controller;
 
 import com.seb41_pre_014.board.dto.BoardDto;
+import com.seb41_pre_014.board.entity.Board;
+import com.seb41_pre_014.board.mapper.BoardMapper;
+import com.seb41_pre_014.board.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
 
+import static com.seb41_pre_014.board.entity.Board.BoardType.ANSWER;
+import static com.seb41_pre_014.board.entity.Board.BoardType.QUESTION;
+
 @RestController
 @RequestMapping("/boards")
+@RequiredArgsConstructor
 public class BoardController {
+
+    private final BoardService boardService;
+    private final BoardMapper mapper;
 
     @PostMapping("/questions")
     public ResponseEntity postQuestion(@RequestParam("memberId") @Positive Long memberId,
-                                       @RequestBody @Valid BoardDto.Post postQuestion) {
-        BoardDto.Response question = createQuestion();
-        return new ResponseEntity<>(question, HttpStatus.CREATED);
+                                       @RequestBody @Valid BoardDto.Post postDto) {
+        Board question = mapper.boardPostDtoToBoard(postDto);
+        Board postQuestion = boardService.postQuestion(memberId, question);
+
+        return new ResponseEntity<>(mapper.boardToBoardResponseDto(postQuestion), HttpStatus.CREATED);
     }
 
     @PostMapping("/answers/{question-id}")
     public ResponseEntity postAnswer(@PathVariable("question-id") @Positive Long questionId,
                                      @RequestParam("memberId") @Positive Long memberId,
-                                     @RequestBody @Valid BoardDto.Post postAnswer) {
-        BoardDto.Response answer = createAnswer();
-        return new ResponseEntity<>(answer, HttpStatus.CREATED);
+                                     @RequestBody @Valid BoardDto.Post postDto) {
+        Board answer = mapper.boardPostDtoToBoard(postDto);
+        Board postAnswer = boardService.postAnswer(questionId, memberId, answer);
+
+        return new ResponseEntity<>(mapper.boardToBoardResponseDto(postAnswer), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{board-id}")
     public ResponseEntity updateBoard(@PathVariable("board-id") @Positive Long boardId,
-                                      @RequestBody @Valid BoardDto.Patch patchAnswer) {
-        BoardDto.Response question = createQuestion();
-        return new ResponseEntity<>(question, HttpStatus.OK);
+                                      @RequestBody @Valid BoardDto.Patch patchDto) {
+        Board board = mapper.boardPatchDtoToBoard(patchDto);
+        board.setBoardId(boardId);
+        Board updateBoard = boardService.updateBoard(board);
+
+        return new ResponseEntity<>(mapper.boardToBoardResponseDto(updateBoard), HttpStatus.OK);
     }
 
     @GetMapping("/{board-id}")
     public ResponseEntity findBoard(@PathVariable("board-id") @Positive Long boardId) {
-        BoardDto.Response question = createQuestion();
-        return ResponseEntity.ok(question);
+        Board findBoard = boardService.findBoard(boardId);
+
+        return ResponseEntity.ok(mapper.boardToBoardResponseDto(findBoard));
     }
 
     @GetMapping("/questions")
     public ResponseEntity findAllQuestions(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
-                                            @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
-        BoardDto.Response question = createQuestion();
-        return ResponseEntity.ok(List.of(question));
+                                           @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
+        List<Board> questions = boardService.findAllQuestions(page, size).getContent();
+
+        return new ResponseEntity<>(mapper.boardsToBoardResponseDtos(questions), HttpStatus.OK);
     }
 
     // 답변이 없는 순으로 정렬
     @GetMapping("/unanswered")
     public ResponseEntity findAllByAnswerCount(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
                                                @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
-        BoardDto.Response question = createQuestion();
-        return ResponseEntity.ok(List.of(question));
+        List<Board> boards = boardService.findAllByAnswerCount(page, size).getContent();
+
+        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(boards));
     }
 
     // 조회수 순으로 정렬
     @GetMapping("/frequent")
     public ResponseEntity findAllByViewCount(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
                                              @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
-        BoardDto.Response question = createQuestion();
-        BoardDto.Response answer = createAnswer();
-        BoardDto.Response answer2 = createAnswer2();
-        return ResponseEntity.ok(List.of(question, answer, answer2));
+        List<Board> boards = boardService.findAllByViewCount(page, size).getContent();
+
+        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(boards));
     }
 
     // 높은 점수순으로 정렬
     @GetMapping("/score")
     public ResponseEntity findAllByScore(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
                                          @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
-        BoardDto.Response question = createQuestion();
-        BoardDto.Response answer = createAnswer();
-        BoardDto.Response answer2 = createAnswer2();
-        return ResponseEntity.ok(List.of(answer2, answer, question));
+        List<Board> boards = boardService.findAllByScore(page, size).getContent();
+
+        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(boards));
     }
 
     // 검색어 기준 게시물 조회
@@ -81,107 +101,45 @@ public class BoardController {
     public ResponseEntity findAllBySearch(@RequestParam("keyword") String keyword,
                                           @RequestParam(value = "page", defaultValue = "1") @Positive int page,
                                           @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
-        BoardDto.Response question = createQuestion();
-        BoardDto.Response answer = createAnswer();
-        return ResponseEntity.ok(List.of(question, answer));
+        List<Board> boards = boardService.findAllBySearch(keyword, page, size).getContent();
+
+        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(boards));
     }
 
     // 최신 답변순으로 정렬
     @GetMapping("answers/{question-id}/newest")
-    public ResponseEntity findAnswersByDesc(@PathVariable("question-id") @Positive Long questionId) {
-        BoardDto.Response answer = createAnswer();
-        BoardDto.Response answer2 = createAnswer2();
-        return ResponseEntity.ok(List.of(answer, answer2));
+    public ResponseEntity findAnswersByDesc(@PathVariable("question-id") @Positive Long questionId,
+                                            @RequestParam(value = "page", defaultValue = "1") @Positive int page,
+                                            @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
+        List<Board> answers = boardService.findAnswerByDesc(questionId, page, size).getContent();
+
+        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(answers));
     }
 
     // 오래된 답변순으로 정렬
     @GetMapping("/answers/{question-id}/oldest")
-    public ResponseEntity findAnsersByAsc(@PathVariable("question-id") @Positive Long questionId) {
-        BoardDto.Response answer = createAnswer();
-        BoardDto.Response answer2 = createAnswer2();
-        return ResponseEntity.ok(List.of(answer, answer2));
+    public ResponseEntity findAnsersByAsc(@PathVariable("question-id") @Positive Long questionId,
+                                          @RequestParam(value = "page", defaultValue = "1") @Positive int page,
+                                          @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
+        List<Board> answers = boardService.findAnswerByAsc(questionId, page, size).getContent();
+
+        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(answers));
     }
 
     // 높은 점수순으로 답변 정렬
     @GetMapping("/answers/{question-id}/score")
-    public ResponseEntity findAnswersByScore(@PathVariable("question-id") @Positive Long questionId) {
-        BoardDto.Response answer = createAnswer();
-        BoardDto.Response answer2 = createAnswer2();
-        return ResponseEntity.ok(List.of(answer2, answer));
+    public ResponseEntity findAnswersByScore(@PathVariable("question-id") @Positive Long questionId,
+                                             @RequestParam(value = "page", defaultValue = "1") @Positive int page,
+                                             @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
+        List<Board> answers = boardService.findAnswersByScore(questionId, page, size).getContent();
+
+        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(answers));
     }
 
-    @DeleteMapping("{board-id}")
-    public ResponseEntity deleteBoard() {
+    @DeleteMapping("/{board-id}")
+    public ResponseEntity deleteBoard(@PathVariable("board-id") @Positive Long boardId) {
+        boardService.deleteBoard(boardId);
+
         return ResponseEntity.noContent().build();
-    }
-
-    public BoardDto.Response createQuestion() {
-        BoardDto.Response.ResponseBuilder builder = BoardDto.Response.builder();
-        builder.boardId(1L);
-        builder.writerMemberId(1L);
-        builder.writerReputation(10L);
-        builder.writerProfileUrl("url");
-        builder.writerDisplayName("홍길동1");
-        builder.boardStatus("공개");
-        builder.boardType("Question");
-        builder.title("What is Lorem Ipsum?");
-        builder.body("Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
-        builder.tags(List.of("java", "react"));
-        builder.score(10);
-        builder.viewCount(1000);
-        builder.answerCount(5);
-        builder.bookmarkCount(20);
-        builder.questionId(null);
-        builder.answers(List.of(2L, 3L));
-        BoardDto.Response response;
-        response = builder.build();
-
-        return response;
-    }
-
-    public BoardDto.Response createAnswer() {
-        BoardDto.Response.ResponseBuilder builder = BoardDto.Response.builder();
-        builder.boardId(2L);
-        builder.writerMemberId(2L);
-        builder.writerReputation(20L);
-        builder.writerProfileUrl("url");
-        builder.writerDisplayName("홍길동2");
-        builder.boardStatus("임시저장");
-        builder.boardType("Answer");
-        builder.title("What is Lorem Ipsum?");
-        builder.body("Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
-        builder.tags(List.of("javascript"));
-        builder.score(20);
-        builder.viewCount(500);
-        builder.answerCount(5);
-        builder.bookmarkCount(30);
-        builder.questionId(1L);
-        BoardDto.Response response;
-        response = builder.build();
-
-        return response;
-    }
-
-    public BoardDto.Response createAnswer2() {
-        BoardDto.Response.ResponseBuilder builder = BoardDto.Response.builder();
-        builder.boardId(3L);
-        builder.writerMemberId(3L);
-        builder.writerReputation(20L);
-        builder.writerProfileUrl("url");
-        builder.writerDisplayName("홍길동2");
-        builder.boardStatus("임시저장");
-        builder.boardType("Answer");
-        builder.title("What is Lorem Ipsum?");
-        builder.body("Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
-        builder.tags(List.of("javascript"));
-        builder.score(40);
-        builder.viewCount(200);
-        builder.answerCount(3);
-        builder.bookmarkCount(5);
-        builder.questionId(1L);
-        BoardDto.Response response;
-        response = builder.build();
-
-        return response;
     }
 }

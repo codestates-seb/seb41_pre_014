@@ -331,6 +331,7 @@ export const QuestionInfoWrapper = (props) => {
             <li><TagBlock tagName='React' /></li>
           </ul>
         </Tag>
+        
         {/* props 시간 */}
         <UserMetaInfoType1
           profileImageUrl={props.profileImageUrl}
