@@ -31,7 +31,7 @@ const Login = () => {
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json',
       },
-      url: `${process.env.REACT_APP_SERVER_URL}/user/login`,
+      url: `${process.env.REACT_APP_SERVER_URL}/auth/login`,
       data: {
         ...data
       },
