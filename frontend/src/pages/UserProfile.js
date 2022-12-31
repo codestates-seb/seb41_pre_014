@@ -19,21 +19,26 @@ const MainRight = styled.div`
 const filterDataType1 = [
   {
     buttonName : "All",
+    onClick: () => {console.log('모든 게시물 정렬')}
   },
   {
     buttonName : "Questions",
+    onClick: () => {console.log('Question만 정렬')}
   },
   {
     buttonName : "Answers",
+    onClick: () => {console.log('Answer만 정렬')}
   }
 ];
 
 const filterDataType2 = [
   {
     buttonName : "Score",
+    onClick: () => {console.log('Score를 기준으로 정렬')}
   },
   {
     buttonName : "Newest",
+    onClick: () => {console.log('최신 작성일을 기준으로 정렬')}
   }
 ]
 

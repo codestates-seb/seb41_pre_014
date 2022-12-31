@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledDiv1 = styled.div`
   height: 3.6rem;
@@ -210,20 +211,20 @@ const StyledTagLink = styled(StyledA)`
   font-size: 1.;
 `
 
-export const UserMetaInfoType4 = () => {
+export const UserMetaInfoType4 = (props) => {
   return (
     <div>
       <StyledDiv4>
-        <a href="">
+        <Link>
           <StyledAvatar
             alt="user avatar"
-            src="https://www.gravatar.com/avatar/0555bd0deb416a320a0069abef08078a?s=128&d=identicon&r=PG&f=1"
+            src={props.profileImageUrl}
           ></StyledAvatar>
-        </a>
+        </Link>
         <div>
-          <StyledUsername className="user-name">VonC</StyledUsername>
-          <StyledUserLocation className="user-location">France</StyledUserLocation>
-          <StyledTagLink>javascript</StyledTagLink>
+          <StyledUsername className="user-name">{props.displayName}</StyledUsername>
+          <StyledUserLocation className="user-location">{props.location}</StyledUserLocation>
+          <StyledTagLink>{props.tags}</StyledTagLink>
         </div>
       </StyledDiv4>
     </div>
