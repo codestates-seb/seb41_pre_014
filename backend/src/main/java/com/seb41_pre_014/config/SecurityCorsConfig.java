@@ -17,11 +17,12 @@ public class SecurityCorsConfig {
     public CorsFilter corsFilter(){
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
 
-        config.setAllowedOrigins(Arrays.asList("http://localhost:8081", "http://localhost:3000", "http://localhost:8080"));
-        config.setAllowedMethods(Arrays.asList("POST", "GET", "PATCH", "DELETE", "OPTIONS"));
+        config.setAllowedOriginPatterns(Arrays.asList("*"));
+        config.setAllowedOrigins(Arrays.asList("http://localhost:8081", "http://localhost:3000", "https://0d2c-1-239-144-101.jp.ngrok.io", "http://localhost:8080"));
+        config.setAllowedMethods(Arrays.asList("HEAD", "POST", "GET", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("*"));
+        config.setAllowCredentials(true);
         config.addExposedHeader("Authorization");
 
 //        config.addAllowedOriginPattern("http://localhost:8081"); //특정패턴의 origin만 허용

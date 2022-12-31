@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { UserMetaInfoType4 } from "../components/blocks/UserInfoContainer";
 import { StyledInput } from "../components/atoms/SearchBar";
 import { FilterButtonWrapper } from "../components/blocks/FilterButtonWrapper";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const StyledDiv = styled.div`
   font-size: 2.7rem;
@@ -10,7 +12,8 @@ const StyledDiv = styled.div`
 
 const StyledSearchBar = styled(StyledInput)`
   width: 19rem;
-  height: 3.7rem;
+  height: 4.5rem;
+  font-size: 1.5rem;
 `
 
 const StyledUserWrapper = styled.div`
@@ -29,19 +32,41 @@ const StyledA = styled.a`
 
 const StyledTopBar = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 2.4rem;
+  margin-bottom: 6rem;
 ` 
 
 const Users = () => {
   const filterData = [
     {
       buttonName: "Reputation",
+      onClick: () => {console.log('reputation 순으로 정렬')}
     },
     {
       buttonName: "New users",
+      onClick: () => {console.log('최신 생성 유저 순으로 정렬')}
     },
   ];
+
+  // const [users, setUsers] = useState(null);
+
+  // const getUsers = async () => {
+  //   try {
+  //     const response = await axios({
+  //       url: `/members?page=1&size=30`,
+  //       baseURL: `${process.env.REACT_APP_SERVER_URL}`
+  //     });
+  //     setUsers(response.data);
+  //     console.log(users);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getUsers();
+  // }, []);
 
   return (
     <div>
@@ -50,8 +75,8 @@ const Users = () => {
         <StyledSearchBar placeholder="Filter by User" />
         <FilterButtonWrapper 
           filterData={filterData}
-          fontSize='1.3rem'
-          padding='0.6rem'
+          fontSize='1.7rem'
+          padding='1.2rem'
         />
       </StyledTopBar>
       <StyledUserWrapper>

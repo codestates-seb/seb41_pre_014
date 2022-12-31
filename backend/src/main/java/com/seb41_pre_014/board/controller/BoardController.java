@@ -75,7 +75,7 @@ public class BoardController {
                                                @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         List<Board> boards = boardService.findAllByAnswerCount(page, size).getContent();
 
-        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(boards));
+        return new ResponseEntity<>(mapper.boardsToBoardResponseDtos(boards), HttpStatus.OK);
     }
 
     // 조회수 순으로 정렬
@@ -84,7 +84,7 @@ public class BoardController {
                                              @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         List<Board> boards = boardService.findAllByViewCount(page, size).getContent();
 
-        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(boards));
+        return new ResponseEntity<>(mapper.boardsToBoardResponseDtos(boards), HttpStatus.OK);
     }
 
     // 높은 점수순으로 정렬
@@ -93,7 +93,7 @@ public class BoardController {
                                          @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         List<Board> boards = boardService.findAllByScore(page, size).getContent();
 
-        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(boards));
+        return new ResponseEntity<>(mapper.boardsToBoardResponseDtos(boards), HttpStatus.OK);
     }
 
     // 검색어 기준 게시물 조회
@@ -103,7 +103,7 @@ public class BoardController {
                                           @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         List<Board> boards = boardService.findAllBySearch(keyword, page, size).getContent();
 
-        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(boards));
+        return new ResponseEntity<>(mapper.boardsToBoardResponseDtos(boards), HttpStatus.OK);
     }
 
     // 최신 답변순으로 정렬
@@ -113,7 +113,7 @@ public class BoardController {
                                             @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         List<Board> answers = boardService.findAnswerByDesc(questionId, page, size).getContent();
 
-        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(answers));
+        return new ResponseEntity<>(mapper.boardsToBoardResponseDtos(answers), HttpStatus.OK);
     }
 
     // 오래된 답변순으로 정렬
@@ -123,7 +123,7 @@ public class BoardController {
                                           @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         List<Board> answers = boardService.findAnswerByAsc(questionId, page, size).getContent();
 
-        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(answers));
+        return new ResponseEntity<>(mapper.boardsToBoardResponseDtos(answers), HttpStatus.OK);
     }
 
     // 높은 점수순으로 답변 정렬
@@ -133,13 +133,13 @@ public class BoardController {
                                              @RequestParam(value = "size", defaultValue = "30") @Positive int size) {
         List<Board> answers = boardService.findAnswersByScore(questionId, page, size).getContent();
 
-        return ResponseEntity.ok(mapper.boardsToBoardResponseDtos(answers));
+        return new ResponseEntity<>(mapper.boardsToBoardResponseDtos(answers), HttpStatus.OK);
     }
 
     @DeleteMapping("/{board-id}")
     public ResponseEntity deleteBoard(@PathVariable("board-id") @Positive Long boardId) {
         boardService.deleteBoard(boardId);
 
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

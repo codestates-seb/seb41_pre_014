@@ -15,6 +15,7 @@ import javax.persistence.*;
 @Builder
 public class MemberTag {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberTagId; // PK
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -1,5 +1,6 @@
 package com.seb41_pre_014.auth.fileter;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.seb41_pre_014.auth.JwtTokenizer;
 import com.seb41_pre_014.auth.dto.LoginDto;
@@ -7,6 +8,7 @@ import com.seb41_pre_014.member.dto.MemberDto;
 import com.seb41_pre_014.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,12 +21,14 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 // 로그인 인증 요청을 처리하는 클래스
 @RequiredArgsConstructor
+@Slf4j
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenizer jwtTokenizer;
@@ -32,13 +36,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     // 인증을 시도하는 메서드. 인증을 시도하는 로직을 구현하면 된다.
     @SneakyThrows
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
 
         // 클라이언트에서 전송한 Username과 Password를 DTO클래스로 역직렬화
         ObjectMapper objectMapper = new ObjectMapper();
         LoginDto loginDto = objectMapper.readValue(request.getInputStream(), LoginDto.class);
 
-        // Username과 Password 정보를 포함한 Token 생성
+//         Username과 Password 정보를 포함한 Token 생성
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
 
@@ -51,7 +55,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request,
                                             HttpServletResponse response,
                                             FilterChain chain,
-                                            Authentication authResult) throws IOException, ServletException {
+                                            Authentication authResult) {
         // getPrincipal() 메서드로 Member 엔티티를 얻는다.
         // AuthenticationManager 내부에서 인증에 성공하면 인증된 Authenticaton 객체가 생성되면서 principal 필드에 Member 객체가 할당되기 때문이다.
         Member member = (Member) authResult.getPrincipal();
@@ -63,10 +67,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.setHeader("Authorization", "Bearer" + accessToken);
         response.setHeader("Refresh", refreshToken);
 
-//        // JWT 쿠키 저장
-//        Cookie cookie =
-//        response.addCookie();
-        this.getSuccessHandler().onAuthenticationSuccess(request, response, authResult);
+////        // JWT 쿠키 저장
+////        Cookie cookie =
+////        response.addCookie();
+//        this.getSuccessHandler().onAuthenticationSuccess(request, response, authResult);
     }
 
     private String delegateAccessToken(Member member) {

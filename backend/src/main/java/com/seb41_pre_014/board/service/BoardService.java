@@ -47,11 +47,7 @@ public class BoardService {
         postAnswer.setBoardType(ANSWER);
         postAnswer.chageStatus(BOARD_PUBLIC);
 
-        Board saveAnswer = boardRepository.save(postAnswer);
-        findQuestion.addAnswers(saveAnswer);
-        findQuestion.addAnswerCount();
-
-        return saveAnswer;
+        return boardRepository.save(postAnswer);
     }
 
     @Transactional
@@ -61,6 +57,7 @@ public class BoardService {
         return beanUtils.copyNonNullProperties(board, findBoard);
     }
 
+    @Transactional
     public Board findBoard(Long boardId) {
         Board findBoard = findVerifiedBoard(boardId);
         findBoard.addViewCount();
@@ -117,12 +114,6 @@ public class BoardService {
 
     public void deleteBoard(Long boardId) {
         Board findBoard = findVerifiedBoard(boardId);
-
-        if (findBoard.getBoardType() == ANSWER) {
-            Board question = findBoard(boardId);
-            question.subtractAnswers(boardId);
-            question.subtractAnswerCount();
-        }
 
         boardRepository.deleteById(boardId);
     }

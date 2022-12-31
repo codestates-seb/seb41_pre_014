@@ -215,7 +215,7 @@ const StyledTagLink = styled(StyledA)`
   font-size: 1.;
 `
 
-export const UserMetaInfoType4 = (props) => {
+export const UserMetaInfoType4 = (propsprops) => {
   return (
     <div>
       <StyledDiv4>
@@ -223,9 +223,9 @@ export const UserMetaInfoType4 = (props) => {
           <RandomAvartar width={props.width} height={props.height} fontSize={props.fontSize}  />
         </Link>
         <div>
-          <StyledUsername className="user-name">VonC</StyledUsername>
-          <StyledUserLocation className="user-location">France</StyledUserLocation>
-          <StyledTagLink>javascript</StyledTagLink>
+          <StyledUsername className="user-name">{props.displayName}</StyledUsername>
+          <StyledUserLocation className="user-location">{props.location}</StyledUserLocation>
+          <StyledTagLink>{props.tags}</StyledTagLink>
         </div>
       </StyledDiv4>
     </div>

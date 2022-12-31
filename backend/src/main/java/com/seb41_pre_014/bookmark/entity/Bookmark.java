@@ -21,14 +21,16 @@ public class Bookmark extends BaseTimeEntity {
     private Long bookmarkId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEMBER_ID", updatable = false)
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BOARD_ID", updatable = false)
+    @JoinColumn(name = "BOARD_ID")
     private Board board;
 
-    public Bookmark addMemberAndBoard(Member member, Board board) {
-        return Bookmark.builder().board(board).member(member).build();
+
+    public Bookmark(Member member, Board board) {
+        this.member = member;
+        this.board = board;
     }
 }

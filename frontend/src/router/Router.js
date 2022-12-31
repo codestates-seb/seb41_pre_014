@@ -28,6 +28,7 @@ import {
   Write,
   NotFound,
 } from '../pages';
+import UserSettings from '../pages/UserSettings';
 
 
 export const Router = () => {
@@ -55,7 +56,8 @@ export const Router = () => {
               {/* <Route path="reputation" element={<UserActivity />} /> */}
               <Route path="votes" element={<ActivityVotes />} />
             </Route>
-            <Route path="settings" element={<UserActivity />} />
+            <Route path="settings" element={<UserSettings />} />
+            <Route/>
           </Route>
 
           <Route path='/questions' element={<QuestionBoard />}></Route>
