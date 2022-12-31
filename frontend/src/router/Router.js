@@ -57,6 +57,7 @@ export const Router = () => {
               <Route path="votes" element={<ActivityVotes />} />
             </Route>
             <Route path="settings" element={<UserSettings />} />
+            <Route/>
           </Route>
 
           <Route path='/questions' element={<QuestionBoard />}></Route>
