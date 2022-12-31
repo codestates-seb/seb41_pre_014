@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-29T22:59:51+0900",
+    date = "2022-12-31T15:31:04+0900",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.jar, environment: Java 11.0.16 (Azul Systems, Inc.)"
 )
 @Component
@@ -43,8 +43,6 @@ public class SuggestedEditMapperImpl implements SuggestedEditMapper {
 
         suggestedEdit.editId( patchDto.getEditId() );
         suggestedEdit.title( patchDto.getTitle() );
-        suggestedEdit.boardId( patchDto.getBoardId() );
-        suggestedEdit.editorId( patchDto.getEditorId() );
         suggestedEdit.body( patchDto.getBody() );
 
         return suggestedEdit.build();
@@ -57,12 +55,6 @@ public class SuggestedEditMapperImpl implements SuggestedEditMapper {
         }
 
         ResponseBuilder response = Response.builder();
-
-        response.editId( suggestedEdit.getEditId() );
-        response.title( suggestedEdit.getTitle() );
-        response.boardId( suggestedEdit.getBoardId() );
-        response.editorId( suggestedEdit.getEditorId() );
-        response.body( suggestedEdit.getBody() );
 
         return response.build();
     }

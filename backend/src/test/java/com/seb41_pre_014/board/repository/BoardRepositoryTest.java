@@ -80,8 +80,8 @@ class BoardRepositoryTest {
         // then
         assertEquals(board2.getBoardStatus(), updateBoard.getBoardStatus());
         assertEquals(board2.getScore(), updateBoard.getScore());
-        assertEquals(board2.getAnswerCount(), updateBoard.getAnswerCount());
-        assertEquals(board2.getBookmarkCount(), updateBoard.getBookmarkCount());
+        assertEquals(board2.getAnswers().size(), updateBoard.getAnswers().size());
+        assertEquals(board2.getBookmarks().size(), updateBoard.getBookmarks().size());
         assertEquals(board2.getViewCount(), updateBoard.getViewCount());
     }
 
@@ -104,8 +104,8 @@ class BoardRepositoryTest {
         assertEquals(board.getBoardType(), findBoard.getBoardType());
         assertEquals(board.getTitle(), findBoard.getTitle());
         assertEquals(board.getBody(), findBoard.getBody());
-        assertEquals(board.getAnswerCount(), findBoard.getAnswerCount());
-        assertEquals(board.getBookmarkCount(), findBoard.getBookmarkCount());
+        assertEquals(board.getAnswers().size(), findBoard.getAnswers().size());
+        assertEquals(board.getBookmarks().size(), findBoard.getBookmarks().size());
         assertEquals(board.getScore(), findBoard.getScore());
         assertEquals(board.getViewCount(), findBoard.getViewCount());
     }

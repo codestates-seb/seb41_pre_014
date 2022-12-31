@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-29T10:41:53+0900",
+    date = "2022-12-31T17:00:59+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.16 (Azul Systems, Inc.)"
 )
 @Component
 public class SuggestedEditMapperImpl implements SuggestedEditMapper {
 
     @Override
-    public SuggestedEdit editPostDtoToEdit(Post postDto) {
+    public SuggestedEdit suggestedEditPostDtoToEdit(Post postDto) {
         if ( postDto == null ) {
             return null;
         }
@@ -34,48 +34,41 @@ public class SuggestedEditMapperImpl implements SuggestedEditMapper {
     }
 
     @Override
-    public SuggestedEdit editPatchDtoToEdit(Patch patchDto) {
+    public SuggestedEdit suggestedEditPatchDtoToEdit(Patch patchDto) {
         if ( patchDto == null ) {
             return null;
         }
 
         SuggestedEditBuilder suggestedEdit = SuggestedEdit.builder();
 
-        suggestedEdit.editId( patchDto.getEditId() );
         suggestedEdit.title( patchDto.getTitle() );
-        suggestedEdit.boardId( patchDto.getBoardId() );
-        suggestedEdit.editorId( patchDto.getEditorId() );
         suggestedEdit.body( patchDto.getBody() );
 
         return suggestedEdit.build();
     }
 
     @Override
-    public Response editToEditResponseDto(SuggestedEdit suggestedEdit) {
+    public Response editToSuggestedEditResponseDto(SuggestedEdit suggestedEdit) {
         if ( suggestedEdit == null ) {
             return null;
         }
 
         ResponseBuilder response = Response.builder();
 
-        response.editId( suggestedEdit.getEditId() );
-        response.title( suggestedEdit.getTitle() );
-        response.boardId( suggestedEdit.getBoardId() );
-        response.editorId( suggestedEdit.getEditorId() );
-        response.body( suggestedEdit.getBody() );
+        response.suggestedEdit( suggestedEdit );
 
         return response.build();
     }
 
     @Override
-    public List<Response> editsToEditResponseDtos(List<SuggestedEdit> suggestedEdits) {
+    public List<Response> editsTosuggestedEditResponseDtos(List<SuggestedEdit> suggestedEdits) {
         if ( suggestedEdits == null ) {
             return null;
         }
 
         List<Response> list = new ArrayList<Response>( suggestedEdits.size() );
         for ( SuggestedEdit suggestedEdit : suggestedEdits ) {
-            list.add( editToEditResponseDto( suggestedEdit ) );
+            list.add( editToSuggestedEditResponseDto( suggestedEdit ) );
         }
 
         return list;
