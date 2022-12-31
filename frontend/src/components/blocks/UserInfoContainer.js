@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { RandomAvartar } from './RandomAvartar';
+import { Link } from 'react-router-dom';
 
 const StyledDiv1 = styled.div`
   height: 3.6rem;
@@ -197,6 +199,9 @@ const StyledDiv4 = styled.div`
   padding: 0.5rem 0.6rem 0.7rem 0.7rem;
   width: 32.3rem;
   height: 8.2rem;
+  & > a {
+    text-decoration: none;
+  }
 
   & > div {
     display: flex;
@@ -210,16 +215,13 @@ const StyledTagLink = styled(StyledA)`
   font-size: 1.;
 `
 
-export const UserMetaInfoType4 = () => {
+export const UserMetaInfoType4 = (props) => {
   return (
     <div>
       <StyledDiv4>
-        <a href="">
-          <StyledAvatar
-            alt="user avatar"
-            src="https://www.gravatar.com/avatar/0555bd0deb416a320a0069abef08078a?s=128&d=identicon&r=PG&f=1"
-          ></StyledAvatar>
-        </a>
+        <Link href="">
+          <RandomAvartar width={props.width} height={props.height} fontSize={props.fontSize}  />
+        </Link>
         <div>
           <StyledUsername className="user-name">VonC</StyledUsername>
           <StyledUserLocation className="user-location">France</StyledUserLocation>

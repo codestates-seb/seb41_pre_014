@@ -55,7 +55,7 @@ const Users = () => {
         />
       </StyledTopBar>
       <StyledUserWrapper>
-        <UserMetaInfoType4 />
+        <UserMetaInfoType4 width='4.8rem' height='4.8rem' fontSize='2.4rem' />
       </StyledUserWrapper>
       <div>
       <StyledA href='https://stackexchange.com/leagues/1/week/stackoverflow'>weekly / monthly / quarterly reputation leagues</StyledA>
