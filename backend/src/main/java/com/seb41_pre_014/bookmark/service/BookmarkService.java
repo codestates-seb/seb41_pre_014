@@ -27,15 +27,18 @@ public class BookmarkService {
         Member member = memberService.findMember(memberId);
         Board board = boardService.findBoard(boardId);
         Bookmark bookmark = new Bookmark(member, board);
-        log.info("{}", bookmark.getBookmarkId(), bookmark.getBoard().getBoardId(), bookmark.getMember().getMemberId());
+        Bookmark saveBookmark = bookmarkRepository.save(bookmark);
+        board.setScore();
 
-        return bookmarkRepository.save(bookmark);
+        return saveBookmark;
     }
 
     public void deleteBookmark(Long bookmarkId) {
-        bookmarkRepository.findById(bookmarkId)
+        Bookmark bookmark = bookmarkRepository.findById(bookmarkId)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.BOOKMARK_NOT_FOUND));
+        Board board = bookmark.getBoard();
 
         bookmarkRepository.deleteById(bookmarkId);
+        board.setScore();
     }
 }
