@@ -10,6 +10,7 @@ import com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit;
 import com.seb41_pre_014.suggestedEdit.repository.SuggestedEditRepository;
 import com.seb41_pre_014.util.CustomBeanUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -21,6 +22,7 @@ import static com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit.EditStatus.ED
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
+@Slf4j
 public class SuggestedEditService {
 
     private final SuggestedEditRepository suggestedEditRepository;
@@ -34,8 +36,9 @@ public class SuggestedEditService {
         Board board = boardService.findBoard(boardId);
         suggestedEdit.setMemberAndBoard(member, board);
         suggestedEdit.changeStatus(EDIT_PENDING);
+        SuggestedEdit saveSuggestedEdit = suggestedEditRepository.save(suggestedEdit);
 
-        return suggestedEditRepository.save(suggestedEdit);
+        return saveSuggestedEdit;
     }
 
     @Transactional

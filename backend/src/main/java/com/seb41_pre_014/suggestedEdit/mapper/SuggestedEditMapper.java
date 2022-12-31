@@ -8,11 +8,11 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface SuggestedEditMapper {
-    SuggestedEdit editPostDtoToEdit(SuggestedEditDto.Post postDto);
+    SuggestedEdit suggestedEditPostDtoToEdit(SuggestedEditDto.Post postDto);
 
-    SuggestedEdit editPatchDtoToEdit(SuggestedEditDto.Patch patchDto);
+    SuggestedEdit suggestedEditPatchDtoToEdit(SuggestedEditDto.Patch patchDto);
 
-    SuggestedEditDto.Response editToEditResponseDto(SuggestedEdit suggestedEdit);
+    SuggestedEditDto.Response editToSuggestedEditResponseDto(SuggestedEdit suggestedEdit);
 
-    List<SuggestedEditDto.Response> editsToEditResponseDtos(List<SuggestedEdit> suggestedEdits);
+    List<SuggestedEditDto.Response> editsTosuggestedEditResponseDtos(List<SuggestedEdit> suggestedEdits);
 }

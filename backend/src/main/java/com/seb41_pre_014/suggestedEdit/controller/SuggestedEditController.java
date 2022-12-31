@@ -7,6 +7,7 @@ import com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit;
 import com.seb41_pre_014.suggestedEdit.mapper.SuggestedEditMapper;
 import com.seb41_pre_014.suggestedEdit.service.SuggestedEditService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/suggested-edits")
 @RequiredArgsConstructor
@@ -27,27 +29,31 @@ public class SuggestedEditController {
     public ResponseEntity postEdit(@RequestParam("memberId") @Positive Long memberId,
                                    @RequestParam("boardId") @Positive Long boardId,
                                    @RequestBody @Valid SuggestedEditDto.Post postEdit) {
-        SuggestedEdit suggestedEdit = mapper.editPostDtoToEdit(postEdit);
-        SuggestedEdit savesuggestedEdit = suggestedEditService.postEdit(memberId, boardId, suggestedEdit);
+        SuggestedEdit suggestedEdit = mapper.suggestedEditPostDtoToEdit(postEdit);
+        SuggestedEdit saveSuggestedEdit = suggestedEditService.postEdit(memberId, boardId, suggestedEdit);
+        SuggestedEditDto.Response responseDto = mapper.editToSuggestedEditResponseDto(saveSuggestedEdit);
 
-        return new ResponseEntity(mapper.editToEditResponseDto(savesuggestedEdit), HttpStatus.CREATED);
+        log.info("{}", responseDto.getEditId());
+        log.info("{}", responseDto.getEditStatus());
+
+        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{edit-id}")
     public ResponseEntity patchEdit(@PathVariable("edit-id") @Positive Long editId,
                                     @RequestBody @Valid SuggestedEditDto.Patch patchEdit) {
-        SuggestedEdit suggestedEdit = mapper.editPatchDtoToEdit(patchEdit);
+        SuggestedEdit suggestedEdit = mapper.suggestedEditPatchDtoToEdit(patchEdit);
         suggestedEdit.setId(editId);
         SuggestedEdit updateSUggestedEdit = suggestedEditService.patchEdit(suggestedEdit);
 
-        return new ResponseEntity(mapper.editToEditResponseDto(updateSUggestedEdit), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.editToSuggestedEditResponseDto(updateSUggestedEdit), HttpStatus.OK);
     }
 
     @GetMapping("/{edit-id}")
     public ResponseEntity findEdit(@PathVariable("edit-id") @Positive Long editId) {
         SuggestedEdit findEdit = suggestedEditService.findEdit(editId);
 
-        return new ResponseEntity(mapper.editToEditResponseDto(findEdit), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.editToSuggestedEditResponseDto(findEdit), HttpStatus.OK);
     }
 
     @GetMapping
@@ -55,7 +61,7 @@ public class SuggestedEditController {
                                       @RequestParam(value = "size", defaultValue = "20") @Positive int size) {
         List<SuggestedEdit> suggestedEdits = suggestedEditService.findAllEdit(page, size).getContent();
 
-        return new ResponseEntity(mapper.editsToEditResponseDtos(suggestedEdits), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.editsTosuggestedEditResponseDtos(suggestedEdits), HttpStatus.OK);
     }
 
     @DeleteMapping("/{edit-id}")
