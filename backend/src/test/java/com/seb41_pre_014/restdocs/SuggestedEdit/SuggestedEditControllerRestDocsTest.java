@@ -100,10 +100,8 @@ class SuggestedEditControllerRestDocsTest {
     @Test
     void updateSuggestedEditTest() throws Exception {
         // given
-        SuggestedEditDto.Patch patch = new SuggestedEditDto.Patch(1L,
+        SuggestedEditDto.Patch patch = new SuggestedEditDto.Patch(
                 "This is title, must be longer than 15",
-                1L,
-                1L,
                 "This is body, must be longer than 20",
                 List.of("tag1", "tag2"));
         String content = gson.toJson(patch);
