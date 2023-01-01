@@ -53,9 +53,12 @@ public class SuggestedEditDto {
             private Long boardId;
             private Long editorId;
             private String editor;
+            private String editorProfileUrl;
             private String body;
             private List<String> tags;
             private String editStatus;
+            private String createdAt;
+            private String lastModifiedAt;
 
             @Builder
             public Response(SuggestedEdit suggestedEdit) {
@@ -64,10 +67,13 @@ public class SuggestedEditDto {
                 this.boardId = suggestedEdit.getBoard().getBoardId();
                 this.editorId = suggestedEdit.getMember().getMemberId();
                 this.editor = suggestedEdit.getMember().getDisplayName();
+                this.editorProfileUrl = suggestedEdit.getMember().getProfileImageUrl();
                 this.body = suggestedEdit.getBody();
                 this.tags = suggestedEdit.getSuggestedEditTags() == null ? null : suggestedEdit.getSuggestedEditTags().stream()
                         .map(suggestedEditTag -> suggestedEditTag.getTag().getName()).collect(Collectors.toList());
                 this.editStatus = suggestedEdit.getEditStatus().name();
+                this.createdAt = suggestedEdit.getCreatedAt().toString();
+                this.lastModifiedAt = suggestedEdit.getLastModifiedAt().toString();
             }
         }
 }

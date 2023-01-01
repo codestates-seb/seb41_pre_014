@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.seb41_pre_014.board.service.BoardServiceTest" tests="5" skipped="0" failures="2" errors="0" timestamp="2022-12-29T14:01:05" hostname="gimchanbin-ui-MacBookPro.local" time="0.207">
+<testsuite name="com.seb41_pre_014.board.service.BoardServiceTest" tests="5" skipped="0" failures="2" errors="0" timestamp="2023-01-01T05:43:09" hostname="gimchanbin-ui-MacBookPro.local" time="0.147">
   <properties/>
-  <testcase name="Question 생성" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.173">
+  <testcase name="Question 생성" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.13">
     <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
 	at com.seb41_pre_014.board.service.BoardService.postQuestion(BoardService.java:32)
 	at com.seb41_pre_014.board.service.BoardServiceTest.postQuestion(BoardServiceTest.java:38)
@@ -92,14 +92,14 @@
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 </failure>
   </testcase>
-  <testcase name="findVerifiedBoard 테스트3" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.019"/>
-  <testcase name="findVerifiedBoard 테스트1" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.004"/>
-  <testcase name="findVerifiedBoard 테스트2" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.003"/>
-  <testcase name="Answer 생성" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.004">
+  <testcase name="findVerifiedBoard 테스트3" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.009"/>
+  <testcase name="findVerifiedBoard 테스트1" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.001"/>
+  <testcase name="findVerifiedBoard 테스트2" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.001"/>
+  <testcase name="Answer 생성" classname="com.seb41_pre_014.board.service.BoardServiceTest" time="0.003">
     <failure message="com.seb41_pre_014.exception.BusinessLogicException: 게시물을 찾을 수 없습니다." type="com.seb41_pre_014.exception.BusinessLogicException">com.seb41_pre_014.exception.BusinessLogicException: 게시물을 찾을 수 없습니다.
-	at app//com.seb41_pre_014.board.service.BoardService.lambda$findVerifiedBoard$0(BoardService.java:132)
+	at app//com.seb41_pre_014.board.service.BoardService.lambda$findVerifiedBoard$0(BoardService.java:123)
 	at java.base@11.0.16/java.util.Optional.orElseThrow(Optional.java:408)
-	at app//com.seb41_pre_014.board.service.BoardService.findVerifiedBoard(BoardService.java:132)
+	at app//com.seb41_pre_014.board.service.BoardService.findVerifiedBoard(BoardService.java:123)
 	at app//com.seb41_pre_014.board.service.BoardService.postAnswer(BoardService.java:42)
 	at app//com.seb41_pre_014.board.service.BoardServiceTest.postAnswer(BoardServiceTest.java:54)
 	at java.base@11.0.16/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
