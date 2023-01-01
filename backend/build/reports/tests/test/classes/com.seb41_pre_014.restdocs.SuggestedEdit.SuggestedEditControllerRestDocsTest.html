@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.001s</div>
+<div class="counter">0.003s</div>
 <p>duration</p>
 </div>
 </td>
@@ -715,12 +715,12 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 </tr>
 <tr>
 <td class="failures">findAllSuggestedEditTest()</td>
-<td class="failures">0s</td>
+<td class="failures">0.001s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="failures">findSuggestedEditTest()</td>
-<td class="failures">0s</td>
+<td class="failures">0.001s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
@@ -738,12 +738,12 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2023-01-01 14:43:09.421  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest], using SpringBootContextLoader
-2023-01-01 14:43:09.422  INFO 9062 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2023-01-01 14:43:09.422  INFO 9062 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest]: SuggestedEditControllerRestDocsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-01-01 14:43:09.429  INFO 9062 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest
-2023-01-01 14:43:09.430  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2023-01-01 14:43:09.431  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7a174e4b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7a8316fa, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@46a5aff, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@695f382c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@29fa465a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4b2ca159, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1d47b761, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@d4962bd, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@76fa3dd8, org.springframework.test.context.event.EventPublishingTestExecutionListener@58f27c37, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@78ae34f7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3eb4fdd5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@19070326, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@52dfd7f5, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5b5f48d5, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@421c4c3e, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@63236968]
+<pre>2023-01-01 14:56:39.408  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest], using SpringBootContextLoader
+2023-01-01 14:56:39.409  INFO 9378 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-01-01 14:56:39.409  INFO 9378 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest]: SuggestedEditControllerRestDocsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-01-01 14:56:39.419  INFO 9378 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest
+2023-01-01 14:56:39.419  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-01-01 14:56:39.420  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7a7d25ca, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6fb514db, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@267a0b6a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@42c3b02e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@51039ec9, org.springframework.test.context.support.DirtiesContextTestExecutionListener@16575bfe, org.springframework.test.context.transaction.TransactionalTestExecutionListener@60003305, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3f1dadeb, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@72259917, org.springframework.test.context.event.EventPublishingTestExecutionListener@5e81b406, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@3ff83cc8, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6dd8ac29, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@336b7da4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6019ce4b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1e79b0fc, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@36e8fefe, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5e8633da]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -753,13 +753,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:09.449  INFO 9062 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : Starting SuggestedEditControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:09.449  INFO 9062 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-01-01 14:43:09.620  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'suggestedEditController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/suggestedEdit/controller/SuggestedEditController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:09.620  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:39.439  INFO 9378 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : Starting SuggestedEditControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:39.439  INFO 9378 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-01-01 14:56:39.616  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'suggestedEditController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/suggestedEdit/controller/SuggestedEditController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:39.617  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:09.623 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:39.620 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -774,7 +774,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' in your configuration.
 
-2023-01-01 14:43:09.627 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@695f382c] to prepare test instance [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest@6e1d939e]
+2023-01-01 14:56:39.624 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@42c3b02e] to prepare test instance [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest@4474c514]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -904,13 +904,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:09.648  INFO 9062 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : Starting SuggestedEditControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:09.648  INFO 9062 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-01-01 14:43:09.772  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'suggestedEditController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/suggestedEdit/controller/SuggestedEditController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:09.773  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:39.648  INFO 9378 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : Starting SuggestedEditControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:39.649  INFO 9378 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-01-01 14:56:39.753  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'suggestedEditController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/suggestedEdit/controller/SuggestedEditController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:39.753  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:09.774 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:39.755 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -925,7 +925,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' in your configuration.
 
-2023-01-01 14:43:09.778 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@695f382c] to prepare test instance [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest@25f3207e]
+2023-01-01 14:56:39.758 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@42c3b02e] to prepare test instance [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest@17d6b6e]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -1055,13 +1055,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:09.802  INFO 9062 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : Starting SuggestedEditControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:09.802  INFO 9062 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-01-01 14:43:09.921  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'suggestedEditController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/suggestedEdit/controller/SuggestedEditController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:09.921  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:39.780  INFO 9378 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : Starting SuggestedEditControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:39.780  INFO 9378 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-01-01 14:56:39.889  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'suggestedEditController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/suggestedEdit/controller/SuggestedEditController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:39.890  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:09.923 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:39.891 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -1076,7 +1076,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' in your configuration.
 
-2023-01-01 14:43:09.927 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@695f382c] to prepare test instance [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest@64230d44]
+2023-01-01 14:56:39.894 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@42c3b02e] to prepare test instance [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest@1a389b39]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -1206,13 +1206,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:09.946  INFO 9062 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : Starting SuggestedEditControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:09.946  INFO 9062 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-01-01 14:43:10.072  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'suggestedEditController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/suggestedEdit/controller/SuggestedEditController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:10.072  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:39.914  INFO 9378 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : Starting SuggestedEditControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:39.914  INFO 9378 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-01-01 14:56:40.015  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'suggestedEditController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/suggestedEdit/controller/SuggestedEditController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:40.015  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:10.074 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:40.017 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -1227,7 +1227,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' in your configuration.
 
-2023-01-01 14:43:10.078 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@695f382c] to prepare test instance [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest@4d4f6121]
+2023-01-01 14:56:40.021 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@42c3b02e] to prepare test instance [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest@751e7d99]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -1357,13 +1357,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:10.097  INFO 9062 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : Starting SuggestedEditControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:10.097  INFO 9062 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-01-01 14:43:10.207  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'suggestedEditController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/suggestedEdit/controller/SuggestedEditController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:10.208  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:40.051  INFO 9378 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : Starting SuggestedEditControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:40.051  INFO 9378 --- [    Test worker] .r.S.SuggestedEditControllerRestDocsTest : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-01-01 14:56:40.149  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'suggestedEditController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/suggestedEdit/controller/SuggestedEditController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:40.150  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:10.209 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:40.151 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -1378,7 +1378,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.suggestedEdit.service.SuggestedEditService' in your configuration.
 
-2023-01-01 14:43:10.212 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@695f382c] to prepare test instance [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest@4ac7f844]
+2023-01-01 14:56:40.154 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@42c3b02e] to prepare test instance [com.seb41_pre_014.restdocs.SuggestedEdit.SuggestedEditControllerRestDocsTest@198fe398]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -1510,7 +1510,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.6</a> at 2023. 1. 1. 오후 2:43:15</p>
+<a href="http://www.gradle.org">Gradle 7.6</a> at 2023. 1. 1. 오후 2:56:44</p>
 </div>
 </div>
 </body>

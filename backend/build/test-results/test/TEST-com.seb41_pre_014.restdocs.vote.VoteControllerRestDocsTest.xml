@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" tests="5" skipped="0" failures="5" errors="0" timestamp="2023-01-01T05:43:14" hostname="gimchanbin-ui-MacBookPro.local" time="0.452">
+<testsuite name="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" tests="5" skipped="0" failures="5" errors="0" timestamp="2023-01-01T05:56:43" hostname="gimchanbin-ui-MacBookPro.local" time="0.47">
   <properties/>
   <testcase name="patchVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.0">
     <failure message="java.lang.IllegalStateException: Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
@@ -485,7 +485,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	... 106 more
 </failure>
   </testcase>
-  <testcase name="postVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.001">
+  <testcase name="postVoteTest()" classname="com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest" time="0.0">
     <failure message="java.lang.IllegalStateException: Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
@@ -606,12 +606,12 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	... 106 more
 </failure>
   </testcase>
-  <system-out><![CDATA[2023-01-01 14:43:14.251  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest], using SpringBootContextLoader
-2023-01-01 14:43:14.252  INFO 9062 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2023-01-01 14:43:14.252  INFO 9062 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest]: VoteControllerRestDocsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-01-01 14:43:14.256  INFO 9062 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest
-2023-01-01 14:43:14.257  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2023-01-01 14:43:14.258  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@515f104c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1dde2d1, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@47caa1ff, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7330574d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5ac4f417, org.springframework.test.context.support.DirtiesContextTestExecutionListener@34615ef4, org.springframework.test.context.transaction.TransactionalTestExecutionListener@26b6c4de, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@57cd757a, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@2ad447d8, org.springframework.test.context.event.EventPublishingTestExecutionListener@147c3a88, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@47c8ced, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@38a64fbd, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@304435f6, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4599f10c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@256216b6, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2f336e00, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3e491595]
+  <system-out><![CDATA[2023-01-01 14:56:43.676  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest], using SpringBootContextLoader
+2023-01-01 14:56:43.676  INFO 9378 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-01-01 14:56:43.677  INFO 9378 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest]: VoteControllerRestDocsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-01-01 14:56:43.682  INFO 9378 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest
+2023-01-01 14:56:43.683  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-01-01 14:56:43.683  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1c057fc8, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6fb1dd9d, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@749979f4, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e02f48e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@394e21b9, org.springframework.test.context.support.DirtiesContextTestExecutionListener@58f24e38, org.springframework.test.context.transaction.TransactionalTestExecutionListener@671bda0b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7e24f4e2, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@362f4176, org.springframework.test.context.event.EventPublishingTestExecutionListener@7ce65a05, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@45940c10, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1cce63a4, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5026a5ba, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1edeebc9, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7bcf808e, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@14f31f10, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@719d7341]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -621,13 +621,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:14.271  INFO 9062 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:14.271  INFO 9062 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:14.372  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'voteController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/vote/controller/VoteController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.vote.service.VoteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:14.373  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:43.699  INFO 9378 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:43.699  INFO 9378 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:43.788  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'voteController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/vote/controller/VoteController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.vote.service.VoteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:43.789  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:14.374 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:43.790 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -642,7 +642,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.vote.service.VoteService' in your configuration.
 
-2023-01-01 14:43:14.378 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7330574d] to prepare test instance [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest@9addea4]
+2023-01-01 14:56:43.794 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e02f48e] to prepare test instance [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest@53339642]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -772,13 +772,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:14.393  INFO 9062 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:14.393  INFO 9062 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:14.488  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'voteController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/vote/controller/VoteController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.vote.service.VoteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:14.489  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:43.810  INFO 9378 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:43.810  INFO 9378 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:43.902  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'voteController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/vote/controller/VoteController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.vote.service.VoteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:43.902  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:14.490 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:43.904 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -793,7 +793,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.vote.service.VoteService' in your configuration.
 
-2023-01-01 14:43:14.494 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7330574d] to prepare test instance [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest@170dbf94]
+2023-01-01 14:56:43.907 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e02f48e] to prepare test instance [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest@3289d5df]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -923,13 +923,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:14.507  INFO 9062 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:14.507  INFO 9062 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:14.608  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'voteController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/vote/controller/VoteController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.vote.service.VoteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:14.609  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:43.923  INFO 9378 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:43.923  INFO 9378 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:44.019  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'voteController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/vote/controller/VoteController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.vote.service.VoteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:44.020  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:14.610 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:44.022 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -944,7 +944,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.vote.service.VoteService' in your configuration.
 
-2023-01-01 14:43:14.613 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7330574d] to prepare test instance [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest@6972418c]
+2023-01-01 14:56:44.025 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e02f48e] to prepare test instance [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest@29fb1073]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -1074,13 +1074,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:14.626  INFO 9062 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:14.626  INFO 9062 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:14.720  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'voteController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/vote/controller/VoteController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.vote.service.VoteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:14.720  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:44.040  INFO 9378 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:44.040  INFO 9378 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:44.139  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'voteController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/vote/controller/VoteController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.vote.service.VoteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:44.139  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:14.721 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:44.141 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -1095,7 +1095,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.vote.service.VoteService' in your configuration.
 
-2023-01-01 14:43:14.725 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7330574d] to prepare test instance [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest@161e99d8]
+2023-01-01 14:56:44.151 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e02f48e] to prepare test instance [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest@43853f89]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -1225,13 +1225,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:14.737  INFO 9062 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:14.737  INFO 9062 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:14.824  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'voteController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/vote/controller/VoteController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.vote.service.VoteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:14.824  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:44.165  INFO 9378 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : Starting VoteControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:44.165  INFO 9378 --- [    Test worker] c.s.r.vote.VoteControllerRestDocsTest    : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:44.259  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'voteController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/vote/controller/VoteController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.vote.service.VoteService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:44.260  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:14.826 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:44.262 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -1246,7 +1246,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.vote.service.VoteService' in your configuration.
 
-2023-01-01 14:43:14.829 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7330574d] to prepare test instance [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest@4ac8bbef]
+2023-01-01 14:56:44.265 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e02f48e] to prepare test instance [com.seb41_pre_014.restdocs.vote.VoteControllerRestDocsTest@33a800bf]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]

@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.001s</div>
+<div class="counter">0s</div>
 <p>duration</p>
 </div>
 </td>
@@ -340,7 +340,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 </tr>
 <tr>
 <td class="failures">postBookmark()</td>
-<td class="failures">0.001s</td>
+<td class="failures">0s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -348,12 +348,12 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2023-01-01 14:43:12.691  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs], using SpringBootContextLoader
-2023-01-01 14:43:12.691  INFO 9062 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs]: no resource found for suffixes {-context.xml, Context.groovy}.
-2023-01-01 14:43:12.691  INFO 9062 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs]: BookmarkControllerRestDocs does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-01-01 14:43:12.698  INFO 9062 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs
-2023-01-01 14:43:12.698  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2023-01-01 14:43:12.699  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@78995f04, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6bb7e609, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1310324a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3aee98e7, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@83d91c1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5c6eb961, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4e7e42c4, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@99c24c, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@64cef807, org.springframework.test.context.event.EventPublishingTestExecutionListener@4dc2e04e, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@7116f350, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3fd3d49c, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2cce1da1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@76d448e6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@309ea91f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1148eca4, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4d37c839]
+<pre>2023-01-01 14:56:42.279  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs], using SpringBootContextLoader
+2023-01-01 14:56:42.279  INFO 9378 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-01-01 14:56:42.279  INFO 9378 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs]: BookmarkControllerRestDocs does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-01-01 14:56:42.285  INFO 9378 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs
+2023-01-01 14:56:42.286  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-01-01 14:56:42.287  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7c33252c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@d7b38cf, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@25370af5, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6407c1b3, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1f8825a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@55117fea, org.springframework.test.context.transaction.TransactionalTestExecutionListener@486cb71f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@12bcedf8, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@579347a7, org.springframework.test.context.event.EventPublishingTestExecutionListener@9a38c90, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@245a06f4, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@51fcecaa, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1c9f274d, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@9cdef42, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7dd43529, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4b7b0f85, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2e3bfce8]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -363,13 +363,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:12.714  INFO 9062 --- [    Test worker] c.s.r.b.BookmarkControllerRestDocs       : Starting BookmarkControllerRestDocs using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:12.714  INFO 9062 --- [    Test worker] c.s.r.b.BookmarkControllerRestDocs       : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-01-01 14:43:12.810  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookmarkController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/bookmark/controller/BookmarkController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.bookmark.service.BookmarkService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:12.811  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:42.302  INFO 9378 --- [    Test worker] c.s.r.b.BookmarkControllerRestDocs       : Starting BookmarkControllerRestDocs using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:42.302  INFO 9378 --- [    Test worker] c.s.r.b.BookmarkControllerRestDocs       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-01-01 14:56:42.393  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookmarkController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/bookmark/controller/BookmarkController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.bookmark.service.BookmarkService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:42.394  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:12.812 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:42.395 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -384,7 +384,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.bookmark.service.BookmarkService' in your configuration.
 
-2023-01-01 14:43:12.815 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3aee98e7] to prepare test instance [com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs@bfa82bd]
+2023-01-01 14:56:42.399 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6407c1b3] to prepare test instance [com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs@6b82196e]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -514,13 +514,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:12.830  INFO 9062 --- [    Test worker] c.s.r.b.BookmarkControllerRestDocs       : Starting BookmarkControllerRestDocs using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:12.830  INFO 9062 --- [    Test worker] c.s.r.b.BookmarkControllerRestDocs       : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-01-01 14:43:12.940  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookmarkController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/bookmark/controller/BookmarkController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.bookmark.service.BookmarkService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:12.940  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:42.414  INFO 9378 --- [    Test worker] c.s.r.b.BookmarkControllerRestDocs       : Starting BookmarkControllerRestDocs using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:42.414  INFO 9378 --- [    Test worker] c.s.r.b.BookmarkControllerRestDocs       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-01-01 14:56:42.504  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookmarkController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/bookmark/controller/BookmarkController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.bookmark.service.BookmarkService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:42.505  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:12.942 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:42.507 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -535,7 +535,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.bookmark.service.BookmarkService' in your configuration.
 
-2023-01-01 14:43:12.945 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3aee98e7] to prepare test instance [com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs@7a6cd9e0]
+2023-01-01 14:56:42.510 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6407c1b3] to prepare test instance [com.seb41_pre_014.restdocs.bookmark.BookmarkControllerRestDocs@459d81f1]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -667,7 +667,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.6</a> at 2023. 1. 1. 오후 2:43:15</p>
+<a href="http://www.gradle.org">Gradle 7.6</a> at 2023. 1. 1. 오후 2:56:44</p>
 </div>
 </div>
 </body>
