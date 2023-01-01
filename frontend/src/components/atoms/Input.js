@@ -14,15 +14,17 @@ const StyledInput = styled.input`
 
 export const Input = (props) => {
   return (
-    <>
-      <StyledInput 
-        placeholder={props.placeholder}
-        padding={props.padding}
-        width={props.width}
-        height={props.height}
-        borderRadius={props.borderRadius}
-        fontSize={props.fontSize}
-      ></StyledInput>
-    </>
+    <StyledInput 
+      placeholder={props.placeholder}
+      value={props.value}
+      padding={props.padding}
+      width={props.width}
+      height={props.height}
+      borderRadius={props.borderRadius}
+      fontSize={props.fontSize}
+      onFocus={props.onFocus}
+      onChange={props.onChange}
+      {...props.register}
+    />
   )
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { RandomAvartar } from './RandomAvartar';
 import { Link } from 'react-router-dom';
 
 const StyledDiv1 = styled.div`
@@ -198,6 +199,9 @@ const StyledDiv4 = styled.div`
   padding: 0.5rem 0.6rem 0.7rem 0.7rem;
   width: 32.3rem;
   height: 8.2rem;
+  & > a {
+    text-decoration: none;
+  }
 
   & > div {
     display: flex;
@@ -215,11 +219,8 @@ export const UserMetaInfoType4 = (props) => {
   return (
     <div>
       <StyledDiv4>
-        <Link>
-          <StyledAvatar
-            alt="user avatar"
-            src={props.profileImageUrl}
-          ></StyledAvatar>
+        <Link href="">
+          <RandomAvartar width={props.width} height={props.height} fontSize={props.fontSize}  />
         </Link>
         <div>
           <StyledUsername className="user-name">{props.displayName}</StyledUsername>
