@@ -4,6 +4,9 @@ import com.seb41_pre_014.board.dto.BoardDto;
 import com.seb41_pre_014.board.entity.Board;
 import com.seb41_pre_014.board.mapper.BoardMapper;
 import com.seb41_pre_014.board.service.BoardService;
+import com.seb41_pre_014.tag.entity.BoardTag;
+import com.seb41_pre_014.tag.entity.Tag;
+import com.seb41_pre_014.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.seb41_pre_014.board.entity.Board.BoardType.ANSWER;
 import static com.seb41_pre_014.board.entity.Board.BoardType.QUESTION;
@@ -24,12 +28,15 @@ public class BoardController {
 
     private final BoardService boardService;
     private final BoardMapper mapper;
+    private final TagService tagService;
 
     @PostMapping("/questions")
     public ResponseEntity postQuestion(@RequestParam("memberId") @Positive Long memberId,
                                        @RequestBody @Valid BoardDto.Post postDto) {
         Board question = mapper.boardPostDtoToBoard(postDto);
-        Board postQuestion = boardService.postQuestion(memberId, question);
+        List<String> tags = postDto.getTags();
+
+        Board postQuestion = boardService.postQuestion(memberId, question, tags);
 
         return new ResponseEntity<>(mapper.boardToBoardResponseDto(postQuestion), HttpStatus.CREATED);
     }
@@ -39,7 +46,10 @@ public class BoardController {
                                      @RequestParam("memberId") @Positive Long memberId,
                                      @RequestBody @Valid BoardDto.Post postDto) {
         Board answer = mapper.boardPostDtoToBoard(postDto);
-        Board postAnswer = boardService.postAnswer(questionId, memberId, answer);
+        List<String> tags = postDto.getTags();
+
+        Board postAnswer = boardService.postAnswer(questionId, memberId, answer, tags);
+
 
         return new ResponseEntity<>(mapper.boardToBoardResponseDto(postAnswer), HttpStatus.CREATED);
     }
@@ -48,8 +58,9 @@ public class BoardController {
     public ResponseEntity updateBoard(@PathVariable("board-id") @Positive Long boardId,
                                       @RequestBody @Valid BoardDto.Patch patchDto) {
         Board board = mapper.boardPatchDtoToBoard(patchDto);
+        List<String> tags = patchDto.getTags();
         board.setBoardId(boardId);
-        Board updateBoard = boardService.updateBoard(board);
+        Board updateBoard = boardService.updateBoard(board, tags);
 
         return new ResponseEntity<>(mapper.boardToBoardResponseDto(updateBoard), HttpStatus.OK);
     }

@@ -32,14 +32,17 @@ public class VoteService {
 
         Vote vote = Vote.builder().member(member).board(board).build();
         vote.setVoteType(voteType);
+        Vote saveVote = voteRepository.save(vote);
+        board.setScore();
 
-        return voteRepository.save(vote);
+        return saveVote;
     }
 
     @Transactional
     public Vote updateVote(Long voteId) {
         Vote findVote = findVerifiedVote(voteId);
         findVote.changeVote();
+        findVote.getBoard().setScore();
 
         return findVote;
     }
@@ -54,8 +57,10 @@ public class VoteService {
 
     @Transactional
     public void deleteVote(Long voteId) {
-        findVerifiedVote(voteId);
+        Vote findVote = findVerifiedVote(voteId);
+        Board board = findVote.getBoard();
         voteRepository.deleteById(voteId);
+        board.setScore();
     }
     public Vote findVerifiedVote(Long voteId) {
         return voteRepository.findById(voteId)

@@ -35,17 +35,8 @@ public class SuggestedEditDto {
         @Builder
         @NoArgsConstructor(access = AccessLevel.PROTECTED)
         public static class Patch {
-            @NotNull(message = "editId required")
-            private Long editId;
-
             @Size(min = 20, message = "title length not valid")
             private String title;
-
-            @NotNull(message = "boardId required")
-            private Long boardId;
-
-            @NotNull(message = "editorId required")
-            private Long editorId;
 
             @Size(min = 20, message = "body length not valid")
             private String body;
@@ -55,8 +46,6 @@ public class SuggestedEditDto {
 
 
         @Getter
-        @Builder
-        @AllArgsConstructor
         @NoArgsConstructor
         public static class Response {
             private Long editId;
@@ -64,20 +53,27 @@ public class SuggestedEditDto {
             private Long boardId;
             private Long editorId;
             private String editor;
+            private String editorProfileUrl;
             private String body;
             private List<String> tags;
             private String editStatus;
+            private String createdAt;
+            private String lastModifiedAt;
 
-            public Response(SuggestedEdit edit) {
-                this.editId = edit.getEditId();
-                this.title = edit.getTitle();
-                this.boardId = edit.getBoard().getBoardId();
-                this.editorId = edit.getMember().getMemberId();
-                this.editor = edit.getMember().getDisplayName();
-                this.body = edit.getBody();
-                this.tags = edit.getSuggestedEditTags() == null ? null : edit.getSuggestedEditTags().stream()
+            @Builder
+            public Response(SuggestedEdit suggestedEdit) {
+                this.editId = suggestedEdit.getEditId();
+                this.title = suggestedEdit.getTitle();
+                this.boardId = suggestedEdit.getBoard().getBoardId();
+                this.editorId = suggestedEdit.getMember().getMemberId();
+                this.editor = suggestedEdit.getMember().getDisplayName();
+                this.editorProfileUrl = suggestedEdit.getMember().getProfileImageUrl();
+                this.body = suggestedEdit.getBody();
+                this.tags = suggestedEdit.getSuggestedEditTags() == null ? null : suggestedEdit.getSuggestedEditTags().stream()
                         .map(suggestedEditTag -> suggestedEditTag.getTag().getName()).collect(Collectors.toList());
-                this.editStatus = edit.getEditStatus().name();
+                this.editStatus = suggestedEdit.getEditStatus().name();
+                this.createdAt = suggestedEdit.getCreatedAt().toString();
+                this.lastModifiedAt = suggestedEdit.getLastModifiedAt().toString();
             }
         }
 }

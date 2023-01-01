@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-30T01:56:11+0900",
+    date = "2023-01-01T14:43:01+0900",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.jar, environment: Java 11.0.16 (Azul Systems, Inc.)"
 )
 @Component
@@ -64,26 +64,7 @@ public class MemberMapperImpl implements MemberMapper {
 
         ResponseBuilder response = Response.builder();
 
-        if ( member.getMemberId() != null ) {
-            response.memberId( member.getMemberId() );
-        }
-        response.email( member.getEmail() );
-        response.password( member.getPassword() );
-        response.displayName( member.getDisplayName() );
-        response.fullName( member.getFullName() );
-        response.location( member.getLocation() );
-        response.title( member.getTitle() );
-        response.aboutMe( member.getAboutMe() );
-        response.websiteLink( member.getWebsiteLink() );
-        response.twitterLink( member.getTwitterLink() );
-        response.githubLink( member.getGithubLink() );
-        response.profileImageUrl( member.getProfileImageUrl() );
-        if ( member.getMemberStatus() != null ) {
-            response.memberStatus( member.getMemberStatus().name() );
-        }
-        response.reputation( member.getReputation() );
-        response.questions( member.getQuestions() );
-        response.answers( member.getAnswers() );
+        response.member( member );
 
         return response.build();
     }

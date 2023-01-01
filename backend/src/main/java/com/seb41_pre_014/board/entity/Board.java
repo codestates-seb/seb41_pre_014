@@ -5,6 +5,8 @@ import com.seb41_pre_014.bookmark.entity.Bookmark;
 import com.seb41_pre_014.member.entity.Member;
 import com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit;
 import com.seb41_pre_014.tag.entity.BoardTag;
+import com.seb41_pre_014.tag.entity.MemberTag;
+import com.seb41_pre_014.tag.entity.Tag;
 import com.seb41_pre_014.vote.entity.Vote;
 import lombok.*;
 
@@ -35,6 +37,7 @@ public class Board extends BaseTimeEntity {
     private String title;
 
     private String body;
+
     private int score = 0;
     private int viewCount = 0;
 
@@ -65,8 +68,21 @@ public class Board extends BaseTimeEntity {
         this.viewCount += 1;
     }
 
-    public void addScore() {
-        this.score += 1;
+    public void setScore() {
+        int voteUpCount;
+        int voteDownCount;
+        int bookmarkCount;
+
+        if (votes == null) voteUpCount = 0;
+        else voteUpCount = (int) votes.stream().map(vote -> vote.getVoteType()).filter(voteType -> voteType.equals(Vote.VoteType.UP)).count();
+
+        if (votes == null) voteDownCount = 0;
+        else voteDownCount = (int) votes.stream().map(vote -> vote.getVoteType()).filter(voteType -> voteType.equals(Vote.VoteType.DOWN)).count();
+
+        if (bookmarks == null) bookmarkCount = 0;
+        else bookmarkCount = bookmarks.size();
+
+        this.score = voteUpCount + bookmarkCount - voteDownCount;
     }
 
     public void setBoardId(Long boardId) {
@@ -87,6 +103,10 @@ public class Board extends BaseTimeEntity {
 
     public void chageStatus(BoardStatus boardStatus) {
         this.boardStatus = boardStatus;
+    }
+
+    public void addBoardTags(List<BoardTag> boardTags) {
+        this.boardTags = boardTags;
     }
 
     public enum BoardType {

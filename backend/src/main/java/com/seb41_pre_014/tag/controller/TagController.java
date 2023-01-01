@@ -1,6 +1,10 @@
 package com.seb41_pre_014.tag.controller;
 
 import com.seb41_pre_014.tag.dto.TagDto;
+import com.seb41_pre_014.tag.entity.Tag;
+import com.seb41_pre_014.tag.mapper.TagMapper;
+import com.seb41_pre_014.tag.service.TagService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,43 +20,40 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tags")
+@RequiredArgsConstructor
 public class TagController {
+
+    private final TagService tagService;
+    private final TagMapper mapper;
 
     @PostMapping
     public ResponseEntity postTag(@RequestBody @Valid TagDto.Post postDto) {
-        TagDto.Response tag1 = stubTag(1);
+        Tag tag = mapper.tagPostDtoToTag(postDto);
+        Tag postTag = tagService.createTag(tag);
 
-        return new ResponseEntity(tag1, HttpStatus.CREATED);
+        return new ResponseEntity(mapper.tagToResponseDto(postTag), HttpStatus.CREATED);
     }
 
     // 태그는 통상 수정이 없고 항상 새로운 태그가 생성되므로 patchTag는 없음
     @GetMapping("/{tag-id}")
     public ResponseEntity findTag(@PathVariable("tag-id") @Positive Long tagId) {
-        TagDto.Response tag1 = stubTag(1);
+        Tag findTag = tagService.findTag(tagId);
 
-        return new ResponseEntity(tag1, HttpStatus.OK);
+        return new ResponseEntity(mapper.tagToResponseDto(findTag), HttpStatus.OK);
     }
 
     @GetMapping
     public ResponseEntity findAllTag(@RequestParam(value = "page", defaultValue = "1") @Positive int page,
                                      @RequestParam(value = "size", defaultValue = "20") @Positive int size) {
-        TagDto.Response tag1 = stubTag(1);
-        TagDto.Response tag2 = stubTag(2);
-        TagDto.Response tag3 = stubTag(3);
+        List<Tag> tags = tagService.findAll(page, size).getContent();
 
-        return new ResponseEntity(List.of(tag1, tag2, tag3), HttpStatus.OK);
+        return new ResponseEntity(mapper.tagsToResponseDtos(tags), HttpStatus.OK);
     }
 
     @DeleteMapping("/{tag-id}")
     public ResponseEntity deleteTag(@PathVariable("tag-id") @Positive Long tagId) {
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
-    }
+        tagService.deleteTag(tagId);
 
-    public TagDto.Response stubTag(long n) {
-        TagDto.Response.ResponseBuilder builder = TagDto.Response.builder();
-        return builder
-                .tagId(n)
-                .name("tag" + n)
-                .build();
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

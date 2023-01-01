@@ -6,8 +6,10 @@ import com.seb41_pre_014.exception.BusinessLogicException;
 import com.seb41_pre_014.exception.ExceptionCode;
 import com.seb41_pre_014.member.entity.Member;
 import com.seb41_pre_014.member.repository.MemberRepository;
+import com.seb41_pre_014.tag.entity.MemberTag;
 import com.seb41_pre_014.tag.entity.Tag;
 import com.seb41_pre_014.tag.repository.TagRepository;
+import com.seb41_pre_014.tag.service.TagService;
 import com.seb41_pre_014.util.CustomAuthorityUtils;
 import com.seb41_pre_014.util.CustomBeanUtils;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +20,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -30,6 +34,7 @@ public class MemberService {
     private final CustomBeanUtils<Member> beanUtils;
     private final BoardRepository boardRepository;
     private final TagRepository tagRepository;
+    private final TagService tagService;
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
 
@@ -45,13 +50,28 @@ public class MemberService {
         List<String> roles = authorityUtils.createRoles(member.getEmail());
         member.setRoles(roles);
 
+        member.setMemberStatus(Member.MemberStatus.MEMBER_ACTIVE);
+
         return memberRepository.save(member);
     }
 
     @Transactional
-    public Member updateMember(Member member) {
+    public Member updateMember(Member member, List<String> tags) {
         Member findMember = findVerifiedMember(member.getMemberId());
-        return beanUtils.copyNonNullProperties(member, findMember);    }
+        Member updateMember = beanUtils.copyNonNullProperties(member, findMember);
+        if (tags != null) {
+            List<Tag> findTags = tags.stream()
+                    .map(tagService::findTagByName).collect(Collectors.toList());
+
+            List<MemberTag> memberTags = new ArrayList<>();
+
+            for (Tag tag : findTags) {
+                memberTags.add(MemberTag.builder().tag(tag).member(updateMember).build());
+            }
+            updateMember.addMemberTags(memberTags);
+        }
+
+        return updateMember;    }
 
     public Member findMember(Long memberId) {
         return findVerifiedMember(memberId);

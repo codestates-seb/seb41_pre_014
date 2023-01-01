@@ -9,13 +9,15 @@ import com.seb41_pre_014.tag.entity.Tag;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SuggestedEdit extends BaseTimeEntity {
 
     @Id
@@ -26,7 +28,7 @@ public class SuggestedEdit extends BaseTimeEntity {
     private EditStatus editStatus;
 
     @OneToMany(mappedBy = "suggestedEdit", cascade = CascadeType.ALL)
-    private List<SuggestedEditTag> suggestedEditTags;
+    private List<SuggestedEditTag> suggestedEditTags = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
@@ -59,5 +61,4 @@ public class SuggestedEdit extends BaseTimeEntity {
         EditStatus(String status) {
             this.status = status; }
     }
-
 }

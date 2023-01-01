@@ -334,4 +334,7 @@ const RightFooterButton = styled.button`
     font-size: 1.3rem;
     text-decoration: none;
   }
+<<<<<<< HEAD
+`;
+=======
 `;
