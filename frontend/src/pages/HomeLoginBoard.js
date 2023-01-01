@@ -6,6 +6,7 @@ import { FilterButtonWrapper } from '../components/blocks/FilterButtonWrapper';
 import { QuestionInfoContainer } from '../components/blocks/QuestionInfoContainer';
 import { MainRightSideInfoWidget, MainRightTagBasic } from '../components/blocks/MainRight';
 import { BoardDetailSideInfoWidgetData } from '../data/staticData/SideBarData';
+import { DetailWriteButton } from '../components/blocks/DetailWriteButton';
 
 const Main = styled.div`
   display: flex;
@@ -81,11 +82,7 @@ const HomeLoginBoard = () => {
           <MainLeft>
             <MainTop>
               <h1>Top Questions</h1>
-              <Button
-                buttonType='type2'
-                buttonName='Ask Question'
-                width='9.87rem'
-              />
+              <DetailWriteButton />
             </MainTop>
             <FilterContainer>
               <FilterButtonWrapper filterData={filterData} />

@@ -47,7 +47,7 @@ const SignUp = () => {
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json',
       },
-      url: `${process.env.REACT_APP_SERVER_URL}/user/signup`,
+      url: `${process.env.REACT_APP_SERVER_URL}/members`,
       data: {
         ...data
       },

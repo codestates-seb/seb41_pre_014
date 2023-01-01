@@ -5,7 +5,7 @@ export const RandomAvartar = (props) => {
   const isLogin = useSelector(state => state.loginStatus.status);
   const loginUser =  useSelector(state => state.loginUserInfo);
   const randomNum = Math.floor(Math.random() * colorList.length);
-  console.log(loginUser[0]);
+
   return (
     <AvatarBg 
       width={props.width}

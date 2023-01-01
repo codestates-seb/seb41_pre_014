@@ -1,17 +1,126 @@
 import styled from 'styled-components';
 import { Input } from '../components/atoms/Input';
 import { Button } from '../components/atoms/Button';
-import { InputLabel, EditorInputWrapper } from '../components/blocks/EditorInputWrapper';
+import { InputLabel, EditorInputWrapper, EditorInput } from '../components/blocks/EditorInputWrapper';
 import { MainRightSideInfoWidget } from '../components/blocks/MainRight';
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import { Tag } from '../components/blocks/Tag';
+import ReCAPTCHA from 'react-google-recaptcha';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Write = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  const [ body1Active, setBody1Active ] = useState(false);
+  const [ body2Active, setBody2Active ] = useState(false);
+  const [ tagActive, setTagActive ] = useState(false);
+  const [ tags, setTags ] = useState([]);
+  const [ recaptchaValue, setRecaptchaValue ] = useState('');
+  const [ questionCont, setQuestionCont ] = useState({
+    title: '',
+    body: '',
+    tags: [],
+  });
+  const loginUserId = useSelector(state => state.loginUserInfo.loginUserInfo?.memberId);
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+
+  const titleSubmitButtonClick = (data) => {
+    if (data.title.length < 10) {
+      alert('제목을 10자 이상 입력해주세요!');
+      return;
+    }
+    setQuestionCont({
+      ...questionCont,
+      title: data.title,
+    });
+    body1.current.getInstance().focus();
+    setBody1Active(true);
+    window.scrollTo({top: 600, behavior: 'smooth'});
+  };
+
+  const body1SubmitButtonClick = () => {
+    setQuestionCont({
+      ...questionCont,
+      body: body1.current.getInstance().getHTML(),
+    });
+    body2.current.getInstance().focus();
+    setBody2Active(true);
+    window.scrollTo({top: 1040, behavior: 'smooth'});
+  }
+
+  const body2SubmitButtonClick = () => {
+    setQuestionCont({
+      ...questionCont,
+      body: questionCont.body + body2.current.getInstance().getHTML(),
+    });
+    tag.current.focus();
+    setTagActive(true);
+    window.scrollTo({top: 1200, behavior: 'smooth'});
+  }
+
+  const tagSubmitButtonClick = () => {
+    setQuestionCont({
+      ...questionCont,
+      tags: tags,
+    });
+  }
+
+  const postButtonClick = async () => {
+    if (questionCont.title.length < 10) {
+      alert('제목을 10자 이상 입력해주세요!');
+      return;
+    };
+    if (questionCont.body.length < 30) {
+      alert('본문 내용을 30자 이상 입력해주세요!');
+      return;
+    };
+    if (recaptchaValue.length) {
+      alert('당신은 로봇입니까?');
+      return;
+    };
+    return await axios({
+      method: 'POST',
+      url: `${process.env.REACT_APP_SERVER_URL}/boards/questions`,
+      params: {
+        memberId: loginUserId
+      },
+      data: {
+        ...questionCont
+      }
+    })
+    .then(res => {
+      setQuestionCont({
+        title: '',
+        body: '',
+        tags: [],
+      });
+      navigate(`/questions/${res.data.boardId}`);
+    })
+    .catch(err => {
+      console.error(err)
+    });
+  };
+
+  const discardButtonClick = () => {
+    setQuestionCont({
+      title: '',
+      body: '',
+      tags: [],
+    });
+    navigate(`/questions`);
+  }
+
+  const body1 = useRef();
+  const body2 = useRef();
+  const tag = useRef();
+
+  useEffect(() => {
+    setTimeout(()=> {
+      window.scrollTo(0, 0);
+    }, 0);
+  }, []);
 
   return (
     <>
@@ -54,8 +163,8 @@ const Write = () => {
                   <li>Review your question and post it to the site.</li>
               </ul>
             </GuideLine>
-            <div>
-              <InputWrapper>
+            <form onSubmit={handleSubmit(data => (titleSubmitButtonClick(data)))}>
+              <InputWrapper className='active'>
                 <InputLabel 
                   title='Title'
                   label='Be specific and imagine you’re asking a question to another person.'
@@ -64,34 +173,42 @@ const Write = () => {
                   placeholder='e.g. Is there an R function for finding the index of an element in a vector?'
                   padding='0.78rem 0.91rem'
                   width='100%'
-                  {...register('title')}
+                  register={register('title')}
+                  onFocus={() => {window.scrollTo({top: 400, behavior: 'smooth'})}}
                 />
                 <Button 
+                buttonFunctionType='submit'
                 buttonType='type2'
                 buttonName='Next'
                 width='4.96rem'
                 height='3.79rem'
                 />
               </InputWrapper>
-            </div>
-            <InputWrapper>
-              <EditorInputWrapper
+            </form>
+            <InputWrapper className={body1Active ? 'active' : null}>
+              <InputLabel 
                 title='What are the details of your problem?'
                 label='Introduce the problem and expand on what you put in the title. Minimum 20 characters.'
               />
-              <Button 
+              <EditorInput 
+                ref={body1}
+              />
+              <Button
+                onClick={body1SubmitButtonClick}
                 buttonType='type2'
                 buttonName='Next'
                 width='4.96rem'
                 height='3.79rem'
                 />
             </InputWrapper>
-            <InputWrapper>
+            <InputWrapper className={body2Active ? 'active' : null}>
               <EditorInputWrapper
                 title='What did you try and what were you expecting?'
                 label='Describe what you tried, what you expected to happen, and what actually resulted. Minimum 20 characters.'
+                ref={body2}
               />
               <Button 
+                onClick={body2SubmitButtonClick}
                 buttonType='type2'
                 buttonName='Next'
                 width='4.96rem'
@@ -99,32 +216,42 @@ const Write = () => {
                 />
             </InputWrapper>
             <div>
-              <InputWrapper>
+              <InputWrapper className={tagActive ? 'active' : null}>
                 <InputLabel 
                   title='Tags'
                   label='Add up to 5 tags to describe what your question is about. Start typing to see suggestions.'
                 />
-                <Input
-                  placeholder='e.g. (c# laravel typescript)'
-                  padding='0.78rem 0.91rem'
-                  width='100%'
+                <Tag 
+                  ref={tag} 
+                  tags={tags}
+                  setTags={setTags}
                 />
                 <Button 
-                buttonType='type2'
-                buttonName='Next'
-                width='4.96rem'
-                height='3.79rem'
+                  onClick={tagSubmitButtonClick}
+                  buttonType='type2'
+                  buttonName='Next'
+                  width='4.96rem'
+                  height='3.79rem'
                 />
               </InputWrapper>
             </div>
+            {questionCont.tags.length === 0 || 
+              <ReCAPTCHA 
+                sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
+                onChange={setRecaptchaValue}
+              />
+            }
             <ButtonWrapper>
               <Button 
+                onClick={postButtonClick}
                 buttonType='type2'
                 buttonName='Post your question'
                 width='12.98rem'
                 height='3.79rem'
                 />
-              <DiscardButton>Discard draft</DiscardButton>
+              <DiscardButton onClick={discardButtonClick}>
+                Discard draft
+              </DiscardButton>
             </ButtonWrapper>
           </MainLeft>
           <MainRight>
@@ -227,6 +354,22 @@ const InputWrapper = styled.div`
   border-radius: 0.3rem;
   color: #3b4045;
   padding: 2.4rem;
+
+  opacity: 0.3;
+  cursor: not-allowed;
+
+  & > * {
+    pointer-events: none;
+  }
+
+  &.active {
+    opacity: 1;
+    cursor: auto;
+
+    & > * {
+      pointer-events: auto;
+    }
+  }
 `;
 
 const ButtonWrapper = styled.div`

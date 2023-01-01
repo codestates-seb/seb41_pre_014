@@ -19,7 +19,6 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const loginButtonClick = async (data) => {
     const { email, password } = data;
-    console.log(`받아온 데이터 - email: ${email}, password: ${password}}`);
 
     if (!email || !password) {
       alert('아이디와 비밀번호를 입력해주세요!');
@@ -31,7 +30,7 @@ const Login = () => {
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json',
       },
-      url: `${process.env.REACT_APP_SERVER_URL}/user/login`,
+      url: `${process.env.REACT_APP_SERVER_URL}/auth/login`,
       data: {
         ...data
       },

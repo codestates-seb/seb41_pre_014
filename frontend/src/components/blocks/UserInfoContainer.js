@@ -215,7 +215,7 @@ const StyledTagLink = styled(StyledA)`
   font-size: 1.;
 `
 
-export const UserMetaInfoType4 = (propsprops) => {
+export const UserMetaInfoType4 = (props) => {
   return (
     <div>
       <StyledDiv4>
