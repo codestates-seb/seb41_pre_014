@@ -58,23 +58,43 @@ const HomeLoginBoard = () => {
   }
 
   const filterData = [
-    {
-      buttonName : "Newest",
-      onClick : () => {console.log('button1')},
-    },
-    {
-      buttonName : "Unanswered",
-      onClick : () => {console.log('button2')},
-    },
-    {
-      buttonName : "Frequent",
-      onClick : () => {console.log('button3')},
-    },
-    {
-      buttonName : "Score",
-      onClick : () => {console.log('button3')},
-    }
-  ];
+      {
+        buttonName : "Newest",
+        onClick : () => {
+          setFilter("newest");
+          getQuestions({
+            filter: "questions",
+          });
+        },
+      },
+      {
+        buttonName : "Unanswered",
+        onClick : () => {
+	        setFilter("unanswered");
+          getQuestions({
+            filter: "unanswered",
+          });
+        },
+      },
+      {
+        buttonName : "Frequent",
+        onClick : () => {
+          setFilter("frequent");
+          getQuestions({
+            filter: "frequent",
+          });
+        },
+      },
+      {
+        buttonName : "Score",
+        onClick : () => {
+          setFilter("score");
+          getQuestions({
+            filter: "score",
+          });
+        },
+      }
+    ];
 
   return (
     <>

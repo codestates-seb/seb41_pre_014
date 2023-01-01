@@ -112,23 +112,51 @@ const QuestionBoard = () => {
   }
 
   const filterData = [
-    {
-      buttonName : "Newest",
-      onClick : () => {console.log('button1')},
-    },
-    {
-      buttonName : "Unanswered",
-      onClick : () => {console.log('button2')},
-    },
-    {
-      buttonName : "Frequent",
-      onClick : () => {console.log('button3')},
-    },
-    {
-      buttonName : "Score",
-      onClick : () => {console.log('button3')},
-    }
-  ];
+      {
+        buttonName : "Newest",
+        onClick : () => {
+          setFilter("newest");
+          // console.log(filter, currentPage, perPage);
+          getQuestions({
+            filter: "questions",
+	          size: {perPage},
+          });
+        },
+      },
+      {
+        buttonName : "Unanswered",
+        onClick : () => {
+	        setFilter("unanswered");
+          // console.log(filter, currentPage, perPage);
+          getQuestions({
+            filter: "unanswered",
+	          size: {perPage},
+          });
+        },
+      },
+      {
+        buttonName : "Frequent",
+        onClick : () => {
+          setFilter("frequent");
+          // console.log(filter, currentPage, perPage);
+          getQuestions({
+            filter: "frequent",
+          	size: {perPage},
+          });
+        },
+      },
+      {
+        buttonName : "Score",
+        onClick : () => {
+          setFilter("score");
+          // console.log(filter, currentPage, perPage);
+          getQuestions({
+            filter: "score",
+	          size: {perPage},
+          });
+        },
+      }
+    ];
 
   const PerPageData = [
     {
