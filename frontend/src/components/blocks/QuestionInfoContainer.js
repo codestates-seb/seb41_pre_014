@@ -1,4 +1,3 @@
-// todo:tag
 import styled from 'styled-components';
 import { UserMetaInfoType1 } from './UserInfoContainer';
 import { Link } from 'react-router-dom';
@@ -317,7 +316,7 @@ export const QuestionInfoWrapper = (props) => {
   return (
     <QuestionInfo>
       <h3>
-        <Link to={`/questions/:${props.detailId}`} >
+        <Link to={`/questions/${props.detailId}`} >
           {props.title}
         </Link>
       </h3>
@@ -327,12 +326,11 @@ export const QuestionInfoWrapper = (props) => {
       <TagAndUserMeta>
         <Tag> 
           <ul>
-            <li><TagBlock tagName='Javascript' /></li>
-            <li><TagBlock tagName='React' /></li>
+            {props.tags && props.tags.map((el, idx) => {
+              return <li key={idx}><TagBlock tagName={el} /></li>
+            })}
           </ul>
-        </Tag>
-        
-        {/* props 시간 */}
+        </Tag>       
         <UserMetaInfoType1
           profileImageUrl={props.profileImageUrl}
           displayName={props.displayName}
@@ -356,6 +354,7 @@ export const QuestionInfoContainer = (props) => {
         title={props.title}
         content={props.content}
         createdAt={props.CreateAt}
+        tags={props.tags}
       />
     </QuestionWrapper>
   )
