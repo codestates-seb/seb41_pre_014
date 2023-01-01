@@ -10,8 +10,8 @@ const LogOut = () => {
   const dispatch = useDispatch();
 
   const LogOutButtonClick = () => {
-    dispatch(loginStatusSlice.logout());
-    dispatch(loginUserInfoSlice.getLoginUser({}));
+    dispatch(loginStatusSlice.actions.logout());
+    dispatch(loginUserInfoSlice.actions.getLoginUser({}));
     navigate('/');
   }
 
@@ -113,6 +113,7 @@ const StyledOtherSiteList = styled.ul`
     display: flex;
     align-items: center;
     margin: 0.4rem 0;
+    
     & > a {
       text-decoration: none;
       font-size: 1.5rem;
@@ -125,10 +126,13 @@ const StyledLogOutCheckBox = styled.div`
   margin-bottom: 1.6rem;
   display: flex;
   align-items: center;
+  
   & > label {
     font-size: 1.2rem;
     color: #0C0D0E;
     margin-left: 0.4rem;
+    cursor: pointer;
+
   }
 `;
 
