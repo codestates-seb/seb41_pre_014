@@ -42,11 +42,12 @@ const MainRight = styled.div`
 
 const HomeLoginBoard = () => {
   const [questions, setQuestions] = useState();
+  const [filter, setFilter] = useState('Newest');
 
   const getQuestions = async (props) => {
     try {
       const response = await axios({
-        url: `/boards/${props.filter}?page=${props.page || 1}&size=${props.size || 50}`,
+        url: `/boards/${props.filter}?page=${props.page || 1}&size=50`,
         baseURL: `${process.env.REACT_APP_SERVER_URL}`,
       });
       setQuestions(response.data);
@@ -57,23 +58,43 @@ const HomeLoginBoard = () => {
   }
 
   const filterData = [
-    {
-      buttonName : "Newest",
-      onClick : () => {console.log('button1')},
-    },
-    {
-      buttonName : "Unanswered",
-      onClick : () => {console.log('button2')},
-    },
-    {
-      buttonName : "Frequent",
-      onClick : () => {console.log('button3')},
-    },
-    {
-      buttonName : "Score",
-      onClick : () => {console.log('button3')},
-    }
-  ];
+      {
+        buttonName : "Newest",
+        onClick : () => {
+          setFilter("newest");
+          getQuestions({
+            filter: "questions",
+          });
+        },
+      },
+      {
+        buttonName : "Unanswered",
+        onClick : () => {
+	        setFilter("unanswered");
+          getQuestions({
+            filter: "unanswered",
+          });
+        },
+      },
+      {
+        buttonName : "Frequent",
+        onClick : () => {
+          setFilter("frequent");
+          getQuestions({
+            filter: "frequent",
+          });
+        },
+      },
+      {
+        buttonName : "Score",
+        onClick : () => {
+          setFilter("score");
+          getQuestions({
+            filter: "score",
+          });
+        },
+      }
+    ];
 
   return (
     <>
@@ -90,7 +111,6 @@ const HomeLoginBoard = () => {
             <FilterContainer>
               <FilterButtonWrapper filterData={filterData} />
             </FilterContainer>
-
             {questions && questions.map((question) => {
               return <QuestionInfoContainer
                 title={question.title}
@@ -101,12 +121,9 @@ const HomeLoginBoard = () => {
                 profileImageUrl={question.writerProfileUrl}
                 displayName={question.writerDisplayName}
                 createdAt={question.createdAt}
+                detailId={question.boardId}
               />
             })}
-
-            <QuestionInfoContainer />
-            <QuestionInfoContainer />
-            <QuestionInfoContainer />
           </MainLeft>
           <MainRight>
             {BoardDetailSideInfoWidgetData.map((el, idx) => {
