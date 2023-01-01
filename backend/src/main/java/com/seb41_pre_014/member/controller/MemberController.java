@@ -11,6 +11,7 @@ import com.seb41_pre_014.member.service.MemberService;
 import com.seb41_pre_014.tag.dto.TagDto;
 import com.seb41_pre_014.tag.entity.Tag;
 import com.seb41_pre_014.tag.mapper.TagMapper;
+import com.seb41_pre_014.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.seb41_pre_014.board.entity.Board.BoardType.ANSWER;
 import static com.seb41_pre_014.board.entity.Board.BoardType.QUESTION;
@@ -30,6 +32,7 @@ public class MemberController {
 
     private final MemberService memberService;
     private final MemberMapper mapper;
+    private final TagService tagService;
     private final BoardMapper boardMapper;
     private final TagMapper tagMapper;
 
@@ -38,24 +41,26 @@ public class MemberController {
         Member member = mapper.memberPostDtoToMember(postDto);
         Member saveMember = memberService.createMember(member);
 
-        return new ResponseEntity<>(mapper.memberToResponseDto(saveMember), HttpStatus.CREATED);
+        return new ResponseEntity<>(mapper.memberToMemberResponseDto(saveMember), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{member-id}")
     public ResponseEntity patchMember(@PathVariable("member-id") @Positive Long memberId,
                                       @RequestBody @Valid MemberDto.Patch patchDto) {
         Member member = mapper.memberPatchDtoToMember(patchDto);
+        List<String> tags = patchDto.getTags();
         member.setMemberId(memberId);
-        Member updateMember = memberService.updateMember(member);
 
-        return new ResponseEntity<>(mapper.memberToResponseDto(updateMember), HttpStatus.OK);
+        Member updateMember = memberService.updateMember(member, tags);
+
+        return new ResponseEntity<>(mapper.memberToMemberResponseDto(updateMember), HttpStatus.OK);
     }
 
     @GetMapping("/{member-id}")
     public ResponseEntity getMember(@PathVariable("member-id") @Positive Long memberId) {
         Member findMember = memberService.findMember(memberId);
 
-        return new ResponseEntity<>(mapper.memberToResponseDto(findMember), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.memberToMemberResponseDto(findMember), HttpStatus.OK);
     }
 
     @GetMapping
@@ -63,7 +68,7 @@ public class MemberController {
                                      @RequestParam("size") @Positive int size) {
         List<Member> members = memberService.findAll(page, size).getContent();
 
-        return new ResponseEntity<>(mapper.membersToResponseDtos(members), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.membersToMemberResponseDtos(members), HttpStatus.OK);
     }
 
     @GetMapping("/{member-id}/questions")

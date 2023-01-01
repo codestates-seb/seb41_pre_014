@@ -2,7 +2,6 @@ package com.seb41_pre_014.board.service;
 
 import com.seb41_pre_014.board.entity.Board;
 import com.seb41_pre_014.board.repository.BoardRepository;
-import com.seb41_pre_014.member.entity.Member;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.seb41_pre_014.board.entity.Board.BoardType.QUESTION;
@@ -35,7 +35,7 @@ class BoardServiceTest {
         Long memberId = 1L;
 
         // when
-        Board postBoard = boardService.postQuestion(memberId, board);
+        Board postBoard = boardService.postQuestion(memberId, board, List.of("tag"));
 
         // then
         assertEquals(board.getTitle(), postBoard.getTitle());
@@ -51,7 +51,7 @@ class BoardServiceTest {
         Long memberId = 1L;
 
         // when
-        Board postBoard = boardService.postAnswer(questionId, memberId, board);
+        Board postBoard = boardService.postAnswer(questionId, memberId, board, List.of("tag"));
 
         // then
         assertEquals(board.getTitle(), postBoard.getTitle());
@@ -65,7 +65,7 @@ class BoardServiceTest {
         given(boardRepository.findById(Mockito.anyLong())).willReturn(Optional.empty());
 
         // when // then
-        assertThrows(RuntimeException.class, () -> boardService.updateBoard(board));
+        assertThrows(RuntimeException.class, () -> boardService.updateBoard(board, List.of("tag")));
     }
 
     @Test

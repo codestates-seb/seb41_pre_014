@@ -4,7 +4,9 @@ import com.seb41_pre_014.audit.BaseTimeEntity;
 import com.seb41_pre_014.board.entity.Board;
 import com.seb41_pre_014.bookmark.entity.Bookmark;
 import com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit;
+import com.seb41_pre_014.tag.entity.BoardTag;
 import com.seb41_pre_014.tag.entity.MemberTag;
+import com.seb41_pre_014.tag.entity.Tag;
 import com.seb41_pre_014.vote.entity.Vote;
 import lombok.*;
 
@@ -13,6 +15,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -81,6 +84,10 @@ public class Member extends BaseTimeEntity {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public void addMemberTags(List<MemberTag> memberTags) {
+        this.memberTags = memberTags;
     }
 
     public enum MemberStatus {

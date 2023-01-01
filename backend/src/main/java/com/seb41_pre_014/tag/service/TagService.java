@@ -11,6 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -25,6 +27,11 @@ public class TagService {
 
     public Tag findTag(Long tagId) {
         return findVerifiedTag(tagId);
+    }
+
+    @Transactional
+    public Tag findTagByName(String tagName) {
+        return findVerifiedTagByName(tagName);
     }
 
     public Page<Tag> findAll(int page, int size) {
@@ -42,4 +49,14 @@ public class TagService {
         return tagRepository.findById(tagId)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.TAG_NOT_FOUND));
     }
+
+    @Transactional
+    public Tag findVerifiedTagByName(String tagName) {
+        Optional<Tag> tag = tagRepository.findByName(tagName);
+        if (tag.isEmpty()) {
+            return createTag(Tag.builder().name(tagName).build());
+        }
+        return tag.get();
+    }
+
 }

@@ -5,6 +5,8 @@ import com.seb41_pre_014.bookmark.entity.Bookmark;
 import com.seb41_pre_014.member.entity.Member;
 import com.seb41_pre_014.suggestedEdit.entity.SuggestedEdit;
 import com.seb41_pre_014.tag.entity.BoardTag;
+import com.seb41_pre_014.tag.entity.MemberTag;
+import com.seb41_pre_014.tag.entity.Tag;
 import com.seb41_pre_014.vote.entity.Vote;
 import lombok.*;
 
@@ -101,6 +103,10 @@ public class Board extends BaseTimeEntity {
 
     public void chageStatus(BoardStatus boardStatus) {
         this.boardStatus = boardStatus;
+    }
+
+    public void addBoardTags(List<BoardTag> boardTags) {
+        this.boardTags = boardTags;
     }
 
     public enum BoardType {
