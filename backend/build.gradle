@@ -2,7 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.6'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-	id "org.asciidoctor.jvm.convert" version "3.3.2" //Spring Rest Docs API; Asciidoctor 플러그인 사용
+//	id "org.asciidoctor.jvm.convert" version "3.3.2" //Spring Rest Docs API; Asciidoctor 플러그인 사용
 }
 
 group = 'com'
@@ -19,15 +19,15 @@ repositories {
 	mavenCentral()
 }
 
-//Spring Rest Docs API
-ext {
-	set('snippetsDir', file("build/generated-snippets"))
-}
-
-//Spring Rest Docs API
-configurations {
-	asciidoctorExtensions
-}
+////Spring Rest Docs API
+//ext {
+//	set('snippetsDir', file("build/generated-snippets"))
+//}
+//
+////Spring Rest Docs API
+//configurations {
+//	asciidoctorExtensions
+//}
 
 dependencies {
 	// Spring Boot 기본값 (Spring Web)
@@ -72,40 +72,40 @@ dependencies {
 	//GSON
 	implementation 'com.google.code.gson:gson'
 
-	//`spring-restdocs-core`와 `spring-restdocs-mockmvc` 라이브러리
-	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-	//`spring-restdocs-asciidoctor` 라이브러리
-	asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+//	//`spring-restdocs-core`와 `spring-restdocs-mockmvc` 라이브러리
+//	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+//	//`spring-restdocs-asciidoctor` 라이브러리
+//	asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 }
 
-tasks.named('test') {
-	//Spring Rest Docs API
-	outputs.dir snippetsDir
-	useJUnitPlatform()
-}
-
-tasks.named('asciidoctor') {
-	configurations "asciidoctorExtensions"
-	inputs.dir snippetsDir
-	dependsOn test
-}
-
-//Spring Rest Docs API
-task copyDocument(type: Copy) {
-	dependsOn asciidoctor
-	from file("${asciidoctor.outputDir}")
-	into file("src/main/resources/static/docs")
-}
-
-//Spring Rest Docs API
-build {
-	dependsOn copyDocument
-}
-
-//Spring Rest Docs API
-bootJar {
-	dependsOn copyDocument
-	from("${asciidoctor.outputDir}") {
-		into 'static/docs'
-	}
-}
+//tasks.named('test') {
+//	//Spring Rest Docs API
+//	outputs.dir snippetsDir
+//	useJUnitPlatform()
+//}
+//
+//tasks.named('asciidoctor') {
+//	configurations "asciidoctorExtensions"
+//	inputs.dir snippetsDir
+//	dependsOn test
+//}
+//
+////Spring Rest Docs API
+//task copyDocument(type: Copy) {
+//	dependsOn asciidoctor
+//	from file("${asciidoctor.outputDir}")
+//	into file("src/main/resources/static/docs")
+//}
+//
+////Spring Rest Docs API
+//build {
+//	dependsOn copyDocument
+//}
+//
+////Spring Rest Docs API
+//bootJar {
+//	dependsOn copyDocument
+//	from("${asciidoctor.outputDir}") {
+//		into 'static/docs'
+//	}
+//}
