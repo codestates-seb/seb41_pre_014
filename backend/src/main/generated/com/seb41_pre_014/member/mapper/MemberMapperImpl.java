@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-31T17:01:00+0900",
+    date = "2023-01-01T16:27:06+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.16 (Azul Systems, Inc.)"
 )
 @Component
@@ -57,46 +57,27 @@ public class MemberMapperImpl implements MemberMapper {
     }
 
     @Override
-    public Response memberToResponseDto(Member member) {
+    public Response memberToMemberResponseDto(Member member) {
         if ( member == null ) {
             return null;
         }
 
         ResponseBuilder response = Response.builder();
 
-        if ( member.getMemberId() != null ) {
-            response.memberId( member.getMemberId() );
-        }
-        response.email( member.getEmail() );
-        response.password( member.getPassword() );
-        response.displayName( member.getDisplayName() );
-        response.fullName( member.getFullName() );
-        response.location( member.getLocation() );
-        response.title( member.getTitle() );
-        response.aboutMe( member.getAboutMe() );
-        response.websiteLink( member.getWebsiteLink() );
-        response.twitterLink( member.getTwitterLink() );
-        response.githubLink( member.getGithubLink() );
-        response.profileImageUrl( member.getProfileImageUrl() );
-        if ( member.getMemberStatus() != null ) {
-            response.memberStatus( member.getMemberStatus().name() );
-        }
-        response.reputation( member.getReputation() );
-        response.questions( member.getQuestions() );
-        response.answers( member.getAnswers() );
+        response.member( member );
 
         return response.build();
     }
 
     @Override
-    public List<Response> membersToResponseDtos(List<Member> members) {
+    public List<Response> membersToMemberResponseDtos(List<Member> members) {
         if ( members == null ) {
             return null;
         }
 
         List<Response> list = new ArrayList<Response>( members.size() );
         for ( Member member : members ) {
-            list.add( memberToResponseDto( member ) );
+            list.add( memberToMemberResponseDto( member ) );
         }
 
         return list;

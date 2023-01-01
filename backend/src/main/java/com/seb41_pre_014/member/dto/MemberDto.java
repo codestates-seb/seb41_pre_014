@@ -46,11 +46,12 @@ public class MemberDto {
         private String twitterLink;
         private String githubLink;
         private String profileImageUrl;
+        private List<String> tags;
     }
 
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Response {
         private long memberId;
         private String email;
@@ -84,7 +85,7 @@ public class MemberDto {
             this.twitterLink = member.getTwitterLink();
             this.githubLink = member.getGithubLink();
             this.profileImageUrl = member.getProfileImageUrl();
-            this.tags = member.getMemberTags() == null ? null :member.getMemberTags().stream()
+            this.tags = member.getMemberTags() == null ? null : member.getMemberTags().stream()
                     .map(memberTag -> memberTag.getTag().getName()).collect(Collectors.toList());
             this.memberStatus = member.getMemberStatus().name();
             this.reputation = member.getReputation();
