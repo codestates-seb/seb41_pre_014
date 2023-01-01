@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.seb41_pre_014.member.service.MemberServiceTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2023-01-01T05:43:09" hostname="gimchanbin-ui-MacBookPro.local" time="0.027">
+<testsuite name="com.seb41_pre_014.member.service.MemberServiceTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2023-01-01T05:56:39" hostname="gimchanbin-ui-MacBookPro.local" time="0.03">
   <properties/>
-  <testcase name="verifiyExist()" classname="com.seb41_pre_014.member.service.MemberServiceTest" time="0.025"/>
+  <testcase name="verifiyExist()" classname="com.seb41_pre_014.member.service.MemberServiceTest" time="0.028"/>
   <testcase name="createMember()" classname="com.seb41_pre_014.member.service.MemberServiceTest" time="0.001">
     <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
 	at com.seb41_pre_014.member.service.MemberService.createMember(MemberService.java:41)

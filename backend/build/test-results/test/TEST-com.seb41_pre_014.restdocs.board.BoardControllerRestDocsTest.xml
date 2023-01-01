@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest" tests="13" skipped="0" failures="13" errors="0" timestamp="2023-01-01T05:43:10" hostname="gimchanbin-ui-MacBookPro.local" time="1.709">
+<testsuite name="com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest" tests="13" skipped="0" failures="13" errors="0" timestamp="2023-01-01T05:56:40" hostname="gimchanbin-ui-MacBookPro.local" time="1.464">
   <properties/>
-  <testcase name="findAllByAnswerCount()" classname="com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest" time="0.0">
+  <testcase name="findAllByAnswerCount()" classname="com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest" time="0.001">
     <failure message="java.lang.IllegalStateException: Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
@@ -485,7 +485,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	... 106 more
 </failure>
   </testcase>
-  <testcase name="findAllBySearch()" classname="com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest" time="0.001">
+  <testcase name="findAllBySearch()" classname="com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest" time="0.0">
     <failure message="java.lang.IllegalStateException: Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
@@ -1211,7 +1211,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	... 106 more
 </failure>
   </testcase>
-  <testcase name="findAllByScore()" classname="com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest" time="0.0">
+  <testcase name="findAllByScore()" classname="com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest" time="0.001">
     <failure message="java.lang.IllegalStateException: Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
@@ -1574,12 +1574,12 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	... 106 more
 </failure>
   </testcase>
-  <system-out><![CDATA[2023-01-01 14:43:10.832  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest], using SpringBootContextLoader
-2023-01-01 14:43:10.832  INFO 9062 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2023-01-01 14:43:10.832  INFO 9062 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest]: BoardControllerRestDocsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-01-01 14:43:10.838  INFO 9062 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest
-2023-01-01 14:43:10.838  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2023-01-01 14:43:10.839  INFO 9062 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@c360f40, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@badf24b, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@efa6a81, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3983b06d, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5d5822bc, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2bf5f4, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1a5e19fe, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@3e7ac200, org.springframework.test.context.event.EventPublishingTestExecutionListener@222b4ab1, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@7df09f55, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@178be8fc, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7f0952cf, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@70fe15d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7efcdcde, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@36f807f5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@352b4cf]
+  <system-out><![CDATA[2023-01-01 14:56:40.690  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest], using SpringBootContextLoader
+2023-01-01 14:56:40.691  INFO 9378 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-01-01 14:56:40.691  INFO 9378 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest]: BoardControllerRestDocsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-01-01 14:56:40.696  INFO 9378 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.seb41_pre_014.Seb41Pre014Application for test class com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest
+2023-01-01 14:56:40.697  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-01-01 14:56:40.697  INFO 9378 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@247246ea, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@43b45e77, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@71639428, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@10ba757f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@711cd6f9, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1cb3de26, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7307e418, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@30d5668a, org.springframework.test.context.event.EventPublishingTestExecutionListener@2769d577, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@25297d52, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@69c27acb, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@72b8b04f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1b131102, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@75be3cdf, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@f500481, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@38dde7ec]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -1589,13 +1589,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:10.858  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:10.858  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:10.971  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:10.972  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:40.712  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:40.712  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:40.807  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:40.808  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:10.973 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:40.809 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -1610,7 +1610,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:10.977 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@71d94ab]
+2023-01-01 14:56:40.812 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@34723cfe]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -1740,13 +1740,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:10.997  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:10.997  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:11.102  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:11.102  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:40.831  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:40.831  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:40.927  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:40.927  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:11.103 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:40.929 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -1761,7 +1761,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:11.107 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@513f8279]
+2023-01-01 14:56:40.932 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@603042a5]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -1891,13 +1891,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:11.123  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:11.123  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:11.230  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:11.231  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:40.948  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:40.948  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:41.049  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:41.049  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:11.232 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:41.051 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -1912,7 +1912,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:11.236 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@5cc12274]
+2023-01-01 14:56:41.054 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@1a89d045]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -2042,13 +2042,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:11.256  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:11.256  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:11.360  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:11.360  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:41.073  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:41.073  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:41.186  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:41.187  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:11.361 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:41.188 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -2063,7 +2063,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:11.366 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@7dd63fcc]
+2023-01-01 14:56:41.192 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@55a72c9e]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -2193,13 +2193,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:11.388  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:11.388  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:11.512  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:11.513  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:41.215  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:41.215  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:41.318  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:41.319  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:11.514 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:41.320 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -2214,7 +2214,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:11.518 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@21d131e7]
+2023-01-01 14:56:41.323 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@ae094e8]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -2344,13 +2344,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:11.537  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:11.537  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:11.637  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:11.638  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:41.341  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:41.341  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:41.441  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:41.441  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:11.644 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:41.446 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -2365,7 +2365,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:11.647 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@7ec49d9b]
+2023-01-01 14:56:41.450 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@398f97ae]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -2495,13 +2495,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:11.663  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:11.663  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:11.835  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:11.836  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:41.468  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:41.468  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:41.562  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:41.563  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:11.838 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:41.564 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -2516,7 +2516,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:11.843 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@1b786da0]
+2023-01-01 14:56:41.567 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@700e3b73]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -2646,13 +2646,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:11.867  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:11.867  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:11.981  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:11.982  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:41.583  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:41.583  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:41.688  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:41.688  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:11.983 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:41.690 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -2667,7 +2667,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:11.987 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@7c0182ee]
+2023-01-01 14:56:41.694 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@cce77c8]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -2797,13 +2797,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:12.009  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:12.009  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:12.116  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:12.117  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:41.709  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:41.709  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:41.805  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:41.806  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:12.118 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:41.807 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -2818,7 +2818,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:12.122 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@27d7ee42]
+2023-01-01 14:56:41.810 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@b939971]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -2948,13 +2948,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:12.140  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:12.140  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:12.255  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:12.255  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:41.825  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:41.826  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:41.917  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:41.918  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:12.257 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:41.920 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -2969,7 +2969,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:12.261 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@2e7da886]
+2023-01-01 14:56:41.923 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@3e8a1137]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -3099,13 +3099,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:12.279  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:12.279  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:12.396  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:12.396  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:41.939  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:41.939  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:42.031  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:42.032  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:12.398 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:42.033 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -3120,7 +3120,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:12.403 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@fbafe38]
+2023-01-01 14:56:42.037 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@3aeba81]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -3250,13 +3250,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:12.429  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:12.429  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:12.533  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:12.534  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:42.053  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:42.053  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:42.144  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:42.145  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:12.535 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:42.147 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -3271,7 +3271,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:12.540 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@a59819f]
+2023-01-01 14:56:42.157 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@63e21ccb]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
@@ -3401,13 +3401,13 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2023-01-01 14:43:12.557  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9062 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
-2023-01-01 14:43:12.557  INFO 9062 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
-2023-01-01 14:43:12.681  WARN 9062 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2023-01-01 14:43:12.681  INFO 9062 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-01-01 14:56:42.172  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : Starting BoardControllerRestDocsTest using Java 11.0.16 on gimchanbin-ui-MacBookPro.local with PID 9378 (started by happy_bin in /Users/happy_bin/projects/pre-project/seb41_pre_014/backend)
+2023-01-01 14:56:42.172  INFO 9378 --- [    Test worker] c.s.r.board.BoardControllerRestDocsTest  : No active profile set, falling back to 1 default profile: "default"
+2023-01-01 14:56:42.270  WARN 9378 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'boardController' defined in file [/Users/happy_bin/projects/pre-project/seb41_pre_014/backend/build/classes/java/main/com/seb41_pre_014/board/controller/BoardController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.seb41_pre_014.board.service.BoardService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-01-01 14:56:42.270  INFO 9378 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-01-01 14:43:12.683 ERROR 9062 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2023-01-01 14:56:42.272 ERROR 9378 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -3422,7 +3422,7 @@ Action:
 
 Consider defining a bean of type 'com.seb41_pre_014.board.service.BoardService' in your configuration.
 
-2023-01-01 14:43:12.687 ERROR 9062 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@573e38c] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@3c16f821]
+2023-01-01 14:56:42.276 ERROR 9378 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@26c9225a] to prepare test instance [com.seb41_pre_014.restdocs.board.BoardControllerRestDocsTest@167fdc7d]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.24.jar:5.3.24]
