@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import { UserMetaInfoType3 } from "./UserInfoContainer";
 import { MainNavBar } from "./NavBar";
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const MainTopWrapper = styled.div`
   display: flex;
@@ -15,10 +18,13 @@ const MainTopProfileWrapper = styled.div`
   margin: -0.8rem;
 `
 
-const MainTopProfile = () => {
+const MainTopProfile = (props) => {
   return (
     <MainTopProfileWrapper>
-      <UserMetaInfoType3 />
+      <UserMetaInfoType3 
+        displayName={props.displayName} 
+        title={props.title} 
+        location={props.location}/>
       <EditProfileBtn>Edit Profile</EditProfileBtn>
     </MainTopProfileWrapper>
   );
@@ -50,10 +56,32 @@ export const UserDetailMainTop = () => {
     {name: 'Settings', to: `settings`},
   ];
 
+  // const [user, setUser] = useState(null)
+  // member 정보 받아오기
+  // const getUser = async (props) => {
+  //   try {
+  //     const response = await axios({
+  //       url: `/users/:userId/profile`,
+  //       baseURL: `${process.env.REACT_APP_SERVER_URL}`
+  //     });
+  //     setUser(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
+
   return (
     <div>
       <MainTopWrapper>
-        <MainTopProfile />
+        <MainTopProfile 
+        // displayName={user.displayName}
+        // title={user.title}
+        // location={user.location}
+        />
         <MainNavBar navItems={navItems} />
       </MainTopWrapper>
     </div>

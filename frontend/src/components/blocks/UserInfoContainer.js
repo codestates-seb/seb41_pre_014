@@ -141,7 +141,7 @@ export const UserMetaInfoType3 = (props) => {
     <StyledDiv3>
       <a href=''> 
         <div className='avatarWrap'>
-          <img className='avatarPic' alt='user avatar' src='https://www.gravatar.com/avatar/0555bd0deb416a320a0069abef08078a?s=128&d=identicon&r=PG&f=1'></img>
+          <img className='avatarPic' alt='user avatar' src={props.profileImageUrl}></img>
         </div>
       </a>
       <div className='infoWrap'>
