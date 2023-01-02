@@ -42,12 +42,12 @@ const MainRight = styled.div`
 
 const HomeLoginBoard = () => {
   const [questions, setQuestions] = useState();
-  const [filter, setFilter] = useState('Newest');
+  const [filter, setFilter] = useState('questions');
 
-  const getQuestions = async (props) => {
+  const getQuestions = async () => {
     try {
       const response = await axios({
-        url: `/boards/${props.filter}?page=${props.page || 1}&size=50`,
+        url: `/boards/${filter}?page=1&size=50`,
         baseURL: `${process.env.REACT_APP_SERVER_URL}`,
       });
       setQuestions(response.data);
@@ -61,37 +61,29 @@ const HomeLoginBoard = () => {
       {
         buttonName : "Newest",
         onClick : () => {
-          setFilter("newest");
-          getQuestions({
-            filter: "questions",
-          });
+          setFilter("questions");
+          getQuestions();
         },
       },
       {
         buttonName : "Unanswered",
         onClick : () => {
 	        setFilter("unanswered");
-          getQuestions({
-            filter: "unanswered",
-          });
+          getQuestions();
         },
       },
       {
         buttonName : "Frequent",
         onClick : () => {
           setFilter("frequent");
-          getQuestions({
-            filter: "frequent",
-          });
+          getQuestions();
         },
       },
       {
         buttonName : "Score",
         onClick : () => {
           setFilter("score");
-          getQuestions({
-            filter: "score",
-          });
+          getQuestions();
         },
       }
     ];
