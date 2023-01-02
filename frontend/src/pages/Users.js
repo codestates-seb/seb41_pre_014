@@ -61,11 +61,6 @@ const Users = () => {
         console.log('최신 생성 유저 순으로 정렬');
         getUsers();
       }
-      buttonName: "New users",
-      onClick: () => {
-        console.log('최신 생성 유저 순으로 정렬');
-        getUsers();
-      }
     },
     {
       buttonName: "Reputation",
@@ -78,9 +73,6 @@ const Users = () => {
     },
   ];
 
-  useEffect(() => {
-    getUsers();
-  }, []);
   useEffect(() => {
     getUsers();
   }, []);
@@ -97,21 +89,6 @@ const Users = () => {
         />
       </StyledTopBar>
       <StyledUserWrapper>
-
-        {users?.map((user) => {
-          // profileImageUrl 추가
-          return <UserMetaInfoType4 
-          width='4.8rem'
-          height='4.8rem'
-          fontSize='2.4rem'
-          profileImageUrl={user.profileImageUrl}
-          displayName={user.displayName}
-          location={user.location} 
-          tags={user.tags.map((tag)=>{
-            return tag + ' '
-          })}/>
-        })}
-
 
         {users?.map((user) => {
           // profileImageUrl 추가
