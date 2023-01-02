@@ -1,15 +1,15 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect} from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { LoadingIndicator } from '../components/blocks/LoadingIndicator';
+import { getCookie } from '../modules/Cookies';
+import { loginStatusSlice, loginUserInfoSlice } from '../ducks/slice';
 
 import { 
   HomeLoginBoard,
-  QuestionHomeLoginBoard,
   QuestionBoard,
   Detail,
   QuestionEdit,
-  AnswerQuestionEdit,
   AnswerEdit,
   EditRequest,
   Home,
@@ -22,17 +22,25 @@ import {
   UserActivity,
   ActivityQuestions,
   ActivityAnswers,
-  ActivityTags,
   ActivityFollowing,
   ActivityVotes,
+  UserSettings,
   Write,
   NotFound,
 } from '../pages';
-import UserSettings from '../pages/UserSettings';
-
+import UserSettingsDeleteProfile from '../pages/UserSettingsDeleteProfile';
+import UserSettingsEditProfile from '../pages/UserSettingsEditProfile';
 
 export const Router = () => {
-  const loginStatus = useSelector(state => state.loginStatus.status)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (localStorage.getItem('loginUserInfo') && getCookie('accessJwtToken')) {
+      dispatch(loginUserInfoSlice.actions.getLoginUser(JSON.parse(localStorage.getItem('loginUserInfo'))));
+      dispatch(loginStatusSlice.actions.login());
+    };
+  }, []);
+
+  const loginStatus = useSelector(state => state.loginStatus.status);
 
   return (
     <>
@@ -53,10 +61,13 @@ export const Router = () => {
               <Route path="answers" element={<ActivityAnswers />} />
               {/* <Route path="tags" element={<ActivityTags />} /> */}
               <Route path="following" element={<ActivityFollowing />} />
-              {/* <Route path="reputation" element={<UserActivity />} /> */}
               <Route path="votes" element={<ActivityVotes />} />
             </Route>
-            <Route path="settings" element={<UserSettings />} />
+            <Route path="settings" element={<UserSettings />} >
+              <Route index element={<UserSettingsEditProfile/>}></Route>
+              <Route path='edit' element={<UserSettingsEditProfile/>}></Route>
+              <Route path='delete' element={<UserSettingsDeleteProfile/>}></Route>
+            </Route>
             <Route/>
           </Route>
 
@@ -65,8 +76,7 @@ export const Router = () => {
           <Route path='/questions/:detailId' element={<Detail />}></Route>
 
           <Route path='/posts/:detailId/edit' element={<QuestionEdit />}></Route>
-          {/* answer에도 고유한 Id값이 있어야 겠는데? */}
-          <Route path='/posts/:detailId' element={<AnswerEdit />}></Route>
+          <Route path='/posts/:detailId/answer/edit' element={<AnswerEdit />}></Route>
           <Route path='/posts/:detailId/editrequest' element={<EditRequest />}></Route>
 
           <Route path='*' element={<NotFound />}></Route>

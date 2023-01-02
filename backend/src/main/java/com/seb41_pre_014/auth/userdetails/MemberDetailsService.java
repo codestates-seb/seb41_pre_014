@@ -34,6 +34,7 @@ public class MemberDetailsService implements UserDetailsService {
         MemberDeatils(Member member) {
             this.setMemberId(member.getMemberId());
             this.setEmail(member.getEmail());
+            this.setMemberId(member.getMemberId());
             this.setPassword(member.getPassword());
             this.setRoles(member.getRoles());
         }

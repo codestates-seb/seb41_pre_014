@@ -9,6 +9,9 @@ import com.seb41_pre_014.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,10 +24,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 // 로그인 인증 요청을 처리하는 클래스
 @RequiredArgsConstructor
@@ -55,7 +55,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request,
                                             HttpServletResponse response,
                                             FilterChain chain,
-                                            Authentication authResult) {
+                                            Authentication authResult) throws IOException {
         // getPrincipal() 메서드로 Member 엔티티를 얻는다.
         // AuthenticationManager 내부에서 인증에 성공하면 인증된 Authenticaton 객체가 생성되면서 principal 필드에 Member 객체가 할당되기 때문이다.
         Member member = (Member) authResult.getPrincipal();
@@ -66,7 +66,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.setHeader("Authorization", "Bearer" + accessToken);
         response.setHeader("Refresh", refreshToken);
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setStatus(HttpStatus.OK.value());
 
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("memberId", member.getMemberId());
+
+        new ObjectMapper().writeValue(response.getOutputStream(), body);
 ////        // JWT 쿠키 저장
 ////        Cookie cookie =
 ////        response.addCookie();
@@ -77,6 +83,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         Map<String, Object> claims = new HashMap<>();
         claims.put("username", member.getEmail());
         claims.put("roles", member.getRoles());
+        claims.put("memberId", member.getMemberId());
 
         String subject = member.getEmail();
         Date expiration = jwtTokenizer.getTokenExpiration(jwtTokenizer.getAccessTokenExpirationMinutes());

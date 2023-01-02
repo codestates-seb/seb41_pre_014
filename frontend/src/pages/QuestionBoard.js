@@ -61,7 +61,7 @@ const Pagination = styled.div`
 const MainRight = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  /* gap: 1.6rem; */
   padding-left: 2.4rem;
 `;
 
@@ -113,39 +113,31 @@ const QuestionBoard = () => {
 
   useEffect(() => {
     getQuestions();
-  }, []);
+  }, [filter, perPage]);
 
   const filterData = [
       {
         buttonName : "Newest",
         onClick : () => {
           setFilter("questions");
-          // console.log(filter, currentPage, perPage);
-          getQuestions();
         },
       },
       {
         buttonName : "Unanswered",
         onClick : () => {
 	        setFilter("unanswered");
-          // console.log(filter, currentPage, perPage);
-          getQuestions();
         },
       },
       {
         buttonName : "Frequent",
         onClick : () => {
           setFilter("frequent");
-          // console.log(filter, currentPage, perPage);
-          getQuestions();
         },
       },
       {
         buttonName : "Score",
         onClick : () => {
           setFilter("score");
-          // console.log(filter, currentPage, perPage);
-          getQuestions();
         },
       }
     ];
@@ -155,24 +147,18 @@ const QuestionBoard = () => {
       buttonName : "15",
       onClick : () => {
         setPerPage(15);
-        // console.log(filter, currentPage, perPage);
-        getQuestions();
       },
     },
     {
       buttonName : "30",
       onClick : () => {
         setPerPage(30);
-        // console.log(filter, currentPage, perPage);
-        getQuestions();
       },
     },
     {
       buttonName : "50",
       onClick : () => {
         setPerPage(50);
-        // console.log(filter, currentPage, perPage);
-        getQuestions()
       },
     },
   ];
@@ -194,7 +180,7 @@ const QuestionBoard = () => {
           </MainTop>
           <FilterContainer>
             <div className='questionNum'>
-              <span>{questions.length}</span>
+              <span>{questions ? questions.length : 'Question Count'}</span>
               <span>questions</span>
             </div>
             <div>

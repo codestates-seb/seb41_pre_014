@@ -1,5 +1,6 @@
 import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 import styled from "styled-components";
+import { RandomAvartar } from "./RandomAvartar";
 
 const PostedQnAContainer = styled.div`
   display: flex;
@@ -52,7 +53,11 @@ export const UserPostedQnA = (props) => {
   return (
     <PostedQnAContainer>
       <PostedQnAInfo>
-        <StyledImg src={props.profileImageUrl}></StyledImg>
+        <RandomAvartar 
+          width='4.8rem' 
+          height='4.8rem'
+          fontSize='2rem'
+          />
       </PostedQnAInfo>
         <PostedQnAInfo2>
           <NumberWrap>{props.score}</NumberWrap>

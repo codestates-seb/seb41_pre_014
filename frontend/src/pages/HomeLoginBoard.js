@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button } from '../components/atoms/Button';
 import { FilterButtonWrapper } from '../components/blocks/FilterButtonWrapper';
 import { QuestionInfoContainer } from '../components/blocks/QuestionInfoContainer';
 import { MainRightSideInfoWidget, MainRightTagBasic } from '../components/blocks/MainRight';
 import { BoardDetailSideInfoWidgetData } from '../data/staticData/SideBarData';
+import { DetailWriteButton } from '../components/blocks/DetailWriteButton';
 
 const Main = styled.div`
   display: flex;
@@ -41,7 +42,7 @@ const MainRight = styled.div`
 `;
 
 const HomeLoginBoard = () => {
-  const [questions, setQuestions] = useState();
+  const [questions, setQuestions] = useState([]);
   const [filter, setFilter] = useState('questions');
 
   const getQuestions = async () => {
@@ -57,33 +58,33 @@ const HomeLoginBoard = () => {
     }
   }
 
+  useEffect(() => {
+    getQuestions();
+  }, [filter]);
+
   const filterData = [
       {
         buttonName : "Newest",
         onClick : () => {
           setFilter("questions");
-          getQuestions();
         },
       },
       {
         buttonName : "Unanswered",
         onClick : () => {
 	        setFilter("unanswered");
-          getQuestions();
         },
       },
       {
         buttonName : "Frequent",
         onClick : () => {
           setFilter("frequent");
-          getQuestions();
         },
       },
       {
         buttonName : "Score",
         onClick : () => {
           setFilter("score");
-          getQuestions();
         },
       }
     ];
@@ -94,11 +95,7 @@ const HomeLoginBoard = () => {
           <MainLeft>
             <MainTop>
               <h1>Top Questions</h1>
-              <Button
-                buttonType='type2'
-                buttonName='Ask Question'
-                width='9.87rem'
-              />
+              <DetailWriteButton />
             </MainTop>
             <FilterContainer>
               <FilterButtonWrapper filterData={filterData} />

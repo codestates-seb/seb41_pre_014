@@ -5,6 +5,10 @@ import { EditorInput } from '../components/blocks/EditorInputWrapper';
 import { MainRightSideInfoWidget, MainRightRelatedQuestions } from '../components/blocks/MainRight';
 import { BoardDetailSideInfoWidgetData } from "../data/staticData/SideBarData";
 import { DetailWriteButton } from "../components/blocks/DetailWriteButton";
+import { useEffect, useState, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 export const QuestionMetaInfo = (props) => {
   return (
@@ -33,24 +37,98 @@ export const AnswerFilter = (props) => {
 };
 
 const Detail = (props) => {
+  const location = useLocation();
+  const boardId = location.pathname.split('/')[2];
+
+  const [ detailData, setDetailData ] = useState({});
+
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_SERVER_URL}/boards/${boardId}`,
+    })
+    .then(res => {
+      setDetailData(res.data);
+    })
+    .catch(err => {
+      console.error(err);
+    })
+  },[boardId])
+
+  const upButtonClick = () => {
+    console.log('up!');
+  }
+
+  const downButtonClick = () => {
+    console.log('down!');
+  }
+  const navigate = useNavigate();
+  const loginUserId = useSelector(state => state.loginUserInfo.loginUserInfo?.memberId);
+  const answerWrite = useRef();
+  const postAnswerButtonClick = async () => {
+    const answerCont = answerWrite.current.getInstance().getHTML();
+    await axios({
+      method: 'POST',
+      url: `${process.env.REACT_APP_SERVER_URL}/boards/answers/${boardId}`,
+      params: {
+        memberId: loginUserId
+      },
+      data: {
+        title: '',
+        body: answerCont,
+        tags: [],
+      }
+    })
+    .then(res => {
+      navigate(`/questions/${boardId}`);
+    })
+    .catch(err => {
+      console.error(err);
+    })
+  };
+
+  const isLogin = useSelector(state => state.loginStatus.status);
+  const goLogin = () => {
+    alert('로그인 후에 이용해주세요. 로그인 페이지로 이동합니다.');
+    navigate('/users/login');
+  };
+
   return (
     <>
         <Main>
           <MainTop>
             <div className="titleAndButton">
-              <h1>{props.questionTitle}questionTitle</h1>
+              <h1>{detailData.title || 'Question Title'}</h1>
               <DetailWriteButton />
             </div>
-            <QuestionMetaInfo />
+            <QuestionMetaInfo 
+              asked={detailData.createdAt || 'unknown'}
+              modified={detailData.lastModifiedAt || 'unknown'} 
+              viewed={detailData.viewCount || 'unknown'} 
+            />
           </MainTop>
           <MainLeftRightWrapper>
             <MainLeft>
-              <QuestionDetail />
+              <QuestionDetail 
+                upButtonClick={isLogin ? upButtonClick : goLogin}
+                downButtonClick={isLogin ? downButtonClick : goLogin}
+                score={detailData.score}
+                boardId={boardId}
+                questionContent={detailData.body}
+                tags={detailData.tags}
+                title={detailData.title}
+                body={detailData.body}
+              />
               <AnswerWapper>
               <AnswerFilter />
-                <ul>
-                  <AnswerDetail />
-                </ul>
+              {detailData.answers.length > 0 && detailData.answers.map((el, idx) => {
+                return (
+                  <AnswerDetail 
+                    key={idx}
+                    boardId={el}
+                  />
+                )
+              })}
               </AnswerWapper>
               <EditorWrapper>
                 <h2>Your Answer</h2>
@@ -62,8 +140,10 @@ const Detail = (props) => {
                     ['table', 'image', 'link'],
                     ['code', 'codeblock']
                   ]}
+                  ref={answerWrite}
                 />
                 <Button 
+                  onClick={isLogin ? postAnswerButtonClick : goLogin}
                   buttonType='type2'
                   buttonName='Post Your Answer'
                   width='12.18rem'

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link, json, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,9 @@ import { Button, SNSLoginButton } from '../components/atoms/Button';
 import { useDispatch } from 'react-redux';
 import { loginStatusSlice, loginUserInfoSlice } from "../ducks/slice";
 import axios from 'axios';
+
+import { setCookie } from "../modules/Cookies";
+import jwt_decode from 'jwt-decode'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,13 +22,13 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const loginButtonClick = async (data) => {
     const { email, password } = data;
-    console.log(email,password);
+
     if (!email || !password) {
       alert('아이디와 비밀번호를 입력해주세요!');
       return;
     }
     return await axios({
-      method: 'GET',
+      method: 'POST',
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json',
@@ -33,14 +36,20 @@ const Login = () => {
       url: `${process.env.REACT_APP_SERVER_URL}/auth/login`,
       data: {
         username: email,
-        password: password,
+        password,
       },
       responseType: 'json',
     })
     .then(res => {
-      dispatch(loginUserInfoSlice.getLoginUser(res.data));
-      dispatch(loginStatusSlice.login());
+      const jwtToken = res.headers.get('Authorization');
+      setCookie('accessJwtToken', jwtToken);
+      const decodedUserInfo = jwt_decode(jwtToken);
+      const loginUserId = decodedUserInfo.memberId;
+      dispatch(loginUserInfoSlice.actions.getLoginUser({"memberId": loginUserId}));
+      localStorage.setItem('loginUserInfo', JSON.stringify({"memberId": loginUserId}));
       navigate('/');
+      dispatch(loginStatusSlice.actions.login());
+      
     })
     .catch(err => {
       console.error(err);
