@@ -100,6 +100,7 @@ const Users = () => {
         />
       </StyledTopBar>
       <StyledUserWrapper>
+
         {users?.map((user) => {
           // profileImageUrl 추가
           return <UserMetaInfoType4 
@@ -110,6 +111,7 @@ const Users = () => {
             return tag + ', '
           })}/>
         })}
+
       </StyledUserWrapper>
       <div>
       <StyledA href='https://stackexchange.com/leagues/1/week/stackoverflow'>weekly / monthly / quarterly reputation leagues</StyledA>
