@@ -102,7 +102,6 @@ const UserProfile = () => {
     <Main>
       <MainLeft>
         <UserStats 
-        // userData 사용하기
         answerCount='0'
         questionCount='0'
         // 서버에 팔로잉 수 데이터 없음

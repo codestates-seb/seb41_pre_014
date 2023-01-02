@@ -65,30 +65,34 @@ export const UserDetailMainTop = () => {
 
   const [user, setUserData] = useState(null)
   // member 정보 받아오기
-  const getUser = async () => {
-    try {
-      const response = await axios({
-        // ${memberId}로 변경
-        url: `/members/${memberId}`,
-        baseURL: `${process.env.REACT_APP_SERVER_URL}`
-      });
-      setUserData(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  // const getUser = async () => {
+  //   try {
+  //     const response = await axios({
+  //       // ${memberId}로 변경
+  //       url: `/members/${memberId}`,
+  //       baseURL: `${process.env.REACT_APP_SERVER_URL}`
+  //     });
+  //     setUserData(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   return (
     <div>
       <MainTopWrapper>
         <MainTopProfile 
-        displayName={user.displayName}
-        title={user.title}
-        location={user.location}
+
+        // displayName={user.displayName}
+        // title={user.title}
+        // location={user.location}
+
         />
         <MainNavBar navItems={navItems} />
       </MainTopWrapper>
