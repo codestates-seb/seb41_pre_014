@@ -45,7 +45,10 @@ export const UserMetaInfoType1 = (props) => {
     <StyledDiv1>
       <div>
         <a href=''>
-          <StyledImg width='2rem' height='2rem' alt='mini user avatar' src={props.profileImageUrl}></StyledImg>
+          {/* <StyledImg width='2rem' height='2rem' alt='mini user avatar' src={props.profileImageUrl}></StyledImg> */}
+          {props.profileImageUrl ? 
+            <img src={props.profileImageUrl} alt='avatar' />
+            : <RandomAvartar width='2rem' height='2rem' fontSize='1.3rem' /> }
         </a>
       </div>
       <div className='username-score'>
