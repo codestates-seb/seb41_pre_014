@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { InputLabel, EditorInput } from "../components/blocks/EditorInputWrapper";
 import { StyledInput } from "../components/atoms/SearchBar";
 import { Button } from "../components/atoms/Button";
+import { RandomAvartar } from "../components/blocks/RandomAvartar";
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 
@@ -85,6 +86,16 @@ const StyledDiv = styled.div`
   margin-left: 1.2rem;
 `
 
+const StyledSection = styled.section`
+  /* max-width: 89.383rem; */
+  max-width: 100%;
+  flex-grow: 1;
+`
+
+const LinkWrapper = styled.div`
+  display: flex;
+`
+
 const LabeledInput = (props) => {
   return (
   <UserEditInputWrapper>
@@ -143,7 +154,7 @@ const AboutmeWrapper = styled.div`
 
 const UserSettingsEditProfile = (props) => {
   return (
-    <>
+    <StyledSection>
       <StyledTitle>
         <StyledH1>Edit your profile</StyledH1>
       </StyledTitle>
@@ -152,10 +163,7 @@ const UserSettingsEditProfile = (props) => {
         <UserEditFormWrapper>
           <ProfileImageWrapper>
             <UserEditInputLabel>Profile image</UserEditInputLabel>
-            <StyledImg
-              src={props.profileImageUrl}
-              alt="user avatar"
-            ></StyledImg>
+            <RandomAvartar width="16.5rem" height="16.5rem" />
           </ProfileImageWrapper>
           <LabeledInput label="Display name" />
           <LabeledInput label="Location" />
@@ -169,11 +177,11 @@ const UserSettingsEditProfile = (props) => {
       <UserEditFormContainer>
         <UserEditFormTitle>Links</UserEditFormTitle>
         <UserEditFormWrapper>
-          <div>
-            <WebsiteInput width="32rem" label="Website link" />
-            <TwitterInput width="32rem" label="Twitter link or username" />
-            <GithubInput width="32rem" label="Github link or username" />
-          </div>
+          <LinkWrapper>
+            <WebsiteInput width='26rem' label="Website link" />
+            <TwitterInput width='26rem' label="Twitter link or username" />
+            <GithubInput width='26rem' label="Github link or username" />
+          </LinkWrapper>
         </UserEditFormWrapper>
       </UserEditFormContainer>
       <UserEditFormContainer>
@@ -201,7 +209,7 @@ const UserSettingsEditProfile = (props) => {
           margin="0.4rem"
         />
       </div>
-    </>
+    </StyledSection>
   );
 };
 

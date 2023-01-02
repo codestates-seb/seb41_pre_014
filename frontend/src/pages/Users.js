@@ -41,8 +41,7 @@ const Users = () => {
   const [users, setUsers] = useState(null);
   const [sortedR, setSortedR] = useState(null);
 
-  // url 맨앞 / 빼고 다시 시도해보기
-  const getUsers = async (props) => {
+  const getUsers = async () => {
     try {
       const response = await axios({
         url: `/members?page=1&size=30`,
@@ -66,7 +65,7 @@ const Users = () => {
     {
       buttonName: "Reputation",
       onClick: () => {
-        users.sort((a, b) => b.reputation - a.repuutation);
+        users.sort((a, b) => b.reputation - a.reputation);
         console.log(users[0].reputation);
         setSortedR([...users]);
         getUsers();
