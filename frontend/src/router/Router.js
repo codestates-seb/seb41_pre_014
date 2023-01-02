@@ -5,11 +5,9 @@ import { LoadingIndicator } from '../components/blocks/LoadingIndicator';
 
 import { 
   HomeLoginBoard,
-  QuestionHomeLoginBoard,
   QuestionBoard,
   Detail,
   QuestionEdit,
-  AnswerQuestionEdit,
   AnswerEdit,
   EditRequest,
   Home,
@@ -22,14 +20,12 @@ import {
   UserActivity,
   ActivityQuestions,
   ActivityAnswers,
-  ActivityTags,
   ActivityFollowing,
   ActivityVotes,
+  UserSettings,
   Write,
   NotFound,
 } from '../pages';
-import UserSettings from '../pages/UserSettings';
-
 
 export const Router = () => {
   const loginStatus = useSelector(state => state.loginStatus.status)
@@ -53,7 +49,6 @@ export const Router = () => {
               <Route path="answers" element={<ActivityAnswers />} />
               {/* <Route path="tags" element={<ActivityTags />} /> */}
               <Route path="following" element={<ActivityFollowing />} />
-              {/* <Route path="reputation" element={<UserActivity />} /> */}
               <Route path="votes" element={<ActivityVotes />} />
             </Route>
             <Route path="settings" element={<UserSettings />} />
@@ -65,8 +60,7 @@ export const Router = () => {
           <Route path='/questions/:detailId' element={<Detail />}></Route>
 
           <Route path='/posts/:detailId/edit' element={<QuestionEdit />}></Route>
-          {/* answer에도 고유한 Id값이 있어야 겠는데? */}
-          <Route path='/posts/:detailId' element={<AnswerEdit />}></Route>
+          <Route path='/posts/:detailId/answer/edit' element={<AnswerEdit />}></Route>
           <Route path='/posts/:detailId/editrequest' element={<EditRequest />}></Route>
 
           <Route path='*' element={<NotFound />}></Route>
