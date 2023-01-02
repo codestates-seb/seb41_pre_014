@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-01T14:43:01+0900",
-    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.jar, environment: Java 11.0.16 (Azul Systems, Inc.)"
+    date = "2023-01-01T19:29:40+0900",
+    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.1.jar, environment: Java 11.0.16 (Azul Systems, Inc.)"
 )
 @Component
 public class MemberMapperImpl implements MemberMapper {
@@ -57,7 +57,7 @@ public class MemberMapperImpl implements MemberMapper {
     }
 
     @Override
-    public Response memberToResponseDto(Member member) {
+    public Response memberToMemberResponseDto(Member member) {
         if ( member == null ) {
             return null;
         }
@@ -70,14 +70,14 @@ public class MemberMapperImpl implements MemberMapper {
     }
 
     @Override
-    public List<Response> membersToResponseDtos(List<Member> members) {
+    public List<Response> membersToMemberResponseDtos(List<Member> members) {
         if ( members == null ) {
             return null;
         }
 
         List<Response> list = new ArrayList<Response>( members.size() );
         for ( Member member : members ) {
-            list.add( memberToResponseDto( member ) );
+            list.add( memberToMemberResponseDto( member ) );
         }
 
         return list;
