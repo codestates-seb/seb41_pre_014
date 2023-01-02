@@ -2,10 +2,9 @@ import styled from "styled-components";
 import { useEffect } from 'react';
 import { Button } from "../atoms/Button";
 
-export const SNSShareBox = ({detailId}) => {
+export const SNSShareBox = (props) => {
   const CopyLinkEventHandler = () => {
-    // doCopy(`localhost:3000/questions/${detailId}`);
-    doCopy(`Successfully Copied!`)
+    doCopy(`localhost:3000/questions/${props.detailId}`);
   };
 
   useEffect(()=>{
@@ -27,8 +26,8 @@ export const SNSShareBox = ({detailId}) => {
       kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
-          title: 'stackoverflow clone coding',
-          description: 'preproject에서 진행한 stackoverflow 클론 코딩입니다.',
+          title: props.title,
+          description: props.body,
           imageUrl: `/image/stackoverflowLogo.svg`,
           link: {}
         }
@@ -45,6 +44,7 @@ export const SNSShareBox = ({detailId}) => {
       <ShareBoxInput>
         <input 
           id='sharebox'
+          defaultValue={`localhost:3000/questions/${props.detailId}`}
           disabled
         ></input>
       </ShareBoxInput>
@@ -86,9 +86,10 @@ export const SNSShareBox = ({detailId}) => {
 
 // StyledShareBoxWrapper의 inset(top-right-bottom-left)를 통해서 위치를 조정해주세요!
 const StyledShareBoxWrapper = styled.div`
-  max-width: 34rem;
+  width: 34rem;
   position: absolute;
-  inset: 0 auto auto 0;
+  top: 2rem;
+  left: 0rem;
   background-color: #FFF;
   padding: 1.2rem;
   margin: 0;
@@ -98,6 +99,7 @@ const StyledShareBoxWrapper = styled.div`
     0 0.2rem 0.6rem hsla(0, 0%, 0%, 0.06), 
     0 0.3rem 0.8rem hsla(0, 0%, 0%, 0.09);
   white-space: normal;
+  z-index:999;
 
   & * {
     font-size: 1.3rem;

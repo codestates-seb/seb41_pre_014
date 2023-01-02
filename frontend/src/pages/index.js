@@ -22,5 +22,6 @@ export const ActivityAnswers = lazy(() => import('./ActivityAnswers'));
 export const ActivityTags = lazy(() => import('./ActivityTags'));
 export const ActivityFollowing = lazy(() => import('./ActivityFollowing'));
 export const ActivityVotes = lazy(() => import('./ActivityVotes'));
+export const UserSettings = lazy(() => import('./UserSettings'));
 
 export const NotFound = lazy(() => import('./NotFound'));
