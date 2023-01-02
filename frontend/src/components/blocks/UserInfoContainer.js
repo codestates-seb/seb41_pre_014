@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { RandomAvartar } from './RandomAvartar';
 import { Link } from 'react-router-dom';
 
 const StyledDiv1 = styled.div`
@@ -44,7 +45,10 @@ export const UserMetaInfoType1 = (props) => {
     <StyledDiv1>
       <div>
         <a href=''>
-          <StyledImg width='2rem' height='2rem' alt='mini user avatar' src={props.profileImageUrl}></StyledImg>
+          {/* <StyledImg width='2rem' height='2rem' alt='mini user avatar' src={props.profileImageUrl}></StyledImg> */}
+          {props.profileImageUrl ? 
+            <img src={props.profileImageUrl} alt='avatar' />
+            : <RandomAvartar width='2rem' height='2rem' fontSize='1.3rem' /> }
         </a>
       </div>
       <div className='username-score'>
@@ -140,7 +144,7 @@ export const UserMetaInfoType3 = (props) => {
     <StyledDiv3>
       <a href=''> 
         <div className='avatarWrap'>
-          <img className='avatarPic' alt='user avatar' src='https://www.gravatar.com/avatar/0555bd0deb416a320a0069abef08078a?s=128&d=identicon&r=PG&f=1'></img>
+          <img className='avatarPic' alt='user avatar' src={props.profileImageUrl}></img>
         </div>
       </a>
       <div className='infoWrap'>
@@ -198,6 +202,9 @@ const StyledDiv4 = styled.div`
   padding: 0.5rem 0.6rem 0.7rem 0.7rem;
   width: 32.3rem;
   height: 8.2rem;
+  & > a {
+    text-decoration: none;
+  }
 
   & > div {
     display: flex;
@@ -215,11 +222,8 @@ export const UserMetaInfoType4 = (props) => {
   return (
     <div>
       <StyledDiv4>
-        <Link>
-          <StyledAvatar
-            alt="user avatar"
-            src={props.profileImageUrl}
-          ></StyledAvatar>
+        <Link href="">
+          <RandomAvartar width={props.width} height={props.height} fontSize={props.fontSize}  />
         </Link>
         <div>
           <StyledUsername className="user-name">{props.displayName}</StyledUsername>
