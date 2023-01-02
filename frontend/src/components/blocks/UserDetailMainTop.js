@@ -4,6 +4,9 @@ import { MainNavBar } from "./NavBar";
 import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const MainTopWrapper = styled.div`
   display: flex;
@@ -19,8 +22,13 @@ const MainTopProfileWrapper = styled.div`
 `
 
 const MainTopProfile = (props) => {
+const MainTopProfile = (props) => {
   return (
     <MainTopProfileWrapper>
+      <UserMetaInfoType3 
+        displayName={props.displayName} 
+        title={props.title} 
+        location={props.location}/>
       <UserMetaInfoType3 
         displayName={props.displayName} 
         title={props.title} 

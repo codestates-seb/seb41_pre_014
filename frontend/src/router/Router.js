@@ -1,7 +1,9 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect} from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { LoadingIndicator } from '../components/blocks/LoadingIndicator';
+import { getCookie } from '../modules/Cookies';
+import { loginStatusSlice, loginUserInfoSlice } from '../ducks/slice';
 
 import { 
   HomeLoginBoard,
@@ -30,7 +32,15 @@ import UserSettingsDeleteProfile from '../pages/UserSettingsDeleteProfile';
 import UserSettingsEditProfile from '../pages/UserSettingsEditProfile';
 
 export const Router = () => {
-  const loginStatus = useSelector(state => state.loginStatus.status)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (localStorage.getItem('loginUserInfo') && getCookie('accessJwtToken')) {
+      dispatch(loginUserInfoSlice.actions.getLoginUser(JSON.parse(localStorage.getItem('loginUserInfo'))));
+      dispatch(loginStatusSlice.actions.login());
+    };
+  }, []);
+
+  const loginStatus = useSelector(state => state.loginStatus.status);
 
   return (
     <>
