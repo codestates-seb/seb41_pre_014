@@ -93,15 +93,15 @@ const StyledButton = styled.div`
 `;
 
 const QuestionBoard = () => {
-  const [questions, setQuestions] = useState();
-  const [filter, setFilter] = useState('Newest');
+  const [questions, setQuestions] = useState([]);
+  const [filter, setFilter] = useState('questions');
   const [perPage, setPerPage] = useState(15);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const getQuestions = async (props) => {
+  const getQuestions = async () => {
     try {
       const response = await axios({
-        url: `/boards/${props.filter}?page=${props.page || 1}&size=${props.perPage || 15}`,
+        url: `/boards/${filter}?page=${currentPage || 1}&size=${perPage || 15}`,
         baseURL: `${process.env.REACT_APP_SERVER_URL}`,
       });
       setQuestions(response.data);
@@ -111,16 +111,17 @@ const QuestionBoard = () => {
     }
   }
 
+  useEffect(() => {
+    getQuestions();
+  }, []);
+
   const filterData = [
       {
         buttonName : "Newest",
         onClick : () => {
-          setFilter("newest");
+          setFilter("questions");
           // console.log(filter, currentPage, perPage);
-          getQuestions({
-            filter: "questions",
-	          size: {perPage},
-          });
+          getQuestions();
         },
       },
       {
@@ -128,10 +129,7 @@ const QuestionBoard = () => {
         onClick : () => {
 	        setFilter("unanswered");
           // console.log(filter, currentPage, perPage);
-          getQuestions({
-            filter: "unanswered",
-	          size: {perPage},
-          });
+          getQuestions();
         },
       },
       {
@@ -139,10 +137,7 @@ const QuestionBoard = () => {
         onClick : () => {
           setFilter("frequent");
           // console.log(filter, currentPage, perPage);
-          getQuestions({
-            filter: "frequent",
-          	size: {perPage},
-          });
+          getQuestions();
         },
       },
       {
@@ -150,10 +145,7 @@ const QuestionBoard = () => {
         onClick : () => {
           setFilter("score");
           // console.log(filter, currentPage, perPage);
-          getQuestions({
-            filter: "score",
-	          size: {perPage},
-          });
+          getQuestions();
         },
       }
     ];
@@ -164,9 +156,7 @@ const QuestionBoard = () => {
       onClick : () => {
         setPerPage(15);
         // console.log(filter, currentPage, perPage);
-        getQuestions({
-          size: "15"
-        });
+        getQuestions();
       },
     },
     {
@@ -174,9 +164,7 @@ const QuestionBoard = () => {
       onClick : () => {
         setPerPage(30);
         // console.log(filter, currentPage, perPage);
-        getQuestions({
-          size: "30"
-        });
+        getQuestions();
       },
     },
     {
@@ -184,9 +172,7 @@ const QuestionBoard = () => {
       onClick : () => {
         setPerPage(50);
         // console.log(filter, currentPage, perPage);
-        getQuestions({
-          size: "50"
-        })
+        getQuestions()
       },
     },
   ];
