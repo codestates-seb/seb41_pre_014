@@ -65,6 +65,7 @@ export const UserDetailMainTop = () => {
 
   const [user, setUserData] = useState(null)
   // member 정보 받아오기
+
   // const getUser = async () => {
   //   try {
   //     const response = await axios({
@@ -78,6 +79,7 @@ export const UserDetailMainTop = () => {
   //   }
   // };
 
+
   // useEffect(() => {
   //   getUser();
   // }, []);
@@ -86,9 +88,11 @@ export const UserDetailMainTop = () => {
     <div>
       <MainTopWrapper>
         <MainTopProfile 
+
         // displayName={user.displayName}
         // title={user.title}
         // location={user.location}
+
         />
         <MainNavBar navItems={navItems} />
       </MainTopWrapper>
