@@ -45,7 +45,10 @@ export const UserMetaInfoType1 = (props) => {
     <StyledDiv1>
       <div>
         <a href=''>
-          <StyledImg width='2rem' height='2rem' alt='mini user avatar' src={props.profileImageUrl}></StyledImg>
+          {/* <StyledImg width='2rem' height='2rem' alt='mini user avatar' src={props.profileImageUrl}></StyledImg> */}
+          {props.profileImageUrl ? 
+            <img src={props.profileImageUrl} alt='avatar' />
+            : <RandomAvartar width='2rem' height='2rem' fontSize='1.3rem' /> }
         </a>
       </div>
       <div className='username-score'>
@@ -139,11 +142,11 @@ const UserDetailedInfo = styled.div`
 export const UserMetaInfoType3 = (props) => {
   return (
     <StyledDiv3>
-      <a href=''> 
-        <div className='avatarWrap'>
-          <img className='avatarPic' alt='user avatar' src={props.profileImageUrl}></img>
+      <Link> 
+        <div>
+        <RandomAvartar width={props.width} height={props.height} fontSize={props.fontSize}  />
         </div>
-      </a>
+      </Link>
       <div className='infoWrap'>
         <div className='username'>{props.displayName}</div>
         <div className='userTitle'>{props.title}</div>
@@ -219,7 +222,7 @@ export const UserMetaInfoType4 = (props) => {
   return (
     <div>
       <StyledDiv4>
-        <Link href="">
+        <Link>
           <RandomAvartar width={props.width} height={props.height} fontSize={props.fontSize}  />
         </Link>
         <div>

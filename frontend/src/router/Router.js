@@ -28,6 +28,8 @@ import {
   Write,
   NotFound,
 } from '../pages';
+import UserSettingsDeleteProfile from '../pages/UserSettingsDeleteProfile';
+import UserSettingsEditProfile from '../pages/UserSettingsEditProfile';
 
 export const Router = () => {
   const dispatch = useDispatch();
@@ -61,7 +63,11 @@ export const Router = () => {
               <Route path="following" element={<ActivityFollowing />} />
               <Route path="votes" element={<ActivityVotes />} />
             </Route>
-            <Route path="settings" element={<UserSettings />} />
+            <Route path="settings" element={<UserSettings />} >
+              <Route index element={<UserSettingsEditProfile/>}></Route>
+              <Route path='edit' element={<UserSettingsEditProfile/>}></Route>
+              <Route path='delete' element={<UserSettingsDeleteProfile/>}></Route>
+            </Route>
             <Route/>
           </Route>
 

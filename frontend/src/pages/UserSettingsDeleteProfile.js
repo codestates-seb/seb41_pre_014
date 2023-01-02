@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const StyledTitle = styled.div`
   border-bottom: 0.1rem solid #e3e6e8;
@@ -40,6 +43,7 @@ const StyledCheckBoxWrapper = styled.div`
 `
 
 const StyledDeleteBtn = styled.button`
+  cursor: ${props => props.cursor};
   width: 12rem;
   height: 4rem;
   font-size: 1.5rem;
@@ -48,9 +52,37 @@ const StyledDeleteBtn = styled.button`
   color: #fff;
   border: none;
   border-radius: 0.3rem;
+  opacity: ${props => props.opacity};
 `
 
-const UserSettingsDeleteProfile = () => {
+const UserSettingsDeleteProfile = (e) => {
+
+  const navigate = useNavigate();
+
+  const deleteUser = async () => {
+    await axios({
+      method: 'DELETE',
+      // ${memberId}로 변경
+      url: `${process.env.REACT_APP_SERVER_URL}/members/1`,
+    })
+    .then((res)=>{
+      navigate('/');
+    })
+    .catch(err => {
+      console.error(err);
+    })
+  }
+
+  useEffect(() => {
+    deleteUser();
+  }, []);
+  
+  
+  const [isChecked, setIsChecked] = useState(false);
+  const handleChecked = (e) => {
+    setIsChecked(e.target.checked);
+  }
+
   return (
     <div>
       <StyledTitle>
@@ -86,7 +118,7 @@ const UserSettingsDeleteProfile = () => {
         <form>
           <StyledCheckForm>
             <StyledCheckBoxWrapper>
-              <input type="checkbox"></input>
+              <input onChange={handleChecked} checked={isChecked} type="checkbox"></input>
             </StyledCheckBoxWrapper>
             <StyledLabel>
               I have read the information stated above and understand the
@@ -94,7 +126,11 @@ const UserSettingsDeleteProfile = () => {
               the deletion of my profile.
             </StyledLabel>
           </StyledCheckForm>
-          <StyledDeleteBtn>Delete Profile</StyledDeleteBtn>
+          <StyledDeleteBtn 
+          disabled={isChecked? false : true}
+          opacity={isChecked? '1' : '0.3'}
+          cursor={isChecked? 'pointer' : 'auto'}
+          onClick={deleteUser}>Delete Profile</StyledDeleteBtn>
         </form>
       </StyledGuideline>
     </div>
