@@ -1,8 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+export const SearchBar = () => {
+  const [ searchCont, setSearchCont ] = useState('');
+  const navigate = useNavigate();
+
+  const SearchContOnChange = (e) => {
+    setSearchCont(e.target.value);
+  }
+
+  const GoSearch = (e) => {
+    e.preventDefault();
+    navigate('/questions/search', {
+      state: {
+        keyword: searchCont
+      }
+    });
+  }
+
+  return (
+    <StyledForm>
+      <StyledInput 
+        placeholder='Search...'
+        value={searchCont}
+        onChange={SearchContOnChange}
+        onKeyUp={e => {
+          if (e.key === 'Enter')
+          GoSearch(e)
+        }}
+      />
+    </StyledForm>
+  );
+};
 
 // font 적용 필요
-export const StyledForm = styled.form`
+export const StyledForm = styled.div`
   position: relative;
   width: 100%;
 `
@@ -25,41 +59,3 @@ export const StyledInput = styled.input`
     box-shadow: 0 0 0.5rem #b3d3ea;
   }
 `
-
-export const SearchBar = () => {
-  return (
-    <StyledForm>
-      <StyledInput placeholder='Search...'/>
-    </StyledForm>
-  );
-};
-
-// position relative / absolute 사용
-
-// export const StyledInput = styled.input`
-//   border: 0.1rem solid #d1d5d8;
-//   border-radius: 0.3rem;
-//   width: 67rem;
-//   height: 3.2rem;
-//   font-size: 1.3rem;
-//   &.searchIcon {
-//     position: absolute;
-//   }
-//   &:focus {
-//     outline: 0.1rem solid #379fef;
-//     box-shadow: 0 0 0.5rem #b3d3ea;
-//   }
-// `
-
-// export const StyledDiv = styled.div`
-//   position: relative;
-// `
-
-// export const SearchBar = () => {
-//   return (
-//     <StyledDiv>
-//       <IoSearchSharp className='searchIcon'/>
-//       <StyledInput />
-//     </StyledDiv>
-//   );
-// };

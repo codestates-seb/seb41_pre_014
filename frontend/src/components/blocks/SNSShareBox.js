@@ -4,7 +4,7 @@ import { Button } from "../atoms/Button";
 
 export const SNSShareBox = (props) => {
   const CopyLinkEventHandler = () => {
-    doCopy(`localhost:3000/questions/${props.detailId}`);
+    doCopy(`localhost:3000/questions/${props.boardId}`);
   };
 
   useEffect(()=>{
@@ -44,7 +44,7 @@ export const SNSShareBox = (props) => {
       <ShareBoxInput>
         <input 
           id='sharebox'
-          defaultValue={`localhost:3000/questions/${props.detailId}`}
+          defaultValue={`localhost:3000/questions/${props.boardId}`}
           disabled
         ></input>
       </ShareBoxInput>
@@ -88,7 +88,7 @@ export const SNSShareBox = (props) => {
 const StyledShareBoxWrapper = styled.div`
   width: 34rem;
   position: absolute;
-  top: 2rem;
+  top: 3rem;
   left: 0rem;
   background-color: #FFF;
   padding: 1.2rem;

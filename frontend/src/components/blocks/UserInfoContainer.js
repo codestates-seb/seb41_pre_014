@@ -11,31 +11,25 @@ const StyledDiv1 = styled.div`
   & > div > a {
     display: flex;
     align-items: center;
+    text-decoration: none;
   }
   & > .username-score {
     gap: 0.4rem;
     display: flex;
     & > div > .score {
       font-weight: bold;
+    };
+    & > div > a {
+      cursor: pointer;
+      text-decoration: none;
+      color: hsl(206,100%,40%);
+      &:hover {
+        color: hsl(206,100%,52%);
+      }
     }
   }
   & > span {
     color: #6a737c
-  }
-`
-
-const StyledImg = styled.img`
-  width: ${props => props.width || '0rem'};
-  height: ${props => props.height || '0rem'};
-  border-radius: 0.3rem;
-`
-
-const StyledA = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-  color: hsl(206,100%,40%);
-  &:hover {
-    color: hsl(206,100%,52%);
   }
 `
 
@@ -44,13 +38,20 @@ export const UserMetaInfoType1 = (props) => {
   return (
     <StyledDiv1>
       <div>
-        <a href=''>
-          <StyledImg width='2rem' height='2rem' alt='mini user avatar' src={props.profileImageUrl}></StyledImg>
-        </a>
+        <Link to={`/users/${props.detailId}`} >
+          {props.profileImageUrl ? 
+            <img src={props.profileImageUrl} alt='avatar' />
+            : <RandomAvartar 
+                width='2rem' 
+                height='2rem' 
+                fontSize='1.3rem' 
+                memberId={props.detailId}
+                displayName={props.displayName} /> }
+        </Link>
       </div>
       <div className='username-score'>
         <div>
-          <StyledA href='' className='username'>{props.displayName}</StyledA>
+          <Link to={`/users/${props.detailId}`} className='username'>{props.displayName}</Link>
         </div>
         <div>
           <span className='score'>{props.score}</span>
@@ -185,14 +186,21 @@ export const UserMetaInfoType3 = (props) => {
 const StyledAvatar = styled.img`
   width: 4.8rem;
   border-radius: 0.3rem;
-`
+`;
 
-const StyledUsername = styled(StyledA)`
+const StyledUsername = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+  color: hsl(206,100%,40%);
   font-size: 1.5rem;
-`
+  &:hover {
+    color: hsl(206,100%,52%);
+  };
+`;
+
 const StyledUserLocation = styled.span`
   font-size: 1.2rem;
-`
+`;
 
 const StyledDiv4 = styled.div`
   display: flex;
@@ -211,8 +219,14 @@ const StyledDiv4 = styled.div`
   }
 `
 
-const StyledTagLink = styled(StyledA)`
-  font-size: 1.;
+const StyledTagLink = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+  color: hsl(206,100%,40%);
+  font-size: 1.5rem;
+  &:hover {
+    color: hsl(206,100%,52%);
+  };
 `
 
 export const UserMetaInfoType4 = (props) => {

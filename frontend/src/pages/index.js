@@ -2,6 +2,7 @@ import { lazy } from "react";
 
 export const HomeLoginBoard = lazy(() => import('./HomeLoginBoard'));
 export const QuestionBoard = lazy(() => import('./QuestionBoard'));
+export const SearchBoard = lazy(() => import('./SearchBoard'));
 export const Detail = lazy(() => import('./Detail'));
 export const QuestionEdit = lazy(() => import('./QuestionEdit'));
 export const AnswerEdit = lazy(() => import('./AnswerEdit'));

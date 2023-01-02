@@ -36,13 +36,13 @@ export const AnswerFilter = (props) => {
   )
 };
 
-const Detail = (props) => {
+const Detail = () => {
   const location = useLocation();
   const boardId = location.pathname.split('/')[2];
 
   const [ detailData, setDetailData ] = useState({});
 
-  useEffect(() => {
+  const getFetchData = () => {
     axios({
       method: 'GET',
       url: `${process.env.REACT_APP_SERVER_URL}/boards/${boardId}`,
@@ -52,8 +52,12 @@ const Detail = (props) => {
     })
     .catch(err => {
       console.error(err);
-    })
-  },[boardId])
+    });
+  }
+
+  useEffect(() => {
+    getFetchData();
+  },[])
 
   const upButtonClick = () => {
     console.log('up!');
@@ -65,6 +69,7 @@ const Detail = (props) => {
   const navigate = useNavigate();
   const loginUserId = useSelector(state => state.loginUserInfo.loginUserInfo?.memberId);
   const answerWrite = useRef();
+
   const postAnswerButtonClick = async () => {
     const answerCont = answerWrite.current.getInstance().getHTML();
     await axios({
@@ -74,13 +79,14 @@ const Detail = (props) => {
         memberId: loginUserId
       },
       data: {
-        title: '',
+        title: 'This is a title of Answer.',
         body: answerCont,
-        tags: [],
+        tags: ['javascript', 'reactjs','codestates'],
       }
     })
     .then(res => {
-      navigate(`/questions/${boardId}`);
+      answerWrite.current.getInstance().setHTML('');
+      getFetchData();
     })
     .catch(err => {
       console.error(err);
@@ -92,6 +98,7 @@ const Detail = (props) => {
     alert('로그인 후에 이용해주세요. 로그인 페이지로 이동합니다.');
     navigate('/users/login');
   };
+
 
   return (
     <>
@@ -114,14 +121,13 @@ const Detail = (props) => {
                 downButtonClick={isLogin ? downButtonClick : goLogin}
                 score={detailData.score}
                 boardId={boardId}
-                questionContent={detailData.body}
                 tags={detailData.tags}
                 title={detailData.title}
                 body={detailData.body}
               />
               <AnswerWapper>
-              <AnswerFilter />
-              {detailData.answers.length > 0 && detailData.answers.map((el, idx) => {
+              {detailData.answers && detailData.answers.length > 0 && <AnswerFilter />}
+              {detailData.answers && detailData.answers.length > 0 && detailData.answers.map((el, idx) => {
                 return (
                   <AnswerDetail 
                     key={idx}
