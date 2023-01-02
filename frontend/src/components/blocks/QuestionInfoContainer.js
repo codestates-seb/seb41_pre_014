@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { TagBlock } from '../atoms/TagBlock';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Viewer } from '@toast-ui/react-editor';
 
 const QuestionWrapper = styled.div`
   display: flex;
@@ -288,6 +290,14 @@ const QuestionContent = styled.div`
   word-break: break-word;
   overflow-wrap: break-word;
   font-size: 1.3rem;
+  & * {
+    font-size: 1.3rem;
+    margin: 0!important;
+  }
+  & > div {
+    max-height: 4.2rem;
+    overflow: hidden;
+  }
 `;
 
 const TagAndUserMeta = styled.div`
@@ -321,7 +331,7 @@ export const QuestionInfoWrapper = (props) => {
         </Link>
       </h3>
       <QuestionContent>
-        {props.content}
+        {props.content && <Viewer initialValue={props.content} />}
       </QuestionContent>
       <TagAndUserMeta>
         <Tag> 
@@ -336,6 +346,7 @@ export const QuestionInfoWrapper = (props) => {
           displayName={props.displayName}
           score={props.votes}
           createdAt={props.CreateAt}
+          detailId={props.detailId}
         />
       </TagAndUserMeta>
     </QuestionInfo>
@@ -343,6 +354,7 @@ export const QuestionInfoWrapper = (props) => {
 };
 
 export const QuestionInfoContainer = (props) => {
+
   return (
     <QuestionWrapper>
       <QuestionMetaInfoWrapper
@@ -351,10 +363,14 @@ export const QuestionInfoContainer = (props) => {
         views={props.views}
       />
       <QuestionInfoWrapper
+        detailId={props.detailId}
         title={props.title}
         content={props.content}
         createdAt={props.CreateAt}
         tags={props.tags}
+        profileImageUrl={props.profileImageUrl}
+        displayName={props.displayName}
+        score={props.votes}
       />
     </QuestionWrapper>
   )
@@ -374,7 +390,7 @@ export const QuestionInfoWrapperUserPage = (props) => {
         </Link>
       </h3>
       <QuestionContent>
-        {props.content}
+        {props.content && <Viewer initialValue={props.content} />}
       </QuestionContent>
       <TagAndUserMeta>
         <Tag> 

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Input } from '../components/atoms/Input';
 import { Button } from '../components/atoms/Button';
-import { MainRightSideInfoWidget } from "../components/blocks/MainRight";
+// import { MainRightSideInfoWidget } from "../components/blocks/MainRight";
 import { InputLabel, EditorInput } from "../components/blocks/EditorInputWrapper";
-import { EditSideInfoWidgetData } from "../data/staticData/SideBarData";
+// import { EditSideInfoWidgetData } from "../data/staticData/SideBarData";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -27,7 +27,7 @@ const QuestionEdit = (props) => {
   
   useEffect(() => {
     isLogin || goLogin();
-    editorRef.current.getIstance().setHTML(location.state.body);
+    editorRef.current.getInstance().setHTML(location.state.body);
   }, [])
 
   const saveEditButtonClick = async () => {
@@ -36,7 +36,7 @@ const QuestionEdit = (props) => {
       url: `${process.env.REACT_APP_SERVER_URL}/boards/${boardId}`,
       data: {
         title,
-        body: editorRef.current.getIstance().getHTML(),
+        body: editorRef.current.getInstance().getHTML(),
         tags,
       }
     })
@@ -71,15 +71,15 @@ const QuestionEdit = (props) => {
             title='Body'
           />
           <EditorInput 
-              toolbarItems = {[
-                ['bold', 'italic'],
-                ['hr', 'quote'],
-                ['ul', 'ol', 'indent', 'outdent'],
-                ['table', 'image', 'link'],
-                ['code', 'codeblock']
-              ]}
-              ref={editorRef}
-            />
+            toolbarItems = {[
+              ['bold', 'italic'],
+              ['hr', 'quote'],
+              ['ul', 'ol', 'indent', 'outdent'],
+              ['table', 'image', 'link'],
+              ['code', 'codeblock']
+            ]}
+            ref={editorRef}
+          />
           <div>{props.questionContent}</div>
         </div>
         <div>
@@ -120,7 +120,7 @@ const QuestionEdit = (props) => {
         </div>
       </MainLeft>
       <MainRight>
-        {EditSideInfoWidgetData.map((el) => {
+        {/* {EditSideInfoWidgetData.map((el) => {
           return (
             <MainRightSideInfoWidget 
               title={el.title}
@@ -128,7 +128,7 @@ const QuestionEdit = (props) => {
               width='33rem'
             />
           )
-        })}            
+        })}             */}
       </MainRight>
     </Main>
   )

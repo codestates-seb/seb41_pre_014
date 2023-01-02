@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Viewer } from '@toast-ui/react-editor';
 
 export const LeftButtonWrapper = (props) => {
   return (
@@ -48,7 +50,8 @@ export const QuestionDetail = (props) => {
     setShareModal(!shareModal);
   }
 
-  const editButtonClick = () => {
+  const editButtonClick = (e) => {
+    e.preventDefault();
     navigate(`/posts/${props.boardId}/edit`, {
       state: {
         title: props.title,
@@ -64,7 +67,7 @@ export const QuestionDetail = (props) => {
     e.preventDefault();
     isBookmark || await axios({
       method: 'POST',
-      url: `${process.env.REACT_APP_SERVER_URL}`,
+      url: `${process.env.REACT_APP_SERVER_URL}/bookmarks`,
       params: {
         memberId,
         boardId: props.boardId,
@@ -96,9 +99,11 @@ export const QuestionDetail = (props) => {
         followButtonClick={isLogin ? followButtonClick : goLogin}
       />
       <RightDetailWrapper>
-        <div className='content'>{props.questionContent}</div>
+        <div className='content'>
+          {props.body && <Viewer initialValue={props.body} />}
+        </div>
         <div className='tags'>
-          {props.tags.length > 0 && 
+          {props.tags && props.tags.length > 0 && 
             props.tags.map((el, idx) => {
               return (
                 <TagBlock key={idx} tagName={el} />
@@ -113,13 +118,6 @@ export const QuestionDetail = (props) => {
                 href='#none'
                 onClick={e => shareButtonClick(e)}
               >Share</a>
-              { shareModal ? (
-                <SNSShareBox 
-                  boardId={props.boardId}
-                  title={props.title}
-                  description={props.body}
-                />
-              ) : null}
             </RightFooterButton>
             <RightFooterButton>
               <a 
@@ -133,6 +131,13 @@ export const QuestionDetail = (props) => {
                 onClick={e => isLogin ? followButtonClick(e) : goLogin()}
               >Bookmark</a>
             </RightFooterButton>
+            { shareModal ? (
+                <SNSShareBox 
+                  boardId={props.boardId}
+                  title={props.title}
+                  description={props.body}
+                />
+            ) : null}
           </RightFooterButtonWrapper>
           {/* <UserMetaInfoType2 /> */}
         </RightFooter>
@@ -202,10 +207,12 @@ export const AnswerDetail = (props) => {
   }
 
   return (
-    <DetailWrapper>
+    <DetailWrapper className='answer'>
       <LeftButtonWrapper />
       <RightDetailWrapper>
-        <div className='content'>{answerData.body}</div>
+        <div className='content'>
+          {answerData.body && <Viewer initialValue={answerData.body} />}
+        </div>
         <RightFooter>
           <RightFooterButtonWrapper>
             <RightFooterButton>
@@ -284,6 +291,11 @@ const BookmarkButton = styled.button`
 
 const DetailWrapper = styled.div`
   display: flex;
+
+  &.answer{
+    margin-bottom: 3rem;
+  }
+
 `;
 
 const RightDetailWrapper = styled.div`
@@ -294,10 +306,12 @@ const RightDetailWrapper = styled.div`
   text-align: left;
 
   & .content {
-    font-size: 1.6rem;
     overflow-wrap: break-word;
     text-align: left;
     color: #232629;
+    & * {
+      font-size: 1.6rem;
+    }
   }
 
   & .tags {
@@ -320,6 +334,7 @@ const RightFooterButtonWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   text-align: left;
+  position:relative;
 `;
 
 const RightFooterButton = styled.button`
@@ -328,7 +343,6 @@ const RightFooterButton = styled.button`
   background-color: inherit;
   border: none;
   margin: 0.8rem;
-  position:relative;
   > a {
     color: #6a737c;
     font-size: 1.3rem;

@@ -7,6 +7,153 @@ import { MainRightSideInfoWidget, MainRightTagAdded, MainRightTagBasic, MainRigh
 import { PerPage } from '../components/blocks/Pagination'
 import { BoardDetailSideInfoWidgetData } from '../data/staticData/SideBarData';
 import { DetailWriteButton } from '../components/blocks/DetailWriteButton';
+import { useLocation } from 'react-router-dom';
+
+const SearchBoard = () => {
+  const [questions, setQuestions] = useState([]);
+  const [perPage, setPerPage] = useState(15);
+  const [currentPage, setCurrentPage] = useState(1);
+  
+  const location = useLocation();
+  const keyword = location.state.keyword;
+
+  const getQuestions = async () => {
+    try {
+      const response = await axios({
+        url: `/boards/search/`,
+        baseURL: `${process.env.REACT_APP_SERVER_URL}`,
+        params: {
+          keyword,
+          page: currentPage,
+          size: perPage,
+        }
+      });
+      setQuestions(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getQuestions();
+  }, [perPage]);
+
+  const PerPageData = [
+    {
+      buttonName : "15",
+      onClick : () => {
+        setPerPage(15);
+      },
+    },
+    {
+      buttonName : "30",
+      onClick : () => {
+        setPerPage(30);
+      },
+    },
+    {
+      buttonName : "50",
+      onClick : () => {
+        setPerPage(50);
+      },
+    },
+  ];
+
+  const pageNums = [];
+  const [btnActive, setBtnActive] = useState(1);
+
+  for (let i = 1; i <= Math.ceil(questions.length / perPage); i++) {
+    pageNums.push(i);
+  }
+
+  return (
+    <>
+      <Main>
+        <MainLeft>
+          <MainTop>
+            <h1>All Questions</h1>
+            <DetailWriteButton />
+          </MainTop>
+          <FilterContainer>
+            <div className='questionNum'>
+              <span>{questions ? questions.length : 'Question Count'}</span>
+              <span>questions</span>
+            </div>
+          </FilterContainer>
+          {questions && questions.map((question) => {
+            return <QuestionInfoContainer
+              title={question.title}
+              content={question.body}
+              votes={question.score}
+              answers={question.answerCount}
+              views={question.viewCount}
+              profileImageUrl={question.writerProfileUrl}
+              displayName={question.writerDisplayName}
+              tags={question.tags}
+              key={question.boardId}
+              detailId={question.boardId}
+              createdAt={question.createdAt}
+            />
+          })}
+          <Pagination>
+            <PageWrapper>
+              {pageNums.includes(currentPage - 1) &&  <StyledButton 
+                onClick={() => {
+                  setCurrentPage(currentPage - 1);
+                  getQuestions({page: currentPage - 1});
+                  setBtnActive(currentPage - 1);
+                }
+              }
+              >Prev</StyledButton>
+              }
+              {pageNums.map((el, idx) => {
+                return <StyledButton
+                key={idx}
+                className={btnActive === el && 'active'}
+                onClick={() => {
+                  setBtnActive(el);
+                  setCurrentPage(el);
+                  getQuestions({
+                    page: {el}
+                  });
+                }}>{el}</StyledButton>
+              })}
+              {pageNums.includes(currentPage + 1) &&  <StyledButton 
+                onClick={() => {
+                  setCurrentPage(currentPage + 1);
+                  getQuestions({page: currentPage + 1});
+                  setBtnActive(currentPage + 1);
+                }
+              }
+              >Next</StyledButton>
+              }
+            </PageWrapper> 
+            <PerPage 
+              PerPageData={PerPageData}
+            />
+          </Pagination>
+        </MainLeft>
+        <MainRight>
+          {BoardDetailSideInfoWidgetData.map((el, idx) => {
+              return (
+                <MainRightSideInfoWidget 
+                  key={idx}
+                  title={el.title}
+                  contents={el.contents} 
+                />
+              )
+            })}
+          <MainRightTagBasic />
+          {/* <MainRightTagAdded /> */}
+          {/* <MainRightTagInput /> */}
+        </MainRight>
+      </Main>
+    </>
+  )
+};
+
+export default SearchBoard;
+
 
 const Main = styled.div`
   display: flex;
@@ -91,172 +238,3 @@ const StyledButton = styled.div`
     color: #fff;
   };
 `;
-
-const QuestionBoard = () => {
-  const [questions, setQuestions] = useState([]);
-  const [filter, setFilter] = useState('questions');
-  const [perPage, setPerPage] = useState(15);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const getQuestions = async () => {
-    try {
-      const response = await axios({
-        url: `/boards/${filter}?page=${currentPage || 1}&size=${perPage || 15}`,
-        baseURL: `${process.env.REACT_APP_SERVER_URL}`,
-      });
-      setQuestions(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    getQuestions();
-  }, [filter, perPage]);
-
-  const filterData = [
-      {
-        buttonName : "Newest",
-        onClick : () => {
-          setFilter("questions");
-        },
-      },
-      {
-        buttonName : "Unanswered",
-        onClick : () => {
-	        setFilter("unanswered");
-        },
-      },
-      {
-        buttonName : "Frequent",
-        onClick : () => {
-          setFilter("frequent");
-        },
-      },
-      {
-        buttonName : "Score",
-        onClick : () => {
-          setFilter("score");
-        },
-      }
-    ];
-
-  const PerPageData = [
-    {
-      buttonName : "15",
-      onClick : () => {
-        setPerPage(15);
-      },
-    },
-    {
-      buttonName : "30",
-      onClick : () => {
-        setPerPage(30);
-      },
-    },
-    {
-      buttonName : "50",
-      onClick : () => {
-        setPerPage(50);
-      },
-    },
-  ];
-
-  const pageNums = [];
-  const [btnActive, setBtnActive] = useState(1);
-
-  for (let i = 1; i <= Math.ceil(questions.length / perPage); i++) {
-    pageNums.push(i);
-  }
-
-  return (
-    <>
-      <Main>
-        <MainLeft>
-          <MainTop>
-            <h1>All Questions</h1>
-            <DetailWriteButton />
-          </MainTop>
-          <FilterContainer>
-            <div className='questionNum'>
-              <span>{questions ? questions.length : 'Question Count'}</span>
-              <span>questions</span>
-            </div>
-            <div>
-              <FilterButtonWrapper filterData={filterData} />
-            </div>
-          </FilterContainer>
-          {questions && questions.map((question) => {
-            return <QuestionInfoContainer
-              title={question.title}
-              content={question.body}
-              votes={question.score}
-              answers={question.answerCount}
-              views={question.viewCount}
-              profileImageUrl={question.writerProfileUrl}
-              displayName={question.writerDisplayName}
-              tags={question.tags}
-              key={question.boardId}
-              detailId={question.boardId}
-              createdAt={question.createdAt}
-            />
-          })}
-          <Pagination>
-            <PageWrapper>
-              {pageNums.includes(currentPage - 1) &&  <StyledButton 
-                onClick={() => {
-                  setCurrentPage(currentPage - 1);
-                  getQuestions({page: currentPage - 1});
-                  setBtnActive(currentPage - 1);
-                }
-              }
-              >Prev</StyledButton>
-              }
-              {pageNums.map((el, idx) => {
-                return <StyledButton
-                key={idx}
-                className={btnActive === el && 'active'}
-                onClick={() => {
-                  setBtnActive(el);
-                  setCurrentPage(el);
-                  getQuestions({
-                    page: {el}
-                  });
-                  console.log(filter, perPage, el);
-                }}>{el}</StyledButton>
-              })}
-              {pageNums.includes(currentPage + 1) &&  <StyledButton 
-                onClick={() => {
-                  setCurrentPage(currentPage + 1);
-                  getQuestions({page: currentPage + 1});
-                  setBtnActive(currentPage + 1);
-                }
-              }
-              >Next</StyledButton>
-              }
-            </PageWrapper> 
-            <PerPage 
-              PerPageData={PerPageData}
-            />
-          </Pagination>
-        </MainLeft>
-        <MainRight>
-          {BoardDetailSideInfoWidgetData.map((el, idx) => {
-              return (
-                <MainRightSideInfoWidget 
-                  key={idx}
-                  title={el.title}
-                  contents={el.contents} 
-                />
-              )
-            })}
-          <MainRightTagBasic />
-          {/* <MainRightTagAdded /> */}
-          {/* <MainRightTagInput /> */}
-        </MainRight>
-      </Main>
-    </>
-  )
-};
-
-export default QuestionBoard;
