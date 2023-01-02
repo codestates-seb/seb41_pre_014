@@ -12,6 +12,9 @@ http://my-stackoverflow-bucket-2.s3-website.ap-northeast-2.amazonaws.com/
 - Axios
 
 ### Back-end
+- Java
+- Spring Boot
+- MySQL
 
 <br/>
 
