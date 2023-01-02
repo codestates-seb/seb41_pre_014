@@ -1,0 +1,8 @@
+[source,bash]
+----
+$ echo '{
+  "name" : "java"
+}' | http POST 'http://localhost:8080/tags' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Accept:application/json'
+----

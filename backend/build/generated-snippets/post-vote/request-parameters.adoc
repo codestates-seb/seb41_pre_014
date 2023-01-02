@@ -1,0 +1,13 @@
+|===
+|Parameter|Description
+
+|`+memberId+`
+|평가한 Member 인덱스
+
+|`+boardId+`
+|평가를 받은 Board 인덱스
+
+|`+voteType+`
+|평가 타입: Up / Down
+
+|===

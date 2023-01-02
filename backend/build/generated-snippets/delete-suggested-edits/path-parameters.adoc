@@ -1,0 +1,8 @@
+.+/suggested-edits/{edit-id}+
+|===
+|Parameter|Description
+
+|`+edit-id+`
+|삭제하려는 SuggestedEdit 인덱스
+
+|===

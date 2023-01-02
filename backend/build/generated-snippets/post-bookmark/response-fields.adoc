@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|`+bookmarkId+`
+|`+Number+`
+|bookmark 인덱스
+
+|`+memberId+`
+|`+Number+`
+|bookmark를 한 Member의 인덱스
+
+|`+boardId+`
+|`+Number+`
+|bookmark 된 Board의 인덱스
+
+|===

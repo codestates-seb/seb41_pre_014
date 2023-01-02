@@ -1,0 +1,7 @@
+[source,options="nowrap"]
+----
+{
+  "tagId" : 1,
+  "name" : "tag1"
+}
+----

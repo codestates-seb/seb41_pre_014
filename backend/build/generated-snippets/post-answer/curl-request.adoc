@@ -1,0 +1,11 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/boards/answers/2?memberId=1' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Accept: application/json' \
+    -d '{
+  "title" : "What is Lorem Ipsum?",
+  "body" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "tags" : [ "javascript" ]
+}'
+----

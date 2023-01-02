@@ -1,0 +1,32 @@
+|===
+|Path|Type|Description
+
+|`+[].editId+`
+|`+Number+`
+|수정 제안서 ID
+
+|`+[].title+`
+|`+String+`
+|제목
+
+|`+[].boardId+`
+|`+Number+`
+|원본 게시글 ID
+
+|`+[].editorId+`
+|`+Number+`
+|수정요청자 ID
+
+|`+[].body+`
+|`+String+`
+|내용
+
+|`+[].tags+`
+|`+Array+`
+|태그
+
+|`+[].editStatus+`
+|`+String+`
+|수정 제안서 상태
+
+|===
