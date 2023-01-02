@@ -8,6 +8,8 @@ import { Router } from "./router/Router";
 import { store } from "./ducks/store";
 import { LeftNavBar } from "./components/blocks/NavBar";
 import { ScrollToTop } from '../src/modules/ScrollToTop';
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 const StyledMain = styled.main`
   min-height: 100%; 

@@ -121,7 +121,7 @@ const Detail = (props) => {
               />
               <AnswerWapper>
               <AnswerFilter />
-              {detailData.answers.map((el, idx) => {
+              {detailData.answers.length > 0 && detailData.answers.map((el, idx) => {
                 return (
                   <AnswerDetail 
                     key={idx}

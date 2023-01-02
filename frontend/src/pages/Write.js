@@ -76,16 +76,16 @@ const Write = () => {
       alert('본문 내용을 30자 이상 입력해주세요!');
       return;
     };
-    if (recaptchaValue.length) {
+    if (recaptchaValue.length <= 0) {
       alert('당신은 로봇입니까?');
       return;
     };
     return await axios({
       method: 'POST',
-      url: `${process.env.REACT_APP_SERVER_URL}/boards/questions`,
-      params: {
-        memberId: loginUserId
-      },
+      url: `${process.env.REACT_APP_SERVER_URL}/boards/questions?memberId=${loginUserId}`,
+      // params: {
+      //   memberId: loginUserId
+      // },
       data: {
         ...questionCont
       }

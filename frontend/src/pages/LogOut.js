@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { Button } from '../components/atoms/Button';
 import { useDispatch } from 'react-redux';
 import { loginStatusSlice, loginUserInfoSlice } from '../ducks/slice';
+import { removeCookie } from "../modules/Cookies";
 
 const LogOut = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const LogOutButtonClick = () => {
+    removeCookie('accessJwtToken');
+    localStorage.clear();
     dispatch(loginStatusSlice.actions.logout());
     dispatch(loginUserInfoSlice.actions.getLoginUser({}));
     navigate('/');

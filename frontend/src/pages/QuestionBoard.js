@@ -93,15 +93,15 @@ const StyledButton = styled.div`
 `;
 
 const QuestionBoard = () => {
-  const [questions, setQuestions] = useState();
+  const [questions, setQuestions] = useState([]);
   const [filter, setFilter] = useState('Newest');
   const [perPage, setPerPage] = useState(15);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const getQuestions = async (props) => {
+  const getQuestions = async () => {
     try {
       const response = await axios({
-        url: `/boards/${props.filter}?page=${props.page || 1}&size=${props.perPage || 15}`,
+        url: `/boards/${filter}?page=${currentPage || 1}&size=${perPage || 15}`,
         baseURL: `${process.env.REACT_APP_SERVER_URL}`,
       });
       setQuestions(response.data);
@@ -109,18 +109,19 @@ const QuestionBoard = () => {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
+
+  useEffect(() => {
+    getQuestions();
+  }, [])
 
   const filterData = [
       {
         buttonName : "Newest",
         onClick : () => {
-          setFilter("newest");
+          setFilter("questions");
           // console.log(filter, currentPage, perPage);
-          getQuestions({
-            filter: "questions",
-	          size: {perPage},
-          });
+          getQuestions();
         },
       },
       {
@@ -208,7 +209,7 @@ const QuestionBoard = () => {
           </MainTop>
           <FilterContainer>
             <div className='questionNum'>
-              <span>{questions.length}</span>
+              <span>{questions ? questions.length : 'Question Count'}</span>
               <span>questions</span>
             </div>
             <div>
