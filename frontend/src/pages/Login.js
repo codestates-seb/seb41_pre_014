@@ -8,6 +8,9 @@ import { useDispatch } from 'react-redux';
 import { loginStatusSlice, loginUserInfoSlice } from "../ducks/slice";
 import axios from 'axios';
 
+import { setCookie } from "../modules/Cookies";
+import jwt_decode from 'jwt-decode'
+
 const Login = () => {
   const navigate = useNavigate();
   const LogoEventHandler = (e) => {
@@ -32,12 +35,18 @@ const Login = () => {
       },
       url: `${process.env.REACT_APP_SERVER_URL}/auth/login`,
       data: {
-        ...data
+        username: email,
+        password,
       },
       responseType: 'json',
     })
     .then(res => {
-      dispatch(loginUserInfoSlice.actions.getLoginUser(res.data));
+      const jwtToken = res.headers.get('Authorization');
+      setCookie('accessJwtToken', jwtToken);
+      const decodedUserInfo = jwt_decode(jwtToken);
+      const loginUserId = decodedUserInfo.memberId;
+      dispatch(loginUserInfoSlice.actions.getLoginUser({"memberId": loginUserId}));
+      localStorage.setItem('loginUserInfo', JSON.stringify({"memberId": loginUserId}));
       navigate('/');
       dispatch(loginStatusSlice.actions.login());
       

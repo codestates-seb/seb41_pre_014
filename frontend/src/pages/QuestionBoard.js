@@ -180,7 +180,7 @@ const QuestionBoard = () => {
           </MainTop>
           <FilterContainer>
             <div className='questionNum'>
-              <span>{questions.length}</span>
+              <span>{questions ? questions.length : 'Question Count'}</span>
               <span>questions</span>
             </div>
             <div>

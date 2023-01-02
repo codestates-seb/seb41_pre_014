@@ -39,6 +39,20 @@ export const Header = () => {
     navigate('/users/signup');
   }
 
+  const UserIconEventHandler = () => {
+    navigate(`/users/${LoginUser.memberId}`)
+  }
+
+  const [ isMenuOpen, setIsMenuOpen ] = useState(false);
+  const MenuIconEventHandler = () => {
+    setIsMenuOpen(!isMenuOpen);
+  }
+
+  const LogOutEventHandler = () => {
+    navigate('/users/logout');
+    setIsMenuOpen(false);
+  }
+
   return (
     <>
       {LoginStatus 
@@ -54,7 +68,7 @@ export const Header = () => {
               <SearchBar />
             </StyledSearchBarBox>
             <StyledIconWrapper>
-              <StyledIconBox width='6rem' className='LoggedHeaderIcon'>
+              <StyledIconBox width='6rem' className='LoggedHeaderIcon' onClick={UserIconEventHandler}>
                 {LoginUser.loginUserInfo.profileImageUrl
                 ? <img src='LoginUser.loginUserInfo.profileImageUrl' alt='avatar' />
                 : <RandomAvartar width='2.4rem' height='2.4rem' fontSize='1.3rem' /> }
@@ -72,9 +86,10 @@ export const Header = () => {
               <StyledIconBox className='LoggedHeaderIcon'>
                 <svg className="svg-icon" width="18" height="18" viewBox="0 0 18 18"><path d="m8.9844-0.013672a1 1 0 0 0 -0.98438 1.0137v0.38281l-0.55273-0.27734a1 1 0 0 0 -0.48242 -0.11133 1 1 0 0 0 -0.41211 1.9004l1.4473 0.72266v3.6523l-3.1621-1.8262 0.097656-1.6152a1 1 0 0 0 -0.95117 -1.0742 1 1 0 0 0 -1.0449 0.95508l-0.037109 0.61719-0.33008-0.19141a1 1 0 0 0 -0.57422 -0.14062 1 1 0 0 0 -0.42578 1.8711l0.33203 0.19141-0.51758 0.3418a1 1 0 1 0 1.1016 1.668l1.3516-0.89258 3.1621 1.8262-3.1621 1.8262-1.3516-0.89258a1 1 0 0 0 -0.56445 -0.17383 1 1 0 0 0 -0.53711 1.8418l0.51758 0.3418-0.33203 0.19141a1 1 0 1 0 1 1.7305l0.33008-0.19141 0.037109 0.61719a1 1 0 1 0 1.9961 -0.11914l-0.097656-1.6152 3.1621-1.8262v3.6523l-1.4473 0.72266a1 1 0 0 0 0.89453 1.7891l0.55273-0.27734v0.38281a1 1 0 1 0 2 0v-0.38281l0.55273 0.27734a1 1 0 1 0 0.89453 -1.7891l-1.4473-0.72266v-3.6523l3.1621 1.8262-0.097656 1.6152a1 1 0 1 0 1.9961 0.11914l0.037109-0.61719 0.33008 0.19141a1 1 0 1 0 1 -1.7305l-0.33203-0.19141 0.51758-0.3418a1 1 0 0 0 -0.56641 -1.8418 1 1 0 0 0 -0.53516 0.17383l-1.3516 0.89258-3.1621-1.8262 3.1621-1.8262 1.3516 0.89258a1 1 0 1 0 1.1016 -1.668l-0.51758-0.3418 0.33203-0.19141a1 1 0 0 0 -0.45508 -1.8711 1 1 0 0 0 -0.54492 0.14062l-0.33008 0.19141-0.037109-0.61719a1 1 0 0 0 -0.97461 -0.95508 1 1 0 0 0 -1.0215 1.0742l0.097656 1.6152-3.1621 1.8262v-3.6523l1.4473-0.72266a1 1 0 1 0 -0.89453 -1.7891l-0.55273 0.27734v-0.38281a1 1 0 0 0 -1.0156 -1.0137z"></path></svg>
               </StyledIconBox>
-              <StyledIconBox className='LoggedHeaderIcon'>
+              <StyledIconBox className='LoggedHeaderIcon' onClick={MenuIconEventHandler}>
                 <svg aria-hidden="true" className="svg-icon iconStackExchange" width="18" height="18" viewBox="0 0 18 18"><path d="M15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2ZM1 13c0 1.1.9 2 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2Zm16-7H1v4h16V6Z"></path></svg>  
               </StyledIconBox>
+              {isMenuOpen ? <StyledMenu onClick={LogOutEventHandler}>Log out</StyledMenu> : null}
             </StyledIconWrapper>
         </StyledHeaderContainer>
       </StyeldHeader>
@@ -215,6 +230,7 @@ const StyledIconWrapper = styled.nav`
   width: 27.5rem;
   height: 4.7rem;
   display: flex;
+  position: relative;
 `;
 
 const StyledIconBox = styled.div`
@@ -222,6 +238,7 @@ const StyledIconBox = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 1.6rem;
+  cursor: pointer;
   &:hover {
     background-color: #E3E6E8;
   };
@@ -234,7 +251,6 @@ const StyledIconBox = styled.div`
   & > svg {
     font-size: 1.6rem;
     fill: hsl(210,8%,35%);
-    cursor: pointer;
   };
 
   & > svg.userIcon {
@@ -249,4 +265,26 @@ const StyledRepu = styled.div`
   color: #525960;
   padding-left: 0.5rem;
   margin-top: 0.2rem;
+`;
+
+const StyledMenu = styled.div`
+  position:absolute;
+  top:4.7rem;
+  right:1rem;
+  width:15rem;
+  font-size:1.3rem;
+  color:#525960;
+  background-color: #FFF;
+  border: 1px solid #E3E6E8;
+  border-top: 0;
+  box-shadow: 0 0.1rem 0.2rem hsla(0,0%,0%,0.05), 0 0.1rem 0.4rem hsla(0, 0%, 0%, 0.05), 0 0.2rem 0.8rem hsla(0, 0%, 0%, 0.05);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: #E3E6E8;
+    font-weight: 600;
+  }
 `;

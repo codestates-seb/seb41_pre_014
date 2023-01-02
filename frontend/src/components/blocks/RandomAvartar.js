@@ -2,8 +2,7 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 export const RandomAvartar = (props) => {
-  const isLogin = useSelector(state => state.loginStatus.status);
-  const loginUser =  useSelector(state => state.loginUserInfo);
+  const loginUser =  useSelector(state => state.loginUserInfo?.loginUserInfo);
   const randomNum = Math.floor(Math.random() * colorList.length);
 
   return (
@@ -15,7 +14,7 @@ export const RandomAvartar = (props) => {
       <AvatarTxt
         fontSize={props.fontSize}
       >
-        {loginUser[0] || 'p'}
+        {loginUser.email ? loginUser.email[0] : 'p'}
       </AvatarTxt>
     </AvatarBg>
   )
