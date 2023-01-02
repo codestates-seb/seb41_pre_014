@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import { UserMetaInfoType3 } from "./UserInfoContainer";
 import { MainNavBar } from "./NavBar";
-import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MainTopWrapper = styled.div`
   display: flex;
@@ -55,6 +55,8 @@ const EditProfileBtn = styled.button`
 `
 
 export const UserDetailMainTop = () => {
+  const memberId = useSelector(state => state.loginUserInfo.loginUserInfo.memberId);
+
   const navItems = [
     {name: 'Profile', to: `profile`},
     {name: 'Activity', to: `activity`},
@@ -65,9 +67,10 @@ export const UserDetailMainTop = () => {
   // member 정보 받아오기
   const getUser = async () => {
     try {
-      const response = await axios.get({
+      const response = await axios({
         // ${memberId}로 변경
-        url: `${process.env.REACT_APP_SERVER_URL}/members/4`
+        url: `/members/${memberId}`,
+        baseURL: `${process.env.REACT_APP_SERVER_URL}`
       });
       setUserData(response.data);
     } catch (error) {
@@ -83,12 +86,12 @@ export const UserDetailMainTop = () => {
     <div>
       <MainTopWrapper>
         <MainTopProfile 
-        displayName={user && user.displayName}
-        title={user && user.title}
-        location={user && user.location}
+        displayName={user.displayName}
+        title={user.title}
+        location={user.location}
         />
         <MainNavBar navItems={navItems} />
       </MainTopWrapper>
     </div>
-  )
+  );
 }
