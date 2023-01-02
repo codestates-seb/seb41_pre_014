@@ -19,7 +19,7 @@ const UserSettings = () => {
   ]
   return (
     <StyledUserSettings>
-      <MainLeftNavBar navItems={navItems} width='20rem'/>
+      <MainLeftNavBar navItems={navItems} width='15rem'/>
       <Outlet/>
     </StyledUserSettings>
   )
