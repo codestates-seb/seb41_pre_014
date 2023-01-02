@@ -14,6 +14,7 @@ http://my-stackoverflow-bucket-2.s3-website.ap-northeast-2.amazonaws.com/
 ### Back-end
 - Java
 - Spring Boot
+- JPA
 - MySQL
 
 <br/>
