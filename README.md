@@ -1,5 +1,9 @@
 # CodeStates 41기 Pre-Project 14조 일사천리
 
+## 🏞 배포 링크
+http://my-stackoverflow-bucket-2.s3-website.ap-northeast-2.amazonaws.com/
+
+
 ## ⚙️ 기술스택
 ### Front-end
 - React
