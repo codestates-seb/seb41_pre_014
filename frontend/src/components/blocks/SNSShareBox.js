@@ -27,8 +27,8 @@ export const SNSShareBox = (props) => {
         objectType: 'feed',
         content: {
           title: props.title,
-          description: props.body,
-          imageUrl: `/image/stackoverflowLogo.svg`,
+          description: 'pre-project로 진행한 stackoverflow clone App 입니다.',
+          imageUrl: `https://cdn-icons-png.flaticon.com/512/2626/2626299.png`,
           link: {}
         }
       })
