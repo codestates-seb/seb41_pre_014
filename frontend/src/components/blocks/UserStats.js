@@ -31,16 +31,18 @@ const UserStatItem = styled.div`
   }
 `
 
-export const UserStats = () => { 
+export const UserStats = (props) => { 
+
+
   return (
     <UserStatsContainer>
       <UserStatsTitle>Stats</UserStatsTitle>
         <UserStatsWrap>
           <div>
-            <UserStatItem><div>Number</div>Answers</UserStatItem>
-            <UserStatItem><div>Number</div>Questions</UserStatItem>
-            <UserStatItem><div>Number</div>Following</UserStatItem>
-            <UserStatItem><div>Number</div>Votes</UserStatItem>
+            <UserStatItem><div>{props.answerCount}</div>Answers</UserStatItem>
+            <UserStatItem><div>{props.questionCount}</div>Questions</UserStatItem>
+            <UserStatItem><div>{props.followCount}</div>Following</UserStatItem>
+            <UserStatItem><div>{props.repCount}</div>Reputation</UserStatItem>
           </div>
         </UserStatsWrap>
     </UserStatsContainer>
