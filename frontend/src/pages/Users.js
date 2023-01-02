@@ -38,35 +38,55 @@ const StyledTopBar = styled.div`
 ` 
 
 const Users = () => {
+  const [users, setUsers] = useState(null);
+  const [sortedR, setSortedR] = useState(null);
+
+  // url 맨앞 / 빼고 다시 시도해보기
+  const getUsers = async (props) => {
+    try {
+      const response = await axios({
+        url: `/api/members`,
+        baseURL: `http://localhost:4000`
+      });
+      setUsers(response.data);
+      setSortedR(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const filterData = [
-    {
-      buttonName: "Reputation",
-      onClick: () => {console.log('reputation 순으로 정렬')}
-    },
     {
       buttonName: "New users",
       onClick: () => {console.log('최신 생성 유저 순으로 정렬')}
     },
+    {
+      buttonName: "Reputation",
+      onClick: () => {
+        users.sort((a, b) => b.reputation - a.repuutation);
+        console.log(users[0].reputation);
+        setSortedR([...users]);
+      }
+    },
   ];
 
-  // const [users, setUsers] = useState(null);
 
-  // const getUsers = async () => {
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  // const getQuestions = async (props) => {
   //   try {
   //     const response = await axios({
-  //       url: `/members?page=1&size=30`,
-  //       baseURL: `${process.env.REACT_APP_SERVER_URL}`
+  //       url: /boards/${props.filter}?page=${props.page || 1}&size=${props.perPage || 15},
+  //       baseURL: ${process.env.REACT_APP_SERVER_URL},
   //     });
-  //     setUsers(response.data);
-  //     console.log(users);
+  //     setQuestions(response.data);
+  //     console.log(questions);
   //   } catch (error) {
   //     console.error(error);
   //   }
-  // };
-
-  // useEffect(() => {
-  //   getUsers();
-  // }, []);
+  // }
 
   return (
     <div>
@@ -80,7 +100,16 @@ const Users = () => {
         />
       </StyledTopBar>
       <StyledUserWrapper>
-          <UserMetaInfoType4 />
+        {users?.map((user) => {
+          // profileImageUrl 추가
+          return <UserMetaInfoType4 
+          profileImageUrl={user.profileImageUrl}
+          displayName={user.displayName} 
+          location={user.location} 
+          tags={user.tags.map((tag)=>{
+            return tag + ', '
+          })}/>
+        })}
       </StyledUserWrapper>
       <div>
       <StyledA href='https://stackexchange.com/leagues/1/week/stackoverflow'>weekly / monthly / quarterly reputation leagues</StyledA>
