@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
+// 사용하실 때, props로 각 유저의 memberId를 넘겨주셔야 합니다.
 export const RandomAvartar = (props) => {
-  const loginUser =  useSelector(state => state.loginUserInfo?.loginUserInfo);
   const randomNum = Math.floor(Math.random() * colorList.length);
-
+  
   return (
     <AvatarBg 
       width={props.width}
@@ -14,7 +13,7 @@ export const RandomAvartar = (props) => {
       <AvatarTxt
         fontSize={props.fontSize}
       >
-        {loginUser.email ? loginUser.email[0] : 'p'}
+        {(props.displayName && props.displayName[0]) || 'p'}
       </AvatarTxt>
     </AvatarBg>
   )

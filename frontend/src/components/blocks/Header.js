@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faBars, faXmark, faCircleUser } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +10,7 @@ import { SearchBar } from '../atoms/SearchBar';
 import { Button } from '../atoms/Button';
 import { DropdownNavBar } from './DropdownNavBar';
 import { RandomAvartar } from '../blocks/RandomAvartar';
+import axios from 'axios';
 
 export const Header = () => {
   const location = useLocation();
@@ -22,7 +23,23 @@ export const Header = () => {
 
   const LoginStatus = useSelector(state => state.loginStatus.status);
   const LoginUser = useSelector(state => state.loginUserInfo);
-  
+  const [ loginUserInfo, setLoginUserInfo ] = useState({});
+
+  useEffect(() => {
+    if (LoginStatus) {
+      axios({
+        method: 'GET',
+        url: `${process.env.REACT_APP_SERVER_URL}/members/${LoginUser.loginUserInfo.memberId}`,
+      })
+      .then(res => {
+        setLoginUserInfo(res.data);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+    }
+  },[LoginStatus])
+
   const navigate = useNavigate();
   const LogoEventHandler = (e) => {
     e.preventDefault();
@@ -40,7 +57,7 @@ export const Header = () => {
   }
 
   const UserIconEventHandler = () => {
-    navigate(`/users/${LoginUser.memberId}`)
+    navigate(`/users/${LoginUser.loginUserInfo.memberId}`)
   }
 
   const [ isMenuOpen, setIsMenuOpen ] = useState(false);
@@ -69,10 +86,16 @@ export const Header = () => {
             </StyledSearchBarBox>
             <StyledIconWrapper>
               <StyledIconBox width='6rem' className='LoggedHeaderIcon' onClick={UserIconEventHandler}>
-                {LoginUser.loginUserInfo.profileImageUrl
+                {loginUserInfo.profileImageUrl
                 ? <img src='LoginUser.loginUserInfo.profileImageUrl' alt='avatar' />
-                : <RandomAvartar width='2.4rem' height='2.4rem' fontSize='1.3rem' /> }
-                <StyledRepu>{LoginUser.loginUserInfo.reputation || '1'}</StyledRepu>
+                : <RandomAvartar 
+                  width='2.4rem' 
+                  height='2.4rem' 
+                  fontSize='1.3rem' 
+                  memberId={loginUserInfo.memberId}
+                  displayName={loginUserInfo.displayName}
+                />}
+                <StyledRepu>{loginUserInfo.reputation || '1'}</StyledRepu>
               </StyledIconBox>
               <StyledIconBox className='LoggedHeaderIcon'>
                 <svg aria-hidden="true" className="svg-icon iconInbox" width="20" height="18" viewBox="0 0 20 18"><path d="M4.63 1h10.56a2 2 0 0 1 1.94 1.35L20 10.79V15a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-4.21l2.78-8.44c.25-.8 1-1.36 1.85-1.35Zm8.28 12 2-2h2.95l-2.44-7.32a1 1 0 0 0-.95-.68H5.35a1 1 0 0 0-.95.68L1.96 11h2.95l2 2h6Z"></path></svg>

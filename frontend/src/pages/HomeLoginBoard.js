@@ -52,7 +52,6 @@ const HomeLoginBoard = () => {
         baseURL: `${process.env.REACT_APP_SERVER_URL}`,
       });
       setQuestions(response.data);
-      console.log(questions);
     } catch (error) {
       console.error(error);
     }
@@ -100,8 +99,9 @@ const HomeLoginBoard = () => {
             <FilterContainer>
               <FilterButtonWrapper filterData={filterData} />
             </FilterContainer>
-            {questions && questions.map((question) => {
+            {questions.length > 0 && questions.map((question) => {
               return <QuestionInfoContainer
+                key={question.boardId}
                 title={question.title}
                 content={question.body}
                 votes={question.score}

@@ -8,6 +8,7 @@ import { loginStatusSlice, loginUserInfoSlice } from '../ducks/slice';
 import { 
   HomeLoginBoard,
   QuestionBoard,
+  SearchBoard,
   Detail,
   QuestionEdit,
   AnswerEdit,
@@ -74,6 +75,7 @@ export const Router = () => {
           <Route path='/questions' element={<QuestionBoard />}></Route>
           <Route path='/questions/ask' element={<Write />}></Route>
           <Route path='/questions/:detailId' element={<Detail />}></Route>
+          <Route path='/questions/search' element={<SearchBoard />}></Route>
 
           <Route path='/posts/:detailId/edit' element={<QuestionEdit />}></Route>
           <Route path='/posts/:detailId/answer/edit' element={<AnswerEdit />}></Route>
