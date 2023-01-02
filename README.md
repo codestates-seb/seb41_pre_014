@@ -24,6 +24,10 @@
 |----|
 |<img width='600px' src='https://user-images.githubusercontent.com/110954895/210260242-93562a41-b988-4058-ba9d-5df5caef4795.gif' />|
 
+|질문하기|
+|----|
+|<img width='600px' src='https://user-images.githubusercontent.com/110954895/210262313-acdc61a4-7bf8-4cd8-b62e-fa2ffc8cc321.gif' />|
+
 |질문 수정하기|
 |----|
 |<img width='600px' src='https://user-images.githubusercontent.com/110954895/210260925-4b8078a9-54ba-433e-9541-c77db568263e.gif' />|
@@ -35,10 +39,6 @@
 |검색하기|
 |----|
 |<img width='600px' src='https://user-images.githubusercontent.com/110954895/210261048-c40bbd67-68ca-4d0e-851b-414ccc49018d.gif' />|
-
-|질문하기|
-|----|
-|<img width='600px' src='https://user-images.githubusercontent.com/110954895/210262313-acdc61a4-7bf8-4cd8-b62e-fa2ffc8cc321.gif' />|
 
 |SNS 공유하기|
 |----|
