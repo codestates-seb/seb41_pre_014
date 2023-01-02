@@ -45,8 +45,8 @@ const Users = () => {
   const getUsers = async (props) => {
     try {
       const response = await axios({
-        url: `/api/members`,
-        baseURL: `http://localhost:4000`
+        url: `/members?page=1&size=30`,
+        baseURL: `${process.env.REACT_APP_SERVER_URL}`
       });
       setUsers(response.data);
       setSortedR(response.data);
@@ -58,7 +58,10 @@ const Users = () => {
   const filterData = [
     {
       buttonName: "New users",
-      onClick: () => {console.log('최신 생성 유저 순으로 정렬')}
+      onClick: () => {
+        console.log('최신 생성 유저 순으로 정렬');
+        getUsers();
+      }
     },
     {
       buttonName: "Reputation",
@@ -66,27 +69,14 @@ const Users = () => {
         users.sort((a, b) => b.reputation - a.repuutation);
         console.log(users[0].reputation);
         setSortedR([...users]);
+        getUsers();
       }
     },
   ];
 
-
   useEffect(() => {
     getUsers();
   }, []);
-
-  // const getQuestions = async (props) => {
-  //   try {
-  //     const response = await axios({
-  //       url: /boards/${props.filter}?page=${props.page || 1}&size=${props.perPage || 15},
-  //       baseURL: ${process.env.REACT_APP_SERVER_URL},
-  //     });
-  //     setQuestions(response.data);
-  //     console.log(questions);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
 
   return (
     <div>
@@ -104,11 +94,14 @@ const Users = () => {
         {users?.map((user) => {
           // profileImageUrl 추가
           return <UserMetaInfoType4 
+          width='4.8rem'
+          height='4.8rem'
+          fontSize='2.4rem'
           profileImageUrl={user.profileImageUrl}
-          displayName={user.displayName} 
+          displayName={user.displayName}
           location={user.location} 
           tags={user.tags.map((tag)=>{
-            return tag + ', '
+            return tag + ' '
           })}/>
         })}
 
